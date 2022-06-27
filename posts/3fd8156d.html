@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Linux tr命令 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Linux/通用/文本文件及其处理命令/处理文本文件/Linux tr命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Linux tr命令
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/3fd8156d.html" class="article-date">
+  <time datetime="2021-04-26T13:08:28.000Z" itemprop="datePublished">2021-04-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/">通用</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/">文本文件及其处理命令</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%E5%8F%8A%E5%85%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4/%E5%A4%84%E7%90%86%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6/">处理文本文件</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="Linux-tr命令"><a href="#Linux-tr命令" class="headerlink" title="Linux tr命令"></a>Linux tr命令</h1><p>tr命令 可以对来自标准输入的字符进行替换、压缩和删除。它可以将一组字符变成另一组字符，经常用来编写优美的单行命令，作用很强大。<br>tr 是 Linux 和 Unix 系统中的命令行实用程序，用于转换，删除和挤压标准输入中的字符，并将结果写入标准输出。<br>该 tr 命令通常通过管道与其他命令结合使用，可以执行删除重复字符，将大写转换为小写，以及替换和删除基本字符等操作。<br>tr的英文全称是“ transform ”，即转换的意思。该命令</p>
+<ul>
+<li>可以将字符进行替换、压缩、删除，</li>
+<li>也可以将一组字符转换成另一组字符。</li>
+</ul>
+<p><strong>tr只能从标准输入中读取数据，因此，tr要么将输入文件重定向到标准输入，要么从管道读入数据。</strong><br>注意：tr类似于sed命令，但是比sed简单，所以tr能实现的功能，sed都能实现。</p>
+<h2 id="tr命令常用参数："><a href="#tr命令常用参数：" class="headerlink" title="tr命令常用参数："></a>tr命令常用参数：</h2><table>
+<thead>
+<tr>
+<th align="left">tr命令参数</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-c</td>
+<td align="left">选定字符串1中字符集的补集，即反选字符串1的补集</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">删除字符串1中出现的所有字符</td>
+</tr>
+<tr>
+<td align="left">-s</td>
+<td align="left">删除所有重复出现的字符序列，只保留一个</td>
+</tr>
+</tbody></table>
+<h2 id="tr-–help"><a href="#tr-–help" class="headerlink" title="tr –help"></a>tr –help</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# tr --help<br>用法：tr [选项]... SET1 [SET2]<br>从标准输入中替换、缩减和/或删除字符，并将结果写到标准输出。<br><br>  -c, -C, --complement        首先补足SET1<br>  -d, --delete            删除匹配SET1 的内容，并不作替换<br>  -s, --squeeze-repeats    如果匹配于SET1 的字符在输入序列中存在连续的<br>                重复，在替换时会被统一缩为一个字符的长度<br>  -t, --truncate-set1        先将SET1 的长度截为和SET2 相等<br>      --help        显示此帮助信息并退出<br>      --version        显示版本信息并退出<br><br>SET 是一组字符串，一般都可按照字面含义理解。解析序列如下：<br><br>  \NNN    八进制值为NNN 的字符(1 至3 个数位)<br>  \\        反斜杠<br>  \a        终端鸣响<br>  \b        退格<br>  \f        换页<br>  \n        换行<br>  \r        回车<br>  \t        水平制表符<br>  \v        垂直制表符<br>  字符1-字符2    从字符1 到字符2 的升序递增过程中经历的所有字符<br>  [字符*]    在SET2 中适用，指定字符会被连续复制直到吻合设置1 的长度<br>  [字符*次数]    对字符执行指定次数的复制，若次数以 0 开头则被视为八进制数<br>  [:alnum:]    所有的字母和数字<br>  [:alpha:]    所有的字母<br>  [:blank:]    所有呈水平排列的空白字符<br>  [:cntrl:]    所有的控制字符<br>  [:digit:]    所有的数字<br>  [:graph:]    所有的可打印字符，不包括空格<br>  [:lower:]    所有的小写字母<br>  [:print:]    所有的可打印字符，包括空格<br>  [:punct:]    所有的标点字符<br>  [:space:]    所有呈水平或垂直排列的空白字符<br>  [:upper:]    所有的大写字母<br>  [:xdigit:]    所有的十六进制数<br>  [=字符=]    所有和指定字符相等的字符<br><br>仅在SET1 和SET2 都给出，同时没有-d 选项的时候才会进行替换。<br>仅在替换时才可能用到-t 选项。如果需要SET2 将被通过在末尾添加原来的末字符的方式<br>补充到同SET1 等长。SET2 中多余的字符将被省略。只有[:lower:] 和[:upper:]<br>以升序展开字符；在用于替换时的SET2 中以成对表示大小写转换。-s 作用于SET1，既不<br>替换也不删除，否则在替换或展开后使用SET2 缩减。<br><br>GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;<br>请向&lt;http://translationproject.org/team/zh_CN.html&gt; 报告tr 的翻译错误<br>要获取完整文档，请运行：info coreutils &#x27;tr invocation&#x27;<br>[root@localhost Linux_Test]#s<br></code></pre></td></tr></table></figure>
+<h2 id="man-tr"><a href="#man-tr" class="headerlink" title="man tr"></a>man tr</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">TR(1)                                                           User Commands                                                           TR(1)<br><br>NAME<br>       tr - translate or delete characters<br><br>SYNOPSIS<br>       tr [OPTION]... SET1 [SET2]<br><br>DESCRIPTION<br>       Translate, squeeze, and/or delete characters from standard input, writing to standard output.<br><br>       -c, -C, --complement<br>              use the complement of SET1<br><br>       -d, --delete<br>              delete characters in SET1, do not translate<br><br>       -s, --squeeze-repeats<br>              replace each input sequence of a repeated character that is listed in SET1 with a single occurrence of that character<br><br>       -t, --truncate-set1<br>              first truncate SET1 to length of SET2<br><br>       --help display this help and exit<br><br>       --version<br>              output version information and exit<br><br>       SETs are specified as strings of characters.  Most represent themselves.  Interpreted sequences are:<br><br>       \NNN   character with octal value NNN (1 to 3 octal digits)<br><br>       \\     backslash<br><br>       \a     audible BEL<br><br>       \b     backspace<br><br>       \f     form feed<br><br>       \n     new line<br><br>       \r     return<br><br>       \t     horizontal tab<br><br>       \v     vertical tab<br><br>       CHAR1-CHAR2<br>              all characters from CHAR1 to CHAR2 in ascending order<br><br>       [CHAR*]<br>              in SET2, copies of CHAR until length of SET1<br><br>       [CHAR*REPEAT]<br>              REPEAT copies of CHAR, REPEAT octal if starting with 0<br><br>       [:alnum:]<br>              all letters and digits<br><br>       [:alpha:]<br>              all letters<br><br>       [:blank:]<br>              all horizontal whitespace<br><br>       [:cntrl:]<br>              all control characters<br><br>       [:digit:]<br>              all digits<br><br>       [:graph:]<br>              all printable characters, not including space<br><br>       [:lower:]<br>              all lower case letters<br><br>       [:print:]<br>              all printable characters, including space<br><br>       [:punct:]<br>              all punctuation characters<br><br>       [:space:]<br>              all horizontal or vertical whitespace<br><br>       [:upper:]<br>              all upper case letters<br><br>       [:xdigit:]<br>              all hexadecimal digits<br><br>       [=CHAR=]<br>              all characters which are equivalent to CHAR<br><br>       Translation  occurs  if  -d  is  not  given and both SET1 and SET2 appear.  -t may be used only when translating.  SET2 is extended to<br>       length of SET1 by repeating its last character as necessary.  Excess characters of SET2 are ignored.  Only [:lower:] and [:upper:] are<br>       guaranteed  to  expand  in ascending order; used in SET2 while translating, they may only be used in pairs to specify case conversion.<br>       -s uses SET1 if not translating nor deleting; else squeezing uses SET2 and occurs after translation or deletion.<br><br>       GNU  coreutils  online  help:  &lt;http://www.gnu.org/software/coreutils/&gt;  Report  tr  translation   bugs   to   &lt;http://translationpro‐<br>       ject.org/team/&gt;<br><br>AUTHOR<br>       Written by Jim Meyering.<br></code></pre></td></tr></table></figure>
+<h1 id="tr命令示例"><a href="#tr命令示例" class="headerlink" title="tr命令示例"></a>tr命令示例</h1><h2 id="映射替换"><a href="#映射替换" class="headerlink" title="映射替换"></a>映射替换</h2><p><strong>tr接受两组字符，通常具有相同的长度，并用第二组中的相应字符替换第一组的字符</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo &#x27;aaaaa_bbbbb_cccc&#x27; | tr &#x27;abc&#x27; &#x27;ABC&#x27;<br>AAAAA_BBBBB_CCCC<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<p>将a替换成A,将b替换成B,将c替换成C</p>
+<h3 id="使用定义字符集"><a href="#使用定义字符集" class="headerlink" title="使用定义字符集"></a>使用定义字符集</h3><h2 id="tr-c-SET1-SET2：不再SET1中的字符替换成SET2中的字符"><a href="#tr-c-SET1-SET2：不再SET1中的字符替换成SET2中的字符" class="headerlink" title="tr -c SET1 SET2：不再SET1中的字符替换成SET2中的字符"></a>tr -c SET1 SET2：不再SET1中的字符替换成SET2中的字符</h2><pre>
+[root@localhost Linux_Test]&#35; echo 'aaaaaa_bbbbbbb_cccccc_ddddd'|tr -c 'cdef_\n' '1'
+<mark>111111_1111111_cccccc_ddddd</mark>
+[root@localhost Linux_Test]&#35; echo 'aaaaaa_bbbbbbb_cccccc_ddddd'|tr -c 'cdef_' '1'
+<mark>111111_1111111_cccccc_ddddd1</mark>[root@localhost Linux_Test]&#35; 
+[root@localhost Linux_Test]&#35; 
+</pre>
+
+<p>您可能已经注意到输出比输入多了一个字符。这是因为该 echo 命令打印了一个不可见换行符 \n 也被替换为 y 。要在没有新行的情况下回显字符串，请使用该 -n 选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo -n &#x27;aaaaaa_bbbbbbb_cccccc_ddddd&#x27;|tr -c &#x27;cdef_&#x27; &#x27;1&#x27;<br>111111_1111111_cccccc_ddddd[root@localhost Linux_Test]# <br>[root@localhost Linux_Test]#<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# cat tr.txt <br>abc 012<br>def 345<br>ghi 678<br>jkl 909<br>[root@localhost Linux_Test]# tr &quot;[a-z]&quot; &quot;[A-Z]&quot; &lt; tr.txt <br>ABC 012<br>DEF 345<br>GHI 678<br>JKL 909<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<h2 id="tr-d-SET1：删除匹配SET1-的内容，并不作替换"><a href="#tr-d-SET1：删除匹配SET1-的内容，并不作替换" class="headerlink" title="tr -d SET1：删除匹配SET1 的内容，并不作替换"></a>tr -d SET1：删除匹配SET1 的内容，并不作替换</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# cat tr.txt <br>abc 012<br>def 345<br>ghi 678<br>jkl 909<br>[root@localhost Linux_Test]# tr -d &quot;[a-z]&quot; &lt; tr.txt <br> 012<br> 345<br> 678<br> 909<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<h2 id="tr-s：压缩重复"><a href="#tr-s：压缩重复" class="headerlink" title="tr -s：压缩重复"></a>tr -s：压缩重复</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# cat tr_1.txt <br>1<br>2<br><br><br><br><br>7<br>8<br>[root@localhost Linux_Test]# tr -s &quot;\n&quot; &lt;tr_1.txt <br>1<br>2<br>7<br>8<br>[root@localhost Linux_Test]#<br></code></pre></td></tr></table></figure>
+<h2 id="tr-t-SET1-SET2"><a href="#tr-t-SET1-SET2" class="headerlink" title="tr -t SET1 SET2"></a>tr -t SET1 SET2</h2><p>默认情况下的<code>tr SET1 SET2</code>，如果 SET1 大于 SET2   tr 将重用 SET2  的最后一个字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo &#x27;aaaaaa_bbbbbbb_cccccc_ddddd&#x27;|tr &#x27;abcd&#x27; &#x27;1234&#x27;<br>111111_2222222_333333_44444<br>[root@localhost Linux_Test]# echo &#x27;aaaaaa_bbbbbbb_cccccc_ddddd&#x27;|tr &#x27;abcd&#x27; &#x27;123&#x27;<br>111111_2222222_333333_33333<br></code></pre></td></tr></table></figure>
+<p>而使用-t(–truncate-set1) 选项，则会强制 tr 到做进一步处理之前截断 SET1 到 SET2 的长度。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo &#x27;aaaaaa_bbbbbbb_cccccc_ddddd&#x27;|tr -t &#x27;abcd&#x27; &#x27;123&#x27;<br>111111_2222222_333333_ddddd<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<p>这里的SET1为abcd,SET2为123，SET1比SET2长，加上-t参数后，SET1将被截断到SET2相同的长度，也就是’abc’。</p>
+<h2 id="删除空行"><a href="#删除空行" class="headerlink" title="删除空行"></a>删除空行</h2><p>删除空行<br>要删除空白行，只需挤压重复的换行符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">tr -s &#x27;\n&#x27; &lt; tr_1.txt &gt; tr_2.txt<br></code></pre></td></tr></table></figure>
+<p>在上面的命令中，我们使用重定向符号将命令 &lt; 的内容作为输入传递 file.txt 给 tr 命令。重定向 &gt; 将命令的输出写入 new_file.txt 。<br>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# cat tr_1.txt <br>1<br>2<br><br><br><br><br>7<br>8<br>[root@localhost Linux_Test]# tr -s &#x27;\n&#x27; &lt; tr_1.txt &gt; tr_2.txt<br>[root@localhost Linux_Test]# cat tr_2.txt <br>1<br>2<br>7<br>8<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+
+<h2 id="在单独的行上打印-PATH-目录"><a href="#在单独的行上打印-PATH-目录" class="headerlink" title="在单独的行上打印 $PATH 目录"></a>在单独的行上打印 $PATH 目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo $PATH<br>/opt/java/jdk1.8.0_281/bin:/opt/java/jdk1.8.0_281/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/usr/local/git/bin:/root/bin<br>[root@localhost Linux_Test]# echo $PATH |tr &#x27;:&#x27; &#x27;\n&#x27;<br>/opt/java/jdk1.8.0_281/bin<br>/opt/java/jdk1.8.0_281/jre/bin<br>/usr/local/sbin<br>/usr/local/bin<br>/usr/sbin<br>/usr/bin<br>/root/bin<br>/usr/local/git/bin<br>/root/bin<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<p>到目前为止，您应该很好地理解如何使用 Linux   tr 命令。虽然非常有用， tr 但只能使用单个字符。对于更复杂的模式匹配和字符串操作，您应该使用 sed 或 awk 。</p>
+<h2 id="删除所有非数字字符"><a href="#删除所有非数字字符" class="headerlink" title="删除所有非数字字符"></a>删除所有非数字字符</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">echo &quot;my phone is 123-456-7890&quot; | tr -cd [:digit:]<br></code></pre></td></tr></table></figure>
+<p>[:digit:] 代表所有数字字符，通过使用该 -c 选项，该命令将删除所有非数字字符。输出将如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# echo &quot;my phone is 123-456-7890&quot; | tr -cd [:digit:]<br>1234567890[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+
+<p>1234567890</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://wangchujiang.com/linux-command/c/tr.html">https://wangchujiang.com/linux-command/c/tr.html</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linuxidc.com/Linux/2019-08/159907.htm">https://www.linuxidc.com/Linux/2019-08/159907.htm</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cnblogs.com/linyfeng/p/9075062.html">https://www.cnblogs.com/linyfeng/p/9075062.html</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linuxcool.com/tr">https://www.linuxcool.com/tr</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/3fd8156d.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/29005fc5.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Linux uniq命令
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/d9fc260f.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">如何确保手机和电脑在同一网络下</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

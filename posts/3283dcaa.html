@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Linux ls命令详解 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Linux/通用/Linux ls命令详解"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Linux ls命令详解
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/3283dcaa.html" class="article-date">
+  <time datetime="2021-03-22T21:11:29.000Z" itemprop="datePublished">2021-03-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/">通用</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">6.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">31 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="ls命令含义"><a href="#ls命令含义" class="headerlink" title="ls命令含义"></a>ls命令含义</h1><p>Linux ls（英文全拼：list files）命令用于显示指定工作目录下之内容（列出目前工作目录所含之文件及子目录)。</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> [-alrtAFR] [name...]<br></code></pre></td></tr></table></figure>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="left">显示所有文件及目录 (. 开头的隐藏文件也会列出)</td>
+</tr>
+<tr>
+<td align="left">-A</td>
+<td align="left">同 -a ，但不列出 “.” (目前目录) 及 “..” (父目录)</td>
+</tr>
+<tr>
+<td align="left">-F</td>
+<td align="left">在列出的文件名称后加一符号；例如可执行档则加 “*”, 目录则加 “&#x2F;“</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="left">除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">将文件以相反次序显示(原定依英文字母次序)</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">将文件依建立时间之先后次序列出(时间越近越在前面)</td>
+</tr>
+<tr>
+<td align="left">-R</td>
+<td align="left">若目录下有文件，则以下之文件亦皆依序列出</td>
+</tr>
+</tbody></table>
+<h2 id="man-ls"><a href="#man-ls" class="headerlink" title="man ls"></a>man ls</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">LS(1)                                                                 General Commands Manual                                                                LS(1)<br><br>NAME<br>       ls, dir, vdir - 列目录内容<br><br>提要<br>       ls [选项] [文件名...]<br><br>       POSIX 标准选项: [-CFRacdilqrtu1]<br><br>GNU 选项 (短格式):<br>       [-1abcdfgiklmnopqrstuxABCDFGLNQRSUX]   [-w  cols]  [-T  cols]  [-I  pattern]  [--full-time]  [--format=&#123;long,verbose,commas,across,vertical,single-column&#125;]<br>       [--sort=&#123;none,time,size,extension&#125;] [--time=&#123;atime,access,use,ctime,status&#125;] [--color[=&#123;none,auto,always&#125;]] [--help] [--version] [--]<br><br>描述（ DESCRIPTION ）<br>       程序ls先列出非目录的文件项，然后是每一个目录中的“可显示”文件。如果 没有选项之外的参数【译注：即文件名部分为空】出现，缺省为  &quot;.&quot;  （当前目录）。  选项“  -d<br>       ”使得目录与非目录项同样对待。除非“ -a ” 选项出现，文 件名以“.”开始的文件不属“可显示”文件。<br><br>       以当前目录为准，每一组文件（包括非目录文件项，以及每一内含文件的目录）分      别按文件名比较顺序排序。如果“      -l      ”选项存在，每组文件前显示一摘要行:<br>       给出该组文件长度之和（以 512 字节为单位）。<br><br>       输出是到标准输出（ stdout ）。除非以“ -C ”选项要求按多列输出，输出 将是一行一个。然而，输出到终端时，单列输出或多列输出是不确定的。可以分别  用选项“  -1  ”<br>       或“ -C ”来强制按单列或多列输出。<br><br>       -C     多列输出，纵向排序。<br><br>       -F     每个目录名加“ / ”后缀，每个 FIFO 名加“ | ”后缀， 每个可运行名加“ * ”后缀。<br><br>       -R     递归列出遇到的子目录。<br><br>       -a     列出所有文件，包括以 &quot;.&quot; 开头的隐含文件。<br><br>       -c     使用“状态改变时间”代替“文件修改时间”为依据来排序 （使用“ -t ”选项时）或列出（使用“ -l ”选项时）。<br><br>       -d     将目录名象其它文件一样列出，而不是列出它们的内容。<br><br>       -i     输出文件前先输出文件系列号（即     i     节点号:     i-node     number）。     -l     列出（以单列格式）文件模式（     file     mode    ），文件的链<br>              接数，所有者名，组名，文件大小（以字节为单位），时间信     息，及文件名。缺省时，时间信息显示最近修改时间；可以以     选项“     -c      ”和“      -u<br>              ”选择显示其它两种时间信息。对于设 备文件，原先显示文件大小的区域通常显示的是主要和次要的 号（majorand minor device numbers）。<br><br>       -q     将文件名中的非打印字符输出为问号。（对于到终端的输出这是缺省的。）<br><br>       -r     逆序排列。<br><br>       -t     按时间信息排序。<br><br>       -u     使用最近访问时间代替最近修改时间为依据来排序（使用 “ -t ”选项时）或列出（使用“ -l ”选项时）。<br><br>       -1 单列输出。<br><br>GNU 细节<br>       如果标准输出是终端，将多列输出（纵向排序）。<br><br>       dir ( 也被安装为命令 d ) 等同于“ ls -C ”；即，文件<br>              缺省是多列输出，纵向排序。vdir ( 也被安装为命令 v ) 等同于“ ls -l ”； 即，文件缺省是按长格式输出。<br><br>GNU 选项<br>       -1, --format=single-column 一行输出一个文件（单列输出）。如标准输出不是到终端， 此选项就是缺省选项。<br><br>       -a, --all<br>              列出目录中所有文件，包括以“.”开头的文件。<br><br>       -b, --escape<br>              把文件名中不可输出的字符用反斜杠加字符编号(就象在 C 语言里一样)的形式列出。<br><br>       -c, --time=ctime, --time=status<br>              按文件状态改变时间（i节点中的ctime）排序并输出目录内                                              容。如采用长格式输出（选项“-l”），使用文件的状态改<br>              变时间取代文件修改时间。【译注：所谓文件状态改变（i节 点中以ctime标志），既包括文件被修改，又包括文件属性（ 如所有者、组、链接数等等）的变化】<br><br>       -d, --directory<br>              将目录名象其它文件一样列出，而不是列出它们的内容。<br><br>       -f     不排序目录内容；按它们在磁盘上存储的顺序列出。同时启 动“ -a ”选项，如果在“ -f ”之前存在“ -l ”、“ - -color ”或“ -s ”，则禁止它们。<br><br>       -g 忽略，为兼容UNIX用。<br><br>       -i, --inode<br>              在每个文件左边打印 i 节点号（也叫文件序列号和索引号: file serial number and index number）。i节点号在每个特定的文件系统中是唯一的。<br><br>       -k, --kilobytes<br>              如列出文件大小，则以千字节KB为单位。<br><br>       -l, --format=long, --format=verbose<br>              除每个文件名外，增加显示文件类型、权限、硬链接数、所               有者名、组名、大小（               byte                ）、及时间信息（如未指明是<br>              其它时间即指修改时间）。对于6个月以上的文件或超出未来 1 小时的文件，时间信息中的时分将被年代取代。<br><br>              每个目录列出前，有一行“总块数”显示目录下全部文件所    占的磁盘空间。块默认是    1024   字节；如果设置了   POSIXLY_CORRECT   的环境变量，除非用“   -k<br>              ”选项，则默认块大小是 512 字 节。每一个硬链接都计入总块数（因此可能重复计数），这无 疑是个缺点。<br><br>       列出的权限类似于以符号表示（文件）模式的规范。但是 ls<br>              在每套权限的第三个字符中结合了多位（ multiple bits ） 的信息，如下： s 如果设置了 setuid 位或 setgid 位，而且也设置了相应的可执行位。  S  如果设置了<br>              setuid    位或    setgid    位，但是没有设置相应的可执行位。    t   如果设置了   sticky   位，而且也设置了相应的可执行位。   T   如果设置了   sticky<br>              位，但是没有设置相应的可执行位。 x 如果仅仅设置了可执行位而非以上四种情况。 - 其它情况（即可执行位未设置）。<br><br>       -m, --format=commas<br>              水平列出文件，每行尽可能多，相互用逗号和一个空格分隔。<br><br>       -n, --numeric-uid-gid<br>              列出数字化的 UID 和 GID 而不是用户名和组名。<br><br>       -o     以长格式列出目录内容，但是不显示组信息。等于使用“ --format=long --no-group ”选项。提供此选项是为了与其它版本的 ls 兼容。<br><br>       -p     在每个文件名后附上一个字符以说明该文件的类型。类似“ -F ”选项但是不 标示可执行文件。<br><br>       -q, --hide-control-chars<br>              用问号代替文件名中非打印的字符。这是缺省选项。<br><br>       -r, --reverse<br>              逆序排列目录内容。<br><br>       -s, --size<br>              在每个文件名左侧输出该文件的大小，以 1024 字节的块为单位。如果设置了 POSIXLY_CORRECT 的环境变量，除非用“ -k ”选项，块大小是 512 字节。<br><br>       -t, --sort=time<br>              按文件最近修改时间（ i 节点中的 mtime ）而不是按文件名字典序排序，新文件 靠前。<br><br>       -u, --time=atime, --time=access, --time=use<br>              类似选项“ -t ”，但是用文件最近访问时间（ i 节点中的 atime ）取代文件修 改时间。如果使用长格式列出，打印的时间是最近访问时间。<br><br>       -w, --width cols<br>              假定屏幕宽度是 cols （ cols 以实际数字取代）列。如未用此选项，缺省值是这 样获得的：如可能先尝试取自终端驱动，否则尝试取自环境变量  COLUMNS  （如果设<br>              置了的话），都不行则取 80 。<br><br>       -x, --format=across, --format=horizontal<br>              多列输出，横向排序。<br><br>       -A, --almost-all<br>              显示除 &quot;.&quot; 和 &quot;..&quot; 外的所有文件。<br><br>       -B, --ignore-backups<br>              不输出以“ ~ ”结尾的备份文件，除非已经在命令行中给出。<br><br>       -C, --format=vertical<br>              多列输出，纵向排序。当标准输出是终端时这是缺省项。使用命令名 dir 和 d 时， 则总是缺省的。<br><br>       -D, --dired<br>              当采用长格式（“ -l ”选项）输出时，在主要输出后，额外打印一行： //DIRED// BEG1 END1 BEG2 END2 ...<br><br>       BEGn 和 ENDn 是无符号整数，记录每个文件名的起始、结束位置在输出中的位置（<br>              字节偏移量）。这使得 Emacs 易于找到文件名，即使文件名包含空格或换行等非正 常字符也无需特异的搜索。<br><br>       如果目录是递归列出的（“ -R ”选项），每个子目录后列出类似一行：<br>              //SUBDIRED//  BEG1  END1  ...   【译注：我测试了  TurboLinux4.0  和  RedHat6.1 ，发现它们都是在 “ //DIRED// BEG1... ”之后列出“ //SUBDIRED// BEG1 ...<br>              ”，也即只有一个 而不是在每个子目录后都有。而且“ //SUBDIRED// BEG1 ... ”列出的是各个子目 录名的偏移。】<br><br>       -F, --classify, --file-type<br>              在每个文件名后附上一个字符以说明该文件的类型。“ * ”表示普通的可执行文件； “ / ”表示目录；“ @ ”表示符号链接；“ | ”表示FIFOs；“ =  ”表示套接字  (sock‐<br>              ets) ；什么也没有则表示普通文件。<br><br>       -G, --no-group<br>              以长格式列目录时不显示组信息。<br><br>       -I, --ignorepattern<br>              除非在命令行中给定，不要列出匹配  shell 文件名匹配式（ pattern ，不是指一般 表达式）的文件。在 shell 中，文件名以 &quot;.&quot; 起始的不与在文件名匹配式 (pat‐<br>              tern) 开头的通配符匹配。<br><br>       -L, --dereference<br>              列出符号链接指向的文件的信息，而不是符号链接本身。<br><br>       -N, --literal<br>              不要用引号引起文件名。<br><br>       -Q, --quote-name<br>              用双引号引起文件名，非打印字符以 C 语言的方法表示。<br><br>       -R, --recursive<br>              递归列出全部目录的内容。<br><br>       -S, --sort=size<br>              按文件大小而不是字典序排序目录内容，大文件靠前。<br><br>       -T, --tabsize cols<br>              假定每个制表符宽度是 cols 。缺省为 8。为求效率， ls 可能在输出中使用制表符。 若 cols 为 0，则不使用制表符。<br><br>       -U, --sort=none<br>              不排序目录内容；按它们在磁盘上存储的顺序列出。（选项“ -U ”和“  -f  ”的不  同是前者不启动或禁止相关的选项。）这在列很大的目录时特别有用，因为不加排序<br>              能显著的加快速度。<br><br>       -X, --sort=extension<br>              按文件扩展名（由最后的 &quot;.&quot; 之后的字符组成）的字典序排序。没有扩展名的先列 出。<br><br>       --color[=when]<br>              指定是否使用颜色区别文件类别。环境变量 LS_COLORS 指定使用的颜色。如何设置 这个变量见 dircolors(1) 。 when 可以被省略，或是以下几项之一：<br><br>       none 不使用颜色，这是缺省项。<br>              auto 仅当标准输出是终端时使用。 always 总是使用颜色。指定 --color 而且省略 when 时就等同于 --color=always 。<br><br>       --full-time<br>              列出完整的时间，而不是使用标准的缩写。格式如同  date(1)  的缺省格式；此格式  是不能改变的，但是你可以用  cut(1) 取出其中的日期字串并将结果送至命令 “<br>              date -d ”。<br><br>       输出的时间包括秒是非常有用的。（ Unix 文件系统储存文件的时间信息精确到秒，<br>              因此这个选项已经给出了系统所知的全部信息。）例如，当你有一个 Makefile 文件 不能恰当的生成文件时，这个选项会提供帮助。<br><br>GNU 标准选项<br>       --help 打印用法信息到标准输出并顺利退出。<br><br>       --version<br>              打印版本信息到标准输出并顺利退出。<br><br>       --     结束选项表。<br><br>环境<br>       变量  POSIXLY_CORRECT  可以决定一组选择。如果没有设置此变量，每个制表符的字  符数由变量  TABSIZE  决定。变量  COLUMNS  （当它由一个十进制整数表示时）决定输<br>       出的列宽度（同“ -C ”选项一起用时）。文件名不得为适应多列输出而被截断。变 量 LANG, LC_ALL, LC_COLLATE, LC_CTYPE, LC_MESSAGES 及 LC_TIME 仍保持原义。 变量 TZ<br>       给出时区供 ls 输出相应的时间字串。变量 LS_COLORS 用以决定是否使用 颜色。<br><br>已知错误<br>       在 BSD 系统上，对于从 HP-UX 系统上通过 NFS mount 而来的文件，“ -s ”选项报  告的大小只有正确值的一半；在  HP-UX  系统上，对于从  BSD  系统上通过  NFS  mount<br>       而来的文件， ls 报告的大小则有正确值的两倍。这是 HP-UX 的一个缺陷造成的，它 也影响 HP-UX 上的 ls 程序。<br><br>适合到<br>       POSIX 1003.2<br><br>参见<br>       dircolors(1)<br><br>注意<br>       本页描述的是  fileutils-3.16  文件包中的  ls  ，其它版本的可能略有不同。纠错或添  加（功能）请  mailto: aeb@cwi.nl 和 aw@mail1.bet1.puv.fi 及 ragnar@light‐<br>       side.ddns.org 。本程序的错误报告请 mailto: fileutils-bugs@gnu.ai.mit.edu 。<br><br></code></pre></td></tr></table></figure>
+<h2 id="man-ls英文"><a href="#man-ls英文" class="headerlink" title="man ls英文"></a>man ls英文</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">LS(1)                                                                      User Commands                                                                     LS(1)<br><br>NAME<br>       ls - list directory contents<br><br>SYNOPSIS<br>       ls [OPTION]... [FILE]...<br><br>DESCRIPTION<br>       List information about the FILEs (the current directory by default).  Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.<br><br>       Mandatory arguments to long options are mandatory for short options too.<br><br>       -a, --all<br>              do not ignore entries starting with .<br><br>       -A, --almost-all<br>              do not list implied . and ..<br><br>       --author<br>              with -l, print the author of each file<br><br>       -b, --escape<br>              print C-style escapes for nongraphic characters<br><br>       --block-size=SIZE<br>              scale sizes by SIZE before printing them; e.g., &#x27;--block-size=M&#x27; prints sizes in units of 1,048,576 bytes; see SIZE format below<br><br>       -B, --ignore-backups<br>              do not list implied entries ending with ~<br><br>       -c     with  -lt: sort by, and show, ctime (time of last modification of file status information); with -l: show ctime and sort by name; otherwise: sort by<br>              ctime, newest first<br><br>       -C     list entries by columns<br><br>       --color[=WHEN]<br>              colorize the output; WHEN can be &#x27;never&#x27;, &#x27;auto&#x27;, or &#x27;always&#x27; (the default); more info below<br><br>       -d, --directory<br>              list directories themselves, not their contents<br><br>       -D, --dired<br>              generate output designed for Emacs&#x27; dired mode<br><br>       -f     do not sort, enable -aU, disable -ls --color<br><br>       -F, --classify<br>              append indicator (one of */=&gt;@|) to entries<br><br>       --file-type<br>              likewise, except do not append &#x27;*&#x27;<br><br>       --format=WORD<br>              across -x, commas -m, horizontal -x, long -l, single-column -1, verbose -l, vertical -C<br><br>       --full-time<br>              like -l --time-style=full-iso<br><br>       -g     like -l, but do not list owner<br><br>       --group-directories-first<br>              group directories before files;<br><br>              can be augmented with a --sort option, but any use of --sort=none (-U) disables grouping<br><br>       -G, --no-group<br>              in a long listing, don&#x27;t print group names<br><br>       -h, --human-readable<br>              with -l, print sizes in human readable format (e.g., 1K 234M 2G)<br><br>       --si   likewise, but use powers of 1000 not 1024<br><br>       -H, --dereference-command-line<br>              follow symbolic links listed on the command line<br><br>       --dereference-command-line-symlink-to-dir<br>              follow each command line symbolic link<br><br>              that points to a directory<br><br>       --hide=PATTERN<br>              do not list implied entries matching shell PATTERN (overridden by -a or -A)<br><br>       --indicator-style=WORD<br>              append indicator with style WORD to entry names: none (default), slash (-p), file-type (--file-type), classify (-F)<br><br>       -i, --inode<br>              print the index number of each file<br><br>       -I, --ignore=PATTERN<br>              do not list implied entries matching shell PATTERN<br><br>       -k, --kibibytes<br>              default to 1024-byte blocks for disk usage<br><br>       -l     use a long listing format<br><br>       -L, --dereference<br>              when showing file information for a symbolic link, show information for the file the link references rather than for the link itself<br><br>       -m     fill width with a comma separated list of entries<br><br>       -n, --numeric-uid-gid<br>              like -l, but list numeric user and group IDs<br><br>       -N, --literal<br>              print raw entry names (don&#x27;t treat e.g. control characters specially)<br><br>       -o     like -l, but do not list group information<br><br>       -p, --indicator-style=slash<br>              append / indicator to directories<br><br>       -q, --hide-control-chars<br>              print ? instead of nongraphic characters<br><br>       --show-control-chars<br>              show nongraphic characters as-is (the default, unless program is &#x27;ls&#x27; and output is a terminal)<br><br>       -Q, --quote-name<br>              enclose entry names in double quotes<br><br>       --quoting-style=WORD<br>              use quoting style WORD for entry names: literal, locale, shell, shell-always, c, escape<br><br>       -r, --reverse<br>              reverse order while sorting<br><br>       -R, --recursive<br>              list subdirectories recursively<br><br>       -s, --size<br>              print the allocated size of each file, in blocks<br><br>       -S     sort by file size<br><br>       --sort=WORD<br>              sort by WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X)<br><br>       --time=WORD<br>              with -l, show time as WORD instead of default modification time: atime or access or use (-u) ctime or status (-c); also use specified time  as  sort<br>              key if --sort=time<br><br>       --time-style=STYLE<br>              with  -l, show times using style STYLE: full-iso, long-iso, iso, locale, or +FORMAT; FORMAT is interpreted like in &#x27;date&#x27;; if FORMAT is FORMAT1&lt;new‐<br>              line&gt;FORMAT2, then FORMAT1 applies to non-recent files and FORMAT2 to recent files; if STYLE is prefixed with &#x27;posix-&#x27;, STYLE takes effect only out‐<br>              side the POSIX locale<br><br>       -t     sort by modification time, newest first<br><br>       -T, --tabsize=COLS<br>              assume tab stops at each COLS instead of 8<br><br>       -u     with -lt: sort by, and show, access time; with -l: show access time and sort by name; otherwise: sort by access time<br><br>       -U     do not sort; list entries in directory order<br><br>       -v     natural sort of (version) numbers within text<br><br>       -w, --width=COLS<br>              assume screen width instead of current value<br><br>       -x     list entries by lines instead of by columns<br><br>       -X     sort alphabetically by entry extension<br><br>       -1     list one file per line<br><br>       SELinux options:<br><br>       --lcontext<br>              Display security context.   Enable -l. Lines will probably be too wide for most displays.<br><br>       -Z, --context<br>              Display security context so it fits on most displays.  Displays only mode, user, group, security context and file name.<br><br>       --scontext<br>              Display only security context and file name.<br><br>       --help display this help and exit<br><br>       --version<br>              output version information and exit<br><br>       SIZE is an integer and optional unit (example: 10M is 10*1024*1024).  Units are K, M, G, T, P, E, Z, Y (powers of 1024) or KB, MB, ... (powers of 1000).<br><br>       Using  color to distinguish file types is disabled both by default and with --color=never.  With --color=auto, ls emits color codes only when standard out‐<br>       put is connected to a terminal.  The LS_COLORS environment variable can change the settings.  Use the dircolors command to set it.<br><br>   Exit status:<br>       0      if OK,<br><br>       1      if minor problems (e.g., cannot access subdirectory),<br><br>       2      if serious trouble (e.g., cannot access command-line argument).<br><br>       GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt; Report ls translation bugs to &lt;http://translationproject.org/team/&gt;<br><br>AUTHOR<br>       Written by Richard M. Stallman and David MacKenzie.<br><br>COPYRIGHT<br>       Copyright © 2013 Free Software Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.<br>       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.<br><br>SEE ALSO<br>       The full documentation for ls is maintained as a Texinfo manual.  If the info and ls programs are properly installed at your site, the command<br><br>              info coreutils &#x27;ls invocation&#x27;<br><br>       should give you access to the complete manual.<br><br></code></pre></td></tr></table></figure>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>列出根目录()下的所有目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls /<br>bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<br></code></pre></td></tr></table></figure>
+<h2 id="ls-a"><a href="#ls-a" class="headerlink" title="ls -a"></a>ls -a</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls -a /<br>.  ..  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<br></code></pre></td></tr></table></figure>
+<h2 id="ls-A"><a href="#ls-A" class="headerlink" title="ls -A"></a>ls -A</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls -A /<br>bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var<br></code></pre></td></tr></table></figure>
+<h2 id="ls-F"><a href="#ls-F" class="headerlink" title="ls -F"></a>ls -F</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls<br>_config.yml  FM.properties  HexoS.bat  HexoSTest.bat  package.json       scaffolds  StartWriting.bat<br>db.json      HexoD.bat      hexos.sh   node_modules   package-lock.json  source     themes<br>[root@localhost exam]# ls -F<br>_config.yml  FM.properties  HexoS.bat  HexoSTest.bat  package.json       scaffolds/  StartWriting.bat<br>db.json      HexoD.bat      hexos.sh*  node_modules/  package-lock.json  source/     themes/<br>[root@localhost exam]# <br></code></pre></td></tr></table></figure>
+<h2 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a>ls -l</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls -l<br>总用量 3640<br>-rw-r--r--.   1 root root    3093 3月  19 21:12 _config.yml<br>-rw-r--r--.   1 root root 3498022 3月  22 20:29 db.json<br>-rw-r--r--.   1 root root     158 3月  19 21:12 FM.properties<br>-rw-r--r--.   1 root root     576 3月  19 21:12 HexoD.bat<br>-rw-r--r--.   1 root root     431 3月  22 20:52 HexoS.bat<br>-rwxr--r--.   1 root root     174 3月  19 21:16 hexos.sh<br>-rw-r--r--.   1 root root     376 3月  19 21:12 HexoSTest.bat<br>drwxr-xr-x. 308 root root    8192 3月  19 21:19 node_modules<br>-rw-r--r--.   1 root root     817 3月  19 21:12 package.json<br>-rw-r--r--.   1 root root  170424 3月  19 21:19 package-lock.json<br>drwxr-xr-x.   2 root root    4096 3月  19 21:12 scaffolds<br>drwxr-xr-x.   9 root root    4096 3月  19 21:12 source<br>-rw-r--r--.   1 root root     422 3月  19 21:12 StartWriting.bat<br>drwxr-xr-x.   3 root root    4096 3月  19 21:12 themes<br>[root@localhost exam]#<br></code></pre></td></tr></table></figure>
+<h3 id="ls-l各列含义"><a href="#ls-l各列含义" class="headerlink" title="ls -l各列含义"></a>ls -l各列含义</h3><table>
+<thead>
+<tr>
+<th align="left">列数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">第一列</td>
+<td align="left">共10位，第1位表示文档类型，d表示目录，-表示文件，l表示链接文件，d表示可随机存取的设备，如U盘等，c表示一次性读取设备，如鼠标、键盘等。后9位，依次对应三种身份所拥有的权限，身份顺序为：owner、group、others，权限顺序为：readable、writable、excutable。如：-r-xr-x—的含义为当前文档是一个文件，拥有者可读、可执行，同一个群组下的用户，可读、可写，其他人没有任何权限。</td>
+</tr>
+<tr>
+<td align="left">第二列</td>
+<td align="left">表示链接数，表示有多少个文件链接到inode号码。</td>
+</tr>
+<tr>
+<td align="left">第三列</td>
+<td align="left">表示拥有者</td>
+</tr>
+<tr>
+<td align="left">第四列</td>
+<td align="left">表示所属群组</td>
+</tr>
+<tr>
+<td align="left">第五列</td>
+<td align="left">表示文档容量大小，单位字节</td>
+</tr>
+<tr>
+<td align="left">第六列</td>
+<td align="left">表示文档最后修改时间，注意不是文档的创建时间哦</td>
+</tr>
+<tr>
+<td align="left">第七列</td>
+<td align="left">表示文档名称。以点(.)开头的是隐藏文档</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="ls-lh"><a href="#ls-lh" class="headerlink" title="ls -lh"></a>ls -lh</h3><p>参考资料：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cnblogs.com/sparkdev/p/7476005.html">https://www.cnblogs.com/sparkdev/p/7476005.html</a><br>在 Linux 命令中，涉及到文件大小的地方，一般默认是以<strong>字节</strong>为单位显示的。这样可读性就不是很好。所以有了 -h 选项！这个选项的全称是<code>--human-readable</code>(给人读的)。也就是以 K, M, G 等单位来显示文件的大小：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls -lh<br>总用量 3.6M<br>-rw-r--r--.   1 root root 3.1K 3月  19 21:12 _config.yml<br>-rw-r--r--.   1 root root 3.4M 3月  22 20:29 db.json<br>-rw-r--r--.   1 root root  158 3月  19 21:12 FM.properties<br>-rw-r--r--.   1 root root  576 3月  19 21:12 HexoD.bat<br>-rw-r--r--.   1 root root  431 3月  22 20:52 HexoS.bat<br>-rwxr--r--.   1 root root  174 3月  19 21:16 hexos.sh<br>-rw-r--r--.   1 root root  376 3月  19 21:12 HexoSTest.bat<br>drwxr-xr-x. 308 root root 8.0K 3月  19 21:19 node_modules<br>-rw-r--r--.   1 root root  817 3月  19 21:12 package.json<br>-rw-r--r--.   1 root root 167K 3月  19 21:19 package-lock.json<br>drwxr-xr-x.   2 root root 4.0K 3月  19 21:12 scaffolds<br>drwxr-xr-x.   9 root root 4.0K 3月  19 21:12 source<br>-rw-r--r--.   1 root root  422 3月  19 21:12 StartWriting.bat<br>drwxr-xr-x.   3 root root 4.0K 3月  19 21:12 themes<br>[root@localhost exam]# <br></code></pre></td></tr></table></figure>
+<h2 id="ls-l-–full-time显示完整时间-显示年月日"><a href="#ls-l-–full-time显示完整时间-显示年月日" class="headerlink" title="ls -l –full-time显示完整时间 显示年月日"></a>ls -l –full-time显示完整时间 显示年月日</h2><h2 id="ls-t-按时间排序列出-时间越近越在前"><a href="#ls-t-按时间排序列出-时间越近越在前" class="headerlink" title="ls -t 按时间排序列出 时间越近越在前"></a>ls -t 按时间排序列出 时间越近越在前</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost exam]# ls -t<br>HexoS.bat  package-lock.json  hexos.sh  themes       FM.properties  HexoSTest.bat  scaffolds<br>db.json    node_modules       source    _config.yml  HexoD.bat      package.json   StartWriting.bat<br>[root@localhost exam]#<br></code></pre></td></tr></table></figure>
+<h2 id="ls-tr-按时间排序-时间越远越在前"><a href="#ls-tr-按时间排序-时间越远越在前" class="headerlink" title="ls -tr 按时间排序 时间越远越在前"></a>ls -tr 按时间排序 时间越远越在前</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 专项练习]# ls -lt --full-time<br>总用量 36<br>drwxr-xr-x. 5 root root 4096 2021-04-12 23:05:19.448995210 +0800 Linux<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 操作系统<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 计算机网络<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 数据库<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 智力题<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.017846496 +0800 JavaScript<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.017846496 +0800 加密和安全<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:00.987846496 +0800 HTML CSS<br>drwxr-xr-x. 5 root root 4096 2021-03-19 21:12:12.596962591 +0800 Java<br>[root@localhost 专项练习]# ls -ltr --full-time<br>总用量 36<br>drwxr-xr-x. 5 root root 4096 2021-03-19 21:12:12.596962591 +0800 Java<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:00.987846496 +0800 HTML CSS<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.017846496 +0800 加密和安全<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.017846496 +0800 JavaScript<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 智力题<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 数据库<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 计算机网络<br>drwxr-xr-x. 2 root root 4096 2021-04-03 18:10:01.027846496 +0800 操作系统<br>drwxr-xr-x. 5 root root 4096 2021-04-12 23:05:19.448995210 +0800 Linux<br>[root@localhost 专项练习]# <br></code></pre></td></tr></table></figure>
+<h2 id="ls-R"><a href="#ls-R" class="headerlink" title="ls -R"></a>ls -R</h2><p><code>ls Java</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 专项练习]# pwd<br>/root/exam/source/_posts/牛客网/专项练习<br>[root@localhost 专项练习]# ls<br>HTML CSS  Java  JavaScript  Linux  操作系统  计算机网络  加密和安全  数据库  智力题<br>[root@localhost 专项练习]# ls Java<br>2019年10月  2019年11月  2019年12月<br></code></pre></td></tr></table></figure>
+<p><code>ls -R Java</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 专项练习]# ls -R Java<br>Java:<br>2019年10月  2019年11月  2019年12月<br><br>Java/2019年10月:<br>2019年10月28日 java 1.md  2019年10月29日 Java 1.md  2019年10月29日 java 3.md  2019年10月29日 java 5.md  2019年10月30日 java 2.md  2019年10月30日 java 4.md<br>2019年10月28日 java 2.md  2019年10月29日 java 2.md  2019年10月29日 java 4.md  2019年10月30日 java 1.md  2019年10月30日 java 3.md  2019年10月30日 java 5.md<br><br>Java/2019年11月:<br>2019年11月10日 Java1.md  2019年11月14日 java2.md  2019年11月22日 java1.md  2019年11月28日 java2.md  2019年11月5日 Java 2.md  2019年11月8日 Java1.md<br>2019年11月11日 java1.md  2019年11月15日 java1.md  2019年11月23日 java1.md  2019年11月29日 java1.md  2019年11月5日 java3.md   2019年11月8日 java2.md<br>2019年11月11日 Java2.md  2019年11月15日 java2.md  2019年11月23日 java2.md  2019年11月2日 java 1.md  2019年11月6日 java1.md   2019年11月9日 java1.md<br>2019年11月13日 java1.md  2019年11月15日 java3.md  2019年11月24日 java1.md  2019年11月4日 java 1.md  2019年11月6日 java2.md   2019年11月9日 java2.md<br>2019年11月14日 java1.md  2019年11月16日 java1.md  2019年11月28日 java1.md  2019年11月5日 Java 1.md  2019年11月7日 java3.md<br><br>Java/2019年12月:<br>2019年12月10日 java1.md  2019年12月11日 java2.md  2019年12月13日 java2.md  2019年12月17日 java1.md  2019年12月25日 java1.md<br>2019年12月10日 java2.md  2019年12月12日 java1.md  2019年12月14日 java1.md  2019年12月23日 java1.md  2019年12月30日 java1.md<br>2019年12月10日 java3.md  2019年12月13日 java1.md  2019年12月16日 java1.md  2019年12月24日 java1.md  2019年12月8日 java2.md<br>[root@localhost 专项练习]#<br></code></pre></td></tr></table></figure>
+<h2 id="ls-s：列出文件的大小"><a href="#ls-s：列出文件的大小" class="headerlink" title="ls -s：列出文件的大小"></a>ls -s：列出文件的大小</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 2021年04月]# ls -s<br>总用量 148<br>16 2021年04月09日Linux专项练习1.md  16 2021年04月12日Linux专项练习2.md  12 2021年04月18日Linux专项练习1.md  12 2021年04月18日Linux专项练习4.md<br>16 2021年04月11日Linux专项练习1.md  16 2021年04月12日Linux专项练习3.md  12 2021年04月18日Linux专项练习2.md  12 2021年04月18日Linux专项练习5.md<br>12 2021年04月12日Linux专项练习1.md  12 2021年04月17日Linux专项联系1.md  12 2021年04月18日Linux专项练习3.md<br>[root@localhost 2021年04月]#<br></code></pre></td></tr></table></figure>
+<h3 id="ls-hs：列出文件大小，阅读友好显示"><a href="#ls-hs：列出文件大小，阅读友好显示" class="headerlink" title="ls -hs：列出文件大小，阅读友好显示"></a>ls -hs：列出文件大小，阅读友好显示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 2021年04月]# ls -hs<br>总用量 148K<br>16K 2021年04月09日Linux专项练习1.md  16K 2021年04月12日Linux专项练习2.md  12K 2021年04月18日Linux专项练习1.md  12K 2021年04月18日Linux专项练习4.md<br>16K 2021年04月11日Linux专项练习1.md  16K 2021年04月12日Linux专项练习3.md  12K 2021年04月18日Linux专项练习2.md  12K 2021年04月18日Linux专项练习5.md<br>12K 2021年04月12日Linux专项练习1.md  12K 2021年04月17日Linux专项联系1.md  12K 2021年04月18日Linux专项练习3.md<br>[root@localhost 2021年04月]# <br></code></pre></td></tr></table></figure>
+<h2 id="ls-S：按文件大小而不是字典序排序目录内容，大文件靠前。"><a href="#ls-S：按文件大小而不是字典序排序目录内容，大文件靠前。" class="headerlink" title="ls -S：按文件大小而不是字典序排序目录内容，大文件靠前。"></a>ls -S：按文件大小而不是字典序排序目录内容，大文件靠前。</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 2021年04月]# ls -s|sort -r|head<br>总用量 148<br>16 2021年04月12日Linux专项练习3.md<br>16 2021年04月12日Linux专项练习2.md<br>16 2021年04月11日Linux专项练习1.md<br>16 2021年04月09日Linux专项练习1.md<br>12 2021年04月18日Linux专项练习5.md<br>12 2021年04月18日Linux专项练习4.md<br>12 2021年04月18日Linux专项练习3.md<br>12 2021年04月18日Linux专项练习2.md<br>12 2021年04月18日Linux专项练习1.md<br>[root@localhost 2021年04月]# ls -S|head<br>2021年04月11日Linux专项练习1.md<br>2021年04月09日Linux专项练习1.md<br>2021年04月12日Linux专项练习2.md<br>2021年04月12日Linux专项练习3.md<br>2021年04月18日Linux专项练习5.md<br>2021年04月12日Linux专项练习1.md<br>2021年04月17日Linux专项联系1.md<br>2021年04月18日Linux专项练习1.md<br>2021年04月18日Linux专项练习2.md<br>2021年04月18日Linux专项练习3.md<br>[root@localhost 2021年04月]# <br></code></pre></td></tr></table></figure>
+<h1 id="ls与其他命令组合使用"><a href="#ls与其他命令组合使用" class="headerlink" title="ls与其他命令组合使用"></a>ls与其他命令组合使用</h1><p>查看当前目录下大小最大的前10个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 2021年04月]# ls -sh|sort -r|head<br>总用量 148K<br>16K 2021年04月12日Linux专项练习3.md<br>16K 2021年04月12日Linux专项练习2.md<br>16K 2021年04月11日Linux专项练习1.md<br>16K 2021年04月09日Linux专项练习1.md<br>12K 2021年04月18日Linux专项练习5.md<br>12K 2021年04月18日Linux专项练习4.md<br>12K 2021年04月18日Linux专项练习3.md<br>12K 2021年04月18日Linux专项练习2.md<br>12K 2021年04月18日Linux专项练习1.md<br>[root@localhost 2021年04月]#<br></code></pre></td></tr></table></figure>
+<p>查看当前目录下大小最小的前10个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost 2021年04月]# ls -sh|sort|head<br>12K 2021年04月12日Linux专项练习1.md<br>12K 2021年04月17日Linux专项联系1.md<br>12K 2021年04月18日Linux专项练习1.md<br>12K 2021年04月18日Linux专项练习2.md<br>12K 2021年04月18日Linux专项练习3.md<br>12K 2021年04月18日Linux专项练习4.md<br>12K 2021年04月18日Linux专项练习5.md<br>16K 2021年04月09日Linux专项练习1.md<br>16K 2021年04月11日Linux专项练习1.md<br>16K 2021年04月12日Linux专项练习2.md<br>[root@localhost 2021年04月]#<br></code></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.runoob.com/linux/linux-comm-ls.html">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/3283dcaa.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/a8f2d755.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Linux df命令详解
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/58dec4f4.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">在不能复制的网页上打开复制功能_网页限制解除_油猴脚本</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

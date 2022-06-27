@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>LinuxDeploy CentOS7 安装java tomcat |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Linux/LinuxDeploy/LinuxDeploy CentOS7 安装java tomcat"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  LinuxDeploy CentOS7 安装java tomcat
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/e5ce3c15.html" class="article-date">
+  <time datetime="2021-03-17T01:36:50.000Z" itemprop="datePublished">2021-03-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/LinuxDeploy/">LinuxDeploy</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="下载java"><a href="#下载java" class="headerlink" title="下载java"></a>下载java</h1><p>上面安装的linux系统是aarch64架构的，所以需要下载aarch64对应的版本：</p>
+<p>jdk8官方下载地址:<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html</a></p>
+<p>获得安装包：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox">jdk-8u281-linux-aarch64.tar.gz</a></p>
+<h1 id="下载Tomcat"><a href="#下载Tomcat" class="headerlink" title="下载Tomcat"></a>下载Tomcat</h1><p>Tomcat8下载路径：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://tomcat.apache.org/download-80.cgi">https://tomcat.apache.org/download-80.cgi</a><br>下载<a target="_blank" rel="noopener external nofollow noreferrer" href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.64/bin/apache-tomcat-8.5.64.tar.gz">tar.gz</a>版本的Tomcat</p>
+<h1 id="使用Xftp上传到手机中"><a href="#使用Xftp上传到手机中" class="headerlink" title="使用Xftp上传到手机中"></a>使用Xftp上传到手机中</h1><h2 id="Xftp如何连接到手机上的linux"><a href="#Xftp如何连接到手机上的linux" class="headerlink" title="Xftp如何连接到手机上的linux"></a>Xftp如何连接到手机上的linux</h2><p>启动centos,打开Xshell，连接到手机。然后点击上面<strong>窗口</strong>菜单，选择<strong>传输新建文件</strong>菜单项。即可打开Xftp.</p>
+<p>Xftp有两个分栏，左边的是电脑的目录树，右边是手机上的linux的目录树，进入linux的<code>/opt</code>目录。然后把电脑上下载好的java和tomcat的压缩包拖动到Xftp上的右边的Linux分栏中。这样就可以上传文件到Linux中了。等待上传完毕即可。</p>
+<h1 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h1><h2 id="解压java的压缩包"><a href="#解压java的压缩包" class="headerlink" title="解压java的压缩包"></a>解压java的压缩包</h2><p>切换到Xshell中，进入刚才上传文件的目录(&#x2F;opt目录)，创建一个名为java的目录，然后把java压缩包解压到这个&#x2F;opt&#x2F;java目录中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost ~]# cd /opt<br>[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  jdk-8u281-linux-aarch64.tar.gz<br>[root@localhost opt]# tar -zxvf jdk-8u281-linux-aarch64.tar.gz -C java<br>tar: java：无法 open: 没有那个文件或目录<br>tar: Error is not recoverable: exiting now<br>[root@localhost opt]# mkdir java<br>[root@localhost opt]# tar -zxvf jdk-8u281-linux-aarch64.tar.gz -C java<br></code></pre></td></tr></table></figure>
+<h2 id="解压Tomcat的压缩包"><a href="#解压Tomcat的压缩包" class="headerlink" title="解压Tomcat的压缩包"></a>解压Tomcat的压缩包</h2><p>创建tomcat目录，然后将tomcat的压缩包解压到这个&#x2F;opt&#x2F;tomcat目录中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  java  jdk-8u281-linux-aarch64.tar.gz<br>[root@localhost opt]# mkdir tomcat<br>[root@localhost opt]# tar -zxvf apache-tomcat-8.5.63.tar.gz -C tomcat/<br>apache-tomcat-8.5.63/conf/<br>apache-tomcat-8.5.63/conf/catalina.policy<br>......<br>apache-tomcat-8.5.63/bin/tool-wrapper.sh<br>apache-tomcat-8.5.63/bin/version.sh<br>[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  java  jdk-8u281-linux-aarch64.tar.gz  tomcat<br>[root@localhost opt]# cd tomcat/<br>[root@localhost tomcat]# ls<br>apache-tomcat-8.5.63<br></code></pre></td></tr></table></figure>
+<h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><h2 id="配置java环境"><a href="#配置java环境" class="headerlink" title="配置java环境"></a>配置java环境</h2><h3 id="获取JDK绝对路径"><a href="#获取JDK绝对路径" class="headerlink" title="获取JDK绝对路径"></a>获取JDK绝对路径</h3><p>进入jdk根目录，获取jdk根目录的绝对路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  java  jdk-8u281-linux-aarch64.tar.gz  tomcat<br>[root@localhost opt]# cd java<br>[root@localhost java]# ls<br>jdk1.8.0_281<br>[root@localhost java]# cd jdk1.8.0_281/<br>[root@localhost jdk1.8.0_281]# ls<br>bin  COPYRIGHT  include  jre  legal  lib  LICENSE  man  README.html  release  src.zip  THIRDPARTYLICENSEREADME.txt<br>[root@localhost jdk1.8.0_281]# pwd<br>/opt/java/jdk1.8.0_281<br></code></pre></td></tr></table></figure>
+<h3 id="在-x2F-etc-x2F-profile文件中配置Java环境变量"><a href="#在-x2F-etc-x2F-profile文件中配置Java环境变量" class="headerlink" title="在&#x2F;etc&#x2F;profile文件中配置Java环境变量"></a>在&#x2F;etc&#x2F;profile文件中配置Java环境变量</h3><h4 id="java环境变量模板"><a href="#java环境变量模板" class="headerlink" title="java环境变量模板"></a>java环境变量模板</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"># java 环境变量<br># JAVA_HOME路径根据你实际安装的路径填写<br>export JAVA_HOME=JDK目录的绝对地址<br># 下面剩下的配置不需要更改<br>export JRE_HOME=$&#123;JAVA_HOME&#125;/jre<br>export CLASSPATH=.:JAVA_HOME/lib:JRE_HOME/lib:$&#123;CLASSPATH&#125;<br>export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH<br></code></pre></td></tr></table></figure>
+<p>上一步得到的jdk的绝对路径为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/opt/java/jdk1.8.0_281<br></code></pre></td></tr></table></figure>
+<p>所以我的配置为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"># java 环境变量<br># JAVA_HOME路径根据你实际安装的路径填写<br>export JAVA_HOME=/opt/java/jdk1.8.0_281<br># 下面剩下的配置不需要更改<br>export JRE_HOME=$&#123;JAVA_HOME&#125;/jre<br>export CLASSPATH=.:JAVA_HOME/lib:JRE_HOME/lib:$&#123;CLASSPATH&#125;<br>export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH<br></code></pre></td></tr></table></figure>
+<h4 id="设置java环境变量"><a href="#设置java环境变量" class="headerlink" title="设置java环境变量"></a>设置java环境变量</h4><p>打开&#x2F;etc&#x2F;profile文件，在文件末尾填写上面的配置即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost jdk1.8.0_281]# vim /etc/profile<br>[root@localhost ~]# cat /etc/profile<br># /etc/profile<br><br># System wide environment and startup programs, for login setup<br># Functions and aliases go in /etc/bashrc<br>......<br>unset i<br>unset -f pathmunge<br><br># java 环境变量<br># JAVA_HOME路径根据你实际安装的路径填写<br>export JAVA_HOME=/opt/java/jdk1.8.0_281<br># 下面剩下的配置不需要更改<br>export JRE_HOME=$&#123;JAVA_HOME&#125;/jre<br>export CLASSPATH=.:JAVA_HOME/lib:JRE_HOME/lib:$&#123;CLASSPATH&#125;<br>export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH<br>[root@localhost ~]# <br></code></pre></td></tr></table></figure>
+<h4 id="使配置生效"><a href="#使配置生效" class="headerlink" title="使配置生效"></a>使配置生效</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">source /etc/profile<br></code></pre></td></tr></table></figure>
+<h3 id="验证java是否配置成功"><a href="#验证java是否配置成功" class="headerlink" title="验证java是否配置成功"></a>验证java是否配置成功</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost ~]# java -version<br>java version &quot;1.8.0_281&quot;<br>Java(TM) SE Runtime Environment (build 1.8.0_281-b09)<br>Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)<br>[root@localhost ~]# <br></code></pre></td></tr></table></figure>
+<h2 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h2><h3 id="创建Tomcat安装目录的软链接"><a href="#创建Tomcat安装目录的软链接" class="headerlink" title="创建Tomcat安装目录的软链接"></a>创建Tomcat安装目录的软链接</h3><p>由于上面解压出来的Tomcat安装目录的名称太长了，为了后面启动或者关闭tomcat的时候输入命令方便一点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  java  jdk-8u281-linux-aarch64.tar.gz  tomcat<br>[root@localhost opt]# cd tomcat/<br>[root@localhost tomcat]# ls<br>apache-tomcat-8.5.63<br>[root@localhost tomcat]# cd apache-tomcat-8.5.63/<br>[root@localhost apache-tomcat-8.5.63]# ls<br>bin  BUILDING.txt  conf  CONTRIBUTING.md  lib  LICENSE  logs  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  temp  webapps  work<br>[root@localhost apache-tomcat-8.5.63]# pwd<br>/opt/tomcat/apache-tomcat-8.5.63<br>[root@localhost apache-tomcat-8.5.63]# ln -s /opt/tomcat/apache-tomcat-8.5.63 /opt/tomcat85<br>[root@localhost apache-tomcat-8.5.63]# cd /opt<br>[root@localhost opt]# ls<br>apache-tomcat-8.5.63.tar.gz  java  jdk-8u281-linux-aarch64.tar.gz  tomcat  tomcat85<br></code></pre></td></tr></table></figure>
+<p>现在使用tomcat85这个软链接就可以替代“&#x2F;tomcat&#x2F;apache-tomcat-8.5.63”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# cd tomcat85<br>[root@localhost tomcat85]# ls<br>bin  BUILDING.txt  conf  CONTRIBUTING.md  lib  LICENSE  logs  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  temp  webapps  work<br></code></pre></td></tr></table></figure>
+<h3 id="启动Tomcat"><a href="#启动Tomcat" class="headerlink" title="启动Tomcat"></a>启动Tomcat</h3><p>&#x2F;opt&#x2F;tomcat85&#x2F;startup.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# /opt/tomcat85/bin/startup.sh <br>Using CATALINA_BASE:   /opt/tomcat85<br>Using CATALINA_HOME:   /opt/tomcat85<br>Using CATALINA_TMPDIR: /opt/tomcat85/temp<br>Using JRE_HOME:        /opt/java/jdk1.8.0_281/jre<br>Using CLASSPATH:       /opt/tomcat85/bin/bootstrap.jar:/opt/tomcat85/bin/tomcat-juli.jar<br>Using CATALINA_OPTS:   <br>Tomcat started.<br>[root@localhost opt]# <br></code></pre></td></tr></table></figure>
+<h3 id="在电脑上的浏览器访问Tomcat"><a href="#在电脑上的浏览器访问Tomcat" class="headerlink" title="在电脑上的浏览器访问Tomcat"></a>在电脑上的浏览器访问Tomcat</h3><h4 id="确保手机和电脑在同一网络之下"><a href="#确保手机和电脑在同一网络之下" class="headerlink" title="确保手机和电脑在同一网络之下"></a>确保手机和电脑在同一网络之下</h4><p>使得电脑和手机在同一个网络之下，有如下几种：<br>(1) 电脑和手机连接同一个WIFI,并且该wifi没有设置防火墙。<br>(2) 手机开热点，电脑连接到手机的热点上。<br>(3) 电脑开热点，手机连接到电脑的热点上。<br>有的WIFI可能有防火墙，使得同一个WIFI下的电脑和手机不能相互访问。如果发现老是连不上，可以试着通过热点的方式进行连接。</p>
+<p>Tomcat默认运行在8080端口，确保电脑和手机在同一个网络之下，然后在浏览器的地址栏中输入手机的<code>IP地址:8080</code>即可访问Tomcat.<br>LinuxDeploy上方的那四位数字就是IP地址。<br>此时我的IP地址为192.168.1.6，所以打开<a target="_blank" rel="noopener external nofollow noreferrer" href="http://192.168.1.6:8080/">http://192.168.1.6:8080/</a>即可访问Tomcat</p>
+<h3 id="关闭Tomcat"><a href="#关闭Tomcat" class="headerlink" title="关闭Tomcat"></a>关闭Tomcat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost opt]# /opt/tomcat85/bin/startup.sh <br>Using CATALINA_BASE:   /opt/tomcat85<br>Using CATALINA_HOME:   /opt/tomcat85<br>Using CATALINA_TMPDIR: /opt/tomcat85/temp<br>Using JRE_HOME:        /opt/java/jdk1.8.0_281/jre<br>Using CLASSPATH:       /opt/tomcat85/bin/bootstrap.jar:/opt/tomcat85/bin/tomcat-juli.jar<br>Using CATALINA_OPTS:   <br>Tomcat started.<br>[root@localhost opt]# /opt/tomcat85/bin/shutdown.sh <br>Using CATALINA_BASE:   /opt/tomcat85<br>Using CATALINA_HOME:   /opt/tomcat85<br>Using CATALINA_TMPDIR: /opt/tomcat85/temp<br>Using JRE_HOME:        /opt/java/jdk1.8.0_281/jre<br>Using CLASSPATH:       /opt/tomcat85/bin/bootstrap.jar:/opt/tomcat85/bin/tomcat-juli.jar<br>Using CATALINA_OPTS:   <br>[root@localhost opt]# <br></code></pre></td></tr></table></figure>
+<h3 id="无法访问Tomcat的Manager-App和Host-Manager页面"><a href="#无法访问Tomcat的Manager-App和Host-Manager页面" class="headerlink" title="无法访问Tomcat的Manager App和Host Manager页面"></a>无法访问Tomcat的Manager App和Host Manager页面</h3><p>解决办法：设置角色，设置Tomcat用户名和密码。<br>见：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://lanlan2017.github.io/blog/5d0a8795/">https://lanlan2017.github.io/blog/5d0a8795/</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/yjl15517377095/article/details/102060442">https://blog.csdn.net/yjl15517377095/article/details/102060442</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/e5ce3c15.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/a210aa10.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            LinuxDeploy CentOS7 设置Git通过SSH连接Github
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/21008dc5.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">LinuxDeploy CentOS7安装Git</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

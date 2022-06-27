@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Linux 行筛选grep命令 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Linux/通用/正则表达式/Linux 行筛选grep命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Linux 行筛选grep命令
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/719da334.html" class="article-date">
+  <time datetime="2021-05-02T13:35:42.000Z" itemprop="datePublished">2021-05-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/">通用</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/%E9%80%9A%E7%94%A8/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">7.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">34 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="grep-x2F-egrep-x2F-fgrep-在文件中查找字符串（筛选）"><a href="#grep-x2F-egrep-x2F-fgrep-在文件中查找字符串（筛选）" class="headerlink" title="grep&#x2F;egrep&#x2F;fgrep:在文件中查找字符串（筛选）"></a>grep&#x2F;egrep&#x2F;fgrep:在文件中查找字符串（筛选）</h1><h2 id="grep在文件中查找字符串"><a href="#grep在文件中查找字符串" class="headerlink" title="grep在文件中查找字符串"></a>grep在文件中查找字符串</h2><p>grep（Global regular expression print）</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>grep 模式 文件名列表</p>
+<h2 id="egrep-使用扩展正则表达式ERE描述模式"><a href="#egrep-使用扩展正则表达式ERE描述模式" class="headerlink" title="egrep 使用扩展正则表达式ERE描述模式"></a>egrep 使用扩展正则表达式ERE描述模式</h2><p>在指定模式方面比grep更灵活</p>
+<h2 id="fgrep-快速搜索指定字符串"><a href="#fgrep-快速搜索指定字符串" class="headerlink" title="fgrep 快速搜索指定字符串"></a>fgrep 快速搜索指定字符串</h2><p>按字符串搜索而不是按模式搜索。</p>
+<h2 id="grep选项"><a href="#grep选项" class="headerlink" title="grep选项"></a>grep选项</h2><p>-F, –fixed-strings      Fixed strings (instead of regular expressions)<br>-G, –basic-regexp       Basic regular expression (BRE)<br>-E, –extended-regexp    Extended regular expression (ERE)<br>-P, –perl-regexp        Perl-compatible regular expression (PCRE)</p>
+<p>-n     显示时每行前面显示行号<br>-v     显示所有不包含模式的行<br>-i     字母比较时忽略字母的大小写</p>
+<p>例：grep -n main *.c<br>查找含有正则表达式main的行，并打印行号<br>当文件数超过一个时，除了输出行号，还输出文件名</p>
+<p>例：grep -v ‘[Dd]isable’ dev.stat&gt;dev.active<br>取消文件中所有含有指定模式的行，生成新文件。</p>
+<p>例：grep -i richard telnos<br>在文件中检索字符串richard，不顾字母的大小写</p>
+<h1 id="帮助文档"><a href="#帮助文档" class="headerlink" title="帮助文档"></a>帮助文档</h1><h2 id="PCRE语法"><a href="#PCRE语法" class="headerlink" title="PCRE语法"></a>PCRE语法</h2><p>查PCRE语法：man pcresyntax</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">PCRESYNTAX(3)                                                        Library Functions Manual                                                       PCRESYNTAX(3)<br><br>NAME<br>       PCRE - Perl-compatible regular expressions<br><br>PCRE REGULAR EXPRESSION SYNTAX SUMMARY<br><br>       The full syntax and semantics of the regular expressions that are supported by PCRE are described in the pcrepattern documentation. This document contains<br>       a quick-reference summary of the syntax.<br><br>QUOTING<br><br>         \x         where x is non-alphanumeric is a literal x<br>         \Q...\E    treat enclosed characters as literal<br><br>CHARACTERS<br><br>         \a         alarm, that is, the BEL character (hex 07)<br>         \cx        &quot;control-x&quot;, where x is any ASCII character<br>         \e         escape (hex 1B)<br>         \f         form feed (hex 0C)<br>         \n         newline (hex 0A)<br>         \r         carriage return (hex 0D)<br>         \t         tab (hex 09)<br>         \ddd       character with octal code ddd, or backreference<br>         \xhh       character with hex code hh<br>         \x&#123;hhh..&#125;  character with hex code hhh..<br><br>CHARACTER TYPES<br><br>         .          any character except newline;<br>                      in dotall mode, any character whatsoever<br>         \C         one data unit, even in UTF mode (best avoided)<br>         \d         a decimal digit<br>         \D         a character that is not a decimal digit<br>         \h         a horizontal white space character<br>         \H         a character that is not a horizontal white space character<br>         \N         a character that is not a newline<br>         \p&#123;xx&#125;     a character with the xx property<br>         \P&#123;xx&#125;     a character without the xx property<br>         \R         a newline sequence<br>         \s         a white space character<br>         \S         a character that is not a white space character<br>         \v         a vertical white space character<br>         \V         a character that is not a vertical white space character<br>         \w         a &quot;word&quot; character<br>         \W         a &quot;non-word&quot; character<br>         \X         a Unicode extended grapheme cluster<br><br>       In PCRE, by default, \d, \D, \s, \S, \w, and \W recognize only ASCII characters, even in a UTF mode. However, this can be changed by setting the  PCRE_UCP<br>       option.<br><br>GENERAL CATEGORY PROPERTIES FOR \p and \P<br><br>         C          Other<br>         Cc         Control<br>         Cf         Format<br>         Cn         Unassigned<br>         Co         Private use<br>         Cs         Surrogate<br><br>         L          Letter<br>         Ll         Lower case letter<br>         Lm         Modifier letter<br>         Lo         Other letter<br>         Lt         Title case letter<br>         Lu         Upper case letter<br>         L&amp;         Ll, Lu, or Lt<br><br>         M          Mark<br>         Mc         Spacing mark<br>         Me         Enclosing mark<br>         Mn         Non-spacing mark<br><br>         N          Number<br>         Nd         Decimal number<br>         Nl         Letter number<br>         No         Other number<br><br>         P          Punctuation<br>         Pc         Connector punctuation<br>         Pd         Dash punctuation<br>         Pe         Close punctuation<br>         Pf         Final punctuation<br>         Pi         Initial punctuation<br>         Po         Other punctuation<br>         Ps         Open punctuation<br><br>         S          Symbol<br>         Sc         Currency symbol<br>         Sk         Modifier symbol<br>         Sm         Mathematical symbol<br>         So         Other symbol<br><br>         Z          Separator<br>         Zl         Line separator<br>         Zp         Paragraph separator<br>         Zs         Space separator<br><br>PCRE SPECIAL CATEGORY PROPERTIES FOR \p and \P<br><br>         Xan        Alphanumeric: union of properties L and N<br>         Xps        POSIX space: property Z or tab, NL, VT, FF, CR<br>         Xsp        Perl space: property Z or tab, NL, FF, CR<br>         Xwd        Perl word: property Xan or underscore<br><br>SCRIPT NAMES FOR \p AND \P<br><br>       Arabic,  Armenian, Avestan, Balinese, Bamum, Batak, Bengali, Bopomofo, Brahmi, Braille, Buginese, Buhid, Canadian_Aboriginal, Carian, Chakma, Cham, Chero‐<br>       kee, Common, Coptic, Cuneiform, Cypriot, Cyrillic, Deseret, Devanagari, Egyptian_Hieroglyphs, Ethiopic, Georgian,  Glagolitic,  Gothic,  Greek,  Gujarati,<br>       Gurmukhi,  Han,  Hangul, Hanunoo, Hebrew, Hiragana, Imperial_Aramaic, Inherited, Inscriptional_Pahlavi, Inscriptional_Parthian, Javanese, Kaithi, Kannada,<br>       Katakana, Kayah_Li, Kharoshthi, Khmer, Lao, Latin, Lepcha, Limbu, Linear_B, Lisu, Lycian,  Lydian,  Malayalam,  Mandaic,  Meetei_Mayek,  Meroitic_Cursive,<br>       Meroitic_Hieroglyphs, Miao, Mongolian, Myanmar, New_Tai_Lue, Nko, Ogham, Old_Italic, Old_Persian, Old_South_Arabian, Old_Turkic, Ol_Chiki, Oriya, Osmanya,<br>       Phags_Pa, Phoenician, Rejang, Runic, Samaritan, Saurashtra, Sharada, Shavian, Sinhala, Sora_Sompeng, Sundanese, Syloti_Nagri, Syriac,  Tagalog,  Tagbanwa,<br>       Tai_Le, Tai_Tham, Tai_Viet, Takri, Tamil, Telugu, Thaana, Thai, Tibetan, Tifinagh, Ugaritic, Vai, Yi.<br><br>CHARACTER CLASSES<br><br>         [...]       positive character class<br>         [^...]      negative character class<br>         [x-y]       range (can be used for hex characters)<br>         [[:xxx:]]   positive POSIX named set<br>         [[:^xxx:]]  negative POSIX named set<br><br>         alnum       alphanumeric<br>         alpha       alphabetic<br>         ascii       0-127<br>         blank       space or tab<br>         cntrl       control character<br>         digit       decimal digit<br>         graph       printing, excluding space<br>         lower       lower case letter<br>         print       printing, including space<br>         punct       printing, excluding alphanumeric<br>         space       white space<br>         upper       upper case letter<br>         word        same as \w<br>         xdigit      hexadecimal digit<br><br>       In  PCRE,  POSIX  character  set names recognize only ASCII characters by default, but some of them use Unicode properties if PCRE_UCP is set. You can use<br>       \Q...\E inside a character class.<br><br>QUANTIFIERS<br><br>         ?           0 or 1, greedy<br>         ?+          0 or 1, possessive<br>         ??          0 or 1, lazy<br>         *           0 or more, greedy<br>         *+          0 or more, possessive<br>         *?          0 or more, lazy<br>         +           1 or more, greedy<br>         ++          1 or more, possessive<br>         +?          1 or more, lazy<br>         &#123;n&#125;         exactly n<br>         &#123;n,m&#125;       at least n, no more than m, greedy<br>         &#123;n,m&#125;+      at least n, no more than m, possessive<br>         &#123;n,m&#125;?      at least n, no more than m, lazy<br>         &#123;n,&#125;        n or more, greedy<br>         &#123;n,&#125;+       n or more, possessive<br>         &#123;n,&#125;?       n or more, lazy<br><br>ANCHORS AND SIMPLE ASSERTIONS<br><br>         \b          word boundary<br>         \B          not a word boundary<br>         ^           start of subject<br>                      also after internal newline in multiline mode<br>         \A          start of subject<br>         $           end of subject<br>                      also before newline at end of subject<br>                      also before internal newline in multiline mode<br>         \Z          end of subject<br>                      also before newline at end of subject<br>         \z          end of subject<br>         \G          first matching position in subject<br><br>MATCH POINT RESET<br><br>         \K          reset start of match<br><br>ALTERNATION<br><br>         expr|expr|expr...<br><br>CAPTURING<br><br>         (...)           capturing group<br>         (?&lt;name&gt;...)    named capturing group (Perl)<br>         (?&#x27;name&#x27;...)    named capturing group (Perl)<br>         (?P&lt;name&gt;...)   named capturing group (Python)<br>         (?:...)         non-capturing group<br>         (?|...)         non-capturing group; reset group numbers for<br>                          capturing groups in each alternative<br><br>ATOMIC GROUPS<br><br>         (?&gt;...)         atomic, non-capturing group<br><br>COMMENT<br><br>         (?#....)        comment (not nestable)<br><br>OPTION SETTING<br><br>         (?i)            caseless<br>         (?J)            allow duplicate names<br>         (?m)            multiline<br>         (?s)            single line (dotall)<br>         (?U)            default ungreedy (lazy)<br>         (?x)            extended (ignore white space)<br>         (?-...)         unset option(s)<br><br>       The following are recognized only at the start of a pattern or after one of the newline-setting options with similar syntax:<br><br>         (*NO_START_OPT) no start-match optimization (PCRE_NO_START_OPTIMIZE)<br>         (*UTF8)         set UTF-8 mode: 8-bit library (PCRE_UTF8)<br>         (*UTF16)        set UTF-16 mode: 16-bit library (PCRE_UTF16)<br>         (*UTF32)        set UTF-32 mode: 32-bit library (PCRE_UTF32)<br>         (*UTF)          set appropriate UTF mode for the library in use<br>         (*UCP)          set PCRE_UCP (use Unicode properties for \d etc)<br><br>LOOKAHEAD AND LOOKBEHIND ASSERTIONS<br><br>         (?=...)         positive look ahead<br>         (?!...)         negative look ahead<br>         (?&lt;=...)        positive look behind<br>         (?&lt;!...)        negative look behind<br><br>       Each top-level branch of a look behind must be of a fixed length.<br><br>BACKREFERENCES<br><br>         \n              reference by number (can be ambiguous)<br>         \gn             reference by number<br>         \g&#123;n&#125;           reference by number<br>         \g&#123;-n&#125;          relative reference by number<br>         \k&lt;name&gt;        reference by name (Perl)<br>         \k&#x27;name&#x27;        reference by name (Perl)<br>         \g&#123;name&#125;        reference by name (Perl)<br>         \k&#123;name&#125;        reference by name (.NET)<br>         (?P=name)       reference by name (Python)<br><br>SUBROUTINE REFERENCES (POSSIBLY RECURSIVE)<br><br>         (?R)            recurse whole pattern<br>         (?n)            call subpattern by absolute number<br>         (?+n)           call subpattern by relative number<br>         (?-n)           call subpattern by relative number<br>         (?&amp;name)        call subpattern by name (Perl)<br>         (?P&gt;name)       call subpattern by name (Python)<br>         \g&lt;name&gt;        call subpattern by name (Oniguruma)<br>         \g&#x27;name&#x27;        call subpattern by name (Oniguruma)<br>         \g&lt;n&gt;           call subpattern by absolute number (Oniguruma)<br>         \g&#x27;n&#x27;           call subpattern by absolute number (Oniguruma)<br>         \g&lt;+n&gt;          call subpattern by relative number (PCRE extension)<br>         \g&#x27;+n&#x27;          call subpattern by relative number (PCRE extension)<br>         \g&lt;-n&gt;          call subpattern by relative number (PCRE extension)<br>         \g&#x27;-n&#x27;          call subpattern by relative number (PCRE extension)<br><br>CONDITIONAL PATTERNS<br><br>         (?(condition)yes-pattern)<br>         (?(condition)yes-pattern|no-pattern)<br><br>         (?(n)...        absolute reference condition<br>         (?(+n)...       relative reference condition<br>         (?(-n)...       relative reference condition<br>         (?(&lt;name&gt;)...   named reference condition (Perl)<br>         (?(&#x27;name&#x27;)...   named reference condition (Perl)<br>         (?(name)...     named reference condition (PCRE)<br>         (?(R)...        overall recursion condition<br>         (?(Rn)...       specific group recursion condition<br>         (?(R&amp;name)...   specific recursion condition<br>         (?(DEFINE)...   define subpattern for reference<br>         (?(assert)...   assertion condition<br><br>BACKTRACKING CONTROL<br><br>       The following act immediately they are reached:<br><br>         (*ACCEPT)       force successful match<br>         (*FAIL)         force backtrack; synonym (*F)<br>         (*MARK:NAME)    set name to be passed back; synonym (*:NAME)<br><br>       The following act only when a subsequent match failure causes a backtrack to reach them. They all force a match failure, but they differ in  what  happens<br>       afterwards. Those that advance the start-of-match point do so only if the pattern is not anchored.<br><br>         (*COMMIT)       overall failure, no advance of starting point<br>         (*PRUNE)        advance to next starting character<br>         (*PRUNE:NAME)   equivalent to (*MARK:NAME)(*PRUNE)<br>         (*SKIP)         advance to current matching position<br>         (*SKIP:NAME)    advance to position corresponding to an earlier<br>                         (*MARK:NAME); if not found, the (*SKIP) is ignored<br>         (*THEN)         local failure, backtrack to next alternation<br>         (*THEN:NAME)    equivalent to (*MARK:NAME)(*THEN)<br><br>NEWLINE CONVENTIONS<br><br>       These are recognized only at the very start of the pattern or after a (*BSR_...), (*UTF8), (*UTF16), (*UTF32) or (*UCP) option.<br><br>         (*CR)           carriage return only<br>         (*LF)           linefeed only<br>         (*CRLF)         carriage return followed by linefeed<br>         (*ANYCRLF)      all three of the above<br>         (*ANY)          any Unicode newline sequence<br><br>WHAT \R MATCHES<br><br>       These are recognized only at the very start of the pattern or after a (*...) option that sets the newline convention or a UTF or UCP mode.<br><br>         (*BSR_ANYCRLF)  CR, LF, or CRLF<br>         (*BSR_UNICODE)  any Unicode newline sequence<br><br>CALLOUTS<br><br>         (?C)      callout<br>         (?Cn)     callout with data n<br><br>SEE ALSO<br><br>       pcrepattern(3), pcreapi(3), pcrecallout(3), pcrematching(3), pcre(3).<br><br>AUTHOR<br><br>       Philip Hazel<br>       University Computing Service<br>       Cambridge CB2 3QH, England.<br><br>REVISION<br><br>       Last updated: 11 November 2012<br>       Copyright (c) 1997-2012 University of Cambridge.<br><br>PCRE 8.32                                                                11 November 2012                                                           PCRESYNTAX(3)<br></code></pre></td></tr></table></figure>
+
+<h2 id="man-grep"><a href="#man-grep" class="headerlink" title="man grep"></a>man grep</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">NAME<br>       grep, egrep, fgrep - 打印匹配给定模式的行<br><br>总览 SYNOPSIS<br>       grep [options] PATTERN [FILE...]<br>       grep [options] [-e PATTERN | -f FILE] [FILE...]<br><br>描述 DESCRIPTION<br>       Grep   搜索以   FILE   命名的文件输入   (或者是标准输入，如果没有指定文件名，或者给出的文件名是   -   的话)，寻找含有与给定的模式  PATTERN  相匹配的内容的行。  <br>       将把含有匹配内容的行打印出来。<br><br>       另外，也可以使用两个变种程序 egrep 和 fgrep 。 Egrep 与 grep -E 相同。 Fgrep 与 grep -F 相同。<br><br>选项 OPTIONS<br>       -A NUM, --after-context=NUM<br>              打印出紧随匹配的行之后的下文 NUM 行。在相邻的匹配组之间将会打印内容是 -- 的一行。<br><br>       -a, --text<br>              将一个二进制文件视为一个文本文件来处理；它与 --binary-files=text 选项等价。<br><br>       -B NUM, --before-context=NUM<br>              打印出匹配的行之前的上文 NUM 行。在相邻的匹配组之间将会打印内容是 -- 的一行。<br><br>       -C NUM, --context=NUM<br>              打印出匹配的行的上下文前后各 NUM 行。在相邻的匹配组之间将会打印内容是 -- 的一行。<br><br>       -b, --byte-offset<br>              在输出的每行前面同时打印出当前行在输入文件中的字节偏移量。<br><br>       --binary-files=TYPE<br>              如果一个文件的起始几个字节表明文件包含二进制数据，那么假定文件是        TYPE        类型的。默认情况下，         TYPE         是         binary         ，<br>              一般会输出一个一行的消息说一个二进制文件匹配，或者如果没有匹配的话就没有消息输出。如果类型   TYPE   是   without-match   ，那么  grep  假定二进制文件不会<br>              选项等价。如果类型    TYPE    是    text     ，那么     grep     将一个二进制文件视为文本文件来处理；它与     -a     选项等价。     警告：     grep     -<br>              可能会输出二进制的无用内容。如果输出设备是一个终端，并且终端的驱动将这些输出中的一些当作命令，可能会带来恶劣的副作用。<br><br>       --colour[=WHEN], --color[=WHEN]<br>              在匹配的行周围以 GREP_COLOR 环境变量中指定的记号来标记。WHEN 可以是 `never&#x27;, `always&#x27;, 或是 `auto&#x27;。<br><br>       -c, --count<br>              禁止通常的输出；作为替代，为每一个输入文件打印一个匹配的行的总数。如果使用 -v, --invert-match 选项 (参见下面)，将是不匹配的行的总数。<br><br>       -D ACTION, --devices=ACTION<br>              如果输入文件是一个设备，FIFO  或是套接字  (socket)  ，使用动作 ACTION 来处理它。默认情况下，动作 ACTION 是 read ，意味着设备将视为普通文件那样来读。如果动<br>              ，将不处理而直接跳过设备。<br><br>       -d ACTION, --directories=ACTION<br>              如果输入文件是一个目录，使用动作    ACTION    来处理它。默认情况下，动作    ACTION    是    read    ，意味着目录将视为普通文件那样来读。如果动作     ACTI<br>              ，将不处理而直接跳过目录。如果动作 ACTION 是 recurse ， grep 将递归地读每一目录下的所有文件。这样做和 -r 选项等价。<br><br>       -E, --extended-regexp<br>              将模式 PATTERN 作为一个扩展的正则表达式来解释 (参见下面)。<br><br>       -e PATTERN, --regexp=PATTERN<br>              使用模式 PATTERN 作为模式；在保护以 - 为起始的模式时有用。<br><br>       -F, --fixed-strings<br>              将模式 PATTERN 视为一个固定的字符串的列表，用新行 (newlines) 分隔，只要匹配其中之一即可。<br><br>       -P, --perl-regexp<br>              将模式 PATTERN 作为一个 Perl 正则表达式来解释。<br><br>       -f FILE, --file=FILE<br>              从文件 FILE 中获取模式，每行一个。空文件含有0个模式，因此不匹配任何东西。<br><br>       -G, --basic-regexp<br>              将模式 PATTERN 作为一个基本的正则表达式 (参见下面) 来解释。这是默认值。<br><br>       -H, --with-filename<br>              为每个匹配打印文件名。<br><br>       -h, --no-filename<br>              当搜索多个文件时，禁止在输出的前面加上文件名前缀。<br><br>       --help 输出一个简短的帮助信息。<br><br>       -I     处理一个二进制文件，但是认为它不包含匹配的内容。这和 --binary-files=without-match 选项等价。<br><br>       -i, --ignore-case<br>              忽略模式 PATTERN 和输入文件中的大小写的分别。<br><br>       -L, --files-without-match<br>              禁止通常的输出；作为替代，打印出每个在通常情况下不会产生输出的输入文件的名字。对每个文件的扫描在遇到第一个匹配的时候就会停止。<br><br>       -l, --files-with-matches<br>              禁止通常的输出；作为替代，打印出每个在通常情况下会产生输出的输入文件的名字。对每个文件的扫描在遇到第一个匹配的时候就会停止。<br><br>       -m NUM, --max-count=NUM<br>              在找到            NUM            个匹配的行之后，不再读这个文件。如果输入是来自一个普通文件的标准输入，并且已经输出了            NUM            个匹配的行<br>              保证标准输入被定位于退出时的最后一次匹配的行之后，不管是否指定了要输出紧随的下文的行。这样可以使一个调用程序恢复搜索。当              grep              在<br>              个匹配的行之后停止，它会输出任何紧随的下文的行。当使用了  -c 或 --count 选项的时候， grep 不会输出比 NUM 更多的行。当指定了 -v 或 --invert-match 选项的时<br>              NUM 个不匹配的行之后停止。<br><br>       --mmap 如果可能的话，使用    mmap(2)    系统调用来读取输入，而不是默认的     read(2)     系统调用。在一些情况下，     --mmap     提供较好的性能。但是，如果一个输<br>              正在操作时大小发生变化，或者如果发生了一个 I/O 错误， --mmap 可能导致不可知的行为 (包括core dumps)。<br><br>       -n, --line-number<br>              在输出的每行前面加上它所在的文件中它的行号。<br><br>       -o, --only-matching<br>              只显示匹配的行中与 PATTERN 相匹配的部分。<br><br>       --label=LABEL<br>              将实际上来自标准输入的输入视为来自输入文件 LABEL 。这对于 zgrep 这样的工具非常有用，例如： gzip -cd foo.gz |grep --label=foo something<br><br>       --line-buffering<br>              使用行缓冲，it can be a performance penality.<br><br>       -q, --quiet, --silent<br>              安静。不向标准输出写任何东西。如果找到任何匹配的内容就立即以状态值 0 退出，即使检测到了错误。 参见 -s 或 --no-messages 选项。<br><br>       -R, -r, --recursive<br>              递归地读每一目录下的所有文件。这样做和 -d recurse 选项等价。<br><br>         --include=PATTERN<br>              仅仅在搜索匹配 PATTERN 的文件时在目录中递归搜索。<br><br>         --exclude=PATTERN<br>              在目录中递归搜索，但是跳过匹配 PATTERN 的文件。<br><br>       -s, --no-messages<br>              禁止输出关于文件不存在或不可读的错误信息。  对于可移植性需要注意：与 GNU grep 不同，传统的 grep 不遵守 POSIX.2 规范，因为传统的 grep 缺少一个 -q 选项，而<br>              grep 的 -q 选项行为相似。需要可移植到传统 grep 的 shell 脚本应当避免使用 -q 和 -s 选项，而应当将输出重定向到 /dev/null 。<br><br>       -U, --binary<br>              将文件视为二进制。默认情况下，在     MS-DOS     和     MS-Windows      系统中，      grep      通过从文件中读取头部的      32kB      内容来判断它的文件类<br>              判断文件是一个文本文件，它将原始文件内容中的         CR         字符去除         (使得含有         ^         和         $         的正则表达式可以正常工作<br>              将不进行这些工作，而使所有文件保持不变地读取并传递给匹配机制。如果文件是一个以  CR/LF  换行的文本文件，这样作将导致一些正则表达式失败。这个选项在  MS-DOS<br>              之外的系统中无效。<br><br>       -u, --unix-byte-offsets<br>              报告  Unix  风格的字节偏移量。这个开关使得  grep  报告字节偏移量时，将文件作为  Unix  风格的文本文件看待，也就是说将  CR  字符去掉。这将产生与在一台  Uni<br>              完全相同的结果。除非同时使用 -b 选项，否则这个选项无效。这个选项在 MS-DOS 和 MS-Windows 之外的系统中无效。<br><br>       -V, --version<br>              向标准错误输出打印 grep 的版本号。版本号应当包含在所有的 bug 报告中 (参见下面)。<br><br>       -v, --invert-match<br>              改变匹配的意义，只选择不匹配的行。<br><br>       -w, --word-regexp<br>              只选择含有能组成完整的词的匹配的行。判断方法是匹配的子字符串必须是一行的开始，或者是在一个不可能是词的组成的字符之后。与此相似，它必须是一行的结束，或者是<br>的字符之前。词的组成字符是字母，数字，还有下划线。<br><br>       -x, --line-regexp<br>              只选择能匹配完整一行的匹配。<br><br>       -y     -i 的同义词，废弃不用。<br><br>       -Z, --null<br>              输出一个全零字节            (ASCII            码中的            NUL            字符)            而不是一般情况下输出在文件名之后的字符。例如，           <br>              在每个文件名之后输出一个全零字节而不是普通的新行符。这个选项使得输出清楚明白，即使文件名的表示中包含特殊字符比如新行符。这个选项可以与命令 find -print0, <br>              和 xargs -0 一起使用，来处理任意的文件名，即使是那些含有新行符的文件名。<br><br>正则表达式 REGULAR EXPRESSIONS<br>       一个正则表达式是一个描述了一个字符串集合的模式。正则表达式的构造类似于算术表达式，使用各种各样的操作符来将更小的表达式连在一起。<br><br>       Grep       能理解两种不同版本的正则表达式语法：“basic”       和       “extended”。在       GNU grep       中，两种语法可以实现的功能是没有区别的。在其他实现中，<br>       正则表达式表达能力要弱一点。下面的描述适用于扩展的 (extended) 正则表达式，它与基本正则表达式的区别会在最后做一个总结。<br><br>       基本的构造块是匹配单个字符的正则表达式。大部分字符，包括所有字母和数字，是匹配它们自身的正则表达式。任何具有特殊含义的元字符可以通过前置一个反斜杠来引用。(may b<br>       ceding it with a backslash.)<br><br>       方括号表达式     (bracket)     是一个字符序列，放在     [     和     ]     当中。它匹配序列中的任何一个字符；如果序列中的第一个字符是脱字符     (caret)    ^    <br>       序列中的任何一个字符。例如，正则表达式 [0123456789] 匹配任何一个数字。<br><br>       在方括号表达式之中，一个  范围表达式  (range)  由两个字符组成，中间用一个连字符  (hyphen)  分隔。它匹配在这两个字符之间的任何一个字符，使用本地化的序列顺序和字符<br>       between  the  two  characters,inclusive,  using  the  locale&#x27;s  collating  sequence  and  character  set.)  例如，在默认的  C locale中， [a-d] 与 [abcd] 等价。典<br>       将字符以字典顺序排序，在这些 locale 中， [a-d] 不与 [abcd] 等价；例如它可能与 [aBbCcDd] 等价。要获得传统的对方括号表达式的解释，可以设定环境变量 LC_ALL 值为 C 来<br><br>       最后，在方括号表达式中有一些预定义的字符类，如下所示。它们的名字是自说明的，它们是   [:alnum:](字母和数字),   [:alpha:](字母),    [:cntrl:](),    [:digit:](数字<br>       [:lower:](小写字母),  [:print:](可打印字符),  [:punct:](),  [:space:](空格), [:upper:](大写字母), 和 [:xdigit:] 。例如， [[:alnum:]] 意思是 [0-9A-Za-z] ，但是后<br>       locale C 和ASCII 字符编码，而前一种是与 locale 和字符集无关的。(注意这些字符类名中的方括号也是符号名称的一部分，必须包含在用来为序列定界的方括号之中。)<br><br>       大多数元字符处于序列中时会失去它们的特殊意义。为了包含一个字面意义    (literal)    的    ]     ，需要将它放在序列的最前。与此相似，为了包含一个字面意义     (lit<br>       ，需要将它放在除了序列最前之外的其他位置。最后，为了包含一个字面意义 (literal) 的 - ，需要将它放在序列最后。<br><br>       句点符 (period) .  匹配任何一个字符。符号 \w 是 [[:alnum:]] 的同义词， \W 是 [^[:alnum]] 的同义词。<br><br>       脱字符  (caret)  ^  和美元标记  (dollar)  $  分别是匹配一行的首部和尾部的空字串的元字符。符号 \&lt; 和 \&gt; 分别是匹配一个词的首部和尾部的空字串的元字符。符号 \b 匹配<br>       的空字串，符号 \B 匹配 不 处于一个词的边缘的空字串。<br><br>       一个正则表达式后面可以跟随多种重复操作符之一。<br>       ?      先前的项是可选的，最多匹配一次。<br>       *      先前的项可以匹配零次或多次。<br>       +      先前的项可以匹配一次或多次。<br>       &#123;n&#125;    先前的项将匹配恰好 n 次。<br>       &#123;n,&#125;   先前的项可以匹配 n 或更多次。<br>       &#123;n,m&#125;  先前的项将匹配至少 n 词，但是不会超过 m 次。<br><br>       两个正则表达式可以连接到一起；得出的正则表达式可以匹配任何由两个分别匹配连接前的子表达式的子字符串连接而成的字符串。<br><br>       两个正则表达式可以用中缀操作符 | 联合到一起，得出的正则表达式可以匹配任何匹配联合前的任何一个子表达式的字符串。<br><br>       重复操作符的优先级比连接高，接下来又比选择的优先级高。一个完整的子表达式可以用圆括号 (parentheses) 括住来超越这些优先级规则。(to override these precedence rules<br><br>       反向引用 \n 中， n 是一个数字，匹配正则表达式中，以第 n 个圆括号括住的子表达式已匹配的子字符串。<br><br>       在基本正则表达式中，元字符 ?, +, &#123;, |, (, 和 ) 丧失了它们的特殊意义；作为替代，使用加反斜杠的 (backslash) 版本 \?, \+, \&#123;, \|, \(, 和 \) 。<br><br>       传统的 egrep 不支持元字符 &#123; ，并且一些 egrep 的实现通过支持 \&#123; 来代替它，因此可移植的脚本应当避免 在 egrep 中使用 &#123; 模式，应当使用 [&#123;] 来匹配一个字面意义 (liter<br><br>       GNU egrep 通过假设如果 &#123;  处于  an  invalid  interval  specification  的起始，就不是一个特殊字符，来支持传统的用法。例如，shell  命令  egrep  &#x27;&#123;1&#x27;  将会搜索这个<br>       而不是报告在正则表达式中发生了语法错误。POSIX.2 允许这个行为，将其视为一个扩展，但是可移植的脚本应当避免使用它。<br><br>环境变量 ENVIRONMENT VARIABLES<br>       Grep 的行为受下列环境变量影响。<br><br>       一个  locale  LC_foo  是通过按下面的顺序，  LC_ALL,  LC_foo, LANG, 检查这三个环境变量的取值而确定的。设置了的第一个变量指定了 locale。例如，如果 LC_ALL 没有设置<br>       设置为 pt_BR ，那么巴西的葡萄牙语 (Brazilian Portuguese) 将用作  LC_MESSAGES  locale  的值。如果没有设置这其中任何一个环境变量，或者没有安装所设置的  locale  目<br>       没有将国家和语言支持 (national language support (NLS)) 编译在内，将默认使用 locale C。<br><br>       GREP_OPTIONS<br>              这个变量指定了将放在所有显式指定的选项之前的默认选项。例如，如果      GREP_OPTIONS      是      &#x27;--binary-files=without-match      --directories=skip&#x27;   <br>              将像已经在任何显式指定的选项之前指定了  --binary-files=without-match   和   --directories=skip   选项那样来运作。选项以空白   (whitespace)   分隔。一个反<br>              使得下一个字符转义 (escape)，因此可以用来指定一个含有空白或者反斜杠的选项。<br><br>       GREP_COLOR<br>              指定用来高亮显示的标记。<br><br>       LC_ALL, LC_COLLATE, LANG<br>              这些变量指定了 locale LC_COLLATE ，决定了解释类似 [a-z] 的范围表达式时的序列顺序 (collating sequence) 。<br><br>       LC_ALL, LC_CTYPE, LANG<br>              这些选项指定了 locale LC_CTYPE ，决定了字符的类型，例如，哪些字符是空白 (whitespace) 。<br><br>       LC_ALL, LC_MESSAGES, LANG<br>              这些选项指定了 locale LC_MESSAGES ，决定了 grep 的消息使用的语言。默认的 locale C 使用美国英语的消息。<br><br>       POSIXLY_CORRECT<br>              如果设置了的话，          grep          将像          POSIX.2          要求的那样来运作；否则，          grep          将像其他         GNU         程序一样来运作。POSIX.2<br>              要求文件名之后的选项必须视为文件名；默认情况下，这些选项被交换到操作数列表的前面，被当作选项来处理。同时，     POSIX.2     要求不可识别的选项在诊断消息<br>中表示为      “ille?<br>              gal”，但是既然它们没有真正触犯法律，因此默认情况下它们在诊断 (diagnose) 消息中表示为 “invalid”。 POSIXLY_CORRECT 同时禁止了下面描述的 _N_GNU_nonoption_argv_flags_。<br><br>       _N_GNU_nonoption_argv_flags_<br>              (这里    N    是    grep&#x27;s   数字形式的进程ID。)   如果这个环境变量的值的第   i   个字符是   1   ，那么不将   grep   的第   i   个操作数视为一个选项，即使它看上去像。shell<br>              可以将这个变量设置在它运行的每个命令的环境中，指定哪个操作数是文件名通配符扩展的结果，因此不应当被视为选项。这个行为只有在使用 GNU C  库时有效，并且只有在  POSIXLY_CORRECT<br>              没有设置的时候。<br><br>诊断 DIAGNOSTICS<br>       一般地，如果找到了选择的行，退出时状态值为0，否则为1。但是如果发生错误，退出时状态值是2，除非指定了 -q 或 --quiet 或 --silent 选项，并且找到了选择的行。<br><br>BUGS<br>       bug 报告的电子邮件地址是 bug-gnu-utils@gnu.org。 一定要在“Subject:”中带有 “grep” 这个词。<br><br>       在 &#123;n,m&#125; 结构中重复次数过多会导致 grep 使用大量内存。另外，一些过分晦涩的正则表达式需要指数级的时间和空间，可能会导致 grep 耗尽所有内存。<br><br>       向后引用 (backreferences) 非常慢，可能需要指数级的时间。<br><br></code></pre></td></tr></table></figure>
+<h2 id="grep-–help"><a href="#grep-–help" class="headerlink" title="grep –help"></a>grep –help</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost ~]# grep --help<br>用法: grep [选项]... PATTERN [FILE]...<br>在每个 FILE 或是标准输入中查找 PATTERN。<br>默认的 PATTERN 是一个基本正则表达式(缩写为 BRE)。<br>例如: grep -i &#x27;hello world&#x27; menu.h main.c<br><br>正则表达式选择与解释:<br>  -E, --extended-regexp     PATTERN 是一个可扩展的正则表达式(缩写为 ERE)<br>  -F, --fixed-strings       PATTERN 是一组由断行符分隔的定长字符串。<br>  -G, --basic-regexp        PATTERN 是一个基本正则表达式(缩写为 BRE)<br>  -P, --perl-regexp         PATTERN 是一个 Perl 正则表达式<br>  -e, --regexp=PATTERN      用 PATTERN 来进行匹配操作<br>  -f, --file=FILE           从 FILE 中取得 PATTERN<br>  -i, --ignore-case         忽略大小写<br>  -w, --word-regexp         强制 PATTERN 仅完全匹配字词<br>  -x, --line-regexp         强制 PATTERN 仅完全匹配一行<br>  -z, --null-data           一个 0 字节的数据行，但不是空行<br><br>Miscellaneous:<br>  -s, --no-messages         suppress error messages<br>  -v, --invert-match        select non-matching lines<br>  -V, --version             display version information and exit<br>      --help                display this help text and exit<br><br>输出控制:<br>  -m, --max-count=NUM       NUM 次匹配后停止<br>  -b, --byte-offset         输出的同时打印字节偏移<br>  -n, --line-number         输出的同时打印行号<br>      --line-buffered       每行输出清空<br>  -H, --with-filename       为每一匹配项打印文件名<br>  -h, --no-filename         输出时不显示文件名前缀<br>      --label=LABEL         将LABEL 作为标准输入文件名前缀<br>  -o, --only-matching       show only the part of a line matching PATTERN<br>  -q, --quiet, --silent     suppress all normal output<br>      --binary-files=TYPE   assume that binary files are TYPE;<br>                            TYPE is &#x27;binary&#x27;, &#x27;text&#x27;, or &#x27;without-match&#x27;<br>  -a, --text                equivalent to --binary-files=text<br>  -I                        equivalent to --binary-files=without-match<br>  -d, --directories=ACTION  how to handle directories;<br>                            ACTION is &#x27;read&#x27;, &#x27;recurse&#x27;, or &#x27;skip&#x27;<br>  -D, --devices=ACTION      how to handle devices, FIFOs and sockets;<br>                            ACTION is &#x27;read&#x27; or &#x27;skip&#x27;<br>  -r, --recursive           like --directories=recurse<br>  -R, --dereference-recursive<br>                            likewise, but follow all symlinks<br>      --include=FILE_PATTERN<br>                            search only files that match FILE_PATTERN<br>      --exclude=FILE_PATTERN<br>                            skip files and directories matching FILE_PATTERN<br>      --exclude-from=FILE   skip files matching any file pattern from FILE<br>      --exclude-dir=PATTERN directories that match PATTERN will be skipped.<br>  -L, --files-without-match print only names of FILEs containing no match<br>  -l, --files-with-matches  print only names of FILEs containing matches<br>  -c, --count               print only a count of matching lines per FILE<br>  -T, --initial-tab         make tabs line up (if needed)<br>  -Z, --null                print 0 byte after FILE name<br><br>文件控制:<br>  -B, --before-context=NUM  打印以文本起始的NUM 行<br>  -A, --after-context=NUM   打印以文本结尾的NUM 行<br>  -C, --context=NUM         打印输出文本NUM 行<br>  -NUM                      same as --context=NUM<br>      --group-separator=SEP use SEP as a group separator<br>      --no-group-separator  use empty string as a group separator<br>      --color[=WHEN],<br>      --colour[=WHEN]       use markers to highlight the matching strings;<br>                            WHEN is &#x27;always&#x27;, &#x27;never&#x27;, or &#x27;auto&#x27;<br>  -U, --binary              do not strip CR characters at EOL (MSDOS/Windows)<br>  -u, --unix-byte-offsets   report offsets as if CRs were not there<br>                            (MSDOS/Windows)<br><br>‘egrep’即‘grep -E’。‘fgrep’即‘grep -F’。<br>直接使用‘egrep’或是‘fgrep’均已不可行了。<br>若FILE 为 -，将读取标准输入。不带FILE，读取当前目录，除非命令行中指定了-r 选项。<br>如果少于两个FILE 参数，就要默认使用-h 参数。<br>如果有任意行被匹配，那退出状态为 0，否则为 1；<br>如果有错误产生，且未指定 -q 参数，那退出状态为 2。<br></code></pre></td></tr></table></figure>
+<h1 id="grep命令示例"><a href="#grep命令示例" class="headerlink" title="grep命令示例"></a>grep命令示例</h1><h2 id="显示当前目录下的所有子目录：ls-l-grep-‘-d’"><a href="#显示当前目录下的所有子目录：ls-l-grep-‘-d’" class="headerlink" title="显示当前目录下的所有子目录：ls -l|grep ‘^d’"></a>显示当前目录下的所有子目录：ls -l|grep ‘^d’</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# ls -l<br>总用量 48<br>-rw-r--r--. 1 root root    0 5月   3 15:27 a.txt<br>-rw-r--r--. 1 root root    0 5月   3 15:27 b.txt<br>drwxr-xr-x. 2 root root 4096 5月   1 15:16 cat<br>-rw-r--r--. 1 root root    0 5月   3 15:27 c.txt<br>drwxr-xr-x. 2 root root 4096 5月   1 15:18 date<br>-rw-r--r--. 1 root root    0 5月   3 15:27 d.txt<br>drwxr-xr-x. 2 root root 4096 5月   1 15:16 less<br>drwxr-xr-x. 2 root root 4096 5月   1 15:14 ls<br>drwxr-xr-x. 2 root root 4096 5月   1 15:15 more<br>drwxr-xr-x. 2 root root 4096 5月   1 15:18 ps<br>drwxr-xr-x. 2 root root 4096 5月   1 15:15 sort<br>drwxr-xr-x. 2 root root 4096 5月   1 15:14 tr<br>drwxr-xr-x. 2 root root 4096 5月   1 18:47 uniq<br>drwxr-xr-x. 2 root root 4096 5月   1 15:17 vi<br>drwxr-xr-x. 2 root root 4096 5月   1 15:17 wc<br>drwxr-xr-x. 4 root root 4096 5月   3 14:36 正则表达式<br>[root@localhost Linux_Test]# ls -l|grep &#x27;^d&#x27;<br>drwxr-xr-x. 2 root root 4096 5月   1 15:16 cat<br>drwxr-xr-x. 2 root root 4096 5月   1 15:18 date<br>drwxr-xr-x. 2 root root 4096 5月   1 15:16 less<br>drwxr-xr-x. 2 root root 4096 5月   1 15:14 ls<br>drwxr-xr-x. 2 root root 4096 5月   1 15:15 more<br>drwxr-xr-x. 2 root root 4096 5月   1 15:18 ps<br>drwxr-xr-x. 2 root root 4096 5月   1 15:15 sort<br>drwxr-xr-x. 2 root root 4096 5月   1 15:14 tr<br>drwxr-xr-x. 2 root root 4096 5月   1 18:47 uniq<br>drwxr-xr-x. 2 root root 4096 5月   1 15:17 vi<br>drwxr-xr-x. 2 root root 4096 5月   1 15:17 wc<br>drwxr-xr-x. 4 root root 4096 5月   3 14:36 正则表达式<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<h2 id="显示当前目录下的所有文件：ls-l-grep-‘-‘"><a href="#显示当前目录下的所有文件：ls-l-grep-‘-‘" class="headerlink" title="显示当前目录下的所有文件：ls -l|grep ‘^-‘"></a>显示当前目录下的所有文件：ls -l|grep ‘^-‘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[root@localhost Linux_Test]# ls -l|grep &#x27;^-&#x27;<br>-rw-r--r--. 1 root root    0 5月   3 15:27 a.txt<br>-rw-r--r--. 1 root root    0 5月   3 15:27 b.txt<br>-rw-r--r--. 1 root root    0 5月   3 15:27 c.txt<br>-rw-r--r--. 1 root root    0 5月   3 15:27 d.txt<br>[root@localhost Linux_Test]# <br></code></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1> 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/719da334.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/ce005e75.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Linux流编辑命令sed
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/a16f926a.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">正则表达式 组合与锚点</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2.3 Java Servlet 会话管理 使用Cookies |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Java/Java EE/会话管理/2.3 Java Servlet 会话管理 使用Cookies"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2.3 Java Servlet 会话管理 使用Cookies
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/42b9c4c7.html" class="article-date">
+  <time datetime="2019-03-22T08:17:59.000Z" itemprop="datePublished">2019-03-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/">Java</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-EE/">Java EE</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-EE/%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/">会话管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h2 id="2-3-Cookies"><a href="#2-3-Cookies" class="headerlink" title="2.3 Cookies"></a>2.3 Cookies</h2><p><code>URL重写</code>和<code>隐藏域</code>仅适合保存<code>无须跨越太多页面</code>的信息。如果需要在多个页面间传递信息，则以上两种技术实现成本高昂，因为你不得不在每个页面都进行相应处理。幸运的是，<code>Cookies</code>技术可以帮助我们。<br><code>Cookies</code>是一个很少的信息片段，可自动地在浏览器和<code>Web</code>服务器间交互，因此<code>cookies</code>可存储在多个页面间传递的信息。<code>Cookie</code>作为<code>HTTP header</code>的一部分，其传输由<code>HTTP</code>协议控制。此外，你可以控制<code>cookies</code>的有效时间。浏览器通常支持每个网站高达20个<code>cookies</code>。<br><code>Cookies</code>的问题在于用户可以通过改变其浏览器设置来拒绝接受<code>cookies</code>。<br>要使用<code>cookies</code>，需要熟悉<code>javax.servlet.http.Cookie</code> 类以及<code>HttpServletRequest</code>和<code>HttpServletResponse</code>两个接口。</p>
+<h3 id="创建Cookies"><a href="#创建Cookies" class="headerlink" title="创建Cookies"></a>创建Cookies</h3><p>可以通过传递<code>name</code>和<code>value</code>两个参数给<code>Cookie</code> 类的构造函数来创建一个<code>cookies</code>： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Cookie</span> <span class="hljs-variable">cookie</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cookie</span>(name, value);<br></code></pre></td></tr></table></figure>
+<p>如下是一个创建语言选择的<code>cookie</code>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Cookie</span> <span class="hljs-variable">languageSelectionCookie</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cookie</span>(<span class="hljs-string">&quot;language&quot;</span>, <span class="hljs-string">&quot;Italian&quot;</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="Cookie属性"><a href="#Cookie属性" class="headerlink" title="Cookie属性"></a>Cookie属性</h3><p>创建完一个<code>Cookie</code>对象后，你可以设置<code>domain</code>、 <code>path</code>和<code>maxAge</code>属性。其中，<strong>maxAge 属性决定cookie何时过期</strong>。</p>
+<h3 id="服务器如何发送Cookie"><a href="#服务器如何发送Cookie" class="headerlink" title="服务器如何发送Cookie"></a>服务器如何发送Cookie</h3><p>要将<code>cookie</code>发送到浏览器，需要调用 <code>HttpServletResponse</code>的<code>add</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">httpServletResponse.addCookie(cookie);<br></code></pre></td></tr></table></figure>
+<h3 id="浏览器如何发送Cookie"><a href="#浏览器如何发送Cookie" class="headerlink" title="浏览器如何发送Cookie"></a>浏览器如何发送Cookie</h3><p>浏览器在访问同一<code>Web</code>服务器时，会将之前收到的 <code>cookie</code>一并发送。 此外，<code>Cookies</code>也可以通过客户端的<code>javascript</code>脚本创建和删除。</p>
+<h3 id="服务器端如何读取浏览器提交的Cookie"><a href="#服务器端如何读取浏览器提交的Cookie" class="headerlink" title="服务器端如何读取浏览器提交的Cookie"></a>服务器端如何读取浏览器提交的Cookie</h3><p>服务端若要读取浏览器提交的<code>cookie</code>，可以通过 <code>HttpServletRequest</code>接口的<code>getCookies</code>方法，该方法返回一个<code>Cookie</code>数组，若没有<code>Cookies</code>则返回<code>null</code>.</p>
+<h3 id="查找Cookie"><a href="#查找Cookie" class="headerlink" title="查找Cookie"></a>查找Cookie</h3><p>你需要遍历整个数组来查询某个特定名称的<code>cookie</code>。如下为查询名为<code>maxRecords</code>的<code>cookie</code>的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//获取浏览器提交的所有Cookie数组</span><br>Cookie[] cookies = request.getCookies();<br><span class="hljs-comment">//引用,用来保存你想要得到的某个cookie对象</span><br><span class="hljs-type">Cookie</span> <span class="hljs-variable">maxRecordsCookie</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">if</span> (cookies != <span class="hljs-literal">null</span>) &#123; <br>    <span class="hljs-keyword">for</span> (Cookie cookie : cookies) <br>    &#123;<br>        <span class="hljs-comment">//查找名称为maxRecords的cookie对象</span><br>        <span class="hljs-keyword">if</span> (cookie.getName().equals(<span class="hljs-string">&quot;maxRecords&quot;</span>)) <br>        &#123;<br>            <span class="hljs-comment">//保存找到的这个cookie对象</span><br>            maxRecordsCookie = cookie; <br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>目前，还没有类似于<code>getCookieByName</code>这样的方法来帮助简化工作。</p>
+<h3 id="删除Cookie"><a href="#删除Cookie" class="headerlink" title="删除Cookie"></a>删除Cookie</h3><p>没有一个直接的方法来删除一个<code>cookie</code>，你只能创建一个同名的<code>Cookie</code>，并将<code>maxAge</code>属性设置为<code>0</code>，并添加到<code>HttpServletResponse</code>接口中,覆盖掉原来的Cookie即可。如下为删除一个名为<code>userName</code>的<code>cookie</code>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Cookie</span> <span class="hljs-variable">cookie</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cookie</span>(<span class="hljs-string">&quot;userName&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>cookie.setMaxAge(<span class="hljs-number">0</span>);<br>response.addCookie(cookie);<br></code></pre></td></tr></table></figure>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.cookies;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CookieTools</span><br>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 从浏览器提交的Cookie中找到名称为name</span><br><span class="hljs-comment">     * 的Cookie对象.</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> request</span><br><span class="hljs-comment">     *            请求.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> name</span><br><span class="hljs-comment">     *            要查找的Cookie的名称.</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> Cookie对象,如果找到该对象,</span><br><span class="hljs-comment">     *                则返回该对象,没找到则返回null.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Cookie <span class="hljs-title function_">findCookieByName</span><span class="hljs-params">(</span><br><span class="hljs-params">        HttpServletRequest request,String name)</span><br>    &#123;<br>        Cookie cookies[] = request.getCookies();<br>        <span class="hljs-keyword">for</span> (Cookie cookie : cookies) &#123;<br>            <span class="hljs-keyword">if</span> (cookie.getName().equals(name)) &#123;<br>                <span class="hljs-keyword">return</span> cookie;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="设置Cookie的Servlet"><a href="#设置Cookie的Servlet" class="headerlink" title="设置Cookie的Servlet"></a>设置Cookie的Servlet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.cookies;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-meta">@WebServlet(</span><br><span class="hljs-meta">    name = &quot;SetCookieByForm&quot;,</span><br><span class="hljs-meta">    urlPatterns =</span><br><span class="hljs-meta">    &#123;&quot;/setcookie&quot;&#125;</span><br><span class="hljs-meta">)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SetCookieByForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServlet</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br>    <span class="hljs-comment">// 设置一个菜单栏</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">MENU</span> <span class="hljs-operator">=</span> <br>        <span class="hljs-string">&quot;&lt;div style=&#x27;background:#e8e8e8;&quot;</span><br>        + <span class="hljs-string">&quot;padding:15px&#x27;&gt;&quot;</span> <br>        + <span class="hljs-string">&quot;&lt;a href=&#x27;setcookie&#x27;&gt;Set Cookie&lt;/a&gt;&amp;nbsp;&amp;nbsp;&quot;</span><br>        + <span class="hljs-string">&quot;&lt;a href=&#x27;showfruits&#x27;&gt;Show Fruits&lt;/a&gt;&amp;nbsp;&amp;nbsp;&quot;</span><br>        + <span class="hljs-string">&quot;&lt;a href=&#x27;showcss&#x27;&gt;Show CSS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&quot;</span> <br>        + <span class="hljs-string">&quot;&lt;/div&gt;&quot;</span>;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest req,</span><br><span class="hljs-params">        HttpServletResponse resp)</span><br>            <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        <span class="hljs-comment">// 以UTF-8编码响应</span><br>        resp.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        resp.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> resp.getWriter();<br>        writer.print(<span class="hljs-string">&quot;&lt;html&gt;\r\n&quot;</span> <br>            + <span class="hljs-string">&quot;&lt;head&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;title&gt;Preference&lt;/title&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/head&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;body&gt;&quot;</span><br>            + MENU<br>            + <span class="hljs-string">&quot;&lt;form method=\&quot;post\&quot;&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;hr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;table&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;tbody&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td&gt;设置字体大小: &lt;/td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;select name=\&quot;cookieFontSize\&quot;&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;option&gt;large&lt;/option&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;option&gt;x-large&lt;/option&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;option&gt;xx-large&lt;/option&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/select&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/table&gt;&lt;hr&gt;&lt;table&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;tbody&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td&gt;显示的水果数量:&lt;/td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;select name=\&quot;fruitNum\&quot;&gt;\r\n&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <br>                i &lt; ShowFruitsByCookie.fruits.length;<br>                    i++) <br>        &#123;<br>            writer.print(<br>                <span class="hljs-string">&quot;&lt;option&gt;&quot;</span> + (i + <span class="hljs-number">1</span>) <br>                + <span class="hljs-string">&quot;&lt;/option&gt;\r\n&quot;</span>);<br>        &#125;<br>        writer.print(<br>            <span class="hljs-string">&quot;&lt;/select&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td rowspan=\&quot;2\&quot;&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;input type=\&quot;submit\&quot; value=\&quot;Set\&quot;&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/td&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/tr&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/tbody&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/table&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/form&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/body&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/html&gt;&quot;</span>);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doPost</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">        HttpServletResponse response)</span><br>            <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        <span class="hljs-comment">// 以utf-8发送响应</span><br>        response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        <span class="hljs-comment">// 读取表单提交的值</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fruitNum</span> <span class="hljs-operator">=</span><br>            request.getParameter(<span class="hljs-string">&quot;fruitNum&quot;</span>);<br>        <span class="hljs-comment">// 创建一个Cookie,设置为用户在表单中输入的值,</span><br>        <span class="hljs-comment">// 然后发送给浏览器</span><br>        response.addCookie(<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cookie</span>(<span class="hljs-string">&quot;fruitNum&quot;</span>, fruitNum));<br>        <span class="hljs-comment">// 获取表单提交的值</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">cookieFontSize</span> <span class="hljs-operator">=</span><br>            request.getParameter(<span class="hljs-string">&quot;cookieFontSize&quot;</span>);<br>        <span class="hljs-comment">// 存储到Cookie中.</span><br>        response.addCookie(<br>            <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cookie</span>(<span class="hljs-string">&quot;cookieFontSize&quot;</span>, cookieFontSize));<br>        <span class="hljs-comment">// 响应post请求</span><br>        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>        writer.println(<br>            <span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;title&gt;Preference&lt;/title&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/head&gt;&lt;body&gt;&quot;</span><br>            + MENU<br>            + <span class="hljs-string">&quot;&lt;ul&gt;&lt;li&gt;你想要显示 &lt;strong&gt;&quot;</span><br>            + fruitNum<br>            + <span class="hljs-string">&quot;&lt;/strong&gt; 种水果。&lt;/li&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;li&gt;你想要设置CSS选择器&lt;strong&gt;&quot;</span><br>            +<span class="hljs-string">&quot;.cookieStyle&lt;/strong&gt;的字体大小为:&lt;strong&gt;&quot;</span><br>            + cookieFontSize<br>            + <span class="hljs-string">&quot;&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>这个Servlet会把表单输入转换为Cookie发送到浏览器,对应的URL为<a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/SessionManagement/setcookie">http://localhost:8080/SessionManagement/setcookie</a>,<br>当浏览器再次访问<code>http://localhost:8080/SessionManagement/</code>这个Java项目下的资源时,浏览器会把之前服务器发给他的Cookie,再原封不动的提交给服务器。这样服务器就可以根据Cookie来进行响应的操作。<br>在上面代码中,服务器分别发送<code>fruitNum</code>和<code>cookieFontSize</code>这两个cookie给浏览器,下面将再创建两个Servlet来使用者连个Cookie。<br>填写表单,如下所示:<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/readbooknote/ServlerJSPAndSpring%20MVCChuXueZhiNan/Chapter2/6.png" alt="这里有一张图片"><br>然后点击Set按钮,提交表单,得到提示如下:<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/readbooknote/ServlerJSPAndSpring%20MVCChuXueZhiNan/Chapter2/12.png" alt="这里有一张图片"></p>
+<h3 id="根据Cookie显示数组中的元素"><a href="#根据Cookie显示数组中的元素" class="headerlink" title="根据Cookie显示数组中的元素"></a>根据Cookie显示数组中的元素</h3><p><code>ShowFruitsByCookie</code>这个Servlet会根据<code>fruitNum</code>这个Cookie的值,来显示打印数组中的元素,如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.cookies;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-meta">@WebServlet(</span><br><span class="hljs-meta">    name = &quot;ShowFruitByCookie&quot;,</span><br><span class="hljs-meta">    urlPatterns =</span><br><span class="hljs-meta">    &#123;&quot;/showfruits&quot;&#125;</span><br><span class="hljs-meta">)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShowFruitsByCookie</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServlet</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span><br>        <span class="hljs-number">7275643908439277071L</span>;<br>    <span class="hljs-keyword">static</span> String[] fruits = &#123;<br>            <span class="hljs-string">&quot;苹果&quot;</span>, <span class="hljs-string">&quot;葡萄&quot;</span>, <span class="hljs-string">&quot;芒果&quot;</span>, <span class="hljs-string">&quot;草莓&quot;</span>,<br>            <span class="hljs-string">&quot;荔枝&quot;</span>, <span class="hljs-string">&quot;香蕉&quot;</span>, <span class="hljs-string">&quot;乌梅&quot;</span>, <span class="hljs-string">&quot;菠萝&quot;</span>,<br>            <span class="hljs-string">&quot;樱桃&quot;</span>, <span class="hljs-string">&quot;枇杷&quot;</span>, <span class="hljs-string">&quot;芒果&quot;</span>, <span class="hljs-string">&quot;橙子&quot;</span>,<br>            <span class="hljs-string">&quot;桔子&quot;</span>, <span class="hljs-string">&quot;柠檬&quot;</span>, <span class="hljs-string">&quot;柚子&quot;</span>, <span class="hljs-string">&quot;杨梅&quot;</span>, <br>            <span class="hljs-string">&quot;木瓜&quot;</span>, <span class="hljs-string">&quot;桂圆&quot;</span>, <span class="hljs-string">&quot;榴莲&quot;</span>, <span class="hljs-string">&quot;西瓜&quot;</span>,<br>            <span class="hljs-string">&quot;石榴&quot;</span>, <span class="hljs-string">&quot;山楂&quot;</span>, <span class="hljs-string">&quot;椰子&quot;</span>, <span class="hljs-string">&quot;山竹&quot;</span>,<br>            <span class="hljs-string">&quot;橄榄&quot;</span>, <span class="hljs-string">&quot;柿子&quot;</span>,<span class="hljs-string">&quot;李子&quot;</span>, <span class="hljs-string">&quot;桑葚&quot;</span>, <br>            <span class="hljs-string">&quot;红枣&quot;</span>, <span class="hljs-string">&quot;柑橘&quot;</span>, <span class="hljs-string">&quot;话梅&quot;</span>, <span class="hljs-string">&quot;乌梅&quot;</span>, <br>            <span class="hljs-string">&quot;红提&quot;</span>, <span class="hljs-string">&quot;桃子&quot;</span>, <span class="hljs-string">&quot;甜瓜&quot;</span>, <span class="hljs-string">&quot;香瓜&quot;</span>,<br>            <span class="hljs-string">&quot;荸荠&quot;</span>,<span class="hljs-string">&quot;龙眼&quot;</span>, <span class="hljs-string">&quot;沙果&quot;</span>, <span class="hljs-string">&quot;佛手&quot;</span>,<br>            <span class="hljs-string">&quot;芭乐&quot;</span>, <span class="hljs-string">&quot;蓝莓&quot;</span>, <span class="hljs-string">&quot;西梅&quot;</span>, <span class="hljs-string">&quot;释迦&quot;</span>, <br>            <span class="hljs-string">&quot;黄皮&quot;</span>, <span class="hljs-string">&quot;莲雾&quot;</span>, <span class="hljs-string">&quot;杏子&quot;</span>, <span class="hljs-string">&quot;槟榔&quot;</span>,<br>            <span class="hljs-string">&quot;酸橙&quot;</span>, <span class="hljs-string">&quot;黑莓&quot;</span>, <span class="hljs-string">&quot;栗子&quot;</span>, <span class="hljs-string">&quot;板栗&quot;</span>,<br>            <span class="hljs-string">&quot;金桔&quot;</span>, <span class="hljs-string">&quot;山梨&quot;</span>, <span class="hljs-string">&quot;毛桃&quot;</span>, <span class="hljs-string">&quot;白果&quot;</span>, <br>            <span class="hljs-string">&quot;银杏&quot;</span>, <span class="hljs-string">&quot;青梅&quot;</span>, <span class="hljs-string">&quot;蜜桃&quot;</span>,<span class="hljs-string">&quot;脐橙&quot;</span>,<br>            <span class="hljs-string">&quot;沙枣&quot;</span>, <span class="hljs-string">&quot;凤梨&quot;</span>, <span class="hljs-string">&quot;椰枣&quot;</span>, <span class="hljs-string">&quot;油桃&quot;</span>, <br>            <span class="hljs-string">&quot;鳄梨&quot;</span>, <span class="hljs-string">&quot;酸莓&quot;</span>, <span class="hljs-string">&quot;蛇果&quot;</span>, <span class="hljs-string">&quot;鸭梨&quot;</span>&#125;;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">        HttpServletResponse response)</span> <br>            <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        <span class="hljs-type">Cookie</span> <span class="hljs-variable">fruitNumCookie</span> <span class="hljs-operator">=</span> <br>            CookieTools.findCookieByName(request, <span class="hljs-string">&quot;fruitNum&quot;</span>);<br>        <span class="hljs-keyword">if</span> (fruitNumCookie != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-comment">// 取出Cookie中的值.</span><br>            <span class="hljs-type">String</span> <span class="hljs-variable">cookieValue</span> <span class="hljs-operator">=</span> fruitNumCookie.getValue();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">fruitNum</span> <span class="hljs-operator">=</span> Integer.parseInt(cookieValue);<br>            <span class="hljs-keyword">if</span> (fruitNum &lt;= fruits.length) &#123;<br>                response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>                response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>                <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>                writer.print(<br>                    <span class="hljs-string">&quot;&lt;html&gt;\r\n&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;head&gt;\r\n&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;title&gt;showFruits&lt;/title&gt;\r\n&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;/head&gt;\r\n&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;body&gt;\r\n&quot;</span><br>                    + SetCookieByForm.MENU<br>                    + <span class="hljs-string">&quot;为你显示 &lt;strong&gt;&quot;</span><br>                    + fruitNum<br>                    + <span class="hljs-string">&quot;&lt;/strong&gt; 种水果,如下所示:\r\n&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;ul&gt;&quot;</span>);<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; fruitNum; i++) &#123;<br>                    writer.print(<span class="hljs-string">&quot;&lt;li&gt;&quot;</span> + fruits[i] + <span class="hljs-string">&quot;&lt;/li&gt;&quot;</span>);<br>                &#125;<br>                writer.println(<span class="hljs-string">&quot;&lt;/ul&gt;\r\n&quot;</span> <br>                    + <span class="hljs-string">&quot;&lt;/body&gt;\r\n&quot;</span> + <span class="hljs-string">&quot;&lt;/html&gt;&quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>点击工具条上的<code>Show Fruits </code>超链接,效果如下:<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/readbooknote/ServlerJSPAndSpring%20MVCChuXueZhiNan/Chapter2/13.png" alt="这里有一张图片"></p>
+<h3 id="根据Cookie设置CSS"><a href="#根据Cookie设置CSS" class="headerlink" title="根据Cookie设置CSS"></a>根据Cookie设置CSS</h3><p><code>SetCSSByCookie</code>这个Servlet根据<code>cookieFontSize</code>这个Cookie中的值来来设置元素的CSS样式,如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.cookies;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-meta">@WebServlet(</span><br><span class="hljs-meta">    name = &quot;SetCSSByCookie&quot;,</span><br><span class="hljs-meta">    urlPatterns =</span><br><span class="hljs-meta">    &#123;&quot;/showcss&quot;&#125;</span><br><span class="hljs-meta">)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SetCSSByCookie</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServlet</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span><br>        -<span class="hljs-number">8190275536448562340L</span>;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">        HttpServletResponse response)</span><br>            <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>        <span class="hljs-type">Cookie</span> <span class="hljs-variable">cookieFontSize</span> <span class="hljs-operator">=</span><br>            CookieTools.findCookieByName(request,<br>                <span class="hljs-string">&quot;cookieFontSize&quot;</span>);<br>        writer.print(<br>            <span class="hljs-string">&quot;&lt;html&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;head&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;title&gt;根据Cookie设置CSS&lt;/title&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;style&gt;&quot;</span>);<br>        writer.print(<span class="hljs-string">&quot;.cookieStyle&#123;&quot;</span>);<br>        <span class="hljs-keyword">if</span> (cookieFontSize != <span class="hljs-literal">null</span>) &#123;<br>            writer.print(<span class="hljs-string">&quot;font-size: &quot;</span><br>                + cookieFontSize.getValue() + <span class="hljs-string">&quot;;&quot;</span>);<br>        &#125;<br>        writer.print(<span class="hljs-string">&quot;&#125;&quot;</span>);<br>        writer.println(<br>            <span class="hljs-string">&quot;&lt;/style&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;/head&gt;\r\n&quot;</span><br>            + <span class="hljs-string">&quot;&lt;body&gt;&quot;</span><br>            + SetCookieByForm.MENU);<br>        writer.println(<br>            <span class="hljs-string">&quot;&lt;div class=\&quot;cookieStyle\&quot;&gt;这句话的样式通过Cookie设置.&lt;/div&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;/body&gt;\r\n&quot;</span><br>                + <span class="hljs-string">&quot;&lt;/html&gt;&quot;</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>点击工具条上的<code>Show CSS</code>超链接,显示效果如下:<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/readbooknote/ServlerJSPAndSpring%20MVCChuXueZhiNan/Chapter2/14.png" alt="这里有一张图片"></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/42b9c4c7.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/30442a1.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2.4 Java Servlet 会话管理 通过HttpSession对象
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/345f33d2.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2.2 Java Servlet 会话管理 使用隐藏域</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

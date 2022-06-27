@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>JavaIO流 PrintWriter类 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Java/Java IO流/基础/JavaIO流 PrintWriter类"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  JavaIO流 PrintWriter类
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/492ea8e8.html" class="article-date">
+  <time datetime="2018-08-13T12:36:12.000Z" itemprop="datePublished">2018-08-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/">Java</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-IO%E6%B5%81/">Java IO流</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-IO%E6%B5%81/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h2 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">java.lang.Object<br>  |----&gt; java.io.Writer<br>      |----&gt; java.io.PrintWriter<br></code></pre></td></tr></table></figure>
+<p><code>public class PrintWriter extends Writer</code>向文本输出流打印对象的格式化表示形式。此类实现在 <code>PrintStream</code> 中的所有 <code>print</code> 方法。它不包含用于写入原始字节的方法，对于这些字节，程序应该使用未编码的字节流进行写入。 </p>
+<p>与 <code>PrintStream</code> 类不同，如果<strong>启用了自动刷新，则只有在调用 <code>println</code>、<code>printf</code> 或 <code>format</code> 的其中一个方法时才可能完成此操作</strong>，而不是每当正好输出换行符时才完成。这些方法使用平台自有的行分隔符概念，而不是换行符。 </p>
+<p>此类中的方法不会抛出 <code>I/O</code> 异常，尽管其某些构造方法可能抛出异常。客户端可能会查询调用 <code>checkError()</code> 是否出现错误。</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>PrintWriter(File file)</code></td>
+<td align="left">打印到文件中,不自动刷新</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(File file, String csn)</code></td>
+<td align="left">打印到文件中，指定字符集，自动刷新</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(OutputStream out)</code></td>
+<td align="left">打印到OutputStream中，不自动刷新</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(OutputStream out, boolean autoFlush)</code></td>
+<td align="left">打印到输出流中,autoFlush为true就自动刷新</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(String fileName)</code></td>
+<td align="left">打印到文件名为fileName的文件中</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(String fileName, String csn)</code></td>
+<td align="left">打印到文件名为fileName的文件中，指定字符编码</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(Writer out)</code></td>
+<td align="left">打印到字符输出流中</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter(Writer out, boolean autoFlush)</code></td>
+<td align="left">打印到字符输出流中,autoFlush为true时自动刷新</td>
+</tr>
+</tbody></table>
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><p>这个方法有点多，分开写比较好。</p>
+<h3 id="可以自动刷新的方法"><a href="#可以自动刷新的方法" class="headerlink" title="可以自动刷新的方法"></a>可以自动刷新的方法</h3><p>注意了，只有下表的方法可以自动刷新，其他方法是不会自动刷新的。<br>自动刷新的情况：</p>
+<ul>
+<li>调用println()方法</li>
+<li>调用printf()方法</li>
+<li>调用format()方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>PrintWriter format(Locale l, String format, Object... args)</code></td>
+<td align="left">使用指定格式字符串和参数将一个格式化字符串写入此 writer 中。</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter format(String format, Object... args)</code></td>
+<td align="left">使用指定格式字符串和参数将一个格式化字符串写入此 writer 中。</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter printf(Locale l, String format, Object... args)</code></td>
+<td align="left">使用指定格式字符串和参数将格式化的字符串写入此 writer 的便捷方法。</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter printf(String format, Object... args)</code></td>
+<td align="left">使用指定格式字符串和参数将格式化的字符串写入此 writer 的便捷方法。</td>
+</tr>
+<tr>
+<td align="left"><code>void println()</code></td>
+<td align="left">通过写入行分隔符字符串终止当前行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(boolean x)</code></td>
+<td align="left">打印 boolean 值，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(char x)</code></td>
+<td align="left">打印字符，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(char[] x)</code></td>
+<td align="left">打印字符数组，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(double x)</code></td>
+<td align="left">打印双精度浮点数，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(float x)</code></td>
+<td align="left">打印浮点数，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(int x)</code></td>
+<td align="left">打印整数，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(long x)</code></td>
+<td align="left">打印 long 整数，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(Object x)</code></td>
+<td align="left">打印 Object，然后终止该行。</td>
+</tr>
+<tr>
+<td align="left"><code>void println(String x)</code></td>
+<td align="left">打印 String，然后终止该行。</td>
+</tr>
+</tbody></table>
+<h3 id="追加方法"><a href="#追加方法" class="headerlink" title="追加方法"></a>追加方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>PrintWriter append(char c)</code></td>
+<td align="left">将指定字符添加到此 writer。</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter append(CharSequence csq)</code></td>
+<td align="left">将指定的字符序列添加到此 writer。</td>
+</tr>
+<tr>
+<td align="left"><code>PrintWriter append(CharSequence csq, int start, int end)</code></td>
+<td align="left">将指定字符序列的子序列添加到此 writer。</td>
+</tr>
+</tbody></table>
+<h3 id="print-…-方法"><a href="#print-…-方法" class="headerlink" title="print(…)方法"></a>print(…)方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>void print(boolean b)</code></td>
+<td align="left">打印 boolean 值。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(char c)</code></td>
+<td align="left">打印字符。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(char[] s)</code></td>
+<td align="left">打印字符数组。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(double d)</code></td>
+<td align="left">打印 double 精度浮点数。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(float f)</code></td>
+<td align="left">打印一个浮点数。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(int i)</code></td>
+<td align="left">打印整数。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(long l)</code></td>
+<td align="left">打印 long 整数。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(Object obj)</code></td>
+<td align="left">打印对象。</td>
+</tr>
+<tr>
+<td align="left"><code>void print(String s)</code></td>
+<td align="left">打印字符串。</td>
+</tr>
+</tbody></table>
+<h3 id="write-…-方法"><a href="#write-…-方法" class="headerlink" title="write(…)方法"></a>write(…)方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>void write(char[] buf)</code></td>
+<td align="left">写入字符数组。</td>
+</tr>
+<tr>
+<td align="left"><code>void write(char[] buf, int off, int len)</code></td>
+<td align="left">写入字符数组的某一部分。</td>
+</tr>
+<tr>
+<td align="left"><code>void write(int c)</code></td>
+<td align="left">写入单个字符。</td>
+</tr>
+<tr>
+<td align="left"><code>void write(String s)</code></td>
+<td align="left">写入字符串。</td>
+</tr>
+<tr>
+<td align="left"><code>void write(String s, int off, int len)</code></td>
+<td align="left">写入字符串的某一部分。</td>
+</tr>
+</tbody></table>
+<h3 id="错误相关方法"><a href="#错误相关方法" class="headerlink" title="错误相关方法"></a>错误相关方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>boolean checkError()</code></td>
+<td align="left">如果流没有关闭，则刷新流且检查其错误状态。</td>
+</tr>
+<tr>
+<td align="left"><code>protected  void clearError()</code></td>
+<td align="left">清除此流的错误状态。</td>
+</tr>
+<tr>
+<td align="left"><code>protected  void setError()</code></td>
+<td align="left">指示已发生错误。</td>
+</tr>
+</tbody></table>
+<h3 id="刷新方法"><a href="#刷新方法" class="headerlink" title="刷新方法"></a>刷新方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>void close()</code></td>
+<td align="left">关闭该流并释放与之关联的所有系统资源。</td>
+</tr>
+<tr>
+<td align="left"><code>void flush()</code></td>
+<td align="left">刷新该流的缓冲。</td>
+</tr>
+</tbody></table>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="不自动刷新的例子"><a href="#不自动刷新的例子" class="headerlink" title="不自动刷新的例子"></a>不自动刷新的例子</h3><p>来看一个不自动刷新的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    BufferedWriter writer=<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(<span class="hljs-string">&quot;xiaoming.txt&quot;</span>));<br>    writer.write(<span class="hljs-string">&quot;小明&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样会不会在<code>xiaoming.txt</code>文件中写入“小明”这个字符串呢？答案是不会，因为，现在写的这个<code>小明</code>保存在<code>BufferedWriter</code>的内部字符数组中，并没有写到本地，想写到本地的话需要调用<code>flush()</code>方法刷新内部字符数组，把放在内部字符数组中的“小明”这个字符串写到本地中去。BufferedWriter内部缓存放满了，或者放不下了，会自动把内部缓存刷到本地中去。或者调用<code>close()</code>方法的时候也会刷新一下内部缓存。<br>现在小明两个字符没有充满内部缓存，<code>BufferedWriter</code>不会自动刷新内部缓存。而我们没有调用<code>flush()</code>方法，也没有关闭<code>BufferdWriter</code>。所以文件不会写入数据,<code>main()</code>方法结束后数据丢失。</p>
+<h3 id="PrintWriter自动刷新实例"><a href="#PrintWriter自动刷新实例" class="headerlink" title="PrintWriter自动刷新实例"></a>PrintWriter自动刷新实例</h3><p>使用<code>PrintWriter</code>并使用自动刷新刷新：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>       <span class="hljs-comment">//自动刷新到文件xiaoming.txt中</span><br>    PrintWriter writer=<span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(<span class="hljs-string">&quot;xiaoming.txt&quot;</span>),<span class="hljs-literal">true</span>);<br>       <span class="hljs-comment">//使用下面三个方法会自动刷新</span><br>    writer.println(<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.printf(<span class="hljs-string">&quot;%-10s#\n&quot;</span>,<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.format(<span class="hljs-string">&quot;%-10d#&quot;</span>, <span class="hljs-number">12345</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果，<code>xiaoming.txt</code>文件中的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">小明<br>小明       <br>12345    <br></code></pre></td></tr></table></figure>
+<h3 id="PrintWriter不会自动刷新的方法"><a href="#PrintWriter不会自动刷新的方法" class="headerlink" title="PrintWriter不会自动刷新的方法"></a>PrintWriter不会自动刷新的方法</h3><p><code>PrintWriter</code>的其他不会自动刷新的方法：</p>
+<ul>
+<li>write()方法</li>
+<li>print()方法</li>
+<li>append()方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    PrintWriter writer=<span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(<span class="hljs-string">&quot;xiaoming.txt&quot;</span>),<span class="hljs-literal">true</span>);<br>    writer.println(<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.printf(<span class="hljs-string">&quot;%-10s#\n&quot;</span>,<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.format(<span class="hljs-string">&quot;%-10d#\n&quot;</span>, <span class="hljs-number">12345</span>);<br>    writer.write(<span class="hljs-string">&quot;我是不会写到文件中去的&quot;</span>);<br>    writer.print(<span class="hljs-string">&quot;我也不会自动写到文件中去的&quot;</span>);<br>    writer.append(<span class="hljs-string">&quot;我也一样不会写到文件中去的&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行后，<code>xiaoming.txt</code>中的内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">小明<br>小明       <br>12345    <br></code></pre></td></tr></table></figure>
+<p>可以看到这三个方法是不会自动刷新的，需要显示调用flush()方法进行写入,或者在写文件最后调用close()写入文件。这里调用close()方法在最后关闭文件，close()方法会把缓存的字符刷新到文件中去。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    PrintWriter writer=<span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileWriter</span>(<span class="hljs-string">&quot;xiaoming.txt&quot;</span>),<span class="hljs-literal">true</span>);<br>    writer.println(<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.printf(<span class="hljs-string">&quot;%-10s#\n&quot;</span>,<span class="hljs-string">&quot;小明&quot;</span>);<br>    writer.format(<span class="hljs-string">&quot;%-10d#\n&quot;</span>, <span class="hljs-number">12345</span>);<br>    writer.write(<span class="hljs-string">&quot;我是不会写到文件中去的\n&quot;</span>);<br>    writer.print(<span class="hljs-string">&quot;我也不会自动写到文件中去的\n&quot;</span>);<br>    writer.append(<span class="hljs-string">&quot;我也一样不会写到文件中去的\n&quot;</span>);<br>    writer.close();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行上面代码后，<code>xiaoming.txt</code>文件中的内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">小明<br>小明       <br>12345    <br>我是不会写到文件中去的<br>我也不会自动写到文件中去的<br>我也一样不会写到文件中去的<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="疑惑的地方write-方法和print-方法append-方法的区别？"><a href="#疑惑的地方write-方法和print-方法append-方法的区别？" class="headerlink" title="疑惑的地方write()方法和print(...)方法append()方法的区别？"></a>疑惑的地方<code>write()</code>方法和<code>print(...)</code>方法<code>append()</code>方法的区别？</h2><h3 id="write-方法和print-方法的区别"><a href="#write-方法和print-方法的区别" class="headerlink" title="write()方法和print(...)方法的区别"></a><code>write()</code>方法和<code>print(...)</code>方法的区别</h3><ul>
+<li>共同点：两者都不刷新页面，只在原来的页面写数据.最终都是重写了抽象类Writer里面的write方法.</li>
+<li>不同点：print方法可以将各种类型的数据转换成字符串的形式输出。重载的write方法只能输出字符、字符数组、字符串等与字符相关的数据。</li>
+</ul>
+<p>这些疑惑看下面的源码就知道了。</p>
+<h2 id="看源码"><a href="#看源码" class="headerlink" title="看源码"></a>看源码</h2><h3 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> Writer out;<span class="hljs-comment">//字符输出流</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">boolean</span> autoFlush;<span class="hljs-comment">//自动刷新</span><br><span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">trouble</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br><span class="hljs-keyword">private</span> Formatter formatter;<br><span class="hljs-keyword">private</span> <span class="hljs-type">PrintStream</span> <span class="hljs-variable">psOut</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String lineSeparator;<span class="hljs-comment">//换行符</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span> <span class="hljs-params">(Writer out)</span> &#123;<br>    <span class="hljs-comment">//调用另一个:PrintWriter(Writer out, boolean autoFlush)</span><br>    <span class="hljs-built_in">this</span>(out, <span class="hljs-literal">false</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(Writer out, <span class="hljs-type">boolean</span> autoFlush)</span> &#123;<br>    <span class="hljs-built_in">super</span>(out);<br>    <span class="hljs-comment">//设置字符输出流</span><br>    <span class="hljs-built_in">this</span>.out = out;<br>    <span class="hljs-comment">//设置自动刷新标志</span><br>    <span class="hljs-built_in">this</span>.autoFlush = autoFlush;<br>    <span class="hljs-comment">//设置换行符</span><br>    lineSeparator = java.security.AccessController.doPrivileged(<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">sun</span>.security.action.GetPropertyAction(<span class="hljs-string">&quot;line.separator&quot;</span>));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(OutputStream out)</span> &#123;<br>    <span class="hljs-comment">//调用另一个构造方法:PrintWriter(OutputStream out, boolean autoFlush) </span><br>    <span class="hljs-built_in">this</span>(out, <span class="hljs-literal">false</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(OutputStream out, <span class="hljs-type">boolean</span> autoFlush)</span> &#123;<br>    <span class="hljs-comment">//把字节流封装成字符流：BufferedWriter后,</span><br>    <span class="hljs-comment">//调用:PrintWriter(OutputStream out, boolean autoFlush)</span><br>    <span class="hljs-built_in">this</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(out)), autoFlush);<br><br>    <span class="hljs-comment">// save print stream for error propagation</span><br>    <span class="hljs-keyword">if</span> (out <span class="hljs-keyword">instanceof</span> java.io.PrintStream) &#123;<br>        psOut = (PrintStream) out;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(String fileName)</span> <span class="hljs-keyword">throws</span> FileNotFoundException &#123;<br>    <span class="hljs-comment">//包装后调用：PrintWriter(OutputStream out, boolean autoFlush)</span><br>    <span class="hljs-built_in">this</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(fileName))),<br>            <span class="hljs-literal">false</span>);<br>&#125;<br><span class="hljs-comment">//搞不懂为什么这里要颠倒一下参数的顺序?</span><br><span class="hljs-keyword">private</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(Charset charset, File file)</span><br>    <span class="hljs-keyword">throws</span> FileNotFoundException<br>&#123;<br>    <span class="hljs-comment">//包装后调用:PrintWriter(OutputStream out, boolean autoFlush)</span><br>    <span class="hljs-built_in">this</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file), charset)),<br>            <span class="hljs-literal">false</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(String fileName, String csn)</span><br>    <span class="hljs-keyword">throws</span> FileNotFoundException, UnsupportedEncodingException<br>&#123;<br>    <span class="hljs-comment">//调用:PrintWriter(Charset charset, File file)</span><br>    <span class="hljs-built_in">this</span>(toCharset(csn), <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(fileName));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(File file)</span> <span class="hljs-keyword">throws</span> FileNotFoundException &#123;<br>    <span class="hljs-comment">//调用：PrintWriter(OutputStream out, boolean autoFlush)</span><br>    <span class="hljs-built_in">this</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OutputStreamWriter</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file))),<br>            <span class="hljs-literal">false</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-title function_">PrintWriter</span><span class="hljs-params">(File file, String csn)</span><br>    <span class="hljs-keyword">throws</span> FileNotFoundException, UnsupportedEncodingException<br>&#123;<br>    <span class="hljs-comment">//调用：PrintWriter(Charset charset, File file)</span><br>    <span class="hljs-built_in">this</span>(toCharset(csn), file);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>看源码就知道了：</p>
+<h3 id="print-…-方法源码"><a href="#print-…-方法源码" class="headerlink" title="print(…)方法源码"></a>print(…)方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">boolean</span> b)</span> &#123;<br>    write(b ? <span class="hljs-string">&quot;true&quot;</span> : <span class="hljs-string">&quot;false&quot;</span>);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span> &#123;<br>    write(c);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span> &#123;<br>    write(String.valueOf(i));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">long</span> l)</span> &#123;<br>    write(String.valueOf(l));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">float</span> f)</span> &#123;<br>    write(String.valueOf(f));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">double</span> d)</span> &#123;<br>    write(String.valueOf(d));<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(<span class="hljs-type">char</span> s[])</span> &#123;<br>    write(s);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-keyword">if</span> (s == <span class="hljs-literal">null</span>) &#123;<br>        s = <span class="hljs-string">&quot;null&quot;</span>;<br>    &#125;<br>    write(s);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">print</span><span class="hljs-params">(Object obj)</span> &#123;<br>    write(String.valueOf(obj));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="write-…-方法源码"><a href="#write-…-方法源码" class="headerlink" title="write(…)方法源码"></a>write(…)方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">protected</span> Writer out;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">int</span> c)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-comment">//调用低层Writer的write(int)方法</span><br>            out.write(c);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">char</span> buf[], <span class="hljs-type">int</span> off, <span class="hljs-type">int</span> len)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-comment">//调用低层writer的写字符数组方法</span><br>            out.write(buf, off, len);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">char</span> buf[])</span> &#123;<br>    <span class="hljs-comment">//调用自己的write(char buf[], int off, int len)</span><br>    write(buf, <span class="hljs-number">0</span>, buf.length);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">write</span><span class="hljs-params">(String s, <span class="hljs-type">int</span> off, <span class="hljs-type">int</span> len)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-comment">//调用低层得写字符串方法</span><br>            out.write(s, off, len);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">write</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-comment">//调用自己的写字符串方法</span><br>    write(s, <span class="hljs-number">0</span>, s.length());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以看到PrintWriter的writer(…)方法最终调用低层流的writer(..)来实现的。</p>
+<h3 id="append-…-方法源码"><a href="#append-…-方法源码" class="headerlink" title="append(…)方法源码"></a>append(…)方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">append</span><span class="hljs-params">(CharSequence csq)</span> &#123;<br>    <span class="hljs-keyword">if</span> (csq == <span class="hljs-literal">null</span>)<br>        write(<span class="hljs-string">&quot;null&quot;</span>);<br>    <span class="hljs-keyword">else</span><br>        write(csq.toString());<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">append</span><span class="hljs-params">(CharSequence csq, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>    <span class="hljs-type">CharSequence</span> <span class="hljs-variable">cs</span> <span class="hljs-operator">=</span> (csq == <span class="hljs-literal">null</span> ? <span class="hljs-string">&quot;null&quot;</span> : csq);<br>    write(cs.subSequence(start, end).toString());<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">append</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span> &#123;<br>    write(c);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们可以看到<code>append</code>方法最终也是调用<code>PrintWriter</code>的<code>write()</code>方法来实现的，<code>write()</code>方法和<code>append</code>方法不同的地方在于返回值吧，<code>append</code>返回值为<code>PrintWriter</code>,而<code>write()</code>返回值为<code>void</code><br><code>print()</code>方法和<code>append()</code>方法相同的地方是它们都通过<code>write()</code>方法实现。</p>
+<h3 id="println-…-方法源码"><a href="#println-…-方法源码" class="headerlink" title="println(…)方法源码"></a>println(…)方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">newLine</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            out.write(lineSeparator);<br>            <span class="hljs-keyword">if</span> (autoFlush)<br>                out.flush();<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">()</span> &#123;<br>    newLine();<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">boolean</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">char</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">long</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">float</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(<span class="hljs-type">char</span> x[])</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(String x)</span> &#123;<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(x);<br>        println();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">println</span><span class="hljs-params">(Object x)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> String.valueOf(x);<br>    <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>        print(s);<br>        println();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们看到println(…)最终调用print(…)和println()方法事项，print(…)方法前面已经说了。<br>而println()方法，调用newLine()这私有的方法来进行换行和刷新操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">newLine</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-comment">//写换行符</span><br>            out.write(lineSeparator);<br>            <span class="hljs-keyword">if</span> (autoFlush)<br>                out.flush();<span class="hljs-comment">//刷新缓存</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>因为println()方法提供和换行和自动刷新功能，所以其他println(…)调用了该方法也就能实现自动刷新的功能了。</p>
+<h3 id="format-方法源码"><a href="#format-方法源码" class="headerlink" title="format()方法源码"></a>format()方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//格式化类：java.util.Formatter</span><br><span class="hljs-keyword">private</span> Formatter formatter;<br>......<br><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">format</span><span class="hljs-params">(String format, Object ... args)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-keyword">if</span> ((formatter == <span class="hljs-literal">null</span>)<br>                || (formatter.locale() != Locale.getDefault()))<br>                formatter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Formatter</span>(<span class="hljs-built_in">this</span>);<br>            formatter.format(Locale.getDefault(), format, args);<br>            <span class="hljs-keyword">if</span> (autoFlush)<br>                out.flush();<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125; <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">format</span><span class="hljs-params">(Locale l, String format, Object ... args)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">synchronized</span> (lock) &#123;<br>            ensureOpen();<br>            <span class="hljs-keyword">if</span> ((formatter == <span class="hljs-literal">null</span>) || (formatter.locale() != l))<br>                formatter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Formatter</span>(<span class="hljs-built_in">this</span>, l);<br>            formatter.format(l, format, args);<br>            <span class="hljs-keyword">if</span> (autoFlush)<br>                out.flush();<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (InterruptedIOException x) &#123;<br>        Thread.currentThread().interrupt();<br>    &#125; <span class="hljs-keyword">catch</span> (IOException x) &#123;<br>        trouble = <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>这里的<code>format()</code>方法其实就<code>java.util.Formatter</code>类的<code>format()</code>方法实现的。而且<code>format()</code>方法调用了<code>out.flush()</code>来实现自动刷新。</p>
+<h3 id="printf-方法源码"><a href="#printf-方法源码" class="headerlink" title="printf()方法源码"></a>printf()方法源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">printf</span><span class="hljs-params">(String format, Object ... args)</span> &#123;<br>    <span class="hljs-keyword">return</span> format(format, args);<br>&#125;<br><span class="hljs-keyword">public</span> PrintWriter <span class="hljs-title function_">printf</span><span class="hljs-params">(Locale l, String format, Object ... args)</span> &#123;<br>    <span class="hljs-keyword">return</span> format(l, format, args);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以看到这里的<code>printf()</code>方法最终是调用了<code>format(``.``.)</code>方法来实现的。因为<code>format()</code>方法中调用了<code>out.flush()</code>来自动刷新,所以<code>printf()</code>方法也就跟着实现了自动刷新功能。<br>这些自动刷新功能说的很玄乎,其实不过就是下面两句话：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">......<br>            <span class="hljs-keyword">if</span> (autoFlush)<br>                out.flush();<span class="hljs-comment">//刷新缓存</span><br>......<br></code></pre></td></tr></table></figure>
+<p>其他方法如write()方法，print()方法，append()方法没有上面这句话所以就没了自动刷新功能。</p>
+<p>就这样吧</p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/492ea8e8.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/82040860.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            JavaIO流 PrintStream类
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/df6c2340.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">JavaIO流 接口简介</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

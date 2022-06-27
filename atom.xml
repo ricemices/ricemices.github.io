@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>老鼠</title>
+  
+  
+  <link href="https://www.aoneone.cn/atom.xml" rel="self"/>
+  
+  <link href="https://www.aoneone.cn/"/>
+  <updated>2022-06-27T08:56:25.300Z</updated>
+  <id>https://www.aoneone.cn/</id>
+  
+  <author>
+    <name>ricemice</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红米8刷入面具和root</title>
+    <link href="https://www.aoneone.cn/posts/60574a76.html"/>
+    <id>https://www.aoneone.cn/posts/60574a76.html</id>
+    <published>2022-06-27T08:57:07.392Z</published>
+    <updated>2022-06-27T08:56:25.300Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;红米8&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="搞机" scheme="https://www.aoneone.cn/tags/%E6%90%9E%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>激光焊使用手册</title>
+    <link href="https://www.aoneone.cn/posts/25afdd0a.html"/>
+    <id>https://www.aoneone.cn/posts/25afdd0a.html</id>
+    <published>2022-05-14T16:30:56.186Z</published>
+    <updated>2022-05-14T16:30:56.178Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;激光焊使用手册&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="激光焊" scheme="https://www.aoneone.cn/tags/%E6%BF%80%E5%85%89%E7%84%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有所感,亦有所得</title>
+    <link href="https://www.aoneone.cn/posts/b6ddd816.html"/>
+    <id>https://www.aoneone.cn/posts/b6ddd816.html</id>
+    <published>2022-04-26T12:14:08.790Z</published>
+    <updated>2022-04-26T12:13:37.970Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;时光可以磨灭一切。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="我的" scheme="https://www.aoneone.cn/tags/%E6%88%91%E7%9A%84/"/>
+    
+  </entry>
+  
+</feed>

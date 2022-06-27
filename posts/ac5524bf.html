@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2021年08月26日 面试 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/随堂笔记/2021年08月/笔记/2021年08月26日 面试"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2021年08月26日 面试
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/ac5524bf.html" class="article-date">
+  <time datetime="2021-08-26T11:01:41.000Z" itemprop="datePublished">2021-08-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/">随堂笔记</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B408%E6%9C%88/">2021年08月</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B408%E6%9C%88/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="情况已经变了"><a href="#情况已经变了" class="headerlink" title="情况已经变了"></a>情况已经变了</h1><p>疫情之后，转线上了。<br>在线笔试，<br>在线面试</p>
+<h2 id="线下"><a href="#线下" class="headerlink" title="线下"></a>线下</h2><p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826190503.png" alt="image-20210826190502917"></p>
+<p>不能过于随意，</p>
+<p>拖鞋x</p>
+<p>短裤x</p>
+<p>衣服朴素，不能有巨大标语，不能有脏话。</p>
+<p><strong>不能过于正式</strong></p>
+<p>不要穿正装，西装皮鞋x</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826190847.png" alt="image-20210826190847465"></p>
+<p>如果时间有冲突，的时候一定要先和hr协调好时间。</p>
+<p>如果真的迟到了，先和hr沟通，直接说，不好意思，有事冲突了，看能不能换一下时间。</p>
+<p>要先协调好，要能从容的过去。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191248.png" alt="image-20210826191248448"></p>
+<p>正常</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191334.png" alt="image-20210826191334323"></p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191416.png" alt="image-20210826191416888"></p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191539.png" alt="image-20210826191539487"></p>
+<p>看下巴，</p>
+<p>偶尔眼神交流可以。</p>
+<p>不要一直等着。</p>
+<p><strong>不要和面试官握手</strong></p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191807.png" alt="image-20210826191807372"></p>
+<p>面试官，在你离开之后，才会打分。要留最后的好印象。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826191846.png" alt="image-20210826191846819"></p>
+<p>面试完之后，朋友圈不要屏蔽hr,朋友圈内容要积极。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826192133.png" alt="image-20210826192132971"></p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826192237.png" alt="image-20210826192237526"></p>
+<p><strong>一分钟左右</strong></p>
+<p>把自己学习的心路历程说一下，就OK.</p>
+<p>我叫xx,来自默默学院。</p>
+<p>我对编程比较感兴趣，自学了那些那些那些。</p>
+<p>不管那个公司的面试的自我介绍，都是这些，不要变来变去。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826192538.png" alt="image-20210826192538289"></p>
+<p><strong>我们公司加班比较多</strong></p>
+<p><strong>我们公司不怎么加班。</strong></p>
+<p>回答都是，</p>
+<p>既然我选择了软件开发，我就对加班有心理准备。</p>
+<p><strong>我么加班比较多，你能加班多少小时，加班费有多少。</strong></p>
+<p>答案：只要我身体受得了，没问题。</p>
+<p>加班的情况</p>
+<ul>
+<li>硬性加班<ul>
+<li>业务多，有事干，优化产品。</li>
+<li>出事故，需要马上处理</li>
+</ul>
+</li>
+<li>其他加班<ul>
+<li>培训，交流，讲自己的工作内容(防止跑路后人无法接盘)。</li>
+<li>刚入职，干的都是边边角角的事情，<ul>
+<li>先熟悉业务处理流程</li>
+<li>琐碎的事情多，改的代码少，看的多。</li>
+<li>可以看公司的其他业务流程，（这样才是提升自己的机会）</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826193805.png" alt="image-20210826193805537"></p>
+<p>我之前学编程，觉得很难，经过不断的学习，提高了编程能力，觉得有点成就感。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826193925.png" alt="image-20210826193925482"></p>
+<p>尽量积极，阳光，不要写无聊的事情。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826194107.png" alt="image-20210826194107541"></p>
+<p>多多少少要了解一下。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826194145.png" alt="image-20210826194145451"></p>
+<p><strong>这个问题是仅次于加班的问题</strong></p>
+<p>我未来两到三年的时间，争取做到公司的技术骨干。</p>
+<p>提高技术水平。</p>
+<p><strong>两年内不要跳槽</strong>，</p>
+<p><strong>跳槽的情况</strong></p>
+<ul>
+<li>不能忍受。领导不行，团队不行</li>
+<li>有更好的机会</li>
+</ul>
+<p>不跳槽的情况</p>
+<ul>
+<li>有前景，有盼头。</li>
+<li>没找到机会（两到三年后不到30K的就先不要动）工资不翻倍先不要动。</li>
+</ul>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826194729.png" alt="image-20210826194729288"></p>
+<p><strong>问，你什么时候开始学的编程？</strong></p>
+<p>答：大二上，开始接触Java编程，然后再慢慢一点点开始学。</p>
+<p>或者自我接收里面说，大一接触c语言，大二开始基础Java编程，然后学了那些那些，做了那些那些。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826194956.png" alt="image-20210826194956087"></p>
+<p>优点，你可以随便说。</p>
+<p><strong>缺点，道德上面不能说</strong></p>
+<p>X:我爱贪图小便宜（错）</p>
+<p>X:我爱背后依赖别人（错）</p>
+<p>可以说性格缺点，我比较啰嗦，我敏感。</p>
+<h3 id="细心强迫症"><a href="#细心强迫症" class="headerlink" title="细心强迫症"></a>细心强迫症</h3><p>我心里强迫，强迫症（这种写代码最好）</p>
+<h3 id="不能收粗心"><a href="#不能收粗心" class="headerlink" title="不能收粗心"></a>不能收粗心</h3><p>更不能说，<strong>粗心</strong>（超级错误），对于细节不够关注(简历上术语书写错误)</p>
+<p>大大咧咧</p>
+<p>马大哈</p>
+<p>丢三落四</p>
+<p>(这样性格的人不能写代码)</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826195512.png" alt="image-20210826195512226"></p>
+<p><strong>可以直接拒绝，直接说我就喜欢写代码。</strong>你从代码做起，后面可以转其他。</p>
+<p>短期轮岗可以接受</p>
+<p>前端，测试，产品经理，运维，这些你后面有的是机会去做。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826195820.png" alt="image-20210826195820782"></p>
+<p>直接回答，说我的技术能力是瞒足贵公司要求的。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826195916.png" alt="image-20210826195916185"></p>
+<p><strong>要了解对方工资的薪资水平</strong></p>
+<p>看准网，校园Offer网，问张。</p>
+<p>给你多少就是多少。</p>
+<p>面试官问这个是可以用来否定你</p>
+<p>很多公司都是一口价，半年的试用期内，会根据第一次定的薪水，调薪。</p>
+<p>好的在薪水上加，差的人在薪水上减薪，更差的滚蛋。</p>
+<p>先看对方的薪酬，不要说得很准，说一个范围。百分之20的范围内。</p>
+<p>如果他们薪酬是11，可以说12到14K。或者10-13K。</p>
+<p>结构化面试都是，给定薪酬段匹配。</p>
+<p>总结：</p>
+<ol>
+<li>提前了解</li>
+<li>说薪酬段</li>
+</ol>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826200550.png" alt="image-20210826200550737"></p>
+<p>没什么要问的，等贵公司通知。</p>
+<p>没什么要问的，等入职。</p>
+<p>不要乱问？</p>
+<p>如：</p>
+<ul>
+<li>你们公司几号发工资</li>
+<li>我入职之后怎么请病假<ul>
+<li><h2 id="事假，病假怎么请？"><a href="#事假，病假怎么请？" class="headerlink" title="事假，病假怎么请？"></a>事假，病假怎么请？</h2></li>
+</ul>
+</li>
+<li>你们老总</li>
+</ul>
+<p><strong>问点对自己和公司都有帮助的</strong></p>
+<p>入职之前我需要做什么准备</p>
+<p>入职之前我提前去实习吗</p>
+<p>我最迟什么时候能接受到通知，最迟什么时候发Office</p>
+<p>我需要提前去公司附近租房吗，（不要问公司提供住宿吗）low,</p>
+<p>我实习期间会有师傅带吗。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826201131.png" alt="image-20210826201131516"></p>
+<p>态度</p>
+<p>例如让你转到其他城市去是否可以。</p>
+<p>例如让你转语言，例如转到Go,C#,</p>
+<ul>
+<li>答，可以，带薪学习。<strong>不要犹犹豫豫</strong></li>
+</ul>
+<p>我们的层次（海康，小米，vivo，oppo），大厂</p>
+<h3 id="自信"><a href="#自信" class="headerlink" title="自信"></a>自信</h3><p>不要显得无精打采，没精神。</p>
+<h4 id="不要说不会或不知道"><a href="#不要说不会或不知道" class="headerlink" title="不要说不会或不知道"></a>不要说不会或不知道</h4><p>面试官一定会问到你不知道的，为了测试你的边界。</p>
+<p>要换种说法，要积极的。</p>
+<h4 id="积极回答不知道"><a href="#积极回答不知道" class="headerlink" title="积极回答不知道"></a>积极回答不知道</h4><p><strong>暂时没有接触到</strong></p>
+<p>暂时没有学到这块</p>
+<p>还没有深入到这个程度。</p>
+<p>我还没来得及学到这个地方就</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210826202244.png" alt="image-20210826202244567"></p>
+<p>如果技术上与面试官有争执，不要认怂，说我印象中的是这样的，我回去查一下。</p>
+<p>非技术问题，回到的一定要正向积极的。</p>
+<p><strong>你的领导让你做一件事，但是可能造成公司损失。</strong>你是做，还是不做。</p>
+<p>不干，积极向领导说明这样对公司有害。</p>
+<p>不干，积极向领导说明，要求向更上层的领导请示是否有害。</p>
+<p>干，可能是我的眼界不够，才会觉得是有害的。</p>
+<h1 id="一定要总结"><a href="#一定要总结" class="headerlink" title="一定要总结"></a>一定要总结</h1><h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><ul>
+<li><strong>及时</strong><ul>
+<li>面试完，就总结<ul>
+<li>线上面试结束就总结。</li>
+<li>线下面试到安全的地方就总结。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>细致</strong><ul>
+<li>要精确到最细致的问题，问的是那个具体的问题。</li>
+<li>你怎么回答的</li>
+</ul>
+</li>
+<li><strong>可视化</strong><ul>
+<li>要整理成册</li>
+</ul>
+</li>
+</ul>
+<h2 id="建议："><a href="#建议：" class="headerlink" title="建议："></a>建议：</h2><ul>
+<li>发到群里，保留问题，自己的回答可以删掉</li>
+</ul>
+<p>过一段时间，要回看总结，要看到进步，要看到里面<strong>问的共性</strong></p>
+<p>这个共性，就是你下次要说的关键点。下次在这个地方就要多注意将。</p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/ac5524bf.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/c265fe5.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2021年08月27日 随堂笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/9d133409.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2021年08月26日 课堂笔记2</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

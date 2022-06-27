@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>git rebase命令 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Git/命令/git rebase命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  git rebase命令
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/edcdf022.html" class="article-date">
+  <time datetime="2019-12-09T04:15:47.000Z" itemprop="datePublished">2019-12-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Git/">Git</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Git/%E5%91%BD%E4%BB%A4/">命令</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="git-rebase的作用"><a href="#git-rebase的作用" class="headerlink" title="git rebase的作用"></a>git rebase的作用</h1><p>当你完成比较复杂的一个任务的时候,你可能提交了多次commit,经过一系列的commit后,你最终完成了任务,然后你想推送到远程仓库中.<br>但是如果你此时直接push到远程仓库中,这样远程仓库中就有了好多冗余的commit,所以在push到远程仓库之前,应该将这些中间的commit合并成一个commit,然后再推送到远程仓库上,这样你的的commit记录就比较简洁清爽.</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>不要通过rebase对任何已经提交到公共仓库中的commit进行修改(除非是你)<br>还有就是使用rebase的过程中不要在更改本地仓库中的任何内容,以免需要再次合并,或者再次提交.</p>
+<h1 id="压缩多个commit为一个新的commit"><a href="#压缩多个commit为一个新的commit" class="headerlink" title="压缩多个commit为一个新的commit"></a>压缩多个commit为一个新的commit</h1><p>要合并commit的话,前提是要有多个commit,如果只是超前一个commit的话,直接push就行了,不需要合并</p>
+<h2 id="先查看commit历史"><a href="#先查看commit历史" class="headerlink" title="先查看commit历史"></a>先查看commit历史</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git log -10 --pretty=oneline<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">lan@DESKTOP-8ISAT6B MINGW64 /e/Blog/blog (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -10 --pretty=oneline</span><br>dce93fd66d8c01b3bb7e944ae43fe0165e5ae802 (HEAD -&gt; master) 更新文章<br>1fcec380bdfe807de6ef6a36495683a5488b9f56 更新文章<br>b82a12ccc05de8d2e9ff162bf206b525e386d7fd 更新文章<br>92bf7d32990a43ca242e3b0a40b2e0f199ad1dd2 (origin/master, origin/HEAD) 更新 source/_posts/Git/git rebase命令.md<br>4cb6b92e18a0f9a1ce1d129523b6fe4ddfaac231 Merge branch &#x27;master&#x27; of github.com:lanlan2017/blog into HEAD<br>4cc82482180152616e8cee8a6de919c7eb881053 删除文章中的无效图片,添加新的Git相关的文章,压缩commit<br>7dccad9a4db12c9a91c25b77ee941cc59e826614 压缩<br>1a31038c8c3b78e6675489d1af147d9ac2425d72 删除文章中的无效图片,添加新的Git相关的文章<br>bf682016607be6eabf1952ee9a2ca70c804442aa 添加新的Git相关的文章<br>9e845cfda2fa63dd4bb7f143a33a53c3308bccf7 删除文章中的无效图片<br></code></pre></td></tr></table></figure>
+<p>可以看到现在超前了3个commit,这3个commit其实做的是同一件事情,应该压缩成一个分支.</p>
+<h2 id="合并当前到远程之间的commit"><a href="#合并当前到远程之间的commit" class="headerlink" title="合并当前到远程之间的commit"></a>合并当前到远程之间的commit</h2><p>先获取远程commit记录上的commit_id:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">92bf7d32990a43ca242e3b0a40b2e0f199ad1dd2<br></code></pre></td></tr></table></figure>
+<p>然后输入如下命令,进行压缩:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git rebase -i 92bf7d32990a43ca242e3b0a40b2e0f199ad1dd2<br></code></pre></td></tr></table></figure>
+<h2 id="保留第一个pick-后面的pick改为squash"><a href="#保留第一个pick-后面的pick改为squash" class="headerlink" title="保留第一个pick 后面的pick改为squash"></a>保留第一个pick 后面的pick改为squash</h2><p>记下来,会在vim中弹出如下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs shell">pick b82a12c 更新文章<br>pick 1fcec38 更新文章<br>pick dce93fd 更新文章<br><br>&amp;#35; Rebase 92bf7d3..dce93fd onto 92bf7d3 (3 commands)<br>&amp;#35;<br>&amp;#35; Commands:<br>&amp;#35; p, pick &amp;lt;commit&amp;gt; = use commit<br>&amp;#35; r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message<br>&amp;#35; e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending<br>&amp;#35; s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit<br>&amp;#35; f, fixup &amp;lt;commit&amp;gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message<br>&amp;#35; x, exec &amp;lt;command&amp;gt; = run command (the rest of the line) using shell<br>&amp;#35; b, break = stop here (continue rebase later with &#x27;git rebase --continue&#x27;)<br>&amp;#35; d, drop &amp;lt;commit&amp;gt; = remove commit<br>&amp;#35; l, label &amp;lt;label&amp;gt; = label current HEAD with a name<br>&amp;#35; t, reset &amp;lt;label&amp;gt; = reset HEAD to a label<br>&amp;#35; m, merge [-C &amp;lt;commit&amp;gt; | -c &amp;lt;commit&amp;gt;] &amp;lt;label&amp;gt; [&amp;#35; &amp;lt;oneline&amp;gt;]<br>&amp;#35; .       create a merge commit using the original merge commit&#x27;s<br>&amp;#35; .       message (or the oneline, if no original merge commit was<br>&amp;#35; .       specified). Use -c &amp;lt;commit&amp;gt; to reword the commit message.<br>&amp;#35;<br>E:/Blog/blog/.git/rebase-merge/git-rebase-todo [unix] (13:12 09/12/2019)2,1 顶端<br>&quot;E:/Blog/blog/.git/rebase-merge/git-rebase-todo&quot; [unix] 29L, 1214C<br><br></code></pre></td></tr></table></figure>
+<p>我们要修改其中的内容:按下<code>i</code>,进入<strong>vim</strong>的<strong>插入模式</strong>,将第一个pick保留,后面的pick全部改成s:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs shell">pick b82a12c 更新文章<br>s 1fcec38 更新文章<br>s dce93fd 更新文章<br><br>&amp;#35; Rebase 92bf7d3..dce93fd onto 92bf7d3 (3 commands)<br>&amp;#35;<br>&amp;#35; Commands:<br>&amp;#35; p, pick &amp;lt;commit&amp;gt; = use commit<br>&amp;#35; r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message<br>&amp;#35; e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending<br>&amp;#35; s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit<br>&amp;#35; f, fixup &amp;lt;commit&amp;gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message<br>&amp;#35; x, exec &amp;lt;command&amp;gt; = run command (the rest of the line) using shell<br>&amp;#35; b, break = stop here (continue rebase later with &#x27;git rebase --continue&#x27;)<br>&amp;#35; d, drop &amp;lt;commit&amp;gt; = remove commit<br>&amp;#35; l, label &amp;lt;label&amp;gt; = label current HEAD with a name<br>&amp;#35; t, reset &amp;lt;label&amp;gt; = reset HEAD to a label<br>&amp;#35; m, merge [-C &amp;lt;commit&amp;gt; | -c &amp;lt;commit&amp;gt;] &amp;lt;label&amp;gt; [&amp;#35; &amp;lt;oneline&amp;gt;]<br>&amp;#35; .       create a merge commit using the original merge commit&#x27;s<br>&amp;#35; .       message (or the oneline, if no original merge commit was<br>&amp;#35; .       specified). Use -c &amp;lt;commit&amp;gt; to reword the commit message.<br>&amp;#35;<br><br></code></pre></td></tr></table></figure>
+<p>修改好了之后,按下<strong>ESC</strong>,然后输入<code>:wq</code>进行保存,这样会将上面的三个commit压缩到一个新的分支上.</p>
+<h2 id="写上新的commit的描述"><a href="#写上新的commit的描述" class="headerlink" title="写上新的commit的描述"></a>写上新的commit的描述</h2><p>然后还会在vim中弹出如下内容,让你写上<strong>压缩得到的新的分支的描述信息</strong>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">This is a combination of 3 commits.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the 1st commit message:</span><br><br>更新文章<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the commit message <span class="hljs-comment">#2:</span></span><br><br>更新文章<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the commit message <span class="hljs-comment">#3:</span></span><br><br>更新文章<br><br>&amp;#35; Please enter the commit message for your changes. Lines starting<br>&amp;#35; with &#x27;&amp;#35;&#x27; will be ignored, and an empty message aborts the commit.<br>&amp;#35;<br>&amp;#35; Date:      Mon Dec 9 13:08:03 2019 +0800<br>&amp;#35;<br>&amp;#35; interactive rebase in progress; onto 92bf7d3<br>&amp;#35; Last commands done (3 commands done):<br>&amp;#35;    squash 1fcec38 更新文章<br>&amp;#35;    squash dce93fd 更新文章<br><br></code></pre></td></tr></table></figure>
+<p>这个地方按你的实际情况书写即可,为了演示方便,我改成如下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">This is a combination of 3 commits.</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the 1st commit message:</span><br><br>更新文章_压缩得到的新的commit的描述信息<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the commit message <span class="hljs-comment">#2:</span></span><br><br>更新文章_之前的commit描述1<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">This is the commit message <span class="hljs-comment">#3:</span></span><br><br>更新文章_之前的commit描述2<br><br>&amp;#35; Please enter the commit message for your changes. Lines starting<br>&amp;#35; with &#x27;&amp;#35;&#x27; will be ignored, and an empty message aborts the commit.<br>&amp;#35;<br>&amp;#35; Date:      Mon Dec 9 13:08:03 2019 +0800<br>&amp;#35;<br>&amp;#35; interactive rebase in progress; onto 92bf7d3<br>&amp;#35; Last commands done (3 commands done):<br>&amp;#35;    squash 1fcec38 更新文章<br>&amp;#35;    squash dce93fd 更新文章<br><br></code></pre></td></tr></table></figure>
+<p>然后再次<strong>保存退出即可</strong>.</p>
+<h2 id="压缩效果"><a href="#压缩效果" class="headerlink" title="压缩效果"></a>压缩效果</h2><p>这样就压缩好了,压缩得到的分支如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">lan@DESKTOP-8ISAT6B MINGW64 /e/Blog/blog (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -10 --pretty=oneline</span><br>226d81dfa724d963ca387f40505df4cf11fd42c7 (HEAD -&gt; master) 更新文章_压缩得到的新的commit的描述信息<br>92bf7d32990a43ca242e3b0a40b2e0f199ad1dd2 (origin/master, origin/HEAD) 更新 source/_posts/Git/git rebase命令.md<br>4cb6b92e18a0f9a1ce1d129523b6fe4ddfaac231 Merge branch &#x27;master&#x27; of github.com:lanlan2017/blog into HEAD<br>4cc82482180152616e8cee8a6de919c7eb881053 删除文章中的无效图片,添加新的Git相关的文章,压缩commit<br>7dccad9a4db12c9a91c25b77ee941cc59e826614 压缩<br>1a31038c8c3b78e6675489d1af147d9ac2425d72 删除文章中的无效图片,添加新的Git相关的文章<br>bf682016607be6eabf1952ee9a2ca70c804442aa 添加新的Git相关的文章<br>9e845cfda2fa63dd4bb7f143a33a53c3308bccf7 删除文章中的无效图片<br>b9ab7facc769e575b28fefd74e2154fd16087e52 添加新的Git相关的文章<br>29a6e2b0240c71240146f9a19029d8736055eb5b 添加JS相关文章,更新Git相关文章<br></code></pre></td></tr></table></figure>
+<p>可以看到:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">dce93fd66d8c01b3bb7e944ae43fe0165e5ae802 (HEAD -&gt; master) 更新文章<br>1fcec380bdfe807de6ef6a36495683a5488b9f56 更新文章<br>b82a12ccc05de8d2e9ff162bf206b525e386d7fd 更新文章<br></code></pre></td></tr></table></figure>
+<p>这三条commit都<strong>压缩成一个新的commit</strong>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">226d81dfa724d963ca387f40505df4cf11fd42c7 (HEAD -&gt; master) 更新文章_压缩得到的新的commit的描述信息<br></code></pre></td></tr></table></figure>
+<h2 id="再次修改commit描述"><a href="#再次修改commit描述" class="headerlink" title="再次修改commit描述"></a>再次修改commit描述</h2><p>上面的commit描述,只是为了说明效果,可以输入如下命令,修改commit的内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git commit --amend<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">更新文章_压缩得到的新的commit的描述信息<br><br>更新文章_之前的commit描述1<br><br>更新文章_之前的commit描述2<br><br>&amp;#35; Please enter the commit message for your changes. Lines starting<br>&amp;#35; with &#x27;&amp;#35;&#x27; will be ignored, and an empty message aborts the commit.<br>&amp;#35;<br>&amp;#35; Date:      Mon Dec 9 13:08:03 2019 +0800<br>&amp;#35;<br>&amp;#35; On branch master<br>&amp;#35; Your branch is ahead of &#x27;origin/master&#x27; by 1 commit.<br>&amp;#35;   (use &quot;git push&quot; to publish your local commits)<br>&amp;#35;<br>&amp;#35; Changes to be committed:<br>&amp;#35;       modified:   source/_posts/Git/git rebase命令.md<br>&amp;#35;<br></code></pre></td></tr></table></figure>
+<p>修改为如下内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">更新文章_压缩得到的新的commit的描述信息<br><br>更新文章_之前的commit描述1<br><br>更新文章_之前的commit描述2<br><br>&amp;#35; Please enter the commit message for your changes. Lines starting<br>&amp;#35; with &#x27;&amp;#35;&#x27; will be ignored, and an empty message aborts the commit.<br>&amp;#35;<br>&amp;#35; Date:      Mon Dec 9 13:08:03 2019 +0800<br>&amp;#35;<br>&amp;#35; On branch master<br>&amp;#35; Your branch is ahead of &#x27;origin/master&#x27; by 1 commit.<br>&amp;#35;   (use &quot;git push&quot; to publish your local commits)<br>&amp;#35;<br>&amp;#35; Changes to be committed:<br>&amp;#35;       modified:   source/_posts/Git/git rebase命令.md<br>&amp;#35;<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">更新文章<br>&amp;#35; Please enter the commit message for your changes. Lines starting<br>&amp;#35; with &#x27;&amp;#35;&#x27; will be ignored, and an empty message aborts the commit.<br>&amp;#35;<br>&amp;#35; Date:      Mon Dec 9 13:08:03 2019 +0800<br>&amp;#35;<br>&amp;#35; On branch master<br>&amp;#35; Your branch is ahead of &#x27;origin/master&#x27; by 1 commit.<br>&amp;#35;   (use &quot;git push&quot; to publish your local commits)<br>&amp;#35;<br>&amp;#35; Changes to be committed:<br>&amp;#35;       modified:   source/_posts/Git/git rebase命令.md<br>&amp;#35;<br></code></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">lan@DESKTOP-8ISAT6B MINGW64 /e/Blog/blog (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -10 --pretty=oneline</span><br>116161db01c2a19558da0c5b9360c979c46f1205 (HEAD -&gt; master) 更新文章<br>92bf7d32990a43ca242e3b0a40b2e0f199ad1dd2 (origin/master, origin/HEAD) 更新 source/_posts/Git/git rebase命令.md<br>4cb6b92e18a0f9a1ce1d129523b6fe4ddfaac231 Merge branch &#x27;master&#x27; of github.com:lanlan2017/blog into HEAD<br>4cc82482180152616e8cee8a6de919c7eb881053 删除文章中的无效图片,添加新的Git相关的文章,压缩commit<br>7dccad9a4db12c9a91c25b77ee941cc59e826614 压缩<br>1a31038c8c3b78e6675489d1af147d9ac2425d72 删除文章中的无效图片,添加新的Git相关的文章<br>bf682016607be6eabf1952ee9a2ca70c804442aa 添加新的Git相关的文章<br>9e845cfda2fa63dd4bb7f143a33a53c3308bccf7 删除文章中的无效图片<br>b9ab7facc769e575b28fefd74e2154fd16087e52 添加新的Git相关的文章<br>29a6e2b0240c71240146f9a19029d8736055eb5b 添加JS相关文章,更新Git相关文章<br></code></pre></td></tr></table></figure>
+<p>现在就可以push了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">lan@DESKTOP-8ISAT6B MINGW64 /e/Blog/blog (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push origin master</span><br>Enumerating objects: 11, done.<br>Counting objects: 100% (11/11), done.<br>Delta compression using up to 4 threads<br>Compressing objects: 100% (6/6), done.<br>Writing objects: 100% (6/6), 501 bytes | 501.00 KiB/s, done.<br>Total 6 (delta 5), reused 0 (delta 0)<br>remote: Resolving deltas: 100% (5/5), completed with 5 local objects.<br>remote:<br>remote: GitHub found 3 vulnerabilities on lanlan2017/blog&#x27;s default branch (2 high, 1 moderate). To find out more, visit:<br>remote:      https://github.com/lanlan2017/blog/network/alerts<br>remote:<br>To github.com:lanlan2017/blog.git<br>   92bf7d3..116161d  master -&gt; master<br><br>lan@DESKTOP-8ISAT6B MINGW64 /e/Blog/blog (master)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -10 --pretty=oneline</span><br>116161db01c2a19558da0c5b9360c979c46f1205 (HEAD -&gt; master, origin/master, origin/HEAD) 更新文章<br>......<br></code></pre></td></tr></table></figure>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.jianshu.com/p/4a8f4af4e803">https://www.jianshu.com/p/4a8f4af4e803</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/docs/git-rebase">https://git-scm.com/docs/git-rebase</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/edcdf022.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/a7b2b9e4.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            二进制文件无法合并怎么办
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/4e1204e0.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Git 修改git commit的描述信息</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

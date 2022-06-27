@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>LaTex 常用语法 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/其他/latex/LaTex语法/LaTex 常用语法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  LaTex 常用语法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/83c2e83a.html" class="article-date">
+  <time datetime="2018-08-30T10:46:38.000Z" itemprop="datePublished">2018-08-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a> / <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/latex/">latex</a> / <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/latex/LaTex%E8%AF%AD%E6%B3%95/">LaTex语法</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">26 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="公式显示位置"><a href="#公式显示位置" class="headerlink" title="公式显示位置"></a>公式显示位置</h1><h2 id="行内公式"><a href="#行内公式" class="headerlink" title="行内公式"></a>行内公式</h2><p>在公式两边各自加上一个美元符号即使行内公式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">这是文本$a^2+b^2=c^2$这是文本<br></code></pre></td></tr></table></figure>
+<p>显示效果：<br>这是文本$a^2+b^2&#x3D;c^2$这是文本</p>
+<h2 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h2><p>在公式两边各自加上两个美元符号即使行将公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">这是文本$$a^2+b^2=c^2$$这是文本<br></code></pre></td></tr></table></figure>
+<p>显示效果:<br>这是文本$$a^2+b^2&#x3D;c^2$$这是文本</p>
+<h1 id="数学符号"><a href="#数学符号" class="headerlink" title="数学符号"></a>数学符号</h1><h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>在LaTex中用<code>^</code>和<code>_</code>表明上下标。注意如果上下标只对其后面的一个字符起作用，如果上下标的内容超过一个字符，则需要用花括号<code>&#123;&#125;</code>包裹，否则上下标只对后面的一个符号起作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$p^3_&#123;ij&#125;\qquad\sum_&#123;K=1&#125;^3ka^x+y\qquad\neq a^&#123;x+y&#125;$$<br></code></pre></td></tr></table></figure>
+<p>显示效果:<br>$$p^3_{ij}\qquad\sum_{K&#x3D;1}^3ka^x+y\qquad\neq a^{x+y}$$</p>
+<h2 id="导数符号"><a href="#导数符号" class="headerlink" title="导数符号"></a>导数符号</h2><p>导数符号<code>&#39;</code>是一个特殊的上标，可以适当连用表示多阶导数，也可以在其后连用上标：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$f(x)=x^2 \quad f&#x27;(x)=2x \quad f&#x27;&#x27;^&#123;2&#125;=4$<br></code></pre></td></tr></table></figure>
+<p>显示效果:<br>$f(x)&#x3D;x^2 \quad f’(x)&#x3D;2x \quad f’’^{2}&#x3D;4$</p>
+<h3 id="偏导-条件偏导"><a href="#偏导-条件偏导" class="headerlink" title="偏导 条件偏导"></a>偏导 条件偏导</h3><p>偏导符号$\partial$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\left.\frac&#123;\partial f(x,y)&#125;&#123;\partial x&#125;\right|_&#123;x=0&#125;$<br></code></pre></td></tr></table></figure>
+<p>$\left.\frac{\partial f(x,y)}{\partial x}\right|_{x&#x3D;0}$</p>
+<h2 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h2><p>如果是简单的根式，可以写成斜分式的形式,如<code>3/8</code>:,在latex中分式一般使用<code>\frac&#123;分子&#125;&#123;分母&#125;</code>来书写。不过这种分式的大小在行间公式是正常显示大小，而在行内被极度压缩了。amsmath提供了方便的命令<code>\dfrac&#123;分子&#125;&#123;分母&#125;</code>和<code>\tfrac&#123;分子&#125;&#123;分母&#125;</code>,令用户能够在行内使用正常大小的行内公式。<br>显示效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">斜分式: $3/8 \qquad $,压缩分式：$\frac&#123;3&#125;&#123;8&#125;\qquad$ ,显示正常大小：$\dfrac&#123;3&#125;&#123;8&#125;$<br></code></pre></td></tr></table></figure>
+<p>斜分式: $3&#x2F;8 \qquad $,压缩分式：$\frac{3}{8}\qquad$ ,显示正常大小：$\dfrac{3}{8}$</p>
+<h2 id="根式"><a href="#根式" class="headerlink" title="根式"></a>根式</h2><p>一般的根式使用<code>\sqrt&#123;…&#125;</code>表示，表示n此方根式写成<code>\sqrt[n]&#123;…&#125;</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\sqrt&#123;x&#125; \Leftrightarrow x^&#123;1/2&#125;<br>\quad \sqrt[3]&#123;2&#125;<br>\quad \sqrt&#123;x^&#123;2&#125;+\sqrt&#123;y&#125;&#125;$<br>$<br></code></pre></td></tr></table></figure>
+<p>显示效果:<br>$\sqrt{x} \Leftrightarrow x^{1&#x2F;2}<br>\quad \sqrt[3]{2}<br>\quad \sqrt{x^{2}+\sqrt{y}}<br>$<br>特殊的分式形式，如二项式结构，由amsmath宏包的\binom命令生成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Pascal&#x27;s rule is<br>$$<br>\binom&#123;n&#125;&#123;k&#125;=\binom&#123;n-1&#125;&#123;k&#125;+\binom&#123;n-1&#125;&#123;k-1&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>Pascal’s rule is<br>$$<br>\binom{n}{k}&#x3D;\binom{n-1}{k}+\binom{n-1}{k-1}<br>$$</p>
+<h2 id="无穷大符号"><a href="#无穷大符号" class="headerlink" title="无穷大符号"></a>无穷大符号</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\infty$<br></code></pre></td></tr></table></figure>
+<p>$\infty$</p>
+<p>这个是个缩写，原单词(infinity)读音:<input type="button" onclick="sst('infinity')" value="播放" /></p>
+<script>
+    function sst(text) {
+        var audio = document.createElement("audio");
+        audio.src = "https://fanyi.baidu.com/gettts?lan=en&text=" + text + "&spd=5&source=web";
+        document.body.appendChild(audio);
+        audio.loop = false;
+        audio.play();
+        audio.addEventListener('ended', function () {
+            document.body.removeChild(audio);
+        }, false);
+    }
+</script>
+
+<h2 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h2><table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">符号</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">水平省略号</td>
+<td align="left">\dots</td>
+<td align="left">$\dots$</td>
+</tr>
+<tr>
+<td align="left">水平省略号</td>
+<td align="left">\cdots</td>
+<td align="left">$\cdots$</td>
+</tr>
+<tr>
+<td align="left">竖直省略号</td>
+<td align="left">\vdots</td>
+<td align="left">$\vdots$</td>
+</tr>
+<tr>
+<td align="left">斜排省略号</td>
+<td align="left">\ddots</td>
+<td align="left">$\ddots$</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$a_1,a_2,\dots,a_n$<br>$a_1,a_2,\cdots,a_n$<br></code></pre></td></tr></table></figure>
+<p>显示效果如下：<br>$a_1,a_2,\dots,a_n$<br>$a_1,a_2,\cdots,a_n$</p>
+<p><code>\cdots</code>和<code>\dots</code>是完全等效的，它们既能用在公式中，也用在文本里作为<strong>省略号</strong>。<br>除此之外，在矩阵中可能会用到竖排的$\vdots$(\vdots)和斜排的$\ddots$(\ddots)</p>
+<h2 id="关系符"><a href="#关系符" class="headerlink" title="关系符"></a>关系符</h2><p>LaTex常见的关系符号除了可以直接输入的&#x3D;,&gt;,&lt;，其他符号用命令输入，常用的有不等于: $\ne$ (\ne),大于等于号: $\ge$ (\ge)和小于等于号:$\le$  (\le),约等于号: $\approx$ (\approx),等价 $\equiv$ (\equiv),正比: $\propto$ (\propto),相似: $\sim$ (\sim)等等。<br>LaTex还提供了自定义二元关系符的命令<code>\stackrel</code>,用于将一个符号叠加在原有的二元关系符之上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>f_n(x) \stackrel&#123;*&#125;&#123;\approx&#125; 1<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>f_n(x) \stackrel{*}{\approx} 1<br>$$</p>
+<h2 id="巨算子"><a href="#巨算子" class="headerlink" title="巨算子"></a>巨算子</h2><p>积分号,求和号等符号称为**<a target="_blank" rel="noopener external nofollow noreferrer" href="http://texdoc.net/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf#54">巨算子</a>**。</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">符号</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">积分号</td>
+<td align="left">\int</td>
+<td align="left">$\int$</td>
+</tr>
+<tr>
+<td align="left">求和号</td>
+<td align="left">\sum</td>
+<td align="left">$\sum$</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\sum_&#123;i=1&#125;^n \quad<br>\int_0^&#123;\frac&#123;\pi&#125;&#123;2&#125;&#125; \quad<br>\oint_0^&#123;\frac&#123;\pi&#125;&#123;2&#125;&#125; \quad<br>\prod_\epsilon <br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\sum_{i&#x3D;1}^n \quad<br>\int_0^{\frac{\pi}{2}} \quad<br>\oint_0^{\frac{\pi}{2}} \quad<br>\prod_\epsilon<br>$$</p>
+<p>巨算符的上下标用作其<strong>上下限</strong>。行间公式中，积分号默认将上下限放在右上角和右下角，求和号默认在上下方；行内公式一律默认在右上角和右下角。<strong>可以在巨算符后使用\limits手动令上下限显示在上下方</strong>，\nolimits则相反,即不显示在上下方，也就是显示在右上角，右下角。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\sum\nolimits_&#123;i=1&#125;^n \quad<br>\int\limits_0^&#123;\frac&#123;\pi&#125;&#123;2&#125;&#125; \quad<br>\prod\nolimits_\epsilon <br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\sum\nolimits_{i&#x3D;1}^n \quad<br>\int\limits_0^{\frac{\pi}{2}} \quad<br>\prod\nolimits_\epsilon<br>$$</p>
+<h2 id="极限符号"><a href="#极限符号" class="headerlink" title="极限符号"></a>极限符号</h2><h3 id="行间公式极限"><a href="#行间公式极限" class="headerlink" title="行间公式极限"></a>行间公式极限</h3><p>行间公式下标默认放在符号的下方，所以直接再极限符号<code>\lim</code>下方写上符号极限范围即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$&#123;\lim_&#123;x \to +\infty&#125;&#125;$$<br></code></pre></td></tr></table></figure>
+<p>$${\lim_{x \to +\infty}}$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$&#123;\lim_&#123;x \to -\infty&#125;&#125;$$<br></code></pre></td></tr></table></figure>
+<p>$${\lim_{x \to -\infty}}$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$&#123;\lim_&#123;x \to 0&#125;&#125;$$<br></code></pre></td></tr></table></figure>
+<p>$${\lim_{x \to 0}}$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$&#123;\lim_&#123;x \to 0^+&#125;&#125;$$<br></code></pre></td></tr></table></figure>
+<p>$${\lim_{x \to 0^+}}$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$&#123; \lim_&#123;x \to 0&#125; \frac&#123;3x^2 +7x^3&#125;&#123;x^2 +5x^4&#125; = 3&#125;$$<br></code></pre></td></tr></table></figure>
+<p>$${ \lim_{x \to 0} \frac{3x^2 +7x^3}{x^2 +5x^4} &#x3D; 3}$$</p>
+<h3 id="行间极限"><a href="#行间极限" class="headerlink" title="行间极限"></a>行间极限</h3><p>行间的下标默认放在右下角，可以使用<code>\limits_&#123;下标&#125;</code>把下标放到符号下方即可。实例如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$&#123;\lim \limits_&#123;x \to -\infty&#125;&#125;$<br></code></pre></td></tr></table></figure>
+<p>行间极限符号:${\lim \limits_{x \to -\infty}}$</p>
+<h1 id="集合相关符号"><a href="#集合相关符号" class="headerlink" title="集合相关符号"></a>集合相关符号</h1><h2 id="元素与集合的关系"><a href="#元素与集合的关系" class="headerlink" title="元素与集合的关系"></a>元素与集合的关系</h2><table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">符号</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">属于</td>
+<td align="left">\in</td>
+<td align="left">$\in$</td>
+</tr>
+<tr>
+<td align="left">不属于</td>
+<td align="left">\notin</td>
+<td align="left">$\notin$</td>
+</tr>
+</tbody></table>
+<h2 id="集合与集合相关的关系"><a href="#集合与集合相关的关系" class="headerlink" title="集合与集合相关的关系"></a>集合与集合相关的关系</h2><table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">符号</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">空集</td>
+<td align="left">\emptyset</td>
+<td align="left">$\emptyset$</td>
+</tr>
+<tr>
+<td align="left">子集</td>
+<td align="left">\subset</td>
+<td align="left">$\subset$</td>
+</tr>
+<tr>
+<td align="left">真子集</td>
+<td align="left">\subseteq</td>
+<td align="left">$\subseteq$</td>
+</tr>
+<tr>
+<td align="left">交集</td>
+<td align="left">\bigcap和\cap</td>
+<td align="left">$\bigcap$和$\cap$</td>
+</tr>
+<tr>
+<td align="left">并集</td>
+<td align="left">\bigcup和\cup</td>
+<td align="left">$\bigcup$和$\cup$</td>
+</tr>
+</tbody></table>
+<h1 id="数学重音和上下括号"><a href="#数学重音和上下括号" class="headerlink" title="数学重音和上下括号"></a>数学重音和上下括号</h1><p>数学符号可以像文字一样<strong>加重音</strong>，比如对时间求导的符号$\dot{r}$(\dot{r})、$ddot{r}$(ddot{r})、表示向量的箭头$vec{r}$(vec{r})、表示欧式空间单位向量的$\hat{\mathbf{e}}$(\hat{\mathbf{e}})等，详见表<a target="_blank" rel="noopener external nofollow noreferrer" href="http://texdoc.net/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf#e1">4.9</a>。使用时要注意重音符号的作用区域，<strong>一般应当对某个符号而不是不符号加下表使用重音：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\bar&#123;x_0&#125; \quad \bar&#123;x&#125;_0$\\[5pt]<br>$\vec&#123;x_0&#125; \quad \vec&#123;x&#125;_0$\\[5pt]<br>$\hat&#123;\mathbf&#123;e&#125;_x&#125; \quad<br>\hat&#123;\mathbf&#123;e&#125;&#125;_x$<br></code></pre></td></tr></table></figure>
+<p>$\bar{x_0} \quad \bar{x}_0$<br>$\vec{x_0} \quad \vec{x}_0$<br>$\hat{\mathbf{e}_x} \quad<br>\hat{\mathbf{e}}_x$</p>
+<p>LATEX也能为多个字符加重音，包括直接画线的<code>\overline</code>和<code>\underline</code>命令（可叠加使用）、宽重音符号<code>\widehat</code>、表示向量的箭头<code>\overrightarrow</code>等。后两者详见表4.9和4.11等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$0.\overline&#123;3&#125; =<br>\underline&#123;\underline&#123;1/3&#125;&#125;$<br>$\hat&#123;XY&#125; \qquad \widehat&#123;XY&#125;$<br>$\vec&#123;AB&#125; \qquad<br>\overrightarrow&#123;AB&#125;$<br></code></pre></td></tr></table></figure>
+<p>$0.\overline{3} &#x3D;<br>\underline{\underline{1&#x2F;3}}$<br>$\hat{XY} \qquad \widehat{XY}$<br>$\vec{AB} \qquad<br>\overrightarrow{AB}$</p>
+<p>\overbrace和\underbrace命令用来生成上&#x2F;下括号，各自可带一个上&#x2F;下标公式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\underbrace&#123;\overbrace&#123;a+b+c&#125;^6<br>\cdot \overbrace&#123;d+e+f&#125;^7&#125;<br>_\text&#123;meaning of life&#125; = 42$<br></code></pre></td></tr></table></figure>
+<p>$\underbrace{\overbrace{a+b+c}^6<br>\cdot \overbrace{d+e+f}^7}<br>_\text{meaning of life} &#x3D; 42$</p>
+<h1 id="多行公式"><a href="#多行公式" class="headerlink" title="多行公式"></a>多行公式</h1><h2 id="长公式折行"><a href="#长公式折行" class="headerlink" title="长公式折行"></a>长公式折行</h2><p>通常来讲应当避免写出超过一行而需要折行的长公式。如果一定要折行的话，<strong>优先在等号之前折行，其次在加号、减号之前，再次在乘号、除号之前。其它位置应当避免折行</strong>。<br>amsmath宏包的multline环境提供了书写折行长公式的方便环境。它允许用<code>\\\\</code>(markdown中显示:\\)折行，<strong>将公式编号放在最后一行</strong>。多行公式的<strong>首行左对齐</strong>，<strong>末行右对齐</strong>，<strong>其余行居中</strong>。<br>因为markdown中<code>\</code>是转义符，所以<code>\\</code>才表示一个\,所以这里要写四个<code>\</code>(<code>\\\\</code>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;multline&#125;a + b + c + d + e + f+ g + h + i \\\\<br>= j + k + l + m + n\\\\<br>= o + p + q + r + s\\\\<br>= t + u + v + x + z\end&#123;multline&#125;<br>$$<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>\begin{multline}a + b + c + d + e + f+ g + h + i \\<br>&#x3D; j + k + l + m + n\\<br>&#x3D; o + p + q + r + s\\<br>&#x3D; t + u + v + x + z\end{multline}<br>$$</p>
+<p>与表格不同的是，公式的最后一行不写<code>\\</code>，如果写了，反倒会产生一个多余的空行。类似<code>equation\*</code>，<code>multline\*</code>环境排版不带编号的折行长公式。</p>
+<p><strong>需要注意的是，只是在Hexo的默认Markdown渲染器中才需要使用四个反斜杠</strong><br><strong>为了通用，本文下面的演示代码都使用两个反斜杠</strong></p>
+<h2 id="多行公式-1"><a href="#多行公式-1" class="headerlink" title="多行公式"></a>多行公式</h2><p>更多的情况是，我们需要罗列一系列公式，并令其按照等号对齐。读者可能阅读过其它手册或者资料，知道LATEX提供了eqnarray环境。它按照等号左边——等号——等号右边呈三列对齐，但等号周围的空隙过大，加上公式编号等一些bug，目前已不推荐使用</p>
+<p><strong>目前最常用的是align环境，它将公式用&amp;隔为两部分并对齐。分隔符通常放在等号左边：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;align&#125;<br>a &amp; = b + c \\<br>&amp; = d + e<br>\end&#123;align&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{align}<br>a &amp; &#x3D; b + c \\<br>&amp; &#x3D; d + e<br>\end{align}<br>$$</p>
+<p><code>align</code>环境会给每行公式都编号。我们仍然可以用<code>\notag</code>去掉某行的编号。在以下的例子，为了对齐加号，我们将分隔符放在等号右边，这时需要给等号后添加一对括号{}以产生正常的间距：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;align&#125;<br>a =&#123;&#125; &amp; b + c \\<br>=&#123;&#125; &amp; d + e + f + g + h + i+ j + k + l \notag \\<br>&amp; + m + n + o \\<br>=&#123;&#125; &amp; p + q + r + s<br>\end&#123;align&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{align}<br>a &#x3D;{} &amp; b + c \\<br>&#x3D;{} &amp; d + e + f + g + h + i+ j + k + l \notag \\<br>&amp; + m + n + o \\<br>&#x3D;{} &amp; p + q + r + s<br>\end{align}<br>$$</p>
+<p>align还能够对齐多组公式，除等号前的&amp;之外，公式之间也用&amp;分隔：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;align&#125;<br>a &amp;=1  &amp;  b &amp;=2   &amp; c &amp;=3   \\<br>d &amp;=-1 &amp;  e &amp;=-2  &amp; f &amp;=-5<br>\end&#123;align&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{align}<br>a &amp;&#x3D;1  &amp;  b &amp;&#x3D;2   &amp; c &amp;&#x3D;3   \\<br>d &amp;&#x3D;-1 &amp;  e &amp;&#x3D;-2  &amp; f &amp;&#x3D;-5<br>\end{align}<br>$$</p>
+<p>如果我们不需要按等号对齐，只需罗列数个公式，gather将是一个很好用的环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;gather&#125;<br>a = b + c \\<br>d = e + f + g \\<br>h + i = j + k \notag \\<br>l + m = n<br>\end&#123;gather&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{gather}<br>a &#x3D; b + c \\<br>d &#x3D; e + f + g \\<br>h + i &#x3D; j + k \notag \\<br>l + m &#x3D; n<br>\end{gather}<br>$$</p>
+<p>align和gather有对应的不带编号的版本<code>align\*</code>和<code>gather\*</code>。</p>
+<h3 id="公用编号的多行公式"><a href="#公用编号的多行公式" class="headerlink" title="公用编号的多行公式"></a>公用编号的多行公式</h3><p>另一个常见的需求是将多个公式组在一起公用一个编号，编号位于公式的居中位置。为此，amsmath宏包提供了诸如aligned、gathered等环境，与equation环境套用。以-ed结尾的环境用法与前一节不以<code>-ed</code>结尾的环境用法一一对应。我们仅以aligned举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;equation&#125;<br>\begin&#123;aligned&#125;<br>a &amp;= b + c \\<br>d &amp;= e + f + g \\<br>h + i &amp;= j + k \\<br>l + m &amp;= n<br>\end&#123;aligned&#125;<br>\end&#123;equation&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>a &amp;&#x3D; b + c \\<br>d &amp;&#x3D; e + f + g \\<br>h + i &amp;&#x3D; j + k \\<br>l + m &amp;&#x3D; n<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>split环境和aligned环境用法类似，也用于和equation环境套用，区别是split只能将每行的一个公式分两栏，aligned允许每行多个公式多栏。</p>
+<h2 id="公式中的间距"><a href="#公式中的间距" class="headerlink" title="公式中的间距"></a>公式中的间距</h2><p>前文提到过，绝大部分时候，数学公式中各元素的间距是根据符号类型自动生成的，需要我们手动调整的情况极少。我们已经认识了两个生成间距的命令<code>\quad</code>和<code>\qquad</code>。在公式中我们还可能用到的间距包括<code>\,</code>、<code>\:</code>、<code>\;</code>以及负间距<code>\!</code>，其中<code>\quad</code>、<code>\qquad</code>和<code>\,</code>在文本和数学环境中可用，后三个命令只用于数学环境。文本中的<code>\␣</code>也能使用在数学公式中。<br>此处应该有图片，但是我的图片好像用不了了</p>
+<p>一个常见的用途是修正积分的被积函数$f(x)$和微元$dx$之间的距离。注意微元里的$d$用的是直立体：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\int_a^b f(x)\mathrm&#123;d&#125;x<br>\qquad<br>\int_a^b f(x)\,\mathrm&#123;d&#125;x<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\int_a^b f(x)\mathrm{d}x<br>\qquad<br>\int_a^b f(x),\mathrm{d}x<br>$$</p>
+<p>另一个用途是生成多重积分号。如果我们直接连写两个\int，之间的间距将会过宽，此时可以使用负间距<code>\\!</code>修正之。不过amsmath提供了更方便的多重积分号，如**二重积分<code>\iint</code><strong>、</strong>三重积分<code>\iiint</code>**等。</p>
+<h1 id="数组和矩阵"><a href="#数组和矩阵" class="headerlink" title="数组和矩阵"></a>数组和矩阵</h1><p>为了排版二维数组，LATEX提供了array环境，用法与tabular环境极为类似，也需要定义列格式，并用<code>\\</code>换行。数组可作为一个公式块，在外套用<code>\left</code>、<code>\right</code>等定界符:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\mathbf&#123;X&#125; = \left(<br>\begin&#123;array&#125;&#123;cccc&#125;<br>x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots &amp; x_&#123;1n&#125;\\<br>x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots &amp; x_&#123;2n&#125;\\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>x_&#123;n1&#125; &amp; x_&#123;n2&#125; &amp; \ldots &amp; x_&#123;nn&#125;\\<br>\end&#123;array&#125;<br>\right) <br>$$<br></code></pre></td></tr></table></figure>
+<p>还是因为是在markdown文档中<code>\</code>需要转义，所以两个斜杠:<code>\\</code>,在markdown文档中需要使用四个斜杠:<code>\\\\</code>来表示<br>$$<br>\mathbf{X} &#x3D; \left(<br>\begin{array}{cccc}<br>x_{11} &amp; x_{12} &amp; \ldots &amp; x_{1n}\\<br>x_{21} &amp; x_{22} &amp; \ldots &amp; x_{2n}\\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>x_{n1} &amp; x_{n2} &amp; \ldots &amp; x_{nn}\\<br>\end{array}<br>\right)<br>$$</p>
+<p>值得注意的是，上一节末尾介绍的aligned等环境也可以用定界符包裹。我们还可以利用空的定界符排版出这样的效果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>|x| = \left\&#123;<br>\begin&#123;array&#125;&#123;rl&#125;<br>-x &amp; \text&#123;if &#125; x &lt; 0,\\<br>0 &amp; \text&#123;if &#125; x = 0,\\<br>x &amp; \text&#123;if &#125; x &gt; 0.<br>\end&#123;array&#125; \right. <br>$$<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>|x| &#x3D; \left \{<br>\begin{array}{rl}<br>-x &amp; \text{if } x &lt; 0,\\<br>0 &amp; \text{if } x &#x3D; 0,\\<br>x &amp; \text{if } x &gt; 0.<br>\end{array} \right.<br>$$</p>
+<p>我不知道这里为什么显示不正常，可以能不支持把，下面的例子同样也可额完成，衣柜对于分段函数可以写下面的这种形式。</p>
+<h1 id="分段函数"><a href="#分段函数" class="headerlink" title="分段函数"></a>分段函数</h1><p>不过上述例子可以用amsmath提供的cases环境更轻松地完成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$ |x| =<br>\begin&#123;cases&#125;<br>-x &amp; \text&#123;if &#125; x &lt; 0,\\<br>0 &amp; \text&#123;if &#125; x = 0,\\<br>x &amp; \text&#123;if &#125; x &gt; 0.<br>\end&#123;cases&#125; $$<br></code></pre></td></tr></table></figure>
+<p>$$ |x| &#x3D;<br>\begin{cases}<br>-x &amp; \text{if } x &lt; 0,\\<br>0 &amp; \text{if } x &#x3D; 0,\\<br>x &amp; \text{if } x &gt; 0.<br>\end{cases} $$</p>
+<p>我们当然也可以用array环境排版各种矩阵。amsmath宏包还直接提供了多种排版矩阵的环境，包括不带定界符的matrix，以及带各种定界符的矩阵pmatrix（<code>(</code>）、bmatrix（<code>[</code>）、Bmatrix（<code>&#123;</code>）、vmatrix（<code>|</code>）、Vmatrix（<code>||</code>）。使用这些环境时，无需给定列格式5：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;matrix&#125;<br>1 &amp; 2 \\\\ 3 &amp; 4<br>\end&#123;matrix&#125; \qquad<br>\begin&#123;bmatrix&#125;<br>x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots &amp; x_&#123;1n&#125;\\<br>x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots &amp; x_&#123;2n&#125;\\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>x_&#123;n1&#125; &amp; x_&#123;n2&#125; &amp; \ldots &amp; x_&#123;nn&#125;\\<br>\end&#123;bmatrix&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\begin{matrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{matrix} \qquad<br>\begin{bmatrix}<br>x_{11} &amp; x_{12} &amp; \ldots &amp; x_{1n}\\<br>x_{21} &amp; x_{22} &amp; \ldots &amp; x_{2n}\\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\<br>x_{n1} &amp; x_{n2} &amp; \ldots &amp; x_{nn}\\<br>\end{bmatrix}<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\begin&#123;pmatrix&#125;<br>1 &amp; 2 \\ 3 &amp; 4<br>\end&#123;pmatrix&#125;<br>\qquad<br>\begin&#123;bmatrix&#125;<br>1 &amp; 2 \\ 3 &amp; 4<br>\end&#123;bmatrix&#125;<br>\qquad<br>\begin&#123;Bmatrix&#125;<br>1 &amp; 2 \\ 3 &amp; 4<br>\end&#123;Bmatrix&#125;<br>\qquad<br>\begin&#123;vmatrix&#125;<br>1 &amp; 2 \\ 3 &amp; 4<br>\end&#123;vmatrix&#125;<br>\qquad<br>\begin&#123;Vmatrix&#125;<br>1 &amp; 2 \\ 3 &amp; 4<br>\end&#123;Vmatrix&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>显示效果：<br>$$<br>\begin{pmatrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{pmatrix}<br>\qquad<br>\begin{bmatrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{bmatrix}<br>\qquad<br>\begin{Bmatrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{Bmatrix}<br>\qquad<br>\begin{vmatrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{vmatrix}<br>\qquad<br>\begin{Vmatrix}<br>1 &amp; 2 \\ 3 &amp; 4<br>\end{Vmatrix}<br>$$</p>
+<p>在矩阵中的元素里排版分式时，一来要用到<code>\dfrac</code>等命令，二来行与行之间有可能紧贴着，这时要用到3.6.6小节的方法来调节间距：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>\mathbf&#123;H&#125;=<br>\begin&#123;bmatrix&#125;<br>\dfrac&#123;\partial^2 f&#125;&#123;\partial x^2&#125; &amp;<br>\dfrac&#123;\partial^2 f&#125;<br>&#123;\partial x \partial y&#125; \\<br>\dfrac&#123;\partial^2 f&#125;<br>&#123;\partial x \partial y&#125; &amp;<br>\dfrac&#123;\partial^2 f&#125;&#123;\partial y^2&#125;<br>\end&#123;bmatrix&#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>\mathbf{H}&#x3D;<br>\begin{bmatrix}<br>\dfrac{\partial^2 f}{\partial x^2} &amp;<br>\dfrac{\partial^2 f}<br>{\partial x \partial y} \\<br>\dfrac{\partial^2 f}<br>{\partial x \partial y} &amp;<br>\dfrac{\partial^2 f}{\partial y^2}<br>\end{bmatrix}<br>$$</p>
+<h1 id="数学符号的字体控制"><a href="#数学符号的字体控制" class="headerlink" title="数学符号的字体控制"></a>数学符号的字体控制</h1><h2 id="数学字母字体"><a href="#数学字母字体" class="headerlink" title="数学字母字体"></a>数学字母字体</h2><p>LATEX允许一部分数学符号切换字体，主要是拉丁字母、数字等等。表4.2给出了切换字体的命令。某一些命令需要字体宏包的支持。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$\mathcal&#123;R&#125; \quad \mathfrak&#123;R&#125;<br>\quad \mathbb&#123;R&#125;$<br>$$\mathcal&#123;L&#125;<br>= -\frac&#123;1&#125;&#123;4&#125;F_&#123;\mu\nu&#125;F^&#123;\mu\nu&#125;$$<br>$\mathfrak&#123;su&#125;(2)$ and<br>$\mathfrak&#123;so&#125;(3)$ Lie algebr<br></code></pre></td></tr></table></figure>
+<p>$\mathcal{R} \quad \mathfrak{R}<br>\quad \mathbb{R}$<br>$$\mathcal{L}<br>&#x3D; -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}$$<br>$\mathfrak{su}(2)$ and<br>$\mathfrak{so}(3)$ Lie algebr</p>
+<h2 id="数学符号的尺寸"><a href="#数学符号的尺寸" class="headerlink" title="数学符号的尺寸"></a>数学符号的尺寸</h2><p>数学符号按照符号排版的位置规定尺寸，从大到小包括行间公式尺寸、行内公式尺寸、上下标尺寸、次级上下标尺寸。除了字号有别之外，行间和行内公式尺寸下的巨算符也使用不一样的大小。LATEX为每个数学尺寸指定了一个切换的命令，见4.3。<br>例如行间公式的分式内，分子分母使用行内公式尺寸，巨算符采用行内尺寸的形式。对比一下分子分母使用\displaystyle命令与否的区别：<br>这里有一个表格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$<br>P = \frac<br>&#123;\sum_&#123;i=1&#125;^n (x_i- x)(y_i- y)&#125;<br>&#123;\displaystyle \left[<br>\sum_&#123;i=1&#125;^n (x_i-x)^2<br>\sum_&#123;i=1&#125;^n (y_i-y)^2<br>\right]^&#123;1/2&#125; &#125;<br>$$<br></code></pre></td></tr></table></figure>
+<p>$$<br>P &#x3D; \frac<br>{\sum_{i&#x3D;1}^n (x_i- x)(y_i- y)}<br>{\displaystyle \left[<br>\sum_{i&#x3D;1}^n (x_i-x)^2<br>\sum_{i&#x3D;1}^n (y_i-y)^2<br>\right]^{1&#x2F;2} }<br>$$</p>
+<h1 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h1><p>后面把这些符号表粘贴进来就行了，后面的那些不需要再看了，保留官方文档的连接，现在只要留个印象。</p>
+<h2 id="文本-x2F-数学模式通用符号"><a href="#文本-x2F-数学模式通用符号" class="headerlink" title="文本&#x2F;数学模式通用符号"></a>文本&#x2F;数学模式通用符号</h2><table>
+<thead>
+<tr>
+<th align="left">文本&#x2F;数学模式通用符号</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\{$</td>
+<td align="left">{</td>
+</tr>
+<tr>
+<td align="left">$\}$</td>
+<td align="left">}</td>
+</tr>
+<tr>
+<td align="left">$\$$</td>
+<td align="left">$</td>
+</tr>
+<tr>
+<td align="left">$\%$</td>
+<td align="left">%</td>
+</tr>
+<tr>
+<td align="left">$\dag$</td>
+<td align="left">\dag</td>
+</tr>
+<tr>
+<td align="left">$\S$</td>
+<td align="left">\S</td>
+</tr>
+<tr>
+<td align="left">$\copyright$</td>
+<td align="left">\copyright</td>
+</tr>
+<tr>
+<td align="left">$\dots$</td>
+<td align="left">\dots</td>
+</tr>
+<tr>
+<td align="left">$\ddag$</td>
+<td align="left">\ddag</td>
+</tr>
+<tr>
+<td align="left">$\P$</td>
+<td align="left">\P</td>
+</tr>
+<tr>
+<td align="left">$\pounds$</td>
+<td align="left">\pounds</td>
+</tr>
+</tbody></table>
+<h2 id="二元关系符"><a href="#二元关系符" class="headerlink" title="二元关系符"></a>二元关系符</h2><p>有的二元关系符都可以加\not前缀得到相反意义的关系符，例如\not&#x3D;就得到不等号（同\ne）。</p>
+<table>
+<thead>
+<tr>
+<th align="right">效果</th>
+<th align="left">命令</th>
+<th align="right">效果</th>
+<th align="left">命令</th>
+<th align="right">效果</th>
+<th align="left">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">$&lt;$</td>
+<td align="left">&lt;</td>
+<td align="right">$&gt;$</td>
+<td align="left">&gt;</td>
+<td align="right">$&#x3D;$</td>
+<td align="left">&#x3D;</td>
+</tr>
+<tr>
+<td align="right">$\leq$</td>
+<td align="left">\leq or \le</td>
+<td align="right">$\ge$</td>
+<td align="left">\geq or \ge</td>
+<td align="right">$\equiv$</td>
+<td align="left">\equiv</td>
+</tr>
+<tr>
+<td align="right">$\ll$</td>
+<td align="left">\ll</td>
+<td align="right">$\gg$</td>
+<td align="left">\gg</td>
+<td align="right">$\doteq$</td>
+<td align="left">\doteq</td>
+</tr>
+<tr>
+<td align="right">$\prec$</td>
+<td align="left">\prec</td>
+<td align="right">$\succ$</td>
+<td align="left">\succ</td>
+<td align="right">$\sim$</td>
+<td align="left">\sim</td>
+</tr>
+<tr>
+<td align="right">$\preceq$</td>
+<td align="left">\preceq</td>
+<td align="right">$\succeq$</td>
+<td align="left">\succeq</td>
+<td align="right">$\simeq$</td>
+<td align="left">\simeq</td>
+</tr>
+<tr>
+<td align="right">$\subset$</td>
+<td align="left">\subset</td>
+<td align="right">$\supset$</td>
+<td align="left">\supset</td>
+<td align="right">$\approx$</td>
+<td align="left">\approx</td>
+</tr>
+<tr>
+<td align="right">$\subseteq$</td>
+<td align="left">\subseteq</td>
+<td align="right">$\supseteq$</td>
+<td align="left">\supseteq</td>
+<td align="right">$\cong$</td>
+<td align="left">\cong</td>
+</tr>
+<tr>
+<td align="right">$\sqsubset$</td>
+<td align="left">\sqsubset</td>
+<td align="right">$\sqsupset$</td>
+<td align="left">\sqsupset</td>
+<td align="right">$\Join$</td>
+<td align="left">\Join</td>
+</tr>
+<tr>
+<td align="right">$\sqsubseteq$</td>
+<td align="left">\sqsubseteq</td>
+<td align="right">$\sqsupseteq$</td>
+<td align="left">\sqsupseteq</td>
+<td align="right">$\bowtie$</td>
+<td align="left">\bowtie</td>
+</tr>
+<tr>
+<td align="right">$\in$</td>
+<td align="left">\in</td>
+<td align="right">$\ni$</td>
+<td align="left">\ni or \owns</td>
+<td align="right">$\propto$</td>
+<td align="left">\propto</td>
+</tr>
+<tr>
+<td align="right">$\vdash$</td>
+<td align="left">\vdash</td>
+<td align="right">$\dashv$</td>
+<td align="left">\dashv</td>
+<td align="right">$\models$</td>
+<td align="left">\models</td>
+</tr>
+<tr>
+<td align="right">$\mid$</td>
+<td align="left">\mid</td>
+<td align="right">$\parallel$</td>
+<td align="left">\parallel</td>
+<td align="right">$\perp$</td>
+<td align="left">\perp</td>
+</tr>
+<tr>
+<td align="right">$\smile$</td>
+<td align="left">\smile</td>
+<td align="right">$\frown$</td>
+<td align="left">\frown</td>
+<td align="right">$\asymp$</td>
+<td align="left">\asymp</td>
+</tr>
+<tr>
+<td align="right">$:$</td>
+<td align="left">:</td>
+<td align="right">$\notin$</td>
+<td align="left">\notin</td>
+<td align="right">$\ne$</td>
+<td align="left">\neq or \ne</td>
+</tr>
+</tbody></table>
+<h2 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符"></a>二元运算符</h2><p>LaTex中的算符大多数是二元算符，除了直接用键盘可以输入的+，-，*，&#x2F;外，其他符号用命令输入，常用的符号有乘号：$\times$(\times),除号: $\div$ (\div),点乘: $\cdot$ (\cdot),加减号 $\pm$ (\pm) 或者 $\mp$ (\mp)等等。更多符号命令可参考表4.7以及表4.17 </p>
+<h3 id="图片内容"><a href="#图片内容" class="headerlink" title="图片内容"></a>图片内容</h3><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/tables/eryuanyunsuan.png"></p>
+<h3 id="渲染效果"><a href="#渲染效果" class="headerlink" title="渲染效果"></a>渲染效果</h3><table>
+<thead>
+<tr>
+<th align="left">latex符号</th>
+<th align="left">效果</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">+</td>
+<td align="left">$+$</td>
+<td align="left">加号</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">$-$</td>
+<td align="left">减号</td>
+</tr>
+<tr>
+<td align="left">\pm</td>
+<td align="left">$\pm$</td>
+<td align="left">正负号</td>
+</tr>
+<tr>
+<td align="left">\mp</td>
+<td align="left">$\mp$</td>
+<td align="left">正负号</td>
+</tr>
+<tr>
+<td align="left">\cdot</td>
+<td align="left">$\cdot$</td>
+<td align="left">点乘</td>
+</tr>
+<tr>
+<td align="left">\times</td>
+<td align="left">$\times$</td>
+<td align="left">乘法</td>
+</tr>
+<tr>
+<td align="left">\div</td>
+<td align="left">$\div$</td>
+<td align="left">除法</td>
+</tr>
+<tr>
+<td align="left">\cup</td>
+<td align="left">$\cup$</td>
+<td align="left">并</td>
+</tr>
+<tr>
+<td align="left">\cap</td>
+<td align="left">$\cap$</td>
+<td align="left">交集</td>
+</tr>
+<tr>
+<td align="left">\sqcup</td>
+<td align="left">$\sqcup$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\sqcap</td>
+<td align="left">$\sqcap$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\vee,或者\lor</td>
+<td align="left">$\vee$,$\lor$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\wedgw,或者\land</td>
+<td align="left">$\wedge$,$\land$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\oplus</td>
+<td align="left">$\oplus$</td>
+<td align="left">异或运算</td>
+</tr>
+<tr>
+<td align="left">\ominus</td>
+<td align="left">$\ominus$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\odot</td>
+<td align="left">$\odot$</td>
+<td align="left">异或运算</td>
+</tr>
+<tr>
+<td align="left">\oslash</td>
+<td align="left">$\oslash$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\otimes</td>
+<td align="left">$\times$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\bigtriangleup</td>
+<td align="left">$\bigtriangleup$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\bigtriangledown</td>
+<td align="left">$\bigtriangledown$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\triangleleft</td>
+<td align="left">$\triangleleft$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\triangleright</td>
+<td align="left">$\triangleright$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\star</td>
+<td align="left">$\star$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\ast</td>
+<td align="left">$\ast$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\circ</td>
+<td align="left">$\circ$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\bigcirc</td>
+<td align="left">$\bigcirc$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\bullet</td>
+<td align="left">$\bullet$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\diamond</td>
+<td align="left">$\diamond$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\uplus</td>
+<td align="left">$\uplus$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\amalg</td>
+<td align="left">$\amalg$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\dagger</td>
+<td align="left">$\dagger$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\ddagger</td>
+<td align="left">$\ddagger$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+<tr>
+<td align="left">\wr</td>
+<td align="left">$\wr$</td>
+<td align="left">不懂叫啥</td>
+</tr>
+</tbody></table>
+<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p>latex希腊字母符号代码就是<code>斜杠+其英文名称</code>，如<code>$\alpha$</code>:$\alpha$,<code>$\beta$</code>:$\beta$…等。<br>大写的latex希腊字母就是<code>斜杠+首字母大写的英文名称</code>，如<code>$\Gamma$</code>:$\Gamma$,<code>$\Delta$</code>:$\Delta$…。<br>\Alpha，\Beta等希腊字母符号不存在，因为它们和拉丁字母A,B等一模一样；小写字母里也不存在\omicron，可以直接用字母<code>o</code>代替，省的打那么长的代码。</p>
+<h3 id="希腊字母顺序表"><a href="#希腊字母顺序表" class="headerlink" title="希腊字母顺序表"></a>希腊字母顺序表</h3><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">大写</th>
+<th align="left">小写</th>
+<th align="left">英文</th>
+<th align="left">读音</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">$A$</td>
+<td align="left">$\alpha$</td>
+<td align="left">alpha</td>
+<td align="left"><i class="fa fa-play" onclick="sst('alpha')"></i></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">$B$</td>
+<td align="left">$\beta$</td>
+<td align="left">beta</td>
+<td align="left"><i class="fa fa-play" onclick="sst('beta')"></i></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">$\Gamma$</td>
+<td align="left">$\gamma$</td>
+<td align="left">gamma</td>
+<td align="left"><i class="fa fa-play" onclick="sst('gamma')"></i></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">$\Delta$</td>
+<td align="left">$\delta$</td>
+<td align="left">delta</td>
+<td align="left"><i class="fa fa-play" onclick="sst('delta')"></i></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">$E$</td>
+<td align="left">$\epsilon$</td>
+<td align="left">epsilon</td>
+<td align="left"><i class="fa fa-play" onclick="sst('epsilon')"></i></td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">$Z$</td>
+<td align="left">$\zeta$</td>
+<td align="left">zeta</td>
+<td align="left"><i class="fa fa-play" onclick="sst('zeta')"></i></td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">$H$</td>
+<td align="left">$\eta$</td>
+<td align="left">eta</td>
+<td align="left"><i class="fa fa-play" onclick="sst('eta')"></i></td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">$\Theta$</td>
+<td align="left">$\theta$</td>
+<td align="left">theta</td>
+<td align="left"><i class="fa fa-play" onclick="sst('theta')"></i></td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">$I$</td>
+<td align="left">$\iota$</td>
+<td align="left">iota</td>
+<td align="left"><i class="fa fa-play" onclick="sst('iota')"></i></td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">$K$</td>
+<td align="left">$\kappa$</td>
+<td align="left">kappa</td>
+<td align="left"><i class="fa fa-play" onclick="sst('kappa')"></i></td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">$\Lambda$</td>
+<td align="left">$\lambda$</td>
+<td align="left">lambda</td>
+<td align="left"><i class="fa fa-play" onclick="sst('lambda')"></i></td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">$M$</td>
+<td align="left">$\mu$</td>
+<td align="left">mu</td>
+<td align="left"><i class="fa fa-play" onclick="sst('mu')"></i></td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">$N$</td>
+<td align="left">$\nu$</td>
+<td align="left">nu</td>
+<td align="left"><i class="fa fa-play" onclick="sst('nu')"></i></td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">$\Xi$</td>
+<td align="left">$\xi$</td>
+<td align="left">xi</td>
+<td align="left"><i class="fa fa-play" onclick="sst('xi')"></i></td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">$O$</td>
+<td align="left">$\omicron$</td>
+<td align="left">omicron</td>
+<td align="left"><i class="fa fa-play" onclick="sst('omicron')"></i></td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">$\Pi$</td>
+<td align="left">$\pi$</td>
+<td align="left">pi</td>
+<td align="left"><i class="fa fa-play" onclick="sst('pi')"></i></td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">$P$</td>
+<td align="left">$\rho$</td>
+<td align="left">rho</td>
+<td align="left"><i class="fa fa-play" onclick="sst('rho')"></i></td>
+</tr>
+<tr>
+<td align="left">18</td>
+<td align="left">$\Sigma$</td>
+<td align="left">$\sigma$</td>
+<td align="left">sigma</td>
+<td align="left"><i class="fa fa-play" onclick="sst('sigma')"></i></td>
+</tr>
+<tr>
+<td align="left">19</td>
+<td align="left">$T$</td>
+<td align="left">$\tau$</td>
+<td align="left">tau</td>
+<td align="left"><i class="fa fa-play" onclick="sst('tau')"></i></td>
+</tr>
+<tr>
+<td align="left">20</td>
+<td align="left">$\Upsilon$</td>
+<td align="left">$\upsilon$</td>
+<td align="left">upsilon</td>
+<td align="left"><i class="fa fa-play" onclick="sst('upsilon')"></i></td>
+</tr>
+<tr>
+<td align="left">21</td>
+<td align="left">$\Phi$</td>
+<td align="left">$\phi$</td>
+<td align="left">phi</td>
+<td align="left"><i class="fa fa-play" onclick="sst('')"></i></td>
+</tr>
+<tr>
+<td align="left">22</td>
+<td align="left">$X$</td>
+<td align="left">$\chi$</td>
+<td align="left">chi</td>
+<td align="left"><i class="fa fa-play" onclick="sst('phi')"></i></td>
+</tr>
+<tr>
+<td align="left">23</td>
+<td align="left">$\Psi$</td>
+<td align="left">$\psi$</td>
+<td align="left">psi</td>
+<td align="left"><i class="fa fa-play" onclick="sst('psi')"></i></td>
+</tr>
+<tr>
+<td align="left">24</td>
+<td align="left">$\Omega$</td>
+<td align="left">$\omega$</td>
+<td align="left">omega</td>
+<td align="left"><i class="fa fa-play" onclick="sst('omega')"></i></td>
+</tr>
+</tbody></table>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/4428067?fr=aladdin#2_1">https://baike.baidu.com/item/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D/4428067?fr=aladdin#2_1</a></p>
+<h2 id="巨算符"><a href="#巨算符" class="headerlink" title="巨算符"></a>巨算符</h2><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/tables/jusuanfu.png"></p>
+<h2 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://learnku.com/articles/46821">https://learnku.com/articles/46821</a><br>除了作为上下标之外，箭头还用于表示过程。amsmath的<code>\xleftarrow</code>和<code>\xrightarrow</code>命令可以为箭头增加上下标：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$$ a\xleftarrow&#123;x+y+z&#125; b $$<br>$$ c\xrightarrow[x&lt;y]&#123;a*b*c&#125;d $$<br></code></pre></td></tr></table></figure>
+<p>显示效果:<br>$$<br>a\xleftarrow{x+y+z} b<br>$$<br>和<br>$$<br>c \xrightarrow [x&lt;y]{a*b*c} d<br>$$</p>
+<h3 id="箭头详细表-图片"><a href="#箭头详细表-图片" class="headerlink" title="箭头详细表 图片"></a>箭头详细表 图片</h3><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/tables/jiantou.png"></p>
+<h3 id="箭头详细表-渲染"><a href="#箭头详细表-渲染" class="headerlink" title="箭头详细表 渲染"></a>箭头详细表 渲染</h3><table>
+<thead>
+<tr>
+<th align="left">效果</th>
+<th align="left">源码</th>
+<th align="left">效果</th>
+<th align="left">源码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\leftarrow$或者$\gets$</td>
+<td align="left">\leftarrow或者\gets</td>
+<td align="left">$\longleftarrow$</td>
+<td align="left">\longleftarrow</td>
+</tr>
+<tr>
+<td align="left">$\rightarrow$或者$\to$</td>
+<td align="left">\rightarrow或者\to</td>
+<td align="left">$\longrightarrow$</td>
+<td align="left">\longrightarrow</td>
+</tr>
+<tr>
+<td align="left">$\leftrightarrow$</td>
+<td align="left">\leftrightarrow</td>
+<td align="left">$\longleftrightarrow$</td>
+<td align="left">\longleftrightarrow</td>
+</tr>
+<tr>
+<td align="left">$\Leftarrow$</td>
+<td align="left">\Leftarrow</td>
+<td align="left">$\Longleftarrow$</td>
+<td align="left">\Longleftarrow</td>
+</tr>
+<tr>
+<td align="left">$\Rightarrow$</td>
+<td align="left">\Rightarrow</td>
+<td align="left">$\Longrightarrow$</td>
+<td align="left">\Longrightarrow</td>
+</tr>
+</tbody></table>
+<h1 id="括号和定界符"><a href="#括号和定界符" class="headerlink" title="括号和定界符"></a>括号和定界符</h1><p>LATEX提供了多种括号和定界符表示公式块的边界。除小括号( )、中括号[ ]之外，其余都是LATEX命令，包括大括号{ }。表4.12和4.13给出了更多的括号&#x2F;定界符命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$&#123;a,b,c&#125; \neq \&#123;a,b,c\&#125;$<br></code></pre></td></tr></table></figure>
+<p>${a,b,c} \neq {a,b,c}$</p>
+<p>使用\left和\right命令可令括号（定界符）的大小可变，在行间公式中常用。LATEX会自动根据括号内的公式大小决定定界符大小。\left和\right必须成对使用。需要使用单个定界符时，另一个定界符写成\left.或\right.。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\[1 + \left(\frac&#123;1&#125;&#123;1-x^&#123;2&#125;&#125;<br>\right)^3 \qquad<br>\left.\frac&#123;\partial f&#125;&#123;\partial t&#125;<br>\right|_&#123;t=0&#125;\]<br></code></pre></td></tr></table></figure>
+<p>$$<br>1 + \left(\frac{1}{1-x^{2}}<br>\right)^3 \qquad<br>\left.\frac{\partial f}{\partial t}<br>\right|_{t&#x3D;0}<br>$$</p>
+<h2 id="作为重音的箭头符号"><a href="#作为重音的箭头符号" class="headerlink" title="作为重音的箭头符号"></a>作为重音的箭头符号</h2><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/tables/dingbujiantou.png"></p>
+<h2 id="定界符"><a href="#定界符" class="headerlink" title="定界符"></a>定界符</h2><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/tables/dingjief.png"></p>
+<h2 id="公式中的间距-1"><a href="#公式中的间距-1" class="headerlink" title="公式中的间距"></a>公式中的间距</h2><p><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/latex/latex/math/JianJu.png"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>参考文献: <a target="_blank" rel="noopener external nofollow noreferrer" href="http://texdoc.net/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf">http://texdoc.net/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf</a><br>参考链接: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/thither_shore/article/details/52260742">https://blog.csdn.net/thither_shore&#x2F;article&#x2F;details&#x2F;52260742</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/83c2e83a.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/14ec9002.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java截图
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/2fe8061d.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Java使用BOM判断一个文件是不是UTF-8文件</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

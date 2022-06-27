@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>3.3  SQL数据查询 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/随堂笔记/2021年07月/SQL/3.3  SQL数据查询"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  3.3  SQL数据查询
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/247433b.html" class="article-date">
+  <time datetime="2021-07-22T14:05:55.000Z" itemprop="datePublished">2021-07-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/">随堂笔记</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/">2021年07月</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/SQL/">SQL</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">7.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">31 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="3-3-SQL数据查询"><a href="#3-3-SQL数据查询" class="headerlink" title="3.3 SQL数据查询"></a>3.3 SQL数据查询</h1><h2 id="3-3-1-SELECT命令的格式与基本使用"><a href="#3-3-1-SELECT命令的格式与基本使用" class="headerlink" title="3.3.1 SELECT命令的格式与基本使用"></a>3.3.1 SELECT命令的格式与基本使用</h2><p>数据查询是数据库中最常见的操作。<br>SQL语言提供SELECT语句，通过查询操作可得到所需的信息。</p>
+<p>SELECT语句的一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span>〈列名〉[&#123;,〈列名〉&#125;]<br><span class="hljs-keyword">from</span>〈表名或视图名〉[&#123;,〈表名或视图名〉&#125;]<br>[<span class="hljs-keyword">where</span>〈检索条件〉]<br>[<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>[<span class="hljs-keyword">having</span> <span class="hljs-operator">&lt;</span>条件表达式<span class="hljs-operator">&gt;</span>]]<br>[<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>[<span class="hljs-keyword">asc</span><span class="hljs-operator">|</span><span class="hljs-keyword">desc</span>]];<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span>	[<span class="hljs-keyword">all</span><span class="hljs-operator">|</span><span class="hljs-keyword">distinct</span>][top n [<span class="hljs-keyword">percent</span>][<span class="hljs-keyword">with</span> ties]]<br>列名<span class="hljs-number">1</span> [<span class="hljs-keyword">as</span> 别名<span class="hljs-number">1</span>]<br>[, 列名<span class="hljs-number">2</span> [ <span class="hljs-keyword">as</span> 别名<span class="hljs-number">2</span>]…]<br>[<span class="hljs-keyword">into</span> 新表名]<br><span class="hljs-keyword">from</span> 表名 <span class="hljs-number">1</span>[[<span class="hljs-keyword">as</span>] 表<span class="hljs-number">1</span>别名]<br>[<span class="hljs-keyword">inner</span><span class="hljs-operator">|</span><span class="hljs-keyword">right</span><span class="hljs-operator">|</span><span class="hljs-keyword">full</span><span class="hljs-operator">|</span><span class="hljs-keyword">outer</span>][<span class="hljs-keyword">outer</span>]<span class="hljs-keyword">join</span><br>    表名<span class="hljs-number">2</span> [[<span class="hljs-keyword">as</span>] 表<span class="hljs-number">2</span>别名]<br><span class="hljs-keyword">on</span> 条件<br>;<br></code></pre></td></tr></table></figure>
+<p>查询的结果是仍是一个表。</p>
+<h3 id="SELECT语句的执行过程是"><a href="#SELECT语句的执行过程是" class="headerlink" title="SELECT语句的执行过程是:"></a>SELECT语句的执行过程是:</h3><ul>
+<li>根据WHERE子句的检索条件，从FROM子句指定的基本表或视图中选取满足条件的元组，再按照SELECT子句中指定的列，投影得到结果表。</li>
+<li>如果有GROUP子句，则将查询结果按照&lt;列名1&gt;相同的值进行分组。</li>
+<li>如果GROUP子句后有HAVING短语，则只输出满足HAVING条件的元组。</li>
+<li>如果有ORDER子句，查询结果还要按照&lt;列名2&gt;的值进行排序。</li>
+</ul>
+<h3 id="相关表格"><a href="#相关表格" class="headerlink" title="相关表格"></a>相关表格</h3><h4 id="S表"><a href="#S表" class="headerlink" title="S表"></a>S表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s<br>(<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">constraint</span> s_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    sn <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>),<br>    age <span class="hljs-type">int</span>,<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;男&#x27;</span> ,<br>    dept <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s<br>(<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> ,<br>    sn <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>),<br>    age <span class="hljs-type">int</span>,<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;男&#x27;</span> ,<br>    dept <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>)<br>); <br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s<br>(<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">6</span>),<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>) <span class="hljs-keyword">constraint</span> sn_uniq <span class="hljs-keyword">unique</span>,<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>),<br>    age <span class="hljs-type">numeric</span>(<span class="hljs-number">2</span>)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s <br>(<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">6</span>),<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>) <span class="hljs-keyword">unique</span>,<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>),<br>    age <span class="hljs-type">numeric</span>(<span class="hljs-number">2</span>)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>),<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>),<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>),<br>    <span class="hljs-keyword">constraint</span> s_uniq <span class="hljs-keyword">unique</span>(sn, sex)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> s_prim <span class="hljs-keyword">primary</span> key,<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>),<br>    age <span class="hljs-type">numeric</span>(<span class="hljs-number">2</span>)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">constraint</span> s_prim <span class="hljs-keyword">primary</span> key,<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>) <span class="hljs-keyword">constraint</span> sn_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    age <span class="hljs-type">numeric</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">constraint</span> age_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> age_chk <span class="hljs-keyword">check</span> (<br>        age <span class="hljs-keyword">between</span> <span class="hljs-number">15</span><br>        <span class="hljs-keyword">and</span> <span class="hljs-number">50</span><br>    ),<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;男&#x27;</span>,<br>    dept <span class="hljs-type">char</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">constraint</span> dept_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span><br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span><br>    s<br><span class="hljs-keyword">add</span><br>    class_no <span class="hljs-type">char</span>(<span class="hljs-number">6</span>),<br>    address <span class="hljs-type">char</span>(<span class="hljs-number">40</span>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span><br>    s<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">column</span><br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">8</span>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> s<br><span class="hljs-keyword">drop</span> <br><span class="hljs-keyword">constraint</span> age_chk<br>;<br></code></pre></td></tr></table></figure>
+<h4 id="SC"><a href="#SC" class="headerlink" title="SC"></a>SC</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> sc (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    cno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    score <span class="hljs-type">numeric</span>(<span class="hljs-number">3</span>),<br>    <span class="hljs-keyword">constraint</span> sc_prim <span class="hljs-keyword">primary</span> key(sno, cno)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> sc (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> s_fore <span class="hljs-keyword">foreign</span> key <span class="hljs-keyword">references</span> s(sno),<br>    cno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> c_fore <span class="hljs-keyword">foreign</span> key <span class="hljs-keyword">references</span> c(cno),<br>    score <span class="hljs-type">numeric</span>(<span class="hljs-number">3</span>),<br>    <span class="hljs-keyword">constraint</span> s_c_prim <span class="hljs-keyword">primary</span> key (sno, cno)<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> sc (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>),<br>    cno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>),<br>    score <span class="hljs-type">numeric</span>(<span class="hljs-number">5</span>, <span class="hljs-number">1</span>) <span class="hljs-keyword">constraint</span> score_chk <span class="hljs-keyword">check</span>(<br>        score <span class="hljs-operator">&gt;=</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">and</span> score <span class="hljs-operator">&lt;=</span> <span class="hljs-number">100</span><br>    )<br>);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span><br>    sc<br><span class="hljs-keyword">add</span><br>    <span class="hljs-keyword">constraint</span> score_chk <span class="hljs-keyword">check</span>(<br>        score <span class="hljs-keyword">between</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">and</span> <span class="hljs-number">100</span><br>    );<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">unique</span> index sci <span class="hljs-keyword">on</span> sc(sno,cno);<br></code></pre></td></tr></table></figure>
+<h4 id="T表"><a href="#T表" class="headerlink" title="T表"></a>T表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> cluster index ti <span class="hljs-keyword">on</span> t(tn);<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">drop</span> index sc.sci;<br></code></pre></td></tr></table></figure>
+
+<h3 id="例3-21-查询全体学生的学号、姓名和年龄。"><a href="#例3-21-查询全体学生的学号、姓名和年龄。" class="headerlink" title="例3.21 查询全体学生的学号、姓名和年龄。"></a>例3.21 查询全体学生的学号、姓名和年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sno, sn, age <span class="hljs-keyword">from</span> s;<br></code></pre></td></tr></table></figure>
+<h3 id="例3-22-查询学生的全部信息。"><a href="#例3-22-查询学生的全部信息。" class="headerlink" title="例3.22 查询学生的全部信息。"></a>例3.22 查询学生的全部信息。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> s;<br></code></pre></td></tr></table></figure>
+<p>用‘ * ’表示S表的全部列名，而不必逐一列出。</p>
+<h3 id="例3-23-查询选修了课程的学生号。"><a href="#例3-23-查询选修了课程的学生号。" class="headerlink" title="例3.23 查询选修了课程的学生号。"></a>例3.23 查询选修了课程的学生号。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> sno <span class="hljs-keyword">from</span> sc;<br></code></pre></td></tr></table></figure>
+<p>查询结果中的重复行被去掉</p>
+<h3 id="投影查询"><a href="#投影查询" class="headerlink" title="投影查询"></a>投影查询</h3><p>上述查询均为不使用WHERE子句的无条件查询，也称作投影查询。</p>
+<p>另外，利用投影查询可控制列名的顺序，并可通过指定别名改变查询结果的列标题的名字。</p>
+<h3 id="例3-24-查询全体学生的姓名、学号和年龄。"><a href="#例3-24-查询全体学生的姓名、学号和年龄。" class="headerlink" title="例3.24 查询全体学生的姓名、学号和年龄。"></a>例3.24 查询全体学生的姓名、学号和年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sname name, sno, age <span class="hljs-keyword">from</span> s;<br></code></pre></td></tr></table></figure>
+<p>其中，name为sname的别名  </p>
+<h2 id="3-3-2-条件查询"><a href="#3-3-2-条件查询" class="headerlink" title="3.3.2 条件查询"></a>3.3.2 条件查询</h2><p>当要在表中找出满足某些条件的行时，则需使用WHERE子句指定查询条件。<br>WHERE子句中，条件通常通过三部分来描述：</p>
+<p>1．列名；</p>
+<p>2．比较运算符；</p>
+<p>3．列名、常数</p>
+<h3 id="where子句常用的比较运算符"><a href="#where子句常用的比较运算符" class="headerlink" title="where子句常用的比较运算符"></a>where子句常用的比较运算符</h3><p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723095915.png" alt="image-20210723095914883"></p>
+<h3 id="3-3-2-1-比较大小"><a href="#3-3-2-1-比较大小" class="headerlink" title="3.3.2.1 比较大小"></a>3.3.2.1 比较大小</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> s (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">6</span>) <span class="hljs-keyword">constraint</span> s_prim <span class="hljs-keyword">primary</span> key,<br>    sn <span class="hljs-type">char</span>(<span class="hljs-number">8</span>) <span class="hljs-keyword">constraint</span> sn_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>,<br>    age <span class="hljs-type">numeric</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">constraint</span> age_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> age_chk <span class="hljs-keyword">check</span> (<br>        age <span class="hljs-keyword">between</span> <span class="hljs-number">15</span><br>        <span class="hljs-keyword">and</span> <span class="hljs-number">50</span><br>    ),<br>    sex <span class="hljs-type">char</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;男&#x27;</span>,<br>    dept <span class="hljs-type">char</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">constraint</span> dept_cons <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span><br>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql">use student <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> sc (<br>    sno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> s_fore <span class="hljs-keyword">foreign</span> key <span class="hljs-keyword">references</span> s(sno),<br>    cno <span class="hljs-type">char</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">constraint</span> c_fore <span class="hljs-keyword">foreign</span> key <span class="hljs-keyword">references</span> c(cno),<br>    score <span class="hljs-type">numeric</span>(<span class="hljs-number">3</span>),<br>    <span class="hljs-keyword">constraint</span> s_c_prim <span class="hljs-keyword">primary</span> key (sno, cno)<br>);<br></code></pre></td></tr></table></figure>
+<h4 id="例3-25-查询选修课程号为‘C1’的学生的学号和成绩"><a href="#例3-25-查询选修课程号为‘C1’的学生的学号和成绩" class="headerlink" title="例3.25 查询选修课程号为‘C1’的学生的学号和成绩"></a>例3.25 查询选修课程号为‘C1’的学生的学号和成绩</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>SC(sno,cno,score)<br></code></pre></td></tr></table></figure>
+<details><summary>展开/折叠</summary><pre>
+select sno,score
+from SC
+where cno='C1';</pre></details>
+
+
+<h4 id="例3-26-查询成绩高于85分的学生的学号、课程号和成绩。"><a href="#例3-26-查询成绩高于85分的学生的学号、课程号和成绩。" class="headerlink" title="例3.26 查询成绩高于85分的学生的学号、课程号和成绩。"></a>例3.26 查询成绩高于85分的学生的学号、课程号和成绩。</h4><details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from SC
+where score &gt; 85;
+</pre></details>
+
+<h3 id="3-3-2-2-多重条件查询"><a href="#3-3-2-2-多重条件查询" class="headerlink" title="3.3.2.2 多重条件查询"></a>3.3.2.2 多重条件查询</h3><p>当<code>where</code>子句需要指定一个以上的查询条件时，则需要使用逻辑运算符<code>and</code>、<code>or</code>和<code>not</code>将其连结成复合的逻辑表达式。</p>
+<p>其优先级由高到低为：<code>not</code>、<code>and</code>、<code>or</code>，用户可以使用括号改变优先级。</p>
+<h4 id="例3-27-查询选修C1或C2且分数大于等于85分学生的的学号、课程号和成绩。"><a href="#例3-27-查询选修C1或C2且分数大于等于85分学生的的学号、课程号和成绩。" class="headerlink" title="例3.27 查询选修C1或C2且分数大于等于85分学生的的学号、课程号和成绩。"></a>例3.27 查询选修C1或C2且分数大于等于85分学生的的学号、课程号和成绩。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>SC(sno,cno,score)<br>t(tno,tn,sex,prof,sal)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from SC
+where (cno='C1' or cno = 'C2') and score &gt;=85;</pre></details>
+
+<h3 id="3-3-2-3-确定范围"><a href="#3-3-2-3-确定范围" class="headerlink" title="3.3.2.3 确定范围"></a>3.3.2.3 确定范围</h3><h4 id="例3-28-查询工资在1000至1500之间的教师的教师号、姓名及职称。"><a href="#例3-28-查询工资在1000至1500之间的教师的教师号、姓名及职称。" class="headerlink" title="例3.28 查询工资在1000至1500之间的教师的教师号、姓名及职称。"></a>例3.28 查询工资在1000至1500之间的教师的教师号、姓名及职称。</h4><details><summary>展开/折叠</summary><pre>
+select tno,tn,prof
+from T
+where sal&gt;=1000 and sal &lt;=1500;
+</pre></details>
+
+<h4 id="例3-29-查询工资不在1000至1500之间的教师的教师号、姓名及职称。"><a href="#例3-29-查询工资不在1000至1500之间的教师的教师号、姓名及职称。" class="headerlink" title="例3.29 查询工资不在1000至1500之间的教师的教师号、姓名及职称。"></a>例3.29 查询工资不在1000至1500之间的教师的教师号、姓名及职称。</h4><details><summary>展开/折叠</summary><pre>
+select tno,tn,prof
+from T
+where sal&lt;1000 or sal&gt;1500;
+</pre></details>
+
+<details><summary>展开/折叠</summary><pre>
+select tno,tn,prof
+from t
+where sal not between 1000 and 1500 ;
+</pre></details>
+
+<h3 id="3-2-2-4-确定集合"><a href="#3-2-2-4-确定集合" class="headerlink" title="3.2.2.4 确定集合"></a>3.2.2.4 确定集合</h3><h4 id="in"><a href="#in" class="headerlink" title="in"></a>in</h4><p>利用“<code>in</code>”操作可以<strong>查询属性值属于指定集合的元组</strong>。</p>
+<h4 id="例3-30-查询选修C1或C2的学生的学号、课程号和成绩。"><a href="#例3-30-查询选修C1或C2的学生的学号、课程号和成绩。" class="headerlink" title="例3.30 查询选修C1或C2的学生的学号、课程号和成绩。"></a>例3.30 查询选修C1或C2的学生的学号、课程号和成绩。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from SC
+where cno in ('C1','C2');
+</pre></details>
+
+<p>此语句也可以使用逻辑运算符“OR”实现。</p>
+<details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from sc
+where cno='C1' or cno='C2';
+</pre></details>
+
+<h4 id="not-in"><a href="#not-in" class="headerlink" title="not in"></a>not in</h4><p>利用“<code>not in</code>”可以查询指定集合外的元组。</p>
+<h4 id="例3-31-查询没有选修C1，也没有选修C2的学生的学号、课程号和成绩。"><a href="#例3-31-查询没有选修C1，也没有选修C2的学生的学号、课程号和成绩。" class="headerlink" title="例3.31 查询没有选修C1，也没有选修C2的学生的学号、课程号和成绩。"></a>例3.31 查询没有选修C1，也没有选修C2的学生的学号、课程号和成绩。</h4><details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from sc
+where cno not in ('C1','C2');
+</pre></details>
+
+<p>等价于</p>
+<details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from sc
+where cno!='C1' and cno!='C2';
+</pre></details>
+
+<h3 id="3-3-2-5-部分匹配查询"><a href="#3-3-2-5-部分匹配查询" class="headerlink" title="3.3.2.5 部分匹配查询"></a>3.3.2.5 部分匹配查询</h3><p>上例均属于完全匹配查询，当不知道完全精确的値时，用户还可以使用<code>like</code>或<code>not like</code>进行部分匹配查询（也称模糊查询）。<br>LIKE定义的一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-operator">&lt;</span>属性名<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-operator">&lt;</span>字符串常量<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<p>属性名必须为<strong>字符型</strong>，字符串常量的字符可以包含如下两个特殊符号：</p>
+<ul>
+<li><code>%</code>：表示任意知长度的字符串；</li>
+<li><code>_</code>：表示任意单个字符。</li>
+</ul>
+<h4 id="例3-32-查询所有姓张的教师的教师号和姓名。"><a href="#例3-32-查询所有姓张的教师的教师号和姓名。" class="headerlink" title="例3.32 查询所有姓张的教师的教师号和姓名。"></a>例3.32 查询所有姓张的教师的教师号和姓名。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+select tno,tn
+from T
+where tn like "张%";
+</pre></details>
+
+<h4 id="例3-33-查询姓名中第二个汉字是“力”的教师号和姓名。"><a href="#例3-33-查询姓名中第二个汉字是“力”的教师号和姓名。" class="headerlink" title="例3.33 查询姓名中第二个汉字是“力”的教师号和姓名。"></a>例3.33 查询姓名中第二个汉字是“力”的教师号和姓名。</h4><details><summary>展开/折叠</summary><pre>
+selec tno,tn
+form t
+where tn like '__力%';
+</pre></details>
+
+<p>注：<strong>一个汉字占两个字符</strong>。</p>
+<h3 id="3-3-2-6-空值查询"><a href="#3-3-2-6-空值查询" class="headerlink" title="3.3.2.6 空值查询"></a>3.3.2.6 空值查询</h3><p>某个字段没有值称之为具有空值（NULL）。</p>
+<p>通常没有为一个列输入值时，该列的值就是空值。</p>
+<p>空值不同于零和空格，它不占任何存储空间。</p>
+<p>例如，某些学生选课后没有参加考试，有选课记录，但没有考试成绩，考试成绩为空值，这与参加考试，成绩为零分的不同。 </p>
+<h4 id="例3-34-查询没有考试成绩的学生的学号和相应的课程号。"><a href="#例3-34-查询没有考试成绩的学生的学号和相应的课程号。" class="headerlink" title="例3.34 查询没有考试成绩的学生的学号和相应的课程号。"></a>例3.34 查询没有考试成绩的学生的学号和相应的课程号。</h4><details><summary>展开/折叠</summary><pre>
+select sno,cno
+from sc
+where score is null;
+</pre></details>
+
+
+<p>注意：这里的空值条件为IS NULL，不能写成SCORE&#x3D;NULL。</p>
+<h2 id="3-2-2-常用库函数及统计汇总查询"><a href="#3-2-2-常用库函数及统计汇总查询" class="headerlink" title="3.2.2  常用库函数及统计汇总查询"></a>3.2.2  常用库函数及统计汇总查询</h2><p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723141859.png" alt="image-20210723141859053"></p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名称</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AVG</td>
+<td align="left">按列计算平均值</td>
+</tr>
+<tr>
+<td align="left">SUM</td>
+<td align="left">按列计算值的总和</td>
+</tr>
+<tr>
+<td align="left">MAX</td>
+<td align="left">求一列中的最大值</td>
+</tr>
+<tr>
+<td align="left">MIN</td>
+<td align="left">求一列中的最小值</td>
+</tr>
+<tr>
+<td align="left">COUNT</td>
+<td align="left">按列值计个数</td>
+</tr>
+</tbody></table>
+<h4 id="例3-35-求学号为S1学生的总分和平均分。"><a href="#例3-35-求学号为S1学生的总分和平均分。" class="headerlink" title="例3.35 求学号为S1学生的总分和平均分。"></a>例3.35 求学号为S1学生的总分和平均分。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+select sum(score) as totalScore,avg(score) as avgScore
+from SC
+where sno='S1';
+</pre></details>
+
+
+<p>注意：函数SUM和AVG只能对数值型字段进行计算。</p>
+<h4 id="例3-36-求选修C1号课程的最高分、最低分及之间相差的分数"><a href="#例3-36-求选修C1号课程的最高分、最低分及之间相差的分数" class="headerlink" title="例3.36 求选修C1号课程的最高分、最低分及之间相差的分数"></a>例3.36 求选修C1号课程的最高分、最低分及之间相差的分数</h4><details><summary>展开/折叠</summary><pre>
+select max(score) as max_score,min(score) as min_score max(score)-min(score) as diff_score
+from sc
+where cno='C1';
+</pre></details>
+
+<h4 id="例3-37-求计算机系学生的总数"><a href="#例3-37-求计算机系学生的总数" class="headerlink" title="例3.37  求计算机系学生的总数"></a>例3.37  求计算机系学生的总数</h4><details><summary>展开/折叠</summary><pre>
+select count(sno)
+from s
+where dept='计算机';
+</pre></details>
+
+<h4 id="例3-38-求学校中共有多少个系"><a href="#例3-38-求学校中共有多少个系" class="headerlink" title="例3.38 求学校中共有多少个系"></a>例3.38 求学校中共有多少个系</h4><details><summary>展开/折叠</summary><pre>
+select count(distinct dept) as deptNum
+from s;
+</pre></details>
+
+<p>注意：加入关键字distinct后表示消去重复行，可计算字段“dept“不同值的数目。<br>count函数对空值不计算，但对零进行计算</p>
+<h4 id="例3-39-统计有成绩同学的人数"><a href="#例3-39-统计有成绩同学的人数" class="headerlink" title="例3.39 统计有成绩同学的人数"></a>例3.39 统计有成绩同学的人数</h4><details><summary>展开/折叠</summary><pre>
+select count(score) 
+from sc;
+</pre></details>
+
+<p>上例中成绩为零的同学计算在内，没有成绩（即为空值）的不计算。 </p>
+<p>上面的写法中，凡是有成绩的学生都统计，如果一个学生选了多门课，并且他都去考试了，都有分数，那么将会有多个成绩。<br>这样的写法应该是有问题的，个人觉得应该改为如下的写法：<br>我还没验证，等验证之后再看</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> sno)<br><span class="hljs-keyword">from</span> sc<br><span class="hljs-keyword">where</span> score <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="例3-40-利用特殊函数COUNT-求计算机系学生的总数"><a href="#例3-40-利用特殊函数COUNT-求计算机系学生的总数" class="headerlink" title="例3.40 利用特殊函数COUNT(*)求计算机系学生的总数"></a>例3.40 利用特殊函数COUNT(*)求计算机系学生的总数</h4><details><summary>展开/折叠</summary><pre>
+select count(*) from s
+where dept='计算机';
+</pre></details>
+
+<p><code>count(*)</code>用来统计元组的个数<br>不消除重复行，不允许使用<code>distinct</code>关键字。</p>
+<p>如下写法是否可以</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(sno)<br><span class="hljs-keyword">from</span> s<br><span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-3-3-分组查询"><a href="#3-3-3-分组查询" class="headerlink" title="3.3.3 分组查询"></a>3.3.3 分组查询</h2><p><code>group by</code>子句可以将查询结果<strong>按属性列</strong>或<strong>属性列组合</strong>在&#x3D;&#x3D;行的方向上进行分组&#x3D;&#x3D;，每组<strong>在属性列或属性列组合上</strong>&#x3D;&#x3D;具有相同的值&#x3D;&#x3D;。</p>
+<h3 id="例3-42-查询各位教师的教师号及其任课的门数。"><a href="#例3-42-查询各位教师的教师号及其任课的门数。" class="headerlink" title="例3.42 查询各位教师的教师号及其任课的门数。"></a>例3.42 查询各位教师的教师号及其任课的门数。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+select tno count(*) as c_num
+from tc
+group by tno;
+</pre></details>
+
+<p><code>group by</code>子句按<code>tno</code>的值分组，所有具有相同<code>tno</code>的元组为一组，对每一组使用函数<code>count</code>进行计算，统计出各位教师任课的门数。 </p>
+<p>若在分组后还要按照一定的条件进行筛选，则需使用<code>having</code>子句。 </p>
+<h3 id="例3-43-查询选修两门以上课程的学生学号和选课门数"><a href="#例3-43-查询选修两门以上课程的学生学号和选课门数" class="headerlink" title="例3.43 查询选修两门以上课程的学生学号和选课门数"></a>例3.43 查询选修两门以上课程的学生学号和选课门数</h3><details><summary>展开/折叠</summary><pre>
+select sno,count(*) as sc_num
+from sc
+group by sno
+having count(*)&gt;=2;
+</pre></details>
+
+<p><code>group by</code>子句按<code>sno</code>的值分组，所有具有相同<code>sno</code>的元组为一组，对每一组使用函数<code>count</code>进行计算，统计出每位学生选课的门数。<br><code>having</code>子句去掉不满足<code>count(*)&gt;=2</code>的组。</p>
+<h3 id="where子句group-by和having子句的执行顺序"><a href="#where子句group-by和having子句的执行顺序" class="headerlink" title="where子句group by和having子句的执行顺序"></a>where子句group by和having子句的执行顺序</h3><p>当在一个<code>sql</code>查询中同时使用<code>where</code>子句，<code>group by</code> 子句和<code>having</code>子句时，其顺序是<code>where</code>–&gt;<code>group by</code>–&gt; <code>having</code>。</p>
+<p><code>where</code>与<code>having</code>子句的根本区别在于作用对象不同。</p>
+<ul>
+<li><strong><code>where</code>子句作用于基本表或视图</strong>，从中选择满足条件的元组；</li>
+<li><strong><code>having</code>子句作用于组，选择满足条件的组</strong>，必须用于<code>group by</code>子句之后，但<code>group by</code>子句可没有<code>having</code>子句。</li>
+</ul>
+<h2 id="3-3-5-查询的排序"><a href="#3-3-5-查询的排序" class="headerlink" title="3.3.5 查询的排序"></a>3.3.5 查询的排序</h2><ul>
+<li>当需要对查询结果排序时，应该使用<code>order by</code>子句</li>
+<li><code>order by</code>子句必须出现在其他子句之后</li>
+<li>排序方式可以指定，<code>desc</code>为降序，<code>asc</code>为升序，缺省时为升序</li>
+</ul>
+<h3 id="例3-44-查询选修C1-的学生学号和成绩，并按成绩降序排列。"><a href="#例3-44-查询选修C1-的学生学号和成绩，并按成绩降序排列。" class="headerlink" title="例3.44 查询选修C1 的学生学号和成绩，并按成绩降序排列。"></a>例3.44 查询选修C1 的学生学号和成绩，并按成绩降序排列。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<details><summary>展开/折叠</summary><pre>
+selec sno,score
+from sc
+where cno='C1'
+order by score desc;
+</pre></details>
+
+<h3 id="例3-45-查询选修C2、C3、C4-或C5课程的学号、课程号和成绩，查询结果按学号升序排列，学号相同再按成绩降序排列。"><a href="#例3-45-查询选修C2、C3、C4-或C5课程的学号、课程号和成绩，查询结果按学号升序排列，学号相同再按成绩降序排列。" class="headerlink" title="例3.45 查询选修C2、C3、C4,或C5课程的学号、课程号和成绩，查询结果按学号升序排列，学号相同再按成绩降序排列。"></a>例3.45 查询选修C2、C3、C4,或C5课程的学号、课程号和成绩，查询结果按学号升序排列，学号相同再按成绩降序排列。</h3><details><summary>展开/折叠</summary><pre>
+select sno,cno,score
+from sc
+where (cno in ('C2','C3','C4')) or cno='C5'
+order by sno asc,score desc;
+</pre></details>
+
+<h3 id="例3-46-求选课在三门以上且各门课程均及格的学生的学号及其总成绩，查询结果按总成绩降序列出。"><a href="#例3-46-求选课在三门以上且各门课程均及格的学生的学号及其总成绩，查询结果按总成绩降序列出。" class="headerlink" title="例3.46 求选课在三门以上且各门课程均及格的学生的学号及其总成绩，查询结果按总成绩降序列出。"></a>例3.46 求选课在三门以上且各门课程均及格的学生的学号及其总成绩，查询结果按总成绩降序列出。</h3><details><summary>展开/折叠</summary><pre>
+select sno,sum(score) as total_score
+from sc
+where score&gt;=60
+group by sno
+having count(*)&gt;=3
+order by sum(score) desc;
+</pre></details>
+
+<h4 id="分组排序执行过程"><a href="#分组排序执行过程" class="headerlink" title="分组排序执行过程"></a>分组排序执行过程</h4><p>此语句为分组排序，执行过程如下：<br>1.（<code>from</code>）取出整个<code>sc</code><br>2.（<code>where</code>）筛选<code>score&gt;=60</code>的<strong>元组</strong><br>3.（<code>group by</code>）将选出的<strong>元组</strong>按<code>sno</code><strong>分组</strong><br>4.（<code>having</code>）筛选选课三门以上的<strong>分组</strong><br>5.（<code>select</code>）以剩下的组中提取学号和总成绩<br>6.（<code>order by</code>）将选取结果排序</p>
+<h4 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h4><p><code>order by sum(score) desc</code>可以改写成<br><code>order by 2 desc</code><br><code>2</code>代表查询结果的第二列。 </p>
+<h2 id="3-3-6-数据表连接及连接查询"><a href="#3-3-6-数据表连接及连接查询" class="headerlink" title="3.3.6 数据表连接及连接查询"></a>3.3.6 数据表连接及连接查询</h2><ul>
+<li>数据表之间的联系是通过表的字段值来体现的，这种字段称为连接字段。</li>
+<li>连接操作的目的就是通过加在连接字段的条件将多个表连接起来，以便从多个表中查询数据。</li>
+<li>前面的查询都是针对一个表进行的，当查询同时涉及两个以上的表时，称为连接查询。</li>
+<li>表的连接方法有两种：<ul>
+<li>方法1：表之间满足一定的条件的行进行连接，此时<code>from</code>子句中指明进行连接的表名，<code>where</code>子句指明连接的列名及其连接条件。</li>
+<li>方法2：利用关键字<code>join</code>进行连接。</li>
+</ul>
+</li>
+</ul>
+<p>具体分为以下几种：</p>
+<ul>
+<li><code>inner join</code> ：显示符合条件的记录，此为<strong>默认值</strong>；</li>
+<li><code>left</code>（<code>outer</code>）<code>join</code>：<strong>显示符合条件的数据行</strong>,<strong>以及显示左边表中不符合条件的数据行，此时右边数据行会以<code>null</code>来显示</strong>，此称为左连接；</li>
+<li><code>right</code>（<code>outer</code>）<code>join</code>：<strong>显示符合条件的数据行</strong>，<strong>以及右边表中不符合条件的数据行，此时左边数据行会以<code>null</code>来显示</strong>，此称为右连接；</li>
+<li><code>full</code>（<code>outer</code>）<code>join</code>：<strong>显示符合条件的数据行</strong>，以及左边表和右边表中不符合条件的数据行，此时缺乏数据的数据行会以<code>null</code>来显示；</li>
+<li><code>cross join</code>：会将一个表的每一笔数据和另一表的每笔数据匹配成新的数据行。</li>
+</ul>
+<p>当将<code>join</code>关键词放于<code>from</code>子句中时，应有关键词<code>on</code>与之相对应，以表明连接的条件。</p>
+<h3 id="inner-join（内连接）"><a href="#inner-join（内连接）" class="headerlink" title="inner join（内连接）"></a>inner join（内连接）</h3><p>内连接是一种一一映射关系，<strong>就是两张表都有的字段才能显示出来</strong><br>用韦恩图表示是两个集合的交集，如图：</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723193444.png" alt="image-20210723193443904"></p>
+<p>以下维恩图说明了INNER JOIN子句的工作原理。结果集中的行必须出现在两个表中：t1和t2，如两个圆的交叉部分所示：</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723193743.png" alt="image-20210723193743319"></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.yiibai.com/sql/sql-inner-join.html">https://www.yiibai.com/sql/sql-inner-join.html</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.runoob.com/sql/sql-join.html">https://www.runoob.com/sql/sql-join.html</a></p>
+<h3 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h3><p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723194720.png" alt="image-20210723194720749"></p>
+<p>左连接将返回左表中的所有行，而不管右表中是否存在匹配的行。<br>假设有两个表A和B。表A有四行：1,2,3和4。表B还有四行：3,4,5,6。<br>当将表A与表B连接时，表A中的所有行(左表)都包含在结果集中，而不管无论表B中是否存在匹配的行。</p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Sum/20210723194942.png" alt="image-20210723194942631"></p>
+<p>&#x2F;&#x2F;原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.yiibai.com/sql/sql-left-join.html">https://www.yiibai.com/sql/sql-left-join.html</a></p>
+<h3 id="3-3-6-1-等值连接与非等值连接"><a href="#3-3-6-1-等值连接与非等值连接" class="headerlink" title="3.3.6.1 等值连接与非等值连接"></a>3.3.6.1 等值连接与非等值连接</h3><h4 id="例3-47-查询刘伟老师所讲授的课程。"><a href="#例3-47-查询刘伟老师所讲授的课程。" class="headerlink" title="例3.47 查询刘伟老师所讲授的课程。"></a>例3.47 查询刘伟老师所讲授的课程。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<h5 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h5><details><summary>展开/折叠</summary><pre>
+select t.tno,tn,cno
+from t tc
+where (t.tno=tc.tno)and tn='刘伟';
+</pre></details>
+
+<h5 id="查询条件-连接条件-连接字段"><a href="#查询条件-连接条件-连接字段" class="headerlink" title="查询条件 连接条件 连接字段"></a>查询条件 连接条件 连接字段</h5><p>这里，<code>tn=&#39;刘伟&#39;</code>为查询条件，而<code>t.tno = tc.tno</code>为连接条件，<code>tno</code>为连接字段。连接条件的一般格式为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">[<span class="hljs-operator">&lt;</span>表名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>.] <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">1</span><span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>比较运算符<span class="hljs-operator">&gt;</span> [<span class="hljs-operator">&lt;</span>表名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>.] <span class="hljs-operator">&lt;</span>列名<span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+<p>其中,比较运算符主要有：<code>=</code>、<code>&gt;</code>、<code>&lt;</code>、<code>&gt;=</code>、<code>&lt;=</code>、<code>!=</code>。</p>
+<h5 id="等值连接的定义"><a href="#等值连接的定义" class="headerlink" title="等值连接的定义"></a>等值连接的定义</h5><p>当比较运算符为“<code>=</code>“时，称为<strong>等值连接</strong>，其他情况为<strong>非等值连接</strong>。</p>
+<p>引用列名<code>tno</code>时要加上<strong>表名前缀</strong>，是因为两个表中的列名相同，必须用表名前缀来确切说明所指列属于哪个表，以避免二义性。<br>如果列名是唯一的，比如<code>tn</code>，就不必须加前缀。<br>上面的操作是将<code>t</code>表中的<code>tno</code> 和<code>tc</code>表中的<code>tno</code>相等的行连接，同时选取<code>tn</code>为<code>&#39;刘伟&#39;</code>的行，然后再在<code>tn</code>，<code>cno</code>列上投影，<strong>这是连接、选取和投影的操作组合</strong>。</p>
+<h5 id="方法2："><a href="#方法2：" class="headerlink" title="方法2："></a>方法2：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> t.tno,tn,cno<br><span class="hljs-keyword">from</span> t <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> tc <br><span class="hljs-keyword">on</span> t.tno<span class="hljs-operator">=</span>tc.tno <span class="hljs-keyword">and</span> t.tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<h5 id="方法3："><a href="#方法3：" class="headerlink" title="方法3："></a>方法3：</h5><p>先尽量精简两张表的中的记录，然后再做连接操作</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> r2.tno,r2.tn, r1.cno <br><span class="hljs-keyword">from</span><br>    (<span class="hljs-keyword">select</span> tno,cno <span class="hljs-keyword">from</span> tc ) <span class="hljs-keyword">as</span> r1<br>    <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <br>    (<span class="hljs-keyword">select</span> tno ,tn <span class="hljs-keyword">from</span> t <span class="hljs-keyword">where</span> tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>) <span class="hljs-keyword">as</span> r2<br>    <span class="hljs-keyword">on</span> r1.tno<span class="hljs-operator">=</span>r2.tno<br>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="例3-48-查询所有选课学生的学号、姓名、选课名称及成绩"><a href="#例3-48-查询所有选课学生的学号、姓名、选课名称及成绩" class="headerlink" title="例3.48 查询所有选课学生的学号、姓名、选课名称及成绩"></a>例3.48 查询所有选课学生的学号、姓名、选课名称及成绩</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<p>先分析这些要查询的字段在那些表中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sno,---&gt;S,SC<br>sn,-----&gt;S<br>cn,-----&gt;C<br>score-----&gt;SC<br></code></pre></td></tr></table></figure>
+<p>可以看到涉及到三张表</p>
+<p>这其中学生表S和课程表C是实体表，他们之间是多对多联系，SC表为联系表，所以可以使用SC表中的两个外键把S表和C表串联起来：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> s.sno,s.sn,c.cn,sc.score<br><span class="hljs-keyword">from</span> s,c,sc<br><span class="hljs-keyword">where</span> sc.sno<span class="hljs-operator">=</span>s.sno <span class="hljs-keyword">and</span> sc.cno<span class="hljs-operator">=</span>c.cno;<br></code></pre></td></tr></table></figure>
+
+<p>本例涉及三个表，where子句中有两个连接条件。当有两个以上的表进行连接时，称为<strong>多表连接</strong>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> R1.sno,sn,cn,score<br><span class="hljs-keyword">from</span><br>    (<span class="hljs-keyword">select</span> sno,sn <span class="hljs-keyword">from</span> s) <span class="hljs-keyword">as</span> R1<br><span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span><br>    (<span class="hljs-keyword">select</span> sno,cn,score <span class="hljs-keyword">from</span> C SC <span class="hljs-keyword">where</span> C.cno<span class="hljs-operator">=</span>SC.cno) <span class="hljs-keyword">as</span> R2<br><span class="hljs-keyword">on</span> R1.sno<span class="hljs-operator">=</span>R2.sno;<br></code></pre></td></tr></table></figure>
+<h3 id="3-3-6-2-自身连接"><a href="#3-3-6-2-自身连接" class="headerlink" title="3.3.6.2 自身连接"></a>3.3.6.2 自身连接</h3><p>当一个表与其自已进行连接操作时，称为表的<strong>自身连接</strong>。</p>
+<h4 id="例3-49-查询所有比刘伟工资高的教师姓名、性别、工资和刘伟的工资。"><a href="#例3-49-查询所有比刘伟工资高的教师姓名、性别、工资和刘伟的工资。" class="headerlink" title="例3.49 查询所有比刘伟工资高的教师姓名、性别、工资和刘伟的工资。"></a>例3.49 查询所有比刘伟工资高的教师姓名、性别、工资和刘伟的工资。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<p>要查询的内容均在同一表T中，可以将表T分别取两个别名，一个是X，一个是Y。将X, Y 中满足比刘伟工资高的行连接起来。这实际上是同一表T的自身连接。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> Y.tn,Y.sex,Y.sal,X.sal<br><span class="hljs-keyword">from</span> t <span class="hljs-keyword">as</span> X,t <span class="hljs-keyword">as</span> Y<br><span class="hljs-keyword">where</span> X.tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span> <span class="hljs-keyword">and</span> Y.sal<span class="hljs-operator">&gt;</span>X.sal;<br></code></pre></td></tr></table></figure>
+
+<h5 id="其他写法"><a href="#其他写法" class="headerlink" title="其他写法"></a>其他写法</h5><details><summary>展开/折叠</summary><pre>
+select Y.tn,Y.sex,Y.sal as sal_a,X.sal as sal_b
+from 
+    T as X
+    inner join
+    T as Y
+on X.tn='刘伟' and Y.sal&gt;X.sal;
+</pre></details>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> Y.tn,Y.sex,Y.sal,X.sal<br><span class="hljs-keyword">from</span><br>    (<span class="hljs-keyword">select</span> sal <span class="hljs-keyword">from</span> t <span class="hljs-keyword">where</span> tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>) <span class="hljs-keyword">as</span> X,<br>    t <span class="hljs-keyword">as</span> Y<br><span class="hljs-keyword">where</span> Y.sal<span class="hljs-operator">&gt;</span>X.sal;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> R1.sn,R1.sex,R1.sal <span class="hljs-keyword">as</span> sal_a,R2.sal <span class="hljs-keyword">as</span> sal_b<br><span class="hljs-keyword">from</span><br>    (<span class="hljs-keyword">select</span> sn,sex,sal <span class="hljs-keyword">from</span> t) <span class="hljs-keyword">as</span> R1<br><span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span><br>    (<span class="hljs-keyword">select</span> sal <span class="hljs-keyword">from</span> t <span class="hljs-keyword">where</span> sn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>) <span class="hljs-keyword">as</span> R2<br><span class="hljs-keyword">on</span> R1.sal<span class="hljs-operator">&gt;</span>R2.sal;<br></code></pre></td></tr></table></figure>
+<h4 id="例3-50-检索所有学生姓名，年龄和选课名称。"><a href="#例3-50-检索所有学生姓名，年龄和选课名称。" class="headerlink" title="例3.50 检索所有学生姓名，年龄和选课名称。"></a>例3.50 检索所有学生姓名，年龄和选课名称。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<p>分析这些字段所在的表格：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sn---S表<br>age----S表<br>cn----C表<br></code></pre></td></tr></table></figure>
+<h5 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h5><p>这需要三张表，三张表连接：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> s.sn,s.age,c.cn<br><span class="hljs-keyword">from</span> s,c,sc<br><span class="hljs-keyword">where</span> sc.sno<span class="hljs-operator">=</span>s.sno <span class="hljs-keyword">and</span> sc.cno<span class="hljs-operator">=</span>c.cno<br></code></pre></td></tr></table></figure>
+
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> R3.sno,R3.sn,R3.age,R4.cn<br><span class="hljs-keyword">from</span><br>    (<span class="hljs-keyword">select</span> sno,sn,age <span class="hljs-keyword">from</span> s) <span class="hljs-keyword">as</span> R3<br>    <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span><br>    (<br>        <span class="hljs-keyword">select</span> R2.sno,R1.cn<br>        <span class="hljs-keyword">from</span><br>            (<span class="hljs-keyword">select</span> cno,cn <span class="hljs-keyword">from</span> c) <span class="hljs-keyword">as</span> R1<br>            <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> <br>            (<span class="hljs-keyword">select</span> sno,cno <span class="hljs-keyword">from</span> sc) <span class="hljs-keyword">as</span> R2<br>        <span class="hljs-keyword">on</span> R1.cno<span class="hljs-operator">=</span>R2.cno<br>    ) <span class="hljs-keyword">as</span> R4<br><span class="hljs-keyword">on</span> R3.sno<span class="hljs-operator">=</span>R4.sno;<br></code></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> R3.sn,R3.age c.cn<br><span class="hljs-keyword">from</span> <br>    C,<br>    (<br>        <span class="hljs-keyword">select</span> R1.sn,R1.age,R2.cno<br>        <span class="hljs-keyword">from</span> <br>            (<span class="hljs-keyword">select</span> sno,sn,age <span class="hljs-keyword">from</span> S) <span class="hljs-keyword">as</span> R1<br>            <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span><br>            (<span class="hljs-keyword">select</span> sno,cno <span class="hljs-keyword">from</span> SC) <span class="hljs-keyword">as</span> R2<br>        <span class="hljs-keyword">on</span> R1.sno<span class="hljs-operator">=</span>R2.sno<br>    ) <span class="hljs-keyword">as</span> R3<br><span class="hljs-keyword">where</span> C.cno<span class="hljs-operator">=</span>R3.cno;<br></code></pre></td></tr></table></figure>
+<h3 id="3-3-6-3-外连接"><a href="#3-3-6-3-外连接" class="headerlink" title="3.3.6.3 外连接"></a>3.3.6.3 外连接</h3><p>在上面的连接操作中，不满足连接条件的元组不能作为查询结果输出。<br>如例3.48的查询结果只包括有选课记录的学生，而不会有吴丽同学的信息。若将例3.48改成：</p>
+<h4 id="例3-51-查询所有学生的学号、姓名、选课名称及成绩。（没有选课的同学的选课信息显示为空）则应写成如下的SQL语句"><a href="#例3-51-查询所有学生的学号、姓名、选课名称及成绩。（没有选课的同学的选课信息显示为空）则应写成如下的SQL语句" class="headerlink" title="例3.51 查询所有学生的学号、姓名、选课名称及成绩。（没有选课的同学的选课信息显示为空）则应写成如下的SQL语句"></a>例3.51 查询所有学生的学号、姓名、选课名称及成绩。（没有选课的同学的选课信息显示为空）则应写成如下的SQL语句</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<p>字段所在的表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">sno sn--S<br>cn------C<br>score---SC<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> s.sno,sn,cn,score<br><span class="hljs-keyword">from</span> s<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> sc<br><span class="hljs-keyword">on</span> s.sno<span class="hljs-operator">=</span>sc.sno<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> c<br><span class="hljs-keyword">on</span> c.cno<span class="hljs-operator">=</span>sc.cno;<br></code></pre></td></tr></table></figure>
+<p>则查询结果包括所有的学生，没有选课的吴丽同学的选课信息显示为空。</p>
+<h5 id="S-left-outer-join-SC效果："><a href="#S-left-outer-join-SC效果：" class="headerlink" title="S left outer join SC效果："></a>S left outer join SC效果：</h5><table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">sno</th>
+<th align="left">sn</th>
+<th align="left">age</th>
+<th align="left">sex</th>
+<th align="left">dept</th>
+<th align="left">sno</th>
+<th align="left">cno</th>
+<th align="left">score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字段所在的表</td>
+<td align="left">S</td>
+<td align="left">S</td>
+<td align="left">S</td>
+<td align="left">S</td>
+<td align="left">S</td>
+<td align="left">SC</td>
+<td align="left">SC</td>
+<td align="left">SC</td>
+</tr>
+<tr>
+<td align="left">字段所在的表</td>
+<td align="left">非空</td>
+<td align="left">非空</td>
+<td align="left">非空</td>
+<td align="left">非空</td>
+<td align="left">非空</td>
+<td align="left">连接条件</td>
+<td align="left">可以为空</td>
+<td align="left">可以为空</td>
+</tr>
+</tbody></table>
+<h5 id="SC-left-outer-join-C效果"><a href="#SC-left-outer-join-C效果" class="headerlink" title="SC left outer join C效果"></a>SC left outer join C效果</h5><table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">sno</th>
+<th align="left">cno</th>
+<th align="left">score</th>
+<th align="left">cn</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字段所在的表</td>
+<td align="left">SC的字段</td>
+<td align="left">SC的字段，C的字段，连接字段</td>
+<td align="left">SC的字段</td>
+<td align="left">C独有的字段，可以为NULL</td>
+</tr>
+</tbody></table>
+<h2 id="3-3-7-子查询"><a href="#3-3-7-子查询" class="headerlink" title="3.3.7 子查询"></a>3.3.7 子查询</h2><p>在<code>where</code>子句中包含一个形如<code>select-from-where</code>的查询块，此查询块称为子查询或嵌套查询，包含子查询的语句称为父查询或外部查询。</p>
+<p>嵌套查询可以将一系列简单查询构成复杂查询，增强查询能力。</p>
+<p>子查询的嵌套层次<strong>最多可达到255层</strong>，以层层嵌套的方式构造查询充分体现了SQL“结构化”的特点。</p>
+<p><strong>嵌套查询在执行时&#x3D;&#x3D;由里向外&#x3D;&#x3D;处理</strong>，每个子查询是在上一级外部查询处理之前完成，父查询要用到子查询的结果。</p>
+<h3 id="3-3-7-1-返回一个值的子查询"><a href="#3-3-7-1-返回一个值的子查询" class="headerlink" title="3.3.7.1 返回一个值的子查询"></a>3.3.7.1 返回一个值的子查询</h3><p><strong>当子查询的返回值只有一个时，可以使用比较运算符</strong><code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>!=</code>将父查询和子查询连接起来。</p>
+<h4 id="例3-52-查询与刘伟教师职称相同的教师号、姓名。"><a href="#例3-52-查询与刘伟教师职称相同的教师号、姓名。" class="headerlink" title="例3.52 查询与刘伟教师职称相同的教师号、姓名。"></a>例3.52 查询与刘伟教师职称相同的教师号、姓名。</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<p>tno,tn–T,条件prof&#x3D;&#x3D;刘伟的prof<br>—-&gt;先查询出刘伟的prof,tn&#x3D;’刘伟’</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tno,tn <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> prof<span class="hljs-operator">=</span>(<br>    <span class="hljs-keyword">select</span> prof <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span><br>);<br></code></pre></td></tr></table></figure>
+
+<p>此查询相当于分成两个查询块来执行。先执行子查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> prof<br><span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p>子查询向主查询只返回一个值，即刘伟教师的职称“讲师”，然后以此作为父查询的条件，相当于再执行父查询, 查询所有职称为“讲师”的教师号、姓名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tno,tn<br><span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> prof<span class="hljs-operator">=</span><span class="hljs-string">&#x27;讲师&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tno,tn <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> T.prof <br><span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> prof <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> tn<span class="hljs-operator">=</span><span class="hljs-string">&#x27;刘伟&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="3-3-7-2-返回一组值的子查询"><a href="#3-3-7-2-返回一组值的子查询" class="headerlink" title="3.3.7.2 返回一组值的子查询"></a>3.3.7.2 返回一组值的子查询</h3><p><strong>如果子查询的返回值不止一个，而是一个集合时，则不能直接使用比较运算符</strong>，可以在比较运算符和子查询之间插入ANY或ALL。其具体含义详见以下各例。</p>
+<h4 id="1-使用ANY"><a href="#1-使用ANY" class="headerlink" title="1.使用ANY"></a>1.使用ANY</h4><h5 id="例3-53-查询讲授课程号为C5的教师姓名。"><a href="#例3-53-查询讲授课程号为C5的教师姓名。" class="headerlink" title="例3.53 查询讲授课程号为C5的教师姓名。"></a>例3.53 查询讲授课程号为C5的教师姓名。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn<br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> tno<span class="hljs-operator">=</span><span class="hljs-keyword">any</span>(<br>    <span class="hljs-keyword">select</span> tno <br>    <span class="hljs-keyword">from</span> tc<br>    <span class="hljs-keyword">where</span> cno<span class="hljs-operator">=</span><span class="hljs-string">&#x27;c5&#x27;</span><br>);<br></code></pre></td></tr></table></figure>
+
+<p>先执行子查询，找到讲授课程号为C5的教师号，为一组值构成的集合(T2,T3,T5)；<br>再执行父查询，其中<strong>ANY的含义为任意一个</strong>，查询教师号为T2、T3、T5的教师的姓名。 </p>
+<h5 id="该例也可以使用前面所讲的连接操作来实现："><a href="#该例也可以使用前面所讲的连接操作来实现：" class="headerlink" title="该例也可以使用前面所讲的连接操作来实现："></a>该例也可以使用前面所讲的连接操作来实现：</h5><p>tn—-T表<br>cno—TC</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn<br><span class="hljs-keyword">from</span><br>T <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> TC<br><span class="hljs-keyword">on</span> T.tno<span class="hljs-operator">=</span>TC.tno <span class="hljs-keyword">and</span> tc.cno<span class="hljs-operator">=</span><span class="hljs-string">&#x27;C5&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn<br><span class="hljs-keyword">from</span> T,TC<br><span class="hljs-keyword">where</span> T.tno<span class="hljs-operator">=</span>TC.tno <span class="hljs-keyword">and</span> tc.cno<span class="hljs-operator">=</span><span class="hljs-string">&#x27;C5&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p>可见，<strong>对于同一查询可使用子查询和连接两种方法来解决</strong>，可根据习惯任意选用。 </p>
+<h5 id="例3-54-查询其他系中比计算机系某一教师工资高的教师的姓名和工资。"><a href="#例3-54-查询其他系中比计算机系某一教师工资高的教师的姓名和工资。" class="headerlink" title="例3.54 查询其他系中比计算机系某一教师工资高的教师的姓名和工资。"></a>例3.54 查询其他系中比计算机系某一教师工资高的教师的姓名和工资。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn,sal <span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> <br>    sal <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">any</span>(<span class="hljs-keyword">select</span> sal <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>)<br>    <span class="hljs-keyword">and</span><br>    dept<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;计算机&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>先执行子查询，找到计算机系中所有教师的工资集合(1500,900)；</li>
+<li>再执行父查询，查询所有不是计算机系且工资高于1500或900的教师姓名和工资。</li>
+</ul>
+<p>此查询也可以写成：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn,sal <span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> <br>    dept<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;计算机&#x27;</span><br>    <span class="hljs-keyword">and</span><br>    sal <span class="hljs-operator">&gt;</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">min</span>(sal) <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>) <br>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>先执行子查询，利用库函数<code>min</code>找到计算机系中所有教师的最低工资——900；</li>
+<li>再执行父查询，查询所有不是计算机系且工资高于900的教师。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn,sal <span class="hljs-keyword">from</span> <br>    T <span class="hljs-keyword">as</span> R1<br>    (<span class="hljs-keyword">select</span> sal <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>) <span class="hljs-keyword">as</span> R2<br><span class="hljs-keyword">where</span> R1.dept<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;计算机&#x27;</span> <span class="hljs-keyword">and</span> R1.sal<span class="hljs-operator">&gt;</span>R2.sal;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-使用IN"><a href="#2-使用IN" class="headerlink" title="2. 使用IN"></a>2. 使用IN</h4><p>可以使用IN代替“&#x3D;ANY”。</p>
+<h5 id="例3-55（题目同3-53）查询讲授课程号为C5的教师姓名。"><a href="#例3-55（题目同3-53）查询讲授课程号为C5的教师姓名。" class="headerlink" title="例3.55（题目同3.53）查询讲授课程号为C5的教师姓名。"></a>例3.55（题目同3.53）查询讲授课程号为C5的教师姓名。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn <span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> tno <span class="hljs-keyword">in</span>(<br>    <span class="hljs-keyword">select</span> tno <span class="hljs-keyword">from</span> TC <span class="hljs-keyword">where</span> cno<span class="hljs-operator">=</span><span class="hljs-string">&#x27;C4&#x27;</span><br>);<br></code></pre></td></tr></table></figure>
+<h4 id="3-使用ALL"><a href="#3-使用ALL" class="headerlink" title="3. 使用ALL"></a>3. 使用ALL</h4><p>ALL的含义为全部。</p>
+<h5 id="例3-56-查询其他系中比计算机系所有教师工资都高的教师的姓名和工资。"><a href="#例3-56-查询其他系中比计算机系所有教师工资都高的教师的姓名和工资。" class="headerlink" title="例3.56 查询其他系中比计算机系所有教师工资都高的教师的姓名和工资。"></a>例3.56 查询其他系中比计算机系所有教师工资都高的教师的姓名和工资。</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn,sal <span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span> <br>    dept<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;计算机&#x27;</span><br>    <span class="hljs-keyword">and</span><br>    sal <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">all</span> (<span class="hljs-keyword">select</span> sal <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>子查询找到计算机系中所有教师的工资集合(1500,900)；</li>
+<li>父查询找到所有不是计算机系且工资高于1500的教师姓名和工资。</li>
+</ul>
+<h6 id="使用库函数max实现"><a href="#使用库函数max实现" class="headerlink" title="使用库函数max实现"></a>使用库函数max实现</h6><p>此查询也可以写成：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> tn,sal <span class="hljs-keyword">from</span> T<br><span class="hljs-keyword">where</span><br>    dept<span class="hljs-operator">!=</span><span class="hljs-string">&#x27;计算机&#x27;</span><br>    <span class="hljs-keyword">and</span><br>    sal <span class="hljs-operator">&gt;</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(sal) <span class="hljs-keyword">from</span> T <span class="hljs-keyword">where</span> dept<span class="hljs-operator">=</span><span class="hljs-string">&#x27;计算机&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>库函数<code>max</code>的作用是找到计算机系中所有教师的最高工资1500。</p>
+<h5 id="例3-57-查询不讲授课程号为C5的教师姓名。"><a href="#例3-57-查询不讲授课程号为C5的教师姓名。" class="headerlink" title="例3.57 查询不讲授课程号为C5的教师姓名。"></a>例3.57 查询不讲授课程号为C5的教师姓名。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<p>课程号cno—TC表<br>教师姓名tn—T表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> tn<br><span class="hljs-keyword">from</span> t<br><span class="hljs-keyword">where</span> <span class="hljs-string">&#x27;c5&#x27;</span> <span class="hljs-operator">!=</span><span class="hljs-keyword">all</span><br>(<br>    <span class="hljs-keyword">select</span> cno <br>    <span class="hljs-keyword">from</span> tc<br>    <span class="hljs-keyword">where</span> tno<span class="hljs-operator">=</span>t.tno<br>);<br></code></pre></td></tr></table></figure>
+<p><code>!=ALL</code>的含义为不等于子查询结果中的任何一个值，也可使用<code>NOT IN</code>代替<code>!=ALL</code>。</p>
+<h4 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h4><p>子查询包含普通子查询和相关子查询。</p>
+<p>前面所讲的子查询均为<strong>普通子查询</strong>，而本例中<strong>子查询的查询条件引用了父查询表中的属性值（T表的TNO值），我们把这类查询称为相关子查询</strong></p>
+<!-- ```sql
+select tn from T
+where tno = all
+(selec tno from TC where cno!='C5');
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs -->"><br>二者的执行方式不同：<br>##### 普通子查询的执行顺序是：<br>- 首先执行子查询，然后把子查询的结果作为父查询的查询条件的值。<br>- **普通子查询只执行一次**，而父查询所涉及的所有记录行都与其查询结果进行比较以确定查询结果集合。<br><br>##### 相关子查询的执行顺序是：<br>- 首先选取父查询表中的第一行记录，内部的子查询利用此行中相关的属性值进行查询，<br>- 然后父查询根据子查询返回的结果判断此行是否满足查询条件。如果满足条件，则把该行放入父查询的查询结果集合中。重复执行这一过程，直到处理完父查询表中的每一行数据。<br><br>由此可以看出，相关子查询的执行次数是由父查询表的行数决定的。<br><br>**相关子查询的查询次数很多，尽量不要使用相关子查询**<br>如上例表T中每的一行即每个教师记录都要执行一次子查询以确定该教师是否讲授C5这门课，当 C5不是教师的任一门课时，则该教师被选取。 <br><br>#### 4. 使用EXISTS<br>`exists`表示存在量词，带有`exists`的子查询不返回任何实际数据，它只得到逻辑值“真”或“假”。<br><br>当子查询的的查询结果集合为非空时，外层的`where`子句返回真值，否则返回假值。`not exists`与此相反。<br><br>含有`in`的查询通常可用`exists`表示，但反过来不一定。<br><br>##### 例3.58（题目同3.53）查询讲授课程号为C5的教师姓名。<br>```sql<br>select tn<br>from t<br>where exists (<br>    select * <br>    from tc<br>        where tno=t.tno and cno=&#x27;c5&#x27;<br>);<br></code></pre></td></tr></table></figure>
+<p>当子查询<code>tc</code>表存在一行记录满足其<code>where</code>子句中的条件时，则父查询便得到一个<code>tn</code>值，重复执行以上过程，直到得出最后结果。</p>
+<h5 id="例3-59-查询选修所有课程的学生姓名"><a href="#例3-59-查询选修所有课程的学生姓名" class="headerlink" title="例3.59 查询选修所有课程的学生姓名"></a>例3.59 查询选修所有课程的学生姓名</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">S(sno,sn,age,sex,dept)<br>C(cno,cn)<br>SC(sno,cno,score)<br>T(tno,tn,sex,dept,prof,sal)<br>TC(tno,cno)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> sn <span class="hljs-keyword">from</span> s <br><span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> <br>(<br>    <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> c <br>    <span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span><br>    (<br>        <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> sc<br>        <span class="hljs-keyword">where</span> sno <span class="hljs-operator">=</span> s.sno<br>        <span class="hljs-keyword">and</span> cno<span class="hljs-operator">=</span>c.cno<br>    )<br>);<br></code></pre></td></tr></table></figure>
+<p>选出这样一些学生名单，<strong>在SC表中不存在他们没有选修课程的记录</strong>。</p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/247433b.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/2018f329.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Win10 禁止安装Synaptics Pointing Device驱动
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/3461d2ae.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">SQL语言PPT</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>常用cmd命令 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/Windows/CMD批处理/语法/构建程序相关命令/常用cmd命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  常用cmd命令
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/8d229e40.html" class="article-date">
+  <time datetime="2018-12-28T07:38:46.000Z" itemprop="datePublished">2018-12-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a> / <a class="article-category-link" href="/categories/Windows/CMD%E6%89%B9%E5%A4%84%E7%90%86/">CMD批处理</a> / <a class="article-category-link" href="/categories/Windows/CMD%E6%89%B9%E5%A4%84%E7%90%86/%E8%AF%AD%E6%B3%95/">语法</a> / <a class="article-category-link" href="/categories/Windows/CMD%E6%89%B9%E5%A4%84%E7%90%86/%E8%AF%AD%E6%B3%95/%E6%9E%84%E5%BB%BA%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">构建程序相关命令</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h2 id="创建文件-copy-con命令"><a href="#创建文件-copy-con命令" class="headerlink" title="创建文件 copy con命令"></a>创建文件 copy con命令</h2><p><code>copy con</code>是一个功能简单、易于使用的创建文本文件命令,命令中<code>con</code>代表计算机屏幕。**<code>copy con</code>最初的意思就是<code>将计算机屏幕上输入的内容存放到指定的文本文件中</code>**</p>
+<p>在命令行输入<code>copy con file_exist.bat</code>命令,按回车键,进入屏幕编辑状态。根据需要输入批处理命令,每一行输入一条命令,然后<code>按回车键进入下一行</code>。输入所有批处理命令后<code>按【Ctrl+Z】键,接着再按回车键即可退出编辑状态</code>,此时已经在当前目录下创建了个名为<code>file_exist. bat</code>批处理文件。</p>
+<h2 id="浏览文件-type命令"><a href="#浏览文件-type命令" class="headerlink" title="浏览文件 type命令"></a>浏览文件 type命令</h2><p>type命令主要用来显示文本文件的内容。<br>语法格式：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">TYPE</span> [drive:][<span class="hljs-built_in">path</span>]filename<br></code></pre></td></tr></table></figure>
+<p>例如浏览上面创建的<code>hello.txt</code>文件:<code>type hello.txt</code>。</p>
+<h2 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h2><p><code>echo</code>命令可用于在屏幕显示相关的文字信息,还可用于控制批处理文件在执行的过程中是否回显。<br>命令格式:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">echo</span>[&#123;on|off)][message]<br></code></pre></td></tr></table></figure>
+<p>参数说明如下:</p>
+<ul>
+<li>on:允许批处理文件在执行的过程中回显命令。</li>
+<li>off:禁止批处理文件在执行的过程中回显命令。</li>
+<li>message:表示需要显示在屏幕上的信息。</li>
+<li>&#x2F;?:在命令提示符显示帮助。</li>
+</ul>
+<p>创建<code>echo_test.bat</code>,然后写入下面的内容：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">echo</span> on<br><span class="hljs-built_in">type</span> hello.txt<br><span class="hljs-built_in">echo</span> 现在关闭命令显示<span class="hljs-variable">!!!</span>!<br><span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">type</span> hello.txt<br></code></pre></td></tr></table></figure>
+<p>直接输echo_test.bat运行该批处理脚本，显示效果如下：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">echo_test.bat</span></span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;<span class="hljs-title">echo</span> <span class="hljs-title">on</span></span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;<span class="hljs-title">type</span> <span class="hljs-title">hello.txt</span></span><br><span class="hljs-function"><span class="hljs-title">helloworld</span>!</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;<span class="hljs-title">echo</span> 现在关闭命令显示!!!!</span><br><span class="hljs-function">现在关闭命令显示!!!!</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;<span class="hljs-title">echo</span> <span class="hljs-title">off</span></span><br><span class="hljs-function"><span class="hljs-title">helloworld</span>!</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<p>可以看到<code>echo_test.bat</code>，使用<code>echo on</code>打开回显是，执行到第二行的命令<code>type hello.txt</code>时,该命令会显示在cmd的输入位置。接着才显示<code>type hello.txt</code>这条命令的运行结果。<br>而使用<code>echo off</code>关闭回显之后，<code>type hello.txt</code>命令不会显示在命令输入位置，直接显示该命令的运行结果。</p>
+<p><strong>一句话：关闭回显则只显示命令的运行结果，不显示该命令本身。打开回显则先显示该命令本身，然后显示命令运行结果。</strong></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="@命令"></a>@命令</h2><p>**<code>@</code>是一个非常简单的命令,用于<code>禁止当前执行的命令回显在屏幕上</code>**。<code>@</code>不受<code>echo</code>命令设置效果的影响,且命令本身不会回显在屏幕上<br>命令格式:</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">@[command]<br></code></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li>command:要屏蔽回显的命令。</li>
+<li>当命令不加任何参数执行时,将不产生任何效果。</li>
+</ul>
+<p>在上面echo的例子中，我们可以看到虽然，echo off命令可以关闭其他命令的回显，但是该命令本身还是回显了，可以在前面加上<code>@</code>命令，也就是<code>@echo off</code>这样就关闭其他命令的回显，也关闭当前命令的回显。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> on                 <br><span class="hljs-built_in">type</span> hello.txt<br>@<span class="hljs-built_in">echo</span> 现在关闭命令显示<span class="hljs-variable">!!!</span>! <br>@<span class="hljs-built_in">echo</span> off                 <br><span class="hljs-built_in">type</span> hello.txt<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">type</span> <span class="hljs-title">hello.txt</span></span><br><span class="hljs-function"><span class="hljs-title">helloworld</span>!现在关闭命令显示!!!!</span><br><span class="hljs-function"><span class="hljs-title">helloworld</span>!</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="两个关闭回显命令的区别"><a href="#两个关闭回显命令的区别" class="headerlink" title="两个关闭回显命令的区别"></a>两个关闭回显命令的区别</h3><p><code>@</code>与<code>echo</code>的主要区别在于:<br><code>@</code>只对当前命令行起作用,且不受<code>echo</code>命令的影响;<br><code>echo</code>命令则影响设置之后的所有命令,一直到出现另一个<code>echo</code>命令改变状态为止。</p>
+<h2 id="流程控制转向命令-goto命令"><a href="#流程控制转向命令-goto命令" class="headerlink" title="流程控制转向命令 goto命令"></a>流程控制转向命令 goto命令</h2><p>goto是一个流程控制转向命令,用于控制批处理中的命令执行流程。<br>命令格式: <code>goto label</code><br>label:表示批处理文件中某行,该行表示批处理文件新的执行点。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">echo</span> 跳过中间命令,直接执行最后一条命令<br><span class="hljs-keyword">goto</span> last<br><span class="hljs-built_in">echo</span> 中间命令...<br>:last<br><span class="hljs-built_in">echo</span> 已经执行到最后了<br></code></pre></td></tr></table></figure>
+<p>执行效果：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">goto_test.bat</span></span><br><span class="hljs-function">跳过中间命令,直接执行最后一条命令</span><br><span class="hljs-function">已经执行到最后了</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<p>批处理中的标号通常单独占一行,标号行以“<code>:</code>”号开头并紧跟标识符,这个标识符将用在“goto”语句后。<code>标识符中不能含有逗号、冒号等,但可以使用空格</code>。<code>标识符的有效长度为最多8个字符</code>,如果多于8个字符则只识别前8个字符。</p>
+<h2 id="调用另一个批处理程序-call命令"><a href="#调用另一个批处理程序-call命令" class="headerlink" title="调用另一个批处理程序 call命令##"></a>调用另一个批处理程序 call命令##</h2><p>从批处理程序调用另一个批处理程序。<br><strong>语法格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">call [drive:][path]filename [batch-parameters] [:label arguments]<br></code></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>[drive:][path]filename</code>:指定被调用的批处理文件名,当被调用的批处理文件与</li>
+<li><code>label:</code>用于指定调用位置的标签<code>,与goto语句中使用的标签类似</code>。</li>
+<li><code>arguments</code>:对于以<code>:label</code>开头的批处理子程序,指定要传送给其新实例的命令行信息,包括命令行选项、文件名、批处理参数或者变量。</li>
+</ul>
+<p><strong>实例:</strong><br>创建<code>called.bat</code>,写入如下内容：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">echo</span>     开始执行called.bat<br><span class="hljs-built_in">echo</span>     ...<br><span class="hljs-built_in">echo</span>     执行完毕called.bat<br></code></pre></td></tr></table></figure>
+<p>这里echo后面写入多个空格是为了显示美观。<br>然后创建<code>call_test.bat</code>,在其中调用<code>called.bat</code>,如下所示：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmd">@<span class="hljs-built_in">echo</span> off <br><span class="hljs-built_in">echo</span> 开始执行call_test.bat<br><span class="hljs-built_in">echo</span> ...<br><span class="hljs-keyword">call</span> called.bat<br><span class="hljs-built_in">echo</span> ...<br><span class="hljs-keyword">call</span> :flag<br><span class="hljs-built_in">echo</span> 执行完毕call_test.bat<br>:flag<br><span class="hljs-built_in">echo</span>     执行:flag标号的内容...<br><br></code></pre></td></tr></table></figure>
+<p>运行<code>call_test.bat</code>,效果如下：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">call_test.bat</span></span><br><span class="hljs-function">开始执行<span class="hljs-title">call_test.bat</span></span><br><span class="hljs-function">...</span><br><span class="hljs-function">    开始执行<span class="hljs-title">called.bat</span></span><br><span class="hljs-function">    ...</span><br><span class="hljs-function">    执行完毕<span class="hljs-title">called.bat</span></span><br><span class="hljs-function">...</span><br><span class="hljs-function">    执行:<span class="hljs-title">flag</span>标号的内容...</span><br><span class="hljs-function">执行完毕<span class="hljs-title">call_test.bat</span></span><br><span class="hljs-function">    执行:<span class="hljs-title">flag</span>标号的内容...</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<p>当<code>call_test. bat</code>批处理执行到<code>call called.bat</code>命令时,便转向执行<code>called.bat</code>批处理文件中的内容。<br><code>called.bat</code>文件执行完毕后继续执行<code>call called.bat</code>后的命令。</p>
+<p>批处理执行到<code>call :flag</code>命令后,便开始执行<code>flag</code>标号后的语句一直到批处理文件的结尾。<strong>当执行到批处理文件结尾后,执行流程将返回到<code>call</code>,并执行后面所有的命令一直到文件结束</strong>,这也是显示两次<code>执行:flag标号的内容...</code>的原因。</p>
+<h3 id="call-和goto的区别"><a href="#call-和goto的区别" class="headerlink" title="call 和goto的区别"></a>call 和goto的区别</h3><ul>
+<li>call命令在使用标号时,标识符前必须加上<code>:</code>号,而<code>goto</code>命令中则不需要加。</li>
+<li>此外,使用<code>call</code>命令转向标号并执行到文件结束时,会返回调用处继续运行下面的命令,</li>
+<li>而<code>goto</code>语句跳转后不再返回。</li>
+</ul>
+<h2 id="重新启用一个单独的命令行窗口-start命令"><a href="#重新启用一个单独的命令行窗口-start命令" class="headerlink" title="重新启用一个单独的命令行窗口 start命令"></a>重新启用一个单独的命令行窗口 start命令</h2><p>“ start”命令用于重新启用一个单独的命令行窗口,然后在新窗口中执行指定的程序或命令<br>命令格式：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">start</span> [&quot;<span class="hljs-built_in">title</span>&quot;] [/d <span class="hljs-built_in">path</span>] [/i] [/min] [/max] [/separate | /shared]<br>      [/low | /normal | /high | /realtime | /abovenormal | /belownormal]<br>      [/node &lt;numa node&gt;] [/affinity &lt;hex affinity mask&gt;] [/wait] [/b]<br>      [command/program] [parameters]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>tite:指定在“命令提示符”窗口标题栏中显示的<code>标题</code>。</li>
+<li><strong><code>/d Path</code></strong>:指定启动目录。</li>
+<li><strong><code>/i</code></strong>:将Cmd,exe启动环境传送到新的“命令提示符”窗口。</li>
+<li>&#x2F;min:启动新的最小化“命令提示符”窗口。</li>
+<li>&#x2F;max:启动新的最大化“命令提示符”窗口。</li>
+<li>&#x2F;separate:在单独的内存空间启动16位程序。</li>
+<li>&#x2F;shared:在共享的内存空间启动16位程序。</li>
+</ul>
+<p>优先级相关参数：</p>
+<ul>
+<li><p>&#x2F;low:以空闲优先级启动应用程序。</p>
+</li>
+<li><p>&#x2F;normal:以一般优先级启动应用程序</p>
+</li>
+<li><p>&#x2F;high:以高优先级启动应用程序。</p>
+</li>
+<li><p>&#x2F;realtime:以实时优先级启动应用程序。</p>
+</li>
+<li><p>&#x2F;abovenormal:以超出常规优先级的方式启动应用程序。</p>
+</li>
+<li><p>&#x2F;belownormal:以低出常规优先级的方式启动应用程序。</p>
+</li>
+<li><p><strong><code>/wait</code></strong>:启动应用程序,并等待其结束。</p>
+</li>
+<li><p><strong><code>/b</code></strong>:启动应用程序时不必打开新的“命令提示符”窗口。除非应用程序启用【 Ctrl+C组合键操作,否则将忽略【 Ctrl+C】操作。按【Crl+ Break】键可中断应用程序。</p>
+</li>
+<li><p><strong><code>command/program</code></strong>:先窗口中执行的命令或程序</p>
+</li>
+</ul>
+<p>-** <code>/parameters:</code>**指定要传送给命令或程序的参数。</p>
+<p><strong>实例:</strong></p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">echo</span> 启动新窗口...<br><span class="hljs-built_in">start</span> &quot;hello.txt内容&quot; /wait <span class="hljs-built_in">type</span> hello.txt<br><span class="hljs-built_in">echo</span> 已经从新窗口返回...<br></code></pre></td></tr></table></figure>
+<p>运行该文件，会启动一个标题为<code>hello.txt内容</code>的新窗口，该窗口中显示的是 <code>type hello.txt</code>命令的执行结果<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/cmd/start/new%20console.png"><br>新打开的“hello.txt内容”窗口中显示了运行的结果,由于“ start”命令中使用了“&#x2F;wait”参数,所以需要在新窗口中输入“exit”并按回车键,正常退出新打开命令行窗口,“ start_test. bat程序将继续执行“ start”以后的命令:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">start_test.bat</span></span><br><span class="hljs-function">启动新窗口...</span><br><span class="hljs-function">已经从新窗口返回...</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<p>如果加上<code>/b</code>参数会怎样呢,如下所示：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">echo</span> 启动新窗口...<br><span class="hljs-built_in">start</span> &quot;hello.txt内容&quot; /wait /b <span class="hljs-built_in">type</span> hello.txt<br><span class="hljs-built_in">echo</span> 已经从新窗口返回...<br></code></pre></td></tr></table></figure>
+<p>运行之后发现，不会弹窗(<code>/b</code>的作用),然后旧窗口也会直接运行结束，不会等待。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>“rem”是一个注释命令,用于在批处理中加入相应的说明信息,这些说明信息可以帮助读者理解批处理的功能。<br>语法格式: <code>rem 注释内容...</code><br>实例：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-built_in">echo</span> 程序运行中...<br><span class="hljs-comment">rem 这是注释</span><br><span class="hljs-built_in">echo</span> 程序运行结束...<br></code></pre></td></tr></table></figure>
+<h2 id="set命令"><a href="#set命令" class="headerlink" title="set命令"></a>set命令</h2><p>set”专门用来创建、设置、查看或删除环境变量。对于一些功能复杂的批处理程序,自定义变量是不可缺少的。<br>语法格式：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">set</span> [/a [expression]] [/p [variable=]]string]<br></code></pre></td></tr></table></figure>
+<p><strong>实例:</strong></p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-comment">rem 设置当前目录为环境变量</span><br><span class="hljs-built_in">set</span> var=&quot;.&quot;<br><span class="hljs-comment">rem 显示目录结果</span><br><span class="hljs-built_in">dir</span> <span class="hljs-variable">%var%</span><br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-function">D:\学习9\书籍\批处理&gt;<span class="hljs-title">set_test.bat</span></span><br><span class="hljs-function"> 驱动器 <span class="hljs-title">D</span> 中的卷是 原来<span class="hljs-title">D</span>盘</span><br><span class="hljs-function"> 卷的序列号是 <span class="hljs-title">E454</span>-<span class="hljs-title">E2B9</span></span><br><span class="hljs-function"> <span class="hljs-title">D</span>:\学习9\书籍\批处理 的目录</span><br><span class="hljs-function">2018/12/20  22:07    &lt;<span class="hljs-title">DIR</span>&gt;          .</span><br><span class="hljs-function">2018/12/20  22:07    &lt;<span class="hljs-title">DIR</span>&gt;          ..</span><br><span class="hljs-function">2018/12/20  21:24                72 <span class="hljs-title">called.bat</span></span><br><span class="hljs-function">2018/12/20  15:29               157 <span class="hljs-title">call_test.bat</span></span><br><span class="hljs-function">2018/12/20  14:52               114 <span class="hljs-title">echo_test.bat</span></span><br><span class="hljs-function">2018/12/20  21:13               108 <span class="hljs-title">goto_test.bat</span></span><br><span class="hljs-function">2018/12/20  14:30                11 <span class="hljs-title">hello.txt</span></span><br><span class="hljs-function">2018/12/20  22:01                65 <span class="hljs-title">rem_test.bat</span></span><br><span class="hljs-function">2018/12/20  22:40                79 <span class="hljs-title">set_test.bat</span></span><br><span class="hljs-function">2018/12/20  21:55               104 <span class="hljs-title">start_test.bat</span></span><br><span class="hljs-function">2018/12/20  14:03        46,773,570 批处理命令在<span class="hljs-title">Windows</span>操作中的典型应用.<span class="hljs-title">pdf</span></span><br><span class="hljs-function">               9 个文件     46,774,280 字节</span><br><span class="hljs-function">               2 个目录 28,290,183,168 可用字节</span><br><span class="hljs-function"><span class="hljs-title">D</span>:\学习9\书籍\批处理&gt;</span><br></code></pre></td></tr></table></figure>
+<p>批处理文件中使用变量时,应该<code>在变量名前后分别加上一个百分号</code>,否则无法正确使用变量。</p>
+<h3 id="批处理脚本中获取用户输入"><a href="#批处理脚本中获取用户输入" class="headerlink" title="批处理脚本中获取用户输入"></a>批处理脚本中获取用户输入</h3><p>语法格式:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">set</span> /p 变量名=提示信息<br></code></pre></td></tr></table></figure>
+<p>例如，当用户输入y是执行一些指令：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">set</span> /p isCommit=是否提交?(y/n):<br><span class="hljs-keyword">if</span> <span class="hljs-variable">%isCommit%</span>==y (<br>    一些命令...<br>)<br></code></pre></td></tr></table></figure>
+<p>具体如下：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br>::切换盘符<br><span class="hljs-function">D:</span><br><span class="hljs-function">::进入项目目录</span><br><span class="hljs-function"><span class="hljs-title">cd</span> <span class="hljs-title">D</span>:\<span class="hljs-title">dev</span>\<span class="hljs-title">workspace</span>\<span class="hljs-title">LatexTools</span></span><br><span class="hljs-function">::查看信息</span><br><span class="hljs-function"><span class="hljs-title">git</span> <span class="hljs-title">status</span></span><br><span class="hljs-function"><span class="hljs-title">echo</span>.</span><br><span class="hljs-function">::让用户来判断是否提交</span><br><span class="hljs-function"><span class="hljs-title">set</span> /<span class="hljs-title">p</span> <span class="hljs-title">isCommit</span>=是否提交?(<span class="hljs-title">y</span>/<span class="hljs-title">n</span>):</span><br><span class="hljs-function"><span class="hljs-title">if</span> %<span class="hljs-title">isCommit</span>%==<span class="hljs-title">y</span> (</span><br><span class="hljs-function">    <span class="hljs-title">set</span> /<span class="hljs-title">p</span> <span class="hljs-title">message</span>=提交说明:</span><br><span class="hljs-function">    <span class="hljs-title">git</span> <span class="hljs-title">add</span> .</span><br><span class="hljs-function">    <span class="hljs-title">git</span> <span class="hljs-title">commit</span> -<span class="hljs-title">m</span> &quot;<span class="hljs-title">message</span>&quot;</span><br><span class="hljs-function">)</span><br><span class="hljs-function"><span class="hljs-title">echo</span>.</span><br><span class="hljs-function">::让用户来判断是否推送到<span class="hljs-title">Github</span></span><br><span class="hljs-function"><span class="hljs-title">set</span> /<span class="hljs-title">p</span> <span class="hljs-title">isPush</span>=是否<span class="hljs-title">push</span>到<span class="hljs-title">Github</span>?(<span class="hljs-title">y</span>/<span class="hljs-title">n</span>):</span><br><span class="hljs-function"><span class="hljs-title">if</span> %<span class="hljs-title">isPush</span>%==<span class="hljs-title">y</span> (</span><br><span class="hljs-function">    <span class="hljs-title">git</span> <span class="hljs-title">push</span> <span class="hljs-title">origin</span> <span class="hljs-title">master</span></span><br><span class="hljs-function">)</span><br></code></pre></td></tr></table></figure>
+<p>之前项目管理我一直手动来输入git命令，刚开始是为了熟悉命令，后面久了难免繁琐浪费时间，于是写了以上的bat脚本来完成。<br><strong>运行效果如下</strong>：<br><img src="https://image-1257720033.cos.ap-shanghai.myqcloud.com/blog/cmd/set/git_tools.png"></p>
+<h2 id="设置本地临时环境变量-setlocal"><a href="#设置本地临时环境变量-setlocal" class="headerlink" title="设置本地临时环境变量 setlocal"></a>设置本地临时环境变量 setlocal</h2><p><code>setlocal</code>命令可在批处理程序运行时设置自身的临时变量环境,且不会影响到系统变量环境设置。</p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/8d229e40.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/5285183.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            eclipse for JavaEE 安装JavaFX插件
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/efd55c13.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Java 删除所有空子目录</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

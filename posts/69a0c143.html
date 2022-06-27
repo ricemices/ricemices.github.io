@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2021年07月14日 随堂笔记 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/随堂笔记/2021年07月/笔记/2021年07月14日 随堂笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2021年07月14日 随堂笔记
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/69a0c143.html" class="article-date">
+  <time datetime="2021-07-14T00:59:53.000Z" itemprop="datePublished">2021-07-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/">随堂笔记</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/">2021年07月</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="习题讲解"><a href="#习题讲解" class="headerlink" title="习题讲解"></a>习题讲解</h1><p>求最大公约数<br>int i;<br>for(i&#x3D;n;i&gt;0;i–){<br>    if(m%i&#x3D;&#x3D;0&amp;&amp;n%i&#x3D;&#x3D;0)<br>        break;<br>}</p>
+<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><p>颠倒这个数，如果和原来的数一样的话，那么就是回文数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">m=<span class="hljs-number">12321</span>;<br>n=m;<br>s=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)&#123;<br>    s=s*<span class="hljs-number">10</span>+n%<span class="hljs-number">10</span><br>    n=n/<span class="hljs-number">10</span>;<br>&#125;<br><br><span class="hljs-keyword">if</span>(s==m)&#123;<br>    <span class="hljs-comment">// 回文数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="11题-2-22-222-2222-22222"><a href="#11题-2-22-222-2222-22222" class="headerlink" title="11题 2+22+222+2222+22222"></a>11题 2+22+222+2222+22222</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">n=<span class="hljs-number">5</span>;<br>a=<span class="hljs-number">2</span>;<br>s=<span class="hljs-number">0</span>;<br>sn=<span class="hljs-number">0</span>;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;;i&lt;n;i++)<br>&#123;<br>    sn=sn*<span class="hljs-number">10</span>+a;<br>    s=s+sn;<br>&#125;<br>输出s<br></code></pre></td></tr></table></figure>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span>&#123;</span><br>    <span class="hljs-type">double</span> 价格;<br>    <span class="hljs-type">char</span>[<span class="hljs-number">20</span>] 作者;<br>    <span class="hljs-type">char</span>[<span class="hljs-number">100</span>] 出版社;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="定义结构体变量"><a href="#定义结构体变量" class="headerlink" title="定义结构体变量:"></a>定义结构体变量:</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span> <span class="hljs-title">m</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="取别名"><a href="#取别名" class="headerlink" title="取别名"></a>取别名</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span>&#123;</span><br>    <span class="hljs-type">double</span> 价格;<br>    <span class="hljs-type">char</span>[<span class="hljs-number">20</span>] 作者;<br>    <span class="hljs-type">char</span>[<span class="hljs-number">100</span>] 出版社;<br>&#125; Book;<br></code></pre></td></tr></table></figure>
+
+<p>类 &#x3D; 结构体 + 函数<br>      |       |<br>     属性    方法</p>
+<h2 id="面型对象的特征"><a href="#面型对象的特征" class="headerlink" title="面型对象的特征"></a>面型对象的特征</h2><ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<p>继承是为了更好的实现软件复用</p>
+<p>在面试的时候，一定要举例子说明。</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><p>在<strong>同一个类里面</strong>有多个同名方法，—-&gt;见名知意</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span><br><span class="hljs-type">double</span> <span class="hljs-title function_">max</span><span class="hljs-params">(<span class="hljs-type">double</span> x,<span class="hljs-type">double</span> y)</span><br></code></pre></td></tr></table></figure>
+<h3 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h3><p>在继承的情况下。</p>
+<h2 id="高内聚-松耦合"><a href="#高内聚-松耦合" class="headerlink" title="高内聚 松耦合"></a>高内聚 松耦合</h2><p>模块之内要高内聚，模块之间要松耦合。</p>
+<p>类之内要高内聚，类之间要松耦合。</p>
+<h3 id="添加新功能，应该封装实现"><a href="#添加新功能，应该封装实现" class="headerlink" title="添加新功能，应该封装实现"></a>添加新功能，应该封装实现</h3><p><strong>对别人的功能上添加新功能，不要重写，要包装别人的类，如果有问题那么就是原来的类的问题，责任不在自己</strong></p>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="类的声明和类体"><a href="#类的声明和类体" class="headerlink" title="类的声明和类体"></a>类的声明和类体</h2><h2 id="java命令规则"><a href="#java命令规则" class="headerlink" title="java命令规则"></a>java命令规则</h2><p>类的名字不能是java中的关键字，要符合<strong>标识符规定</strong></p>
+<h3 id="标识符规定"><a href="#标识符规定" class="headerlink" title="标识符规定"></a>标识符规定</h3><p>标识符可以由字母，下划线，数字或美元符号组成，并且第一个字符不能是数字<br>a$是合法的(日常使用中应避免使用美元符号作为标识符)</p>
+<h2 id="类的成员属性"><a href="#类的成员属性" class="headerlink" title="类的成员属性"></a>类的成员属性</h2><p>属性写在类的前面，方法写在后面</p>
+<h2 id="类的成员方法"><a href="#类的成员方法" class="headerlink" title="类的成员方法"></a>类的成员方法</h2><p>方法的名字必须符合标识符规范，<br><strong>首字母小写，其他单词首字母要大写。</strong></p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>构造方法的名字必须和类名相同，并且不能写返回值类型。<br>如果写了返回值类型，那么该方法就不在是构造方法，而是普通方法。</p>
+<p><strong>new出来的空间都在堆，其他的都在栈空间。</strong></p>
+<h2 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h2><p>编译器会在调用每个对象的时候，写到方法的形参里面。<br>picgo-plugin-gitee-uploader</p>
+<h3 id="就近原则"><a href="#就近原则" class="headerlink" title="就近原则"></a>就近原则</h3><p>优先使用最近的同名变量</p>
+<h2 id="编程题-求两点之间的距离"><a href="#编程题-求两点之间的距离" class="headerlink" title="编程题 求两点之间的距离"></a>编程题 求两点之间的距离</h2><p><strong>new是申请空间，构造函数是初始化</strong></p>
+<h2 id="编程题-写一个圆Circle类"><a href="#编程题-写一个圆Circle类" class="headerlink" title="编程题 写一个圆Circle类"></a>编程题 写一个圆Circle类</h2><p>给定圆心和半径</p>
+<p>求周长，面积，位置的关系，相离，相切，相交。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> &#123;<br>	<span class="hljs-comment">// 圆心</span><br>	<span class="hljs-keyword">private</span> Point center;<br>	<span class="hljs-comment">// 半径</span><br>	<span class="hljs-keyword">private</span> <span class="hljs-type">double</span> radius;<br><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Circle</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>	&#125;<br><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Circle</span><span class="hljs-params">(Point center, <span class="hljs-type">double</span> radius)</span> &#123;<br>		<span class="hljs-built_in">super</span>();<br>		<span class="hljs-built_in">this</span>.center = center;<br>		<span class="hljs-built_in">this</span>.radius = radius;<br>	&#125;<br><br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 求圆的周长</span><br><span class="hljs-comment">	 * </span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> 圆的周长</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">perimeter</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * Math.PI * radius;<br>	&#125;<br><br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 求圆的面积</span><br><span class="hljs-comment">	 * </span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> 圆的面积</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">area</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-keyword">return</span> Math.PI * radius * radius;<br>	&#125;<br><br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 判断两个圆的位置关系</span><br><span class="hljs-comment">	 * </span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> other 另一个圆</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span> 如果两个圆相离，则返回1；</span><br><span class="hljs-comment">	 *         如果两个圆相交，则返回0；</span><br><span class="hljs-comment">	 *         如果两个圆相切则返回-1。</span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">position</span><span class="hljs-params">(Circle other)</span> &#123;<br>		<span class="hljs-comment">// 如果两个圆的圆心的距离大于半径</span><br>		<span class="hljs-type">double</span> <span class="hljs-variable">radiusSum</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.radius + other.radius;<br>		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.center.distance(other.center) &gt; radiusSum)<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Math.abs(<span class="hljs-built_in">this</span>.center.distance(other.center) - radiusSum) &lt; <span class="hljs-number">1e-6</span>) &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>		&#125;<br>		<span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>写方法时，参数越少越好。</p>
+</blockquote>
+<p><strong>如果一个类之中没有写构造函数，编译器会给这个类写上一个默认的构造函数。</strong></p>
+<p>如果你已经在类之中写了构造函数，则编译器不会提供默认的构造函数。</p>
+<p>空的类系统依然会分配内存，通常是一个字节</p>
+<h2 id="编程题-复数的加减法"><a href="#编程题-复数的加减法" class="headerlink" title="编程题 复数的加减法"></a>编程题 复数的加减法</h2><p>a+bi</p>
+<h3 id="复数的运算法则"><a href="#复数的运算法则" class="headerlink" title="复数的运算法则"></a>复数的运算法则</h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E5%A4%8D%E6%95%B0/254365#5">https://baike.baidu.com/item/%E5%A4%8D%E6%95%B0/254365#5</a></p>
+<p><img src="https://gitee.com/XiaoLan223/images/raw/master/Blog/Software/Win10Setting/Typora+Picgo+GiteeAutomaticUploadPictures/20210714150943.png" alt="image-20210714150942916"></p>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>final定义的变量就是常量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> in MAX=<span class="hljs-number">99</span>;<br></code></pre></td></tr></table></figure>
+
+<p>常量不能被重新赋值。</p>
+<h2 id="构造函数中给常量赋值"><a href="#构造函数中给常量赋值" class="headerlink" title="构造函数中给常量赋值"></a>构造函数中给常量赋值</h2><p>常量可以先声明，然后在构造函数中赋值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> MAX;<br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">Demo</span><span class="hljs-params">()</span>&#123;<br>		<span class="hljs-built_in">this</span>.MAX=<span class="hljs-number">2</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意，只能在构造函数中赋值，不能在其他方法中给常量赋值。</p>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><p>类中的常量应该使用static修饰，不然的话每个对象都存储一遍常量会浪费内存。</p>
+<p><strong>JDK7以上版本，静态域存储于定义类型的Class对象中</strong></p>
+<p>static定义的成员，应该使用类名来调用，不要用this来调用</p>
+<p>static定义的方法，<strong>编译器不会给static方法增加this形参</strong>，所以这个static方法不能去访问对象。</p>
+<p>如果确实要在static方法中访问对象，可以自己在形参列表中传入该对象的引用。</p>
+<p><strong>静态方法只能访问静态的成员变量和成员方法</strong></p>
+<h3 id="编程题-定义一个类，要求该类知道创建了多少该类的对象"><a href="#编程题-定义一个类，要求该类知道创建了多少该类的对象" class="headerlink" title="编程题 定义一个类，要求该类知道创建了多少该类的对象"></a>编程题 定义一个类，要求该类知道创建了多少该类的对象</h3><p>使用static定义一个计数器，然后在构造函数中给计数器加一</p>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><ul>
+<li>先要隐藏构造函数，类的构造函数私有化。</li>
+<li>提供一个静态的公共方法给别人获取对象。</li>
+<li>在类中，要记下已经创建好的对象。</li>
+</ul>
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><p>如果在类之中的成员变量，在定义时赋值，在代码块中赋值，在构造器中赋值。</p>
+<p>执行顺序为：</p>
+<p>直接赋值，代码块，构造函数</p>
+<p>如果有多个代码块，多个代码块之间按定义大的顺序执行。</p>
+<h2 id="静态代码块只会执行一次"><a href="#静态代码块只会执行一次" class="headerlink" title="静态代码块只会执行一次"></a>静态代码块只会执行一次</h2><p>静态代码块在.class文件加载到内存中就运行了，因为类只会加载一次，所以静态代码块也就只会执行一次</p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/69a0c143.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/18408281.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Typora+PicGo+Gitee自动上传图片
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/471f768c.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2021年07月13日 函数习题</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

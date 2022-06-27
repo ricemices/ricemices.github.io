@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2021年07月11日习题 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/随堂笔记/2021年07月/习题/2021年07月11日 基础习题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2021年07月11日习题
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/b7cee2c9.html" class="article-date">
+  <time datetime="2021-07-11T10:33:03.000Z" itemprop="datePublished">2021-07-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/">随堂笔记</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/">2021年07月</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/%E4%B9%A0%E9%A2%98/">习题</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">23 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="1、输入一个3位的整型数，输入其百位、十位及个位数；"><a href="#1、输入一个3位的整型数，输入其百位、十位及个位数；" class="headerlink" title="1、输入一个3位的整型数，输入其百位、十位及个位数；"></a>1、输入一个3位的整型数，输入其百位、十位及个位数；</h1><figure class="highlight java"><figcaption><span>SplitInteger.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 输入一个3位的整型数，输入其百位、十位及个位数；</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SplitInteger</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-type">int</span> hundredDigit, tenDigit, singleDigits;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        <span class="hljs-comment">// 除以100，取出百位数</span><br>        hundredDigit = input / <span class="hljs-number">100</span>;<br>        <span class="hljs-comment">// 减去百位数，剩下十位数和个位数，再除以10，取出十位数。</span><br>        tenDigit = (input - hundredDigit * <span class="hljs-number">100</span>) / <span class="hljs-number">10</span>;<br>        <span class="hljs-comment">// 求余10，取出个位数</span><br>        singleDigits = input % <span class="hljs-number">10</span>;<br>        System.out.println(input + <span class="hljs-string">&quot;的百位数:&quot;</span> + hundredDigit + <span class="hljs-string">&quot;,十位数:&quot;</span> + tenDigit + <span class="hljs-string">&quot;,个位数:&quot;</span> + singleDigits);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="2、判断一个数是否是素数？"><a href="#2、判断一个数是否是素数？" class="headerlink" title="2、判断一个数是否是素数？"></a>2、判断一个数是否是素数？</h1><p>质数又称素数。一个大于1的自然数，除了1和它自身外，不能被其他自然数整除的数叫做质数；</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://oi-wiki.org/math/prime/">https://oi-wiki.org/math/prime/</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/adamjy/article/details/23514531">https://blog.csdn.net/adamjy/article/details/23514531</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断一个数是否是质数</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> n 一个整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果n是质数，则返回true，否则返回false</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPrime</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 2和3都是质数</span><br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">3</span>) &#123;<br>        <span class="hljs-comment">// 质数都要大于1</span><br>        <span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sqrt</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) Math.sqrt(n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt;= sqrt; i++) &#123;<br>        <span class="hljs-comment">// 如果n能被小于等于sqrt(n)的整数整除的话，不符合质数的定义，则说明不是质数</span><br>        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="3、百分制转成等级制（-利用-if-和-swtich-两种语句格式写）"><a href="#3、百分制转成等级制（-利用-if-和-swtich-两种语句格式写）" class="headerlink" title="3、百分制转成等级制（ 利用 if   和  swtich  两种语句格式写）"></a>3、百分制转成等级制（ 利用 if   和  swtich  两种语句格式写）</h1><h2 id="利用if"><a href="#利用if" class="headerlink" title="利用if"></a>利用if</h2><figure class="highlight java"><figcaption><span>ConvertPercentileScoresToGradedScoresByIf.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 百分制转成等级制-利用 if</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConvertPercentileScoresToGradedScoresByIf</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">scores</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        <span class="hljs-keyword">if</span> (scores &gt; <span class="hljs-number">100</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;成绩必须小于100&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">90</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;A&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">80</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;B&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">70</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;C&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">60</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;D&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">0</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;E&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;成绩必须大于0&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="利用switch"><a href="#利用switch" class="headerlink" title="利用switch"></a>利用switch</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 百分制转成等级制-利用switch</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConvertPercentileScoresToGradedScoresBySwitch</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">scores</span> <span class="hljs-operator">=</span> scanner.nextInt();<br>        <span class="hljs-keyword">if</span> (scores &gt;= <span class="hljs-number">0</span> &amp;&amp; scores &lt;= <span class="hljs-number">100</span>) &#123;<br>            <span class="hljs-keyword">switch</span> (scores / <span class="hljs-number">10</span>) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:<br>                System.out.println(<span class="hljs-string">&quot;A&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>                System.out.println(<span class="hljs-string">&quot;B&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<br>                System.out.println(<span class="hljs-string">&quot;C&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>                System.out.println(<span class="hljs-string">&quot;D&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">default</span>:<br>                System.out.println(<span class="hljs-string">&quot;E&quot;</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            System.out.println(<span class="hljs-string">&quot;请输入[1,100]区间内的数&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="5、企业发放的奖金根据利润提成。"><a href="#5、企业发放的奖金根据利润提成。" class="headerlink" title="5、企业发放的奖金根据利润提成。"></a>5、企业发放的奖金根据利润提成。</h1><p>企业发放的奖金根据利润提成。利润(I)</p>
+<ul>
+<li><p>低于或等于10万元时，奖金可提10%；</p>
+</li>
+<li><p>利润高于10万元，低于20万元时，低于10万元的部分按10%提成，高于10万元的部分，可可提 成7.5%；</p>
+</li>
+<li><p>20万到40万之间时，高于20万元的部分，可提成5%；</p>
+</li>
+<li><p>40万到60万之间时高于 40万元的部，可提成3%；</p>
+</li>
+<li><p>60万到100万之间时，高于60万元的部分，可提成1.5%，</p>
+</li>
+<li><p>高于 100万元时，超过100万元的部分按1%提成，</p>
+</li>
+</ul>
+<p>从键盘输入当月利润I，求应发放奖金总数？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-comment">// Scanner scanner = new Scanner(System.in);</span><br>    <span class="hljs-type">int</span> lirun;<br>    <span class="hljs-comment">// lirun = scanner.nextInt();</span><br>    lirun = <span class="hljs-number">600</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">jiangjin</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (lirun &lt;= <span class="hljs-number">10</span>) &#123;<br>        jiangjin += lirun * <span class="hljs-number">0.1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lirun &lt; <span class="hljs-number">20</span>) &#123;<br>        jiangjin += <span class="hljs-number">0.1</span> + (lirun - <span class="hljs-number">10</span>) * <span class="hljs-number">0.075</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lirun &lt; <span class="hljs-number">40</span>) &#123;<br>        jiangjin += <span class="hljs-number">0.1</span> + (lirun - <span class="hljs-number">10</span>) * <span class="hljs-number">0.075</span> + (lirun - <span class="hljs-number">20</span>) * <span class="hljs-number">0.05</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lirun &lt; <span class="hljs-number">60</span>) &#123;<br>        jiangjin += <span class="hljs-number">0.1</span> + (lirun - <span class="hljs-number">10</span>) * <span class="hljs-number">0.075</span> + (lirun - <span class="hljs-number">20</span>) * <span class="hljs-number">0.05</span> + (lirun - <span class="hljs-number">40</span>) * <span class="hljs-number">0.03</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lirun &lt; <span class="hljs-number">100</span>) &#123;<br>        jiangjin += <span class="hljs-number">0.1</span> + (lirun - <span class="hljs-number">10</span>) * <span class="hljs-number">0.075</span> + (lirun - <span class="hljs-number">20</span>) * <span class="hljs-number">0.05</span> + (lirun - <span class="hljs-number">40</span>) * <span class="hljs-number">0.03</span> + (lirun - <span class="hljs-number">60</span>) * <span class="hljs-number">0.015</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        jiangjin += <span class="hljs-number">0.1</span> + (lirun - <span class="hljs-number">10</span>) * <span class="hljs-number">0.075</span> + (lirun - <span class="hljs-number">20</span>) * <span class="hljs-number">0.05</span> + (lirun - <span class="hljs-number">40</span>) * <span class="hljs-number">0.03</span> + (lirun - <span class="hljs-number">60</span>) * <span class="hljs-number">0.015</span><br>                + (lirun - <span class="hljs-number">100</span>) * <span class="hljs-number">0.01</span>;<br>    &#125;<br>    System.out.println(jiangjin);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="7、判断101-200之间有多少个素数，并输出所有素数。"><a href="#7、判断101-200之间有多少个素数，并输出所有素数。" class="headerlink" title="7、判断101-200之间有多少个素数，并输出所有素数。"></a>7、判断101-200之间有多少个素数，并输出所有素数。</h1><p><strong>与第2题重复了，见第二题</strong></p>
+<h1 id="8、计算s＝1-2-…-100。"><a href="#8、计算s＝1-2-…-100。" class="headerlink" title="8、计算s＝1+2+…+100。"></a>8、计算s＝1+2+…+100。</h1><figure class="highlight java"><figcaption><span>Sum1to100.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 计算s＝1+2+…+100。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sum1to100</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> sum=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">100</span>;i++)<br>        &#123;<br>            sum+=i;<br>        &#125;<br>        System.out.println(sum);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="9、打印出所有的“水仙花数”"><a href="#9、打印出所有的“水仙花数”" class="headerlink" title="9、打印出所有的“水仙花数”"></a>9、打印出所有的“水仙花数”</h1><p>所谓“水仙花数”是指一个三位数，其各位数字立方和等于该数 本身。例如：153是一个“水仙花数”，因为153&#x3D;1的三次方＋5的三次方＋3的三次方。</p>
+<figure class="highlight java"><figcaption><span>NarcissisticNumber.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 求100到999的水仙花数</span><br><span class="hljs-comment"> * 例如： 153 = 1*1*1 + 5*5*5 + 3*3*3.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NarcissisticNumber</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> hundreds, tens, ones;<br>        System.out.print(<span class="hljs-string">&quot;水仙花数:&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>; i &lt; <span class="hljs-number">999</span>; i++) &#123;<br><span class="hljs-comment">//            除以100得到百位数</span><br>            hundreds = (i / <span class="hljs-number">100</span>);<br><span class="hljs-comment">//            求余100得到十位数和个位数，再除以10得到十位数</span><br>            tens = i % <span class="hljs-number">100</span> / <span class="hljs-number">10</span>;<br><span class="hljs-comment">//            求余10得到十位数</span><br>            ones = i % <span class="hljs-number">10</span>;<br>            <span class="hljs-keyword">if</span> (i == (hundreds * hundreds * hundreds + tens * tens * tens + ones * ones * ones)) &#123;<br>                System.out.print(i+<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="10-找出1000以内的所有完数"><a href="#10-找出1000以内的所有完数" class="headerlink" title="10 找出1000以内的所有完数"></a>10 找出1000以内的所有完数</h1><p>一个数如果恰好等于它的因子之和，这个数就称为“完数”。例如6&#x3D;1＋2＋3.编程找出1000以内的所有完数</p>
+<p>如果一个数恰好等于它的真因子之和，则称该数为“完全数”。第一个完全数是6，第二个完全数是28，第三个完全数是496，后面的完全数还有8128、33550336等等。截至2018年，相关研究者已经找到51个完全数。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><p>所有的完全数都是三角形数。例如：6&#x3D;1+2+3；28&#x3D;1+2+3+…+6+7；496&#x3D;1+2+3+…+30+31；8128&#x3D;1+2+3…+126+127。</p>
+<h3 id="三角形数"><a href="#三角形数" class="headerlink" title="三角形数"></a>三角形数</h3><p>第n个三角形数的公式是n(n+1)&#x2F;2或者(2n+1)^(2)-1&#x2F;8。</p>
+<h2 id="PerfectNumber-java"><a href="#PerfectNumber-java" class="headerlink" title="PerfectNumber.java"></a>PerfectNumber.java</h2><figure class="highlight java"><figcaption><span>PerfectNumber.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PerfectNumber</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>,sumOfFactors=<span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;<br><span class="hljs-comment">//            因子的和</span><br>            sumOfFactors=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;i;j++) &#123;<br><span class="hljs-comment">//                如果j是i的因子</span><br>                <span class="hljs-keyword">if</span>(i%j==<span class="hljs-number">0</span>) &#123;<br><span class="hljs-comment">//                    因子累加</span><br>                    sumOfFactors+=j;<br>                &#125;<br>            &#125;<br><span class="hljs-comment">//            如果一个数恰好等于它的因子之和，那么就是完数</span><br>            <span class="hljs-keyword">if</span>(i==sumOfFactors) &#123;<br>                System.out.println(<span class="hljs-string">&quot;完数：&quot;</span>+i);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%95%B0">https://baike.baidu.com/item/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%95%B0</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="http://c.biancheng.net/cpp/html/3324.html">http://c.biancheng.net/cpp/html/3324.html</a></p>
+<h1 id="11、求s-x3D-a-aa-aaa-aaaa-aa…a的值"><a href="#11、求s-x3D-a-aa-aaa-aaaa-aa…a的值" class="headerlink" title="11、求s&#x3D;a+aa+aaa+aaaa+aa…a的值"></a>11、求s&#x3D;a+aa+aaa+aaaa+aa…a的值</h1><p>其中a是一个数字。例如2+22+222+2222+22222<br>(此时 共有5个数相加)，几个数相加有键盘控制。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 11、求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222 (此时</span><br><span class="hljs-comment"> * 共有5个数相加)，几个数相加有键盘控制。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sum_a_aa_aaa</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> sum=<span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> a;<br>        <span class="hljs-type">int</span> times;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;输入a:&quot;</span>);<br>        a = scanner.nextInt();<br>        System.out.println(<span class="hljs-string">&quot;输入个数:&quot;</span>);<br>        times = scanner.nextInt();<br>        <br>        System.out.print(<span class="hljs-string">&quot;sum=&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;=times; i++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> a;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt; i; j++) &#123;<br>                temp = temp * <span class="hljs-number">10</span> + a;<br>            &#125;<br>            System.out.print(temp);<br>            <span class="hljs-keyword">if</span>(i&lt;times) &#123;<br>                System.out.print(<span class="hljs-string">&quot;+&quot;</span>);<br>            &#125;<br>            sum=sum+temp;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;\n   =&quot;</span>+sum);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="12、有一分数序列：2-x2F-1，3-x2F-2，5-x2F-3，8-x2F-5，13-x2F-8，21-x2F-13…求出这个数列的前20项之和。"><a href="#12、有一分数序列：2-x2F-1，3-x2F-2，5-x2F-3，8-x2F-5，13-x2F-8，21-x2F-13…求出这个数列的前20项之和。" class="headerlink" title="12、有一分数序列：2&#x2F;1，3&#x2F;2，5&#x2F;3，8&#x2F;5，13&#x2F;8，21&#x2F;13…求出这个数列的前20项之和。"></a>12、有一分数序列：2&#x2F;1，3&#x2F;2，5&#x2F;3，8&#x2F;5，13&#x2F;8，21&#x2F;13…求出这个数列的前20项之和。</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">fenmu</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">fenzi</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0</span>;<br>    <span class="hljs-type">double</span> temp;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;<br>        <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br>            System.out.print(<span class="hljs-string">&quot; + &quot;</span>);<br>        System.out.print((<span class="hljs-type">int</span>)fenzi + <span class="hljs-string">&quot;/&quot;</span> + (<span class="hljs-type">int</span>)fenmu);<br>        <span class="hljs-comment">// 求和</span><br>        sum += fenzi / fenmu;<br>        <span class="hljs-comment">// 记下分母的值</span><br>        temp = fenmu;<br>        <span class="hljs-comment">// 前一个的分子作为下次计算的分母</span><br>        fenmu = fenzi;<br>        <span class="hljs-comment">// 前一个分子的值加上前一个分母的值作为下次计算的分子</span><br>        fenzi = fenzi + temp;<br>        <span class="hljs-keyword">if</span>((i+<span class="hljs-number">1</span>)%<span class="hljs-number">5</span>==<span class="hljs-number">0</span>) &#123;<br>            System.out.println();<br>        &#125;<br>    &#125;<br>    System.out.println(<span class="hljs-string">&quot;=&quot;</span> + sum);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">2/1 + 3/2 + 5/3 + 8/5 + 13/8<br> + 21/13 + 34/21 + 55/34 + 89/55 + 144/89<br> + 233/144 + 377/233 + 610/377 + 987/610 + 1597/987<br> + 2584/1597 + 4181/2584 + 6765/4181 + 10946/6765 + 17711/10946<br>=32.66026079864164<br></code></pre></td></tr></table></figure>
+
+<h1 id="13、一个5位数，判断它是不是回文数。"><a href="#13、一个5位数，判断它是不是回文数。" class="headerlink" title="13、一个5位数，判断它是不是回文数。"></a>13、一个5位数，判断它是不是回文数。</h1><h1 id="14、输入一个数，判断它是不是回文数。"><a href="#14、输入一个数，判断它是不是回文数。" class="headerlink" title="14、输入一个数，判断它是不是回文数。"></a>14、输入一个数，判断它是不是回文数。</h1><p><strong>设n是一任意自然数。若将n的各位数字&#x3D;&#x3D;反向排列&#x3D;&#x3D;所得自然数n1与n相等，则称n为一回文数</strong>。例如，若n&#x3D;1234321，则称n为一回文数；但若n&#x3D;1234567，则n不是回文数。<br>注意：<br>1.偶数个的数字也有回文数124421</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断一个整数是不是回文数.</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> n 整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果是回文数的话，就返回true,否则返回false.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindromeNumberPerfect</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 如果把这个整数倒序之后还是和这个数相等的话，那么它就是回文数。</span><br>    <span class="hljs-type">return</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span>= reverseInt(n);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 反转一个整数，例如12345，反转后变成54321</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> m 一个整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 反转后的整数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">reverseInt</span><span class="hljs-params">(<span class="hljs-type">int</span> m)</span> &#123;<br>    <span class="hljs-comment">// 保存反转之后的数值</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">inversion</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 余数</span><br>    <span class="hljs-type">int</span> remainder;<br>    <span class="hljs-keyword">do</span> &#123;<br>        remainder = m % <span class="hljs-number">10</span>;<br>        m = m / <span class="hljs-number">10</span>;<br>        <span class="hljs-comment">// 根据10的余数，计算出反转的数值</span><br>        inversion = inversion * <span class="hljs-number">10</span> + remainder;<br>    &#125; <span class="hljs-keyword">while</span> (m &gt; <span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// System.out.println(inversion);</span><br>    <span class="hljs-comment">// 返回反转后的数值</span><br>    <span class="hljs-keyword">return</span> inversion;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>测试：输出10到10000内的所有回文数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">boolean</span> <span class="hljs-variable">isNotFirst</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>; i &lt; <span class="hljs-number">10000</span>; i++) &#123;<br>    <span class="hljs-keyword">if</span> (isPalindromeNumberPerfect(i)) &#123;<br>        <span class="hljs-keyword">if</span> (isNotFirst)<br>            System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>        System.out.print(i);<br>        isNotFirst = <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">11,22,33,44,55,66,77,88,99,101,111,121,131,141,151,161,171,181,191,202,212,222,232,242,252,262,272,282,292,303,313,323,333,343,353,363,373,383,393,404,414,424,434,444,454,464,474,484,494,505,515,525,535,545,555,565,575,585,595,606,616,626,636,646,656,666,676,686,696,707,717,727,737,747,757,767,777,787,797,808,818,828,838,848,858,868,878,888,898,909,919,929,939,949,959,969,979,989,999,1001,1111,1221,1331,1441,1551,1661,1771,1881,1991,2002,2112,2222,2332,2442,2552,2662,2772,2882,2992,3003,3113,3223,3333,3443,3553,3663,3773,3883,3993,4004,4114,4224,4334,4444,4554,4664,4774,4884,4994,5005,5115,5225,5335,5445,5555,5665,5775,5885,5995,6006,6116,6226,6336,6446,6556,6666,6776,6886,6996,7007,7117,7227,7337,7447,7557,7667,7777,7887,7997,8008,8118,8228,8338,8448,8558,8668,8778,8888,8998,9009,9119,9229,9339,9449,9559,9669,9779,9889,9999<br></code></pre></td></tr></table></figure>
+
+<h1 id="15、输入2个正整数m-n，求其最大公约数和最小公倍数。"><a href="#15、输入2个正整数m-n，求其最大公约数和最小公倍数。" class="headerlink" title="15、输入2个正整数m,n，求其最大公约数和最小公倍数。"></a>15、输入2个正整数m,n，求其最大公约数和最小公倍数。</h1><h2 id="参考资料-2"><a href="#参考资料-2" class="headerlink" title="参考资料"></a>参考资料</h2><h3 id="辗转相除法-求最大公约数"><a href="#辗转相除法-求最大公约数" class="headerlink" title="辗转相除法 求最大公约数"></a>辗转相除法 求最大公约数</h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/31824895">https://zhuanlan.zhihu.com/p/31824895</a></p>
+<p>辗转相除法， 又名欧几里得算法（Euclidean algorithm），目的是求出两个正整数的最大公约数。它是已知最古老的算法， 其可追溯至公元前300年前。</p>
+<p>这条算法基于一个定理：<strong>两个正整数a和b（a&gt;b），它们的最大公约数等于a除以b的余数c和b之间的最大公约数</strong>。比如10和25，25除以10商2余5,那么10和25的最大公约数，等同于10和5的最大公约数。</p>
+<p>有了这条定理，求出最大公约数就简单了。我们可以使用递归的方法来把问题逐步简化。</p>
+<p>首先，我们先计算出a除以b的余数c，把问题转化成求出b和c的最大公约数；然后计算出b除以c的余数d，把问题转化成求出c和d的最大公约数；再然后计算出c除以d的余数e，把问题转化成求出d和e的最大公约数……</p>
+<p>以此类推，逐渐把两个较大整数之间的运算简化成两个较小整数之间的运算，<strong>直到两个数可以整除，或者其中一个数减小到1为止</strong>。</p>
+<h3 id="求最小公倍数"><a href="#求最小公倍数" class="headerlink" title="求最小公倍数"></a>求最小公倍数</h3><p>两个正整数A、B，他们的最大公约数和最小公倍数的乘积就等于这两个数的乘积(A*B)。</p>
+<p><strong>最小公倍数&#x3D;(A*B)&#x2F;最大公约数</strong><br><strong>最小公倍数&#x3D;两整数的乘积÷最大公约数</strong></p>
+<h3 id="程序-辗转相除法求最大公约数"><a href="#程序-辗转相除法求最大公约数" class="headerlink" title="程序 辗转相除法求最大公约数"></a>程序 辗转相除法求最大公约数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GreatestCommonDivisor</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> a, b;<br>        a = <span class="hljs-number">1</span>;<br>        b = <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">gcd</span> <span class="hljs-operator">=</span> getGCD(a, b);<br>        System.out.println(a + <span class="hljs-string">&quot;和&quot;</span> + b + <span class="hljs-string">&quot;的最大公约数为：&quot;</span> + gcd + <span class="hljs-string">&quot;,最小公倍数为:&quot;</span> + (a * b) / gcd);<br>    &#125;<br> <br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 辗转相除法求最大公约数入口</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> a</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> b</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getGCD</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-keyword">if</span> (a &gt; b) &#123;<br>            <span class="hljs-keyword">return</span> gcd(a, b);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> gcd(b, a);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 辗转相除法求最大公约数</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> bigNumber   两个数中大的数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> smallNumber 两个数之中小的数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 最大公约数的值</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> bigNumber, <span class="hljs-type">int</span> smallNumber)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">remainder</span> <span class="hljs-operator">=</span> bigNumber % smallNumber;<br>        <span class="hljs-keyword">if</span> (remainder == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> smallNumber;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> gcd(smallNumber, remainder);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0">https://baike.baidu.com/item/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0</a></p>
+<h1 id="16、请编程序打印出以下数列：1、1、2、3、5、8、13、…的前40项。每行输出4个数。（斐波那契数列）"><a href="#16、请编程序打印出以下数列：1、1、2、3、5、8、13、…的前40项。每行输出4个数。（斐波那契数列）" class="headerlink" title="16、请编程序打印出以下数列：1、1、2、3、5、8、13、…的前40项。每行输出4个数。（斐波那契数列）"></a>16、请编程序打印出以下数列：1、1、2、3、5、8、13、…的前40项。每行输出4个数。（斐波那契数列）</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0">https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0</a></p>
+<p>在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E6%95%B8%E5%AD%B8">数学</a>上，<strong>斐波那契数</strong>是以<a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92">递归</a>的方法来定义：</p>
+<p>$$<br>\begin{cases}<br>F_{0}&#x3D;0 \\<br>F_{1}&#x3D;1 \\<br>F_{n}&#x3D;F_{n-1}+F_{n-2} (n \ge 2)<br>\end{cases}<br>$$</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">https://baike.baidu.com/item/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97</a></p>
+<p>斐波那契数列由0和1开始，之后的斐波那契数就是由之前的两数相加而得出。首几个斐波那契数是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377 ,610, 987<br></code></pre></td></tr></table></figure>
+
+<p><strong>特别指出</strong>：0不是第一项，而是第零项。</p>
+<h2 id="求斐波那契数列第n项-递归实现"><a href="#求斐波那契数列第n项-递归实现" class="headerlink" title="求斐波那契数列第n项 递归实现"></a>求斐波那契数列第n项 递归实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 求第n项斐波那契数列的值，递归实现</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> n 第几项斐波那契数列的值，n从1开始。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 第n项斐波那契数列的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">fibonacciRecursive</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">2</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> fibonacciRecursive(n - <span class="hljs-number">1</span>) + fibonacciRecursive(n - <span class="hljs-number">2</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="求斐波那契数列第n项-循环实现"><a href="#求斐波那契数列第n项-循环实现" class="headerlink" title="求斐波那契数列第n项 循环实现"></a>求斐波那契数列第n项 循环实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 求斐波那契数列的第n项</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> n 要求斐波那契数列的第几项，n从1开始。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 斐波那契数列的第n项</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">fibonacciLoop</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">first</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">second</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// System.out.print(first + &quot;,&quot; + second + &quot;,&quot;);</span><br>    <span class="hljs-type">long</span> temp;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-comment">// 缓存第1项的值</span><br>        temp = first;<br>        <span class="hljs-comment">// 第1项的值等于原来第2项的值</span><br>        first = second;<br>        <span class="hljs-comment">// 第2项等于原来第2项的值加上原来第1项的值</span><br>        second = second + temp;<br>        <span class="hljs-comment">// if (i &gt; 2)</span><br>        <span class="hljs-comment">// System.out.print(&quot;,&quot;);</span><br>        <span class="hljs-comment">// System.out.print(second);</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> second;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="缓存已经计算过得斐波那契数列的项"><a href="#缓存已经计算过得斐波那契数列的项" class="headerlink" title="缓存已经计算过得斐波那契数列的项"></a>缓存已经计算过得斐波那契数列的项</h2><p>下次遇到已经计算过斐波那契数列项的直接返回，没有计算过得才计算。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 斐波那契前n项的缓存数组，已经计算过得第n项保存在这里，</span><br><span class="hljs-comment"> *  第n项保存在fibBuff[n-]里面</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> <span class="hljs-type">long</span>[] fibBuff = <span class="hljs-keyword">new</span> <span class="hljs-title class_">long</span>[<span class="hljs-number">93</span>];<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 给斐波那契数列的第1项和第2项赋值。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">static</span> &#123;<br>    fibBuff[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>    fibBuff[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 求斐波那契数列的第n项</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> n 要求斐波那契的第几项，n最小为1,不要传入0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 斐波那契数列第n项的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">long</span> <span class="hljs-title function_">fibBuffRec</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 第1项和第2项斐波那契数列的值都是1，直接返回预定的值。</span><br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">2</span> &amp;&amp; n &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> fibBuff[n - <span class="hljs-number">1</span>];<br>    &#125;<br>    <span class="hljs-comment">// 如果数组中没有保存过斐波那契数列的第n项</span><br>    <span class="hljs-keyword">if</span> (fibBuff[n - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// 先计算出斐波那契数列的第n项</span><br>        fibBuff[n - <span class="hljs-number">1</span>] = fibBuffRec(n - <span class="hljs-number">1</span>) + fibBuffRec(n - <span class="hljs-number">2</span>);<br>    &#125;<br>    <span class="hljs-comment">// 返回斐波那契数列的第n项</span><br>    <span class="hljs-keyword">return</span> fibBuff[n - <span class="hljs-number">1</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 打印前40项斐波那契数列</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">40</span>; i++) &#123;<br>    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">1</span>)<br>        System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>    System.out.print(fibonacciLoop(i));<br>&#125;<br>System.out.println();<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">40</span>; i++) &#123;<br>    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">1</span>)<br>        System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>    System.out.print(fibonacciRecursive(i));<br>&#125;<br>System.out.println();<br><br>System.out.println(fibBuffRec(<span class="hljs-number">40</span>));<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; fibBuff.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span>)<br>        System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>    System.out.print(fibBuff[i]);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986,102334155<br>1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986,102334155<br>102334155<br>1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986,102334155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="17、输入x值，按照公式计算cos-x-的值，直到最后一项小于10-6-为止。"><a href="#17、输入x值，按照公式计算cos-x-的值，直到最后一项小于10-6-为止。" class="headerlink" title="17、输入x值，按照公式计算cos(x)的值，直到最后一项小于10^(-6)为止。"></a>17、输入x值，按照公式计算cos(x)的值，直到最后一项小于10^(-6)为止。</h1><p>$$<br>\cos (x)&#x3D;1-\frac{x^{2}}{2!}+\frac{x^{4}}{4!}-\frac{x^{6}}{6!}+…<br>$$</p>
+<h2 id="特殊cos值"><a href="#特殊cos值" class="headerlink" title="特殊cos值"></a>特殊cos值</h2><p>$$<br>\cos 30^{\circ}&#x3D;\cos \dfrac{\pi}{6}&#x3D;\dfrac{\sqrt{3}}{2} \approx 0.8660254038<br>$$</p>
+<p>$$<br>\cos 45^{\circ}&#x3D;\cos \dfrac{\pi}{4}&#x3D;\dfrac{\sqrt{2}}{2} \approx 0.7071067812<br>$$</p>
+<p>$$<br>\cos 60^{\circ}&#x3D;\cos \dfrac{\pi}{3}&#x3D;\dfrac{1}{2}&#x3D;0.5<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-title function_">cos</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> &#123;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">cos</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">sign</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 通项公式分母的求阶乘的初始值</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">fenzi</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.0</span>;<br>    <span class="hljs-type">double</span> <span class="hljs-variable">fenmu</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.0</span>;<br>    <span class="hljs-comment">// 当通项还大于10的-6次方，则继续计算</span><br>    <span class="hljs-keyword">while</span> (fenzi / fenmu &gt;= <span class="hljs-number">1e-6</span>) &#123;<br>        <span class="hljs-comment">// 计算乘方</span><br>        fenzi = fenzi * x * x;<br>        <span class="hljs-comment">// 计算阶乘</span><br>        fenmu = fenmu * n * (n - <span class="hljs-number">1</span>);<br>        cos = cos + sign * fenzi / fenmu;<br>        <span class="hljs-comment">// 分母继承的最大数加2</span><br>        n = n + <span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 改变符号</span><br>        sign = -sign;<br>    &#125;<br>    <span class="hljs-keyword">return</span> cos;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(cos(Math.PI / <span class="hljs-number">6</span>));<br>System.out.println(cos(Math.PI / <span class="hljs-number">4</span>));<br>System.out.println(cos(Math.PI / <span class="hljs-number">3</span>));<br></code></pre></td></tr></table></figure>
+
+<p> 运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">0.8660254042103523<br>0.7071067810719247<br>0.4999999963909432<br></code></pre></td></tr></table></figure>
+
+<h1 id="18-、输入2个正整数m-n，求其最大公约数和最小公倍数。"><a href="#18-、输入2个正整数m-n，求其最大公约数和最小公倍数。" class="headerlink" title="18 、输入2个正整数m,n，求其最大公约数和最小公倍数。"></a>18 、输入2个正整数m,n，求其最大公约数和最小公倍数。</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 辗转相除法求最大公约数入口</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 整数a</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> b 整数b</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 整数a和整数b的最大公约数.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getGCD</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>    <span class="hljs-keyword">if</span> (a &gt; b) &#123;<br>        <span class="hljs-keyword">return</span> gcd(a, b);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> gcd(b, a);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 辗转相除法求最大公约数</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> big 两个数中大的数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> small 两个数之中小的数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 最大公约数的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> big, <span class="hljs-type">int</span> small)</span> &#123;<br>    <span class="hljs-comment">// 求余数</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">remainder</span> <span class="hljs-operator">=</span> big % small;<br>    <span class="hljs-comment">// 如果余数为0,说明small就是最大公约数</span><br>    <span class="hljs-keyword">if</span> (remainder == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> small;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 等价于求小的数和余数的最大公约数</span><br>        <span class="hljs-keyword">return</span> gcd(small, remainder);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 求最小公倍数</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> b 另一个整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> gcd a和b的最大公约数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> a和b的最小公倍数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lcm</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> gcd)</span> &#123;<br>    <span class="hljs-comment">// 两个数的乘积除以最大公约数就是最小公倍数</span><br>    <span class="hljs-keyword">return</span> (a * b) / gcd;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> a, b, gcd;<br>a = <span class="hljs-number">5</span>;<br>b = <span class="hljs-number">10</span>;<br>gcd = getGCD(a, b);<br>System.out.println(a + <span class="hljs-string">&quot;和&quot;</span> + b + <span class="hljs-string">&quot;的最大公约数为：&quot;</span> + gcd + <span class="hljs-string">&quot;,最小公倍数为:&quot;</span> + lcm(a, b, gcd));<br><br>a = <span class="hljs-number">5</span>;<br>b = <span class="hljs-number">6</span>;<br>gcd = getGCD(a, b);<br>System.out.println(a + <span class="hljs-string">&quot;和&quot;</span> + b + <span class="hljs-string">&quot;的最大公约数为：&quot;</span> + gcd + <span class="hljs-string">&quot;,最小公倍数为:&quot;</span> + lcm(a, b, gcd));<br><br>a = <span class="hljs-number">2</span>;<br>b = <span class="hljs-number">1</span>;<br>gcd = getGCD(a, b);<br>System.out.println(a + <span class="hljs-string">&quot;和&quot;</span> + b + <span class="hljs-string">&quot;的最大公约数为：&quot;</span> + gcd + <span class="hljs-string">&quot;,最小公倍数为:&quot;</span> + lcm(a, b, gcd));<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">5和10的最大公约数为：5,最小公倍数为:10<br>5和6的最大公约数为：1,最小公倍数为:30<br>2和1的最大公约数为：1,最小公倍数为:2<br></code></pre></td></tr></table></figure>
+
+<h1 id="19、编写一个程序，求如下值："><a href="#19、编写一个程序，求如下值：" class="headerlink" title="19、编写一个程序，求如下值："></a>19、编写一个程序，求如下值：</h1><p>$$<br>1-\dfrac{1}{2}+\dfrac{1}{3}-\dfrac{1}{4}+\cdots+\dfrac{1}{99}-\dfrac{1}{100}<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HW_19_Sum</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(sumXX(<span class="hljs-number">1</span>));<br>        System.out.println(sumXX(<span class="hljs-number">2</span>));<br>        System.out.println(sumXX(<span class="hljs-number">3</span>));<br>        System.out.println(sumXX(<span class="hljs-number">4</span>));<br>        System.out.println(sumXX(<span class="hljs-number">100</span>));<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> <span class="hljs-title function_">sumXX</span><span class="hljs-params">(<span class="hljs-type">int</span> times)</span> &#123;<br>        <span class="hljs-type">double</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.0</span>;<br>        <span class="hljs-type">double</span> <span class="hljs-variable">sign</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt;= times; i++) &#123;<br>            sum = (sum + sign / i);<br>            sign = -sign;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sum;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1.0<br>0.5<br>0.8333333333333333<br>0.5833333333333333<br>0.688172179310195<br></code></pre></td></tr></table></figure>
+
+<h1 id="20、编写一个程序，求e的值。"><a href="#20、编写一个程序，求e的值。" class="headerlink" title="20、编写一个程序，求e的值。"></a>20、编写一个程序，求<em>e</em>的值。</h1><p>$$<br>e \approx 1+\dfrac{1}{1 !}+\dfrac{1}{2 !}+\cdots+\dfrac{1}{n !}<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">double</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-comment">// 阶乘的最大一项</span><br><span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">jieCheng</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span> (Math.abs(<span class="hljs-number">1.0</span> / jieCheng) &gt;= <span class="hljs-number">1e-6</span>) &#123;<br>    <span class="hljs-comment">// 求阶乘</span><br>    jieCheng = jieCheng * n;<br>    <span class="hljs-comment">// 求各项的和</span><br>    e = e + <span class="hljs-number">1.0</span> / jieCheng;<br>    <span class="hljs-comment">// 阶乘的最大一项加一</span><br>    n++;<br>&#125;<br>System.out.println(e);<br>System.out.println(Math.E);<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">2.7182818011463845<br>2.718281828459045<br></code></pre></td></tr></table></figure>
+
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/b7cee2c9.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/13e87ce3.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2021年07月12日 数组习题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/cb935ad1.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2021年07月11日</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

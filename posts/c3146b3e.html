@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Termux 电脑上登录 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Linux/Termux/Termux 电脑上登录"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Termux 电脑上登录
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/c3146b3e.html" class="article-date">
+  <time datetime="2019-11-01T03:37:04.000Z" itemprop="datePublished">2019-11-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/">Linux</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Linux/Termux/">Termux</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="下载安装Xshell免费版"><a href="#下载安装Xshell免费版" class="headerlink" title="下载安装Xshell免费版"></a>下载安装Xshell免费版</h1><h2 id="进入中文官网"><a href="#进入中文官网" class="headerlink" title="进入中文官网"></a>进入中文官网</h2><p>进入<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.netsarang.com/zh/xshell/">Xshell的官网</a>,然后点击顶部导航条上的<code>所有下载</code>，<code>家庭/学校免费</code>.<br><img src="https://img-blog.csdnimg.cn/20191101155722848.png" alt="在这里插入图片描述"></p>
+<h2 id="填写邮箱获取下载链接"><a href="#填写邮箱获取下载链接" class="headerlink" title="填写邮箱获取下载链接"></a>填写邮箱获取下载链接</h2><p>然后填写姓名和邮箱，选择要下载的程序，然后点击下载,下载链接会发送到刚才邮箱上。<br><img src="https://img-blog.csdnimg.cn/20191101155404912.png" alt="在这里插入图片描述"></p>
+<h2 id="接收邮件-并下载"><a href="#接收邮件-并下载" class="headerlink" title="接收邮件 并下载"></a>接收邮件 并下载</h2><p>打开邮箱,点击下载链接即可下载Xshell<br>下载好之后安装Xshell,过程省略..</p>
+<h1 id="使用Xshell创建秘钥"><a href="#使用Xshell创建秘钥" class="headerlink" title="使用Xshell创建秘钥"></a>使用Xshell创建秘钥</h1><h2 id="Xshell创建秘钥详细过程"><a href="#Xshell创建秘钥详细过程" class="headerlink" title="Xshell创建秘钥详细过程"></a>Xshell创建秘钥详细过程</h2><p>打开Xshell，点击<code>工具</code>，<code>新建用户密钥生成向导</code><br><img src="https://img-blog.csdnimg.cn/20191101160249858.png" alt="在这里插入图片描述"><br>然后选择<code>秘钥类型</code>和<code>秘钥长度</code>,默认即可,点击下一步<br><img src="https://img-blog.csdnimg.cn/20191101160107548.png" alt="在这里插入图片描述"><br>等待秘钥生成结束后,继续点击<code>下一步</code>.<br><img src="https://img-blog.csdnimg.cn/20191101160358582.png" alt="在这里插入图片描述"><br>输入<code>秘钥名称</code>和<code>秘钥密码</code>,继续点击<code>下一步</code><br><img src="https://img-blog.csdnimg.cn/20191101160534926.png" alt="在这里插入图片描述"></p>
+<h2 id="保存公钥"><a href="#保存公钥" class="headerlink" title="保存公钥"></a>保存公钥</h2><p>此时可以看到公钥了,点击<code>存为文件</code><br><img src="https://img-blog.csdnimg.cn/20191101160745914.png" alt="在这里插入图片描述"><br>保存到电脑上的用户目录下的.ssh目录下:<br><img src="https://img-blog.csdnimg.cn/20191101161001353.png" alt="在这里插入图片描述"></p>
+<h2 id="导出私钥并保存"><a href="#导出私钥并保存" class="headerlink" title="导出私钥并保存"></a>导出私钥并保存</h2><p>然后就看看到创建好的用户秘钥了.<br><img src="https://img-blog.csdnimg.cn/201911011616115.png" alt="在这里插入图片描述"><br>导出私钥<br><img src="https://img-blog.csdnimg.cn/20191101161525994.png" alt="在这里插入图片描述"><br>输入密码<br><img src="https://img-blog.csdnimg.cn/20191101161743902.png" alt="在这里插入图片描述"></p>
+<h1 id="将Xshell创建的秘钥设置到Termux中"><a href="#将Xshell创建的秘钥设置到Termux中" class="headerlink" title="将Xshell创建的秘钥设置到Termux中"></a>将Xshell创建的秘钥设置到Termux中</h1><h2 id="Termux-获得存储权限"><a href="#Termux-获得存储权限" class="headerlink" title="Termux 获得存储权限"></a>Termux 获得存储权限</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">termux-setup-storage<br></code></pre></td></tr></table></figure>
+<p>成功拿到存储权限后会在<code>home</code>目录生成<code>storage</code> 目录,并且生成若干目录(软连接),这些软连接都指向外置存储卡的相应目录应目录。</p>
+<p><code>storage</code>目录下的<code>shared</code>目录对应我们手机<strong>内部存储的根目录</strong>(<code>/storage/emulated/0/</code>),我们通过文件资源浏览器打开的就是这个<code>/storage/emulated/0/</code>目录,只不过在<code>Termux</code>中<code>/storage/emulated/0/</code>对应的是<code>storage</code>目录下的<code>shared</code>目录。</p>
+<h2 id="将公钥发送到手机上"><a href="#将公钥发送到手机上" class="headerlink" title="将公钥发送到手机上"></a>将公钥发送到手机上</h2><p>我这里将公钥通过<code>QQ</code>发送到手机上.<br><img src="https://img-blog.csdnimg.cn/20191101161929142.png" alt="在这里插入图片描述">然后打开手机QQ,接收电脑上发送过来的公钥.</p>
+<h2 id="复制公钥到-ssh目录下"><a href="#复制公钥到-ssh目录下" class="headerlink" title="复制公钥到.ssh目录下"></a>复制公钥到.ssh目录下</h2><p>打开<code>Termux</code>,进入用户<code>home</code>目录下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ~<br></code></pre></td></tr></table></figure>
+<p>创建手机QQ<code>接收文件的那个目录</code>(<code>tencent/QQfile_recv</code>)的<code>软连接</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ln -s /data/data/com.termux/files/home/storage/shared/tencent/QQfile_recv qq<br></code></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191101163019713.png" alt="在这里插入图片描述"><br>然后复制qq软连接下的公钥到home目录下的.ssh目录中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mv ~/qq/id_rsa_2048.pub ~/.ssh<br></code></pre></td></tr></table></figure>
+<h2 id="将公钥写入authorized-keys中"><a href="#将公钥写入authorized-keys中" class="headerlink" title="将公钥写入authorized_keys中"></a>将公钥写入authorized_keys中</h2><p>进入home目录下的.ssh目录.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ~/.ssh<br></code></pre></td></tr></table></figure>
+<p>将公钥写入<code>authorized_keys</code>文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat id_rsa_2048.pub &gt; authorized_keys<br></code></pre></td></tr></table></figure>
+<p>查看公钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat authorized_keys<br>ssh-rsa AAAAB3Nza.............................................................<br></code></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191101164033332.png" alt="在这里插入图片描述"></p>
+<h1 id="开启sshd"><a href="#开启sshd" class="headerlink" title="开启sshd"></a>开启sshd</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sshd<br></code></pre></td></tr></table></figure>
+<h1 id="获取链接信息"><a href="#获取链接信息" class="headerlink" title="获取链接信息"></a>获取链接信息</h1><h2 id="查看当前Termux用户信息"><a href="#查看当前Termux用户信息" class="headerlink" title="查看当前Termux用户信息"></a>查看当前Termux用户信息</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">whoami<br></code></pre></td></tr></table></figure>
+<p>whoami的输出就是当前用户的信息:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">u0_a391<br></code></pre></td></tr></table></figure>
+<h2 id="查看Termux的ip地址"><a href="#查看Termux的ip地址" class="headerlink" title="查看Termux的ip地址"></a>查看Termux的ip地址</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ifcofig<br></code></pre></td></tr></table></figure>
+<p>ifcofig运行效果如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">dummy0: flags=195&lt;UP,BROADCAST,RUNNING,NOARP&gt;  mtu 1500<br>        inet6 fe80::bc05:1ff:fe55:4556  prefixlen 64  scopeid 0x20&lt;link&gt;<br>        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 1000  (UNSPEC)<br>        RX packets 0  bytes 0 (0.0 B)<br>        RX errors 0  dropped 0  overruns 0  frame 0<br>        TX packets 66  bytes 4620 (4.5 KiB)<br>        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0<br>......这里省略部分信息.<br>wlan0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        inet 192.168.43.1  netmask 255.255.255.0  broadcast 192.168.137.255<br>        inet6 fe80::76d2:1dff:fe00:73fd  prefixlen 64  scopeid 0x20&lt;link&gt;<br>        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 1000  (UNSPEC)<br>        RX packets 1824  bytes 1096921 (1.0 MiB)<br>        RX errors 0  dropped 0  overruns 0  frame 0<br>        TX packets 2529  bytes 366296 (357.7 KiB)<br>        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0<br><br></code></pre></td></tr></table></figure>
+<p>这里的<code>wlan0</code>中的** inet 192.168.43.1<strong>中的<code>192.168.43.1</code>就是</strong>当前手机的ip地址**</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">wlan0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500<br>        inet 192.168.43.1  netmask 255.255.255.0  broadcast 192.168.137.255<br></code></pre></td></tr></table></figure>
+<h3 id="使用正则取出正确的IP所在的行"><a href="#使用正则取出正确的IP所在的行" class="headerlink" title="使用正则取出正确的IP所在的行"></a>使用正则取出正确的IP所在的行</h3><p>ifconfig命令的输出很多,可以使用grep命令从ifconfig命令中筛选出:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">inet 192.168.43.1  netmask 255.255.255.0  broadcast 192.168.137.255<br></code></pre></td></tr></table></figure>
+<p>这一行.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ifconfig |grep -E &#x27;inet ([0-9]&#123;1,3&#125;(\.[0-9]&#123;1,3&#125;)&#123;3,3&#125;)\s.netmask.+broadcast&#x27;<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ifconfig |grep -P &#x27;[0-9]&#123;1,3&#125;(?:\.[0-9]&#123;1,3&#125;)&#123;3&#125;\s.netmask.+broadcast&#x27;<br></code></pre></td></tr></table></figure>
+<h1 id="确保手机和电脑在同一个网络下"><a href="#确保手机和电脑在同一个网络下" class="headerlink" title="确保手机和电脑在同一个网络下"></a>确保手机和电脑在同一个网络下</h1><ul>
+<li><strong>电脑和手机链接到同一个WiFi下</strong>,<ul>
+<li>这种方式可能会失败,</li>
+<li>我在电脑上和手机上分别登录到校园网后,使用Xshell链接不成功,估计是校园网有限制吧,这个问题,浪费我好长时间!,最后发现可以通过热点进行连接</li>
+</ul>
+</li>
+<li><strong>电脑链接到手机热点上</strong></li>
+<li><strong>手机链接到电脑的热点上</strong></li>
+<li>手机USB线连接电脑，然后打开手机上的USB共享网络</li>
+</ul>
+<p>经过我的测试两种热点连接方式都可以通过<code>Xshell</code>连接到手机上的<code>Termux</code>,所以，最好<strong>使用热点方式</strong>，或者USB共享网络。</p>
+<h1 id="使用Xshell链接Termux"><a href="#使用Xshell链接Termux" class="headerlink" title="使用Xshell链接Termux"></a>使用Xshell链接Termux</h1><p><img src="https://img-blog.csdnimg.cn/20191101164512819.png" alt="在这里插入图片描述"></p>
+<h2 id="设置链接常规信息"><a href="#设置链接常规信息" class="headerlink" title="设置链接常规信息"></a>设置链接常规信息</h2><p>在弹出的窗口左侧点击<code>连接</code>填写上面获取到的的<code>ip</code>地址:<br>端口填写<code>8020</code><br><img src="https://img-blog.csdnimg.cn/20191101164932939.png" alt="在这里插入图片描述"></p>
+<h2 id="设置用户身份验证信息"><a href="#设置用户身份验证信息" class="headerlink" title="设置用户身份验证信息"></a>设置用户身份验证信息</h2><ul>
+<li>点击窗口左侧的<code>用户身份验证</code></li>
+<li>方法选择框中选择使用<code>Public key</code>,</li>
+<li>在用户名填写上面获取到的Termux<code>用户名</code>,</li>
+<li>选择上面创建好的<code>秘钥</code>,</li>
+<li>填写创建秘钥时的指定的<code>秘钥密码</code>.</li>
+<li>最后点击<code>连接</code></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20191101165201792.png" alt="在这里插入图片描述"></p>
+<h2 id="链接成功效果"><a href="#链接成功效果" class="headerlink" title="链接成功效果"></a>链接成功效果</h2><h3 id="链接成功但是无法操作的情况"><a href="#链接成功但是无法操作的情况" class="headerlink" title="链接成功但是无法操作的情况"></a>链接成功但是无法操作的情况</h3><p>如果运行效果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Connecting to 192.168.137.191:8022...<br>Connection established.<br>To escape to local shell, press &#x27;Ctrl+Alt+]&#x27;.<br></code></pre></td></tr></table></figure>
+<p>这说明链接是成功的,但是无法操作,这是因为Termux现在不在前台,把Termux显示在前台即可,也就是显示在屏幕上.</p>
+<h3 id="保证Termux显示在手机屏幕最上方"><a href="#保证Termux显示在手机屏幕最上方" class="headerlink" title="保证Termux显示在手机屏幕最上方"></a>保证Termux显示在手机屏幕最上方</h3><p>如果Termux没有显示在前台的话Xshell无法操作.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell">Connecting to 192.168.137.191:8022...<br>Connection established.<br>To escape to local shell, press &#x27;Ctrl+Alt+]&#x27;.<br>WARNING! The remote SSH server rejected X11 forwarding request.<br>Welcome to Termux!<br>Wiki:            https://wiki.termux.com<br>Community forum: https://termux.com/community<br>Gitter chat:     https://gitter.im/termux/termux<br>IRC channel:     #termux on freenode<br>Working with packages:<br> * Search packages:   pkg search &lt;query&gt;<br> * Install a package: pkg install &lt;package&gt;<br> * Upgrade packages:  pkg upgrade<br>Subscribing to additional repositories:<br> * Root:     pkg install root-repo<br> * Unstable: pkg install unstable-repo<br> * X11:      pkg install x11-repo<br>Report issues at https://termux.com/issues<br> u0_a391@localhost  ~  <br><br></code></pre></td></tr></table></figure>
+<p><code>Termux</code>从前台切换到后台后连接失败,需要重新连接。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">Socket error Event: 32 Error: 10053.<br>Connection closing...Socket close.<br><br>Connection closed by foreign host.<br><br>Disconnected from remote host(Termux) at 16:57:47.<br><br>Type `help&#x27; to learn how to use Xshell prompt.<br>[F:\~]$ <br><br></code></pre></td></tr></table></figure>
+<h2 id="如何重新链接"><a href="#如何重新链接" class="headerlink" title="如何重新链接"></a>如何重新链接</h2><p>将<code>Termux</code>切换到前台,然后点击<code>Xshell</code>菜单栏面的<code>文件</code>,然后点击<code>重新连接</code>。<br><img src="https://img-blog.csdnimg.cn/20191101165959918.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191101170131315.png" alt="在这里插入图片描述"></p>
+<h2 id="设置Termux常驻后台"><a href="#设置Termux常驻后台" class="headerlink" title="设置Termux常驻后台"></a>设置Termux常驻后台</h2><p>一直将<code>Termux</code>显示在前台还是不方便,可以点击手机通知栏上的<code>ACQUIRE WAKELOCK</code>,让<code>Termux</code>常驻后台.这样<code>Termux</code>在后台的时候也可以保持和<code>Xshell</code>的连接。<br><img src="https://img-blog.csdnimg.cn/20191103145704397.png" alt="在这里插入图片描述"><br>常驻后台时的效果:<br><img src="https://img-blog.csdnimg.cn/20191103145858917.png" alt="在这里插入图片描述"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/jacka654321/article/details/81145756">https://blog.csdn.net/jacka654321/article/details/81145756</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/c3146b3e.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/f8d0ff32.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            TL-WR800N v1路由器配置
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/1598bd9.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Linux 执行多个命令</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2021年07月12日 数组习题 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/随堂笔记/2021年07月/习题/2021年07月12日 数组习题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2021年07月12日 数组习题
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/13e87ce3.html" class="article-date">
+  <time datetime="2021-07-12T06:14:00.000Z" itemprop="datePublished">2021-07-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/">随堂笔记</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/">2021年07月</a> / <a class="article-category-link" href="/categories/%E9%9A%8F%E5%A0%82%E7%AC%94%E8%AE%B0/2021%E5%B9%B407%E6%9C%88/%E4%B9%A0%E9%A2%98/">习题</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">6.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">31 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="1、在一个数组中找出最大和最小值，并输出它们的位置；"><a href="#1、在一个数组中找出最大和最小值，并输出它们的位置；" class="headerlink" title="1、在一个数组中找出最大和最小值，并输出它们的位置；"></a>1、在一个数组中找出最大和最小值，并输出它们的位置；</h1><figure class="highlight java"><figcaption><span>FindMaxAndMinInArray.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FindMaxAndMinInArray</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-type">int</span>[] a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>        System.out.print(<span class="hljs-string">&quot;输入10个数:&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>            a[i] = scanner.nextInt();<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">maxIndex</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, minIndex = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; a.length; i++) &#123;<br>            <span class="hljs-comment">// 如果找到一个更大的数</span><br>            <span class="hljs-keyword">if</span> (a[i] &gt; a[maxIndex]) &#123;<br>                maxIndex = i;<br>            &#125;<br>            <span class="hljs-comment">// 如果找到一个更小的数</span><br>            <span class="hljs-keyword">if</span> (a[i] &lt; a[minIndex]) &#123;<br>                minIndex = i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 输出最大最小值</span><br>        System.out.println(<span class="hljs-string">&quot;最大值：a[&quot;</span> + maxIndex + <span class="hljs-string">&quot;]=&quot;</span> + a[maxIndex] + <span class="hljs-string">&quot;，最小值：a[&quot;</span> + minIndex + <span class="hljs-string">&quot;]=&quot;</span> + a[minIndex]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="2、冒泡法对一个数组排序；"><a href="#2、冒泡法对一个数组排序；" class="headerlink" title="2、冒泡法对一个数组排序；"></a>2、冒泡法对一个数组排序；</h1><p>冒泡排序（Bubble Sort）也是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢”浮”到数列的顶端。<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.runoob.com/w3cnote/bubble-sort.html">https://www.runoob.com/w3cnote/bubble-sort.html</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F#4">https://baike.baidu.com/item/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F#4</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 冒泡排序，默认升序排列。</span><br><span class="hljs-comment"> * 如果数组已经有序，则不再排序。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> array</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">bubbleSortBetter</span><span class="hljs-params">(<span class="hljs-type">int</span>[] array)</span> &#123;<br>    <span class="hljs-comment">// 添加一个判断是否交换的标记</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">haveSwap</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, temp; i &lt; array.length - <span class="hljs-number">1</span>; i++) &#123;<br>        haveSwap = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; array.length - <span class="hljs-number">1</span> - i; j++) &#123;<br>            <span class="hljs-comment">// 如果前一个数比后一个数大</span><br>            <span class="hljs-keyword">if</span> (array[j] &gt; array[j + <span class="hljs-number">1</span>]) &#123;<br>                temp = array[j];<br>                <span class="hljs-comment">// 小的数放前面</span><br>                array[j] = array[j + <span class="hljs-number">1</span>];<br>                <span class="hljs-comment">// 大的数放后面</span><br>                array[j + <span class="hljs-number">1</span>] = temp;<br>                <span class="hljs-comment">// 经过交换</span><br>                haveSwap = <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果一轮比较之后,没有交换，则说明已经有序，不需要再排序了</span><br>        <span class="hljs-keyword">if</span> (!haveSwap) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="3、-选择法对数数组排序；"><a href="#3、-选择法对数数组排序；" class="headerlink" title="3、 选择法对数数组排序；"></a>3、 选择法对数数组排序；</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.runoob.com/w3cnote/selection-sort.html">https://www.runoob.com/w3cnote/selection-sort.html</a><br>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是：<br>第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾。以此类推，直到全部待排序的数据元素的个数为零。<br>选择排序是不稳定的排序方法。</p>
+<ul>
+<li>首先在未排序序列中找到最小（大）元素，存放到<strong>排序序列</strong>的起始位置。</li>
+<li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已<strong>排序序列</strong>的末尾。</li>
+<li>重复第二步，直到所有元素均排序完毕。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 选择排序，升序排序</span><br><span class="hljs-comment"> * 每次选择一个最小的值放到没有排序的序列的前方。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 待排序的数组。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">selectionSort</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a)</span> &#123;<br>    <span class="hljs-comment">// n个元素，需要比较n-1次（2个元素，比较1次，3个元素，比较两次）</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, temp; i &lt; a.length - <span class="hljs-number">1</span>; i++) &#123;<br>        <span class="hljs-comment">// 默认最小值</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> i;<br>        <span class="hljs-comment">// 遍历没有排序的元素</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-number">1</span>; j &lt; a.length; j++) &#123;<br>            <span class="hljs-comment">// 如果找到更小的值</span><br>            <span class="hljs-keyword">if</span> (a[j] &lt; a[min]) &#123;<br>                <span class="hljs-comment">// 记录下这个更小的值</span><br>                min = j;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 如果找到了更小的值</span><br>        <span class="hljs-keyword">if</span> (min &gt; i) &#123;<br>            temp = a[min];<br>            a[min] = a[i];<br>            a[i] = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="4、把一个十进制数转换成十六进制的数；"><a href="#4、把一个十进制数转换成十六进制的数；" class="headerlink" title="4、把一个十进制数转换成十六进制的数；"></a>4、把一个十进制数转换成十六进制的数；</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikihow.com/%E6%8A%8A%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%95%B0">https://zh.wikihow.com/%E6%8A%8A%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%95%B0</a></p>
+<p>和十进制转2进制的做法一样，除以16，取余数，然后逆序排列即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DecimalToHexadecimal</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 被除数，十进制数</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">dividend</span> <span class="hljs-operator">=</span> <span class="hljs-number">16</span> + <span class="hljs-number">15</span>;<br>        <span class="hljs-comment">// 除16取余</span><br>        <span class="hljs-type">int</span>[] remainders = decimalToHexadecimal(dividend);<br>        <span class="hljs-comment">// 逆序打印余数</span><br>        System.out.println(<span class="hljs-string">&quot;(&quot;</span> + dividend + <span class="hljs-string">&quot;)10 = (&quot;</span> + printHexadecimal(remainders) + <span class="hljs-string">&quot;)16&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 十进制转十六进制</span><br><span class="hljs-comment">     * 除16取余，逆序排列</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> remainders 保存每个余数的数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> remainderCounter 到底有多少个余数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] decimalToHexadecimal(<span class="hljs-type">int</span> dividend) &#123;<br>        <span class="hljs-comment">// 创建一个临时的数组用来，保存余数</span><br>        <span class="hljs-type">int</span>[] remainderTemps = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">20</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">remainderCounter</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 十进制数(被除数)</span><br>        <span class="hljs-comment">// int dividend = 16 + 15;</span><br>        <span class="hljs-comment">// 定义商</span><br>        <span class="hljs-type">int</span> quotient;<br>        <span class="hljs-keyword">do</span> &#123;<br>            <span class="hljs-comment">// 求商</span><br>            quotient = dividend / <span class="hljs-number">16</span>;<br>            <span class="hljs-comment">// 求余数</span><br>            remainderTemps[remainderCounter++] = dividend % <span class="hljs-number">16</span>;<br>            <span class="hljs-comment">// 商作为下次的被除数</span><br>            dividend = quotient;<br>        &#125; <span class="hljs-keyword">while</span> (dividend &gt; <span class="hljs-number">0</span>);<br>        <span class="hljs-comment">// 创建一个刚好能保存所有余数的数组</span><br>        <span class="hljs-type">int</span>[] remainders = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[remainderCounter];<br>        <span class="hljs-comment">// 从临时保存的余数数组中拷贝到</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; remainders.length; i++) &#123;<br>            remainders[i] = remainderTemps[i];<br>        &#125;<br>        <span class="hljs-comment">// 返回保存余数的数组</span><br>        <span class="hljs-keyword">return</span> remainders;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 打印16进制数</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> remainders 保存余数的数组。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">printHexadecimal</span><span class="hljs-params">(<span class="hljs-type">int</span>[] remainders)</span> &#123;<br>        <span class="hljs-type">StringBuffer</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(remainders.length);<br>        <span class="hljs-comment">// 十进制转十六进制口诀：除16取余，逆序排列</span><br>        <span class="hljs-comment">// 逆序打印</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> remainders.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">if</span> (remainders[i] &lt; <span class="hljs-number">10</span>) &#123;<br>                <span class="hljs-comment">// System.out.print(remainders[i]);</span><br>                sb.append(remainders[i]);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// System.out.print((char) (&#x27;A&#x27; + remainders[i] - 10));</span><br>                sb.append((<span class="hljs-type">char</span>) (<span class="hljs-string">&#x27;A&#x27;</span> + remainders[i] - <span class="hljs-number">10</span>));<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> sb.toString();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="5、实现一个数组的逆序存储"><a href="#5、实现一个数组的逆序存储" class="headerlink" title="5、实现一个数组的逆序存储"></a>5、实现一个数组的逆序存储</h1><figure class="highlight java"><figcaption><span>ReverseStoredInTheArray.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 逆序存储到数组中</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ReverseStoredInTheArray</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span>[] a=<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>        Scanner scanner=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>            a[a.length-<span class="hljs-number">1</span>-i]=scanner.nextInt();<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>            System.out.print(a[i]+<span class="hljs-string">&quot; &quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="6、在一个有序的数组插入一个数，也保证有序；"><a href="#6、在一个有序的数组插入一个数，也保证有序；" class="headerlink" title="6、在一个有序的数组插入一个数，也保证有序；"></a>6、在一个有序的数组插入一个数，也保证有序；</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderedArrayIsStillOrderedAfterInsertion</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 保存有序序列的数组</span><br>        <span class="hljs-type">int</span>[] a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">20</span>];<br>        <span class="hljs-comment">// 有序序列</span><br>        <span class="hljs-type">int</span>[] b = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">18</span>, <span class="hljs-number">24</span> &#125;;<br>        <span class="hljs-comment">// 把有序序列保存到数组中</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; b.length; i++) &#123;<br>            a[i] = b[i];<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;有序序列：&quot;</span>);<br>        printArray(a);<br><br>        <span class="hljs-type">int</span> toBeInsert;<br>        <span class="hljs-comment">// Scanner scanner = new Scanner(System.in);</span><br>        <span class="hljs-comment">// System.out.println(&quot;输入一个整数:&quot;);</span><br>        <span class="hljs-comment">// toBeInsert=scanner.nextInt();</span><br><br>        <span class="hljs-comment">// 插入有序序列的最前面</span><br>        <span class="hljs-comment">// toBeInsert = 0;</span><br>        <span class="hljs-comment">// 插入有序序列的中间</span><br>        <span class="hljs-comment">// toBeInsert = 8;</span><br>        <span class="hljs-comment">// toBeInsert = 23;</span><br>        <span class="hljs-comment">// 插入有序序列的最后面</span><br>        toBeInsert = <span class="hljs-number">25</span>;<br>        System.out.println(<span class="hljs-string">&quot;要插入的元素:&quot;</span> + toBeInsert);<br>        <span class="hljs-comment">// 找出要出插入的位置</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">insetIndex</span> <span class="hljs-operator">=</span> findInsertIndex(a, b.length - <span class="hljs-number">1</span>, toBeInsert);<br>        System.out.println(<span class="hljs-string">&quot;插入后的位置：&quot;</span> + insetIndex);<br>        <span class="hljs-comment">// 为要插入的元素腾出空间</span><br>        makeRoomForInsertion(a, b.length, insetIndex);<br>        System.out.println(<span class="hljs-string">&quot;为待插入元素腾出空间：&quot;</span>);<br>        printArray(a);<br>        <span class="hljs-comment">// 插入要插入的元素</span><br>        a[insetIndex] = toBeInsert;<br>        System.out.println(<span class="hljs-string">&quot;插入后的效果：&quot;</span>);<br>        printArray(a);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 查找要插入的元素在有序数组中将要插入的位置。</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> a 有序数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> orderedSequenceEndIndex 有序数组中最后的元素的下标。</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> toBeInserted 要插入的元素</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findInsertIndex</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> orderedSequenceEndIndex, <span class="hljs-type">int</span> toBeInserted)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">insetIndex</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (; i &lt;= orderedSequenceEndIndex; i++) &#123;<br>            <span class="hljs-comment">// 如果输入的比扫描到的数小</span><br>            <span class="hljs-keyword">if</span> (toBeInserted &lt; a[i]) &#123;<br>                <span class="hljs-comment">// 则应该在这里插入输入的数</span><br>                insetIndex = i;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (insetIndex == <span class="hljs-number">0</span>) &#123;<br>            insetIndex = i;<br>            <span class="hljs-keyword">return</span> insetIndex;<br>        &#125;<br>        <span class="hljs-keyword">return</span> insetIndex;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 为要插入的元素腾出空间</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> a 保存有序序列的数组</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> lastIndexOfNew 插入元素之后形成的新的有序序列的最后一个元素的下标</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> insetIndex 要插入的下标</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">makeRoomForInsertion</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> lastIndexOfNew, <span class="hljs-type">int</span> insetIndex)</span> &#123;<br>        <span class="hljs-comment">// 如果要插入的位置，在原来有序序列的最后面</span><br>        <span class="hljs-keyword">if</span> (insetIndex == lastIndexOfNew) &#123;<br>            <span class="hljs-comment">// 那么不需要平移元素</span><br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 从后向前扫描</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> lastIndexOfNew + <span class="hljs-number">1</span>, temp; i &gt; insetIndex; i--) &#123;<br>            <span class="hljs-comment">// 所有的元素往后移动一格</span><br>            temp = a[i];<br>            a[i] = a[i - <span class="hljs-number">1</span>];<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 打印数组</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> a 待打印数组</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a)</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>            System.out.print(a[i]);<br>            <span class="hljs-keyword">if</span> (i &lt; a.length - <span class="hljs-number">1</span>)<br>                System.out.print(<span class="hljs-string">&quot;,&quot;</span>);<br>        &#125;<br>        System.out.println();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="7、在一个有序的数组中，利用折半法进行查找；"><a href="#7、在一个有序的数组中，利用折半法进行查找；" class="headerlink" title="7、在一个有序的数组中，利用折半法进行查找；"></a>7、在一个有序的数组中，利用折半法进行查找；</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95">https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95</a></p>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 二分查找。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 有序数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> toFind 要查找的整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果在数组中查找到该元素，则返回该元素的索引，</span><br><span class="hljs-comment"> *         否则返回-1表示在数组找不到这个元素。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> toFind)</span> &#123;<br>    <span class="hljs-comment">// 查找序列的开始位置</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 查找序列的结束位置</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> a.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> middle;<br>    <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<br>        middle = (start + end) / <span class="hljs-number">2</span>;<br>        <span class="hljs-comment">// 如果待查找的等于中间值，则说明查找到了，输出该元素的位置</span><br>        <span class="hljs-keyword">if</span> (a[middle] == toFind) &#123;<br>            <span class="hljs-comment">// System.out.println(toFind + &quot;位于：&quot; + middle + &quot;位置&quot;);</span><br>            <span class="hljs-comment">// break;</span><br>            <span class="hljs-comment">// 返回待查找元素的下标</span><br>            <span class="hljs-keyword">return</span> middle;<br>        &#125;<br>        <span class="hljs-comment">// 如果待查元素比中间位置的值大，应该到后面的序列去查找</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (toFind &gt; a[middle]) &#123;<br>            <span class="hljs-comment">// 修改待查找的序列的起始位置为中间值的后一个位置</span><br>            start = middle + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 如果待查元素比中间值小，应该到前面去查找</span><br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 修改待查找的序列的结束位置为中间位置的前面一个位置</span><br>            end = middle - <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 返回一个负数作为下标，表示没有查找到该元素</span><br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span>[] a = &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">23</span>, <span class="hljs-number">45</span>, <span class="hljs-number">67</span>, <span class="hljs-number">89</span>, <span class="hljs-number">98</span>, <span class="hljs-number">123</span>, <span class="hljs-number">134</span> &#125;;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">toFind</span> <span class="hljs-operator">=</span> <span class="hljs-number">9</span>;<br>    <br>    <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> ((index = binarySearch(a, toFind)) &gt;= <span class="hljs-number">0</span>) &#123;<br>        System.out.println(<span class="hljs-string">&quot;数组中  存在&quot;</span> + toFind + <span class="hljs-string">&quot;这个元素,a[&quot;</span> + index + <span class="hljs-string">&quot;]=&quot;</span> + a[index]);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;数组中 不存在&quot;</span> + toFind + <span class="hljs-string">&quot;这个元素&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">数组中  存在9这个元素,a[4]=9<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="8、矩阵的倒置；"><a href="#8、矩阵的倒置；" class="headerlink" title="8、矩阵的倒置；"></a>8、矩阵的倒置；</h1><h2 id="水平镜像矩阵"><a href="#水平镜像矩阵" class="headerlink" title="水平镜像矩阵"></a>水平镜像矩阵</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 水平镜像矩阵，上面的行保存到下面，下面的行保存到上面。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mirrorHorizontalMatrix</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a)</span> &#123;<br>    <span class="hljs-type">int</span> temp;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= (a.length - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; a[i].length; j++) &#123;<br>            temp = a[i][j];<br>            a[i][j] = a[a.length - <span class="hljs-number">1</span> - i][j];<br>            a[a.length - <span class="hljs-number">1</span> - i][j] = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="垂直镜像矩阵"><a href="#垂直镜像矩阵" class="headerlink" title="垂直镜像矩阵"></a>垂直镜像矩阵</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 对矩阵做垂直镜像操作</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">mirrorVertical</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a)</span> &#123;<br>    <span class="hljs-type">int</span> temp;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt;= (a[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; j++) &#123;<br>            temp = a[i][j];<br>            a[i][j] = a[i][a[i].length - <span class="hljs-number">1</span> - j];<br>            a[i][a[i].length - <span class="hljs-number">1</span> - j] = temp;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[][] a = &#123; <br>        &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;, <br>        &#123; <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> &#125;, <br>        &#123; <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span> &#125; &#125;;<br>printMatrix(a);<br><span class="hljs-comment">// 水平镜像矩阵</span><br>mirrorHorizontalMatrix(a);<br>printMatrix(a);<br><span class="hljs-comment">// 垂直镜像矩阵</span><br>mirrorVertical(a);<br>printMatrix(a);<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">|01,02,03|<br>|04,05,06|<br>|07,08,09|<br><br>|07,08,09|<br>|04,05,06|<br>|01,02,03|<br><br>|09,08,07|<br>|06,05,04|<br>|03,02,01|<br></code></pre></td></tr></table></figure>
+
+<h1 id="9、矩阵相加"><a href="#9、矩阵相加" class="headerlink" title="9、矩阵相加"></a>9、矩阵相加</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E5%8A%A0%E6%B3%95">https://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E5%8A%A0%E6%B3%95</a></p>
+<p>通常的矩阵加法被定义在<strong>两个相同大小的矩阵</strong>。两个m×n矩阵A和B的和，标记为A+B，一样是个m×n矩阵，其内的<strong>各元素为其相对应元素相加后的值</strong>。例如：</p>
+<p>$$<br>\left[\begin{array}{ll}<br>1 &amp; 3 \\<br>1 &amp; 0 \\<br>1 &amp; 2<br>\end{array}\right]+\left[\begin{array}{ll}<br>0 &amp; 0 \\<br>7 &amp; 5 \\<br>2 &amp; 1<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>1+0 &amp; 3+0 \\<br>1+7 &amp; 0+5 \\<br>1+2 &amp; 2+1<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>1 &amp; 3 \\<br>8 &amp; 5 \\<br>3 &amp; 3<br>\end{array}\right]<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断一个二维数组是否是矩阵。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果是矩阵的话，则返回true,否是返回false。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isMatrix</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] A)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; A.length; i++) &#123;<br>        <span class="hljs-comment">// 如果其他行的长度与第一行的长度不一样</span><br>        <span class="hljs-keyword">if</span> (A[i].length != A[<span class="hljs-number">0</span>].length) &#123;<br>            <span class="hljs-comment">// 说明不是矩阵</span><br>            <span class="hljs-comment">// System.out.println(&quot;不是矩阵&quot;);</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断两个矩阵是否是相同类型的矩阵</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> B 另一个保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果这两个矩阵是相同类型的矩阵，则返回true；否则返回false.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSameMatrix</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] A, <span class="hljs-type">int</span>[][] B)</span> &#123;<br>    <span class="hljs-comment">// 如果两个二维数组，其中有一个不是矩阵，那没什么好说的</span><br>    <span class="hljs-keyword">if</span> (!isMatrix(A) || !isMatrix(B)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-comment">// 如果两个都是矩阵的话，比较行数和第一行的列数即可</span><br>    <span class="hljs-keyword">return</span> A.length == B.length &amp;&amp; A[<span class="hljs-number">0</span>].length == B[<span class="hljs-number">0</span>].length;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 矩阵加法。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> B 保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 保存矩阵相加之后的矩阵的二维数组。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[][] matrixAdd(<span class="hljs-type">int</span>[][] A, <span class="hljs-type">int</span>[][] B) &#123;<br>    <span class="hljs-type">int</span>[][] C = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[A.length][A[<span class="hljs-number">0</span>].length];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; A[i].length; j++) &#123;<br>            C[i][j] = A[i][j] + B[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> C;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span>[][] A = &#123; &#123; <span class="hljs-number">1</span>, <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-number">1</span>, <span class="hljs-number">0</span> &#125;, &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span> &#125; &#125;;<br>    <span class="hljs-comment">// int[][] A = &#123; &#123; 1, 3, 2 &#125;, &#123; 1, 0, 2 &#125;, &#123; 1, 2, 2 &#125; &#125;;</span><br>    <span class="hljs-type">int</span>[][] B = &#123; &#123; <span class="hljs-number">0</span>, <span class="hljs-number">0</span> &#125;, &#123; <span class="hljs-number">7</span>, <span class="hljs-number">5</span> &#125;, &#123; <span class="hljs-number">2</span>, <span class="hljs-number">1</span> &#125; &#125;;<br>    MatrixTools.printMatrix(A);<br>    System.out.println(<span class="hljs-string">&quot;  + &quot;</span>);<br>    MatrixTools.printMatrix(B);<br><br>    <span class="hljs-comment">// 只有都是同类型的矩阵才可以相加</span><br>    <span class="hljs-keyword">if</span> (isSameMatrix(A, B)) &#123;<br>        <span class="hljs-comment">// System.out.println(&quot;相同类型的数组&quot;);</span><br>        <span class="hljs-type">int</span>[][] C = MatrixTools.matrixAdd(A, B);<br>        System.out.println(<span class="hljs-string">&quot;  = &quot;</span>);<br>        MatrixTools.printMatrix(C);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;不是相同类型的矩阵,无法相加&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">|1 3|<br>|1 0|<br>|1 2|<br>  + <br>|0 0|<br>|7 5|<br>|2 1|<br>  = <br>|1 3|<br>|8 5|<br>|3 3|<br></code></pre></td></tr></table></figure>
+
+<h1 id="10、矩阵相乘；-M-N-N-K"><a href="#10、矩阵相乘；-M-N-N-K" class="headerlink" title="10、矩阵相乘； M*N   N*K"></a>10、矩阵相乘； <code>M*N</code>   <code>N*K</code></h1><p>设$A$为$m \times p$的矩阵，$B$为$p \times n$的矩阵，那么称$m \times n$的矩阵$C$位$A$与$B$的乘积，记作$C&#x3D;AB$，其中矩阵$C$中的第$i$行和第$j$列的元素可以表示为：<br>$$<br>(A B)_{i j}&#x3D;\sum_{k&#x3D;1}^{p} a_{i k} b_{k j}&#x3D;a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i p} b_{p j}<br>$$</p>
+<p>如下所示：</p>
+<p>$$<br>A &#x3D;\left[\begin{array}{lll}<br>a_{1,1} &amp; a_{1,2} &amp; a_{1,3} \\<br>a_{2,1} &amp; a_{2,2} &amp; a_{2,3}<br>\end{array}\right] \\<br>$$</p>
+<p>$$<br>B &#x3D;\left[\begin{array}{ll}<br>b_{1,1} &amp; b_{1,2} \\<br>b_{2,1} &amp; b_{2,2} \\<br>b_{3,1} &amp; b_{3,2}<br>\end{array}\right] \\<br>$$</p>
+<p>$$<br>C &#x3D;A B&#x3D;\left[\begin{array}{ll}<br>a_{1,1} b_{1,1}+a_{1,2} b_{2,1}+a_{1,3} b_{3,1}, &amp; a_{1,1} b_{1,2}+a_{1,2} b_{2,2}+a_{1,3} b_{3,2} \\<br>a_{2,1} b_{1,1}+a_{2,2} b_{2,1}+a_{2,3} b_{3,1}, &amp; a_{2,1} b_{1,2}+a_{2,2} b_{2,2}+a_{2,3} b_{3,2}<br>\end{array}\right]<br>$$</p>
+<h2 id="文字描述"><a href="#文字描述" class="headerlink" title="文字描述"></a>文字描述</h2><p>1、当矩阵A的列数（column）等于矩阵B的行数（row）时，A与B可以相乘。</p>
+<p>2、矩阵C的行数等于矩阵A的行数，C的列数等于B的列数。</p>
+<p>3、乘积C的第m行第n列的元素等于<strong>矩阵A的第m行的元素</strong>与<strong>矩阵B的第n列</strong>对应元素<strong>乘积</strong>之<strong>和</strong>。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>$$<br>C&#x3D;A B&#x3D;\left(\begin{array}{lll}<br>5 &amp; 2 &amp; 4 \\<br>3 &amp; 8 &amp; 2 \\<br>6 &amp; 0 &amp; 4 \\<br>0 &amp; 1 &amp; 6<br>\end{array}\right)\left(\begin{array}{ll}<br>2 &amp; 4 \\<br>1 &amp; 3 \\<br>3 &amp; 2<br>\end{array}\right)&#x3D;\left(\begin{array}{cc}<br>24 &amp; 34 \\<br>20 &amp; 40 \\<br>24 &amp; 32 \\<br>19 &amp; 15<br>\end{array}\right)<br>$$</p>
+<p>$$<br>\left[\begin{array}{lll}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6<br>\end{array}\right] \times\left[\begin{array}{cc}<br>7 &amp; 8 \\<br>9 &amp; 10 \\<br>11 &amp; 12<br>\end{array}\right]&#x3D;\left[\begin{array}{cc}<br>58 &amp; 64 \\<br>139 &amp; 154<br>\end{array}\right]<br>$$</p>
+<h3 id="交换顺序-结果不一样"><a href="#交换顺序-结果不一样" class="headerlink" title="交换顺序 结果不一样"></a>交换顺序 结果不一样</h3><p>$$<br>\begin{aligned}<br>&amp;{\left[\begin{array}{ll}<br>1 &amp; 2 \\<br>3 &amp; 4<br>\end{array}\right] \times\left[\begin{array}{ll}<br>2 &amp; 0 \\<br>1 &amp; 2<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>4 &amp; 4 \\<br>10 &amp; 8<br>\end{array}\right]}<br>\end{aligned}<br>$$<br>$$<br>\begin{aligned}<br>&amp;{\left[\begin{array}{ll}<br>2 &amp; 0 \\<br>1 &amp; 2<br>\end{array}\right] \times\left[\begin{array}{ll}<br>1 &amp; 2 \\<br>3 &amp; 4<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>2 &amp; 4 \\<br>7 &amp; 10<br>\end{array}\right]}<br>\end{aligned}<br>$$</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95">https://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.shuxuele.com/algebra/matrix-multiplying.html">https://www.shuxuele.com/algebra/matrix-multiplying.html</a></p>
+<h2 id="矩阵乘法java代码"><a href="#矩阵乘法java代码" class="headerlink" title="矩阵乘法java代码"></a>矩阵乘法java代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 返回矩阵A和矩阵B的乘法，C=AB的结果</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> B 保存另一个矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 保存矩阵A乘以矩阵B的结果AB</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[][] matrixMultiplication(<span class="hljs-type">int</span>[][] A, <span class="hljs-type">int</span>[][] B) &#123;<br>    <span class="hljs-comment">// 矩阵C的行数等于矩阵A的行数，C的列数等于B的列数</span><br>    <span class="hljs-type">int</span>[][] C = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[A.length][B[<span class="hljs-number">0</span>].length];<br>    <span class="hljs-comment">// 缓存</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">sumIJ</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; C.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; C[i].length; j++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; B.length; k++) &#123;<br>                <span class="hljs-comment">// 乘积C的第m行和第n列的元素，</span><br>                <span class="hljs-comment">// 等于矩阵A的第m行元素与矩阵B的第n列元素对应的元素的乘积的和</span><br>                sumIJ = sumIJ + A[i][k] * B[k][j];<br>            &#125;<br>            C[i][j] = sumIJ;<br>            <span class="hljs-comment">// 计算下一个元素之前先清零，去除上一次的计算结果</span><br>            sumIJ = <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> C;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断矩阵是否可以相乘。</span><br><span class="hljs-comment"> * 当A的列数，等于矩阵B的行数，是A和B可以相乘。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> B 保存另一矩阵的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果可以相乘，则返回true,不可用相乘，则返回false。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">canBeMultiplied</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] A, <span class="hljs-type">int</span>[][] B)</span> &#123;<br>    <span class="hljs-comment">// 首先要都是矩阵</span><br>    <span class="hljs-comment">// 当A的列数，等于矩阵B的行数，是A和B可以相乘</span><br>    <span class="hljs-keyword">return</span> MatrixTools.isMatrix(A) &amp;&amp; MatrixTools.isMatrix(B) &amp;&amp; A[<span class="hljs-number">0</span>].length == B.length;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="打印矩阵乘法运算"><a href="#打印矩阵乘法运算" class="headerlink" title="打印矩阵乘法运算"></a>打印矩阵乘法运算</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printmatrixMul</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] A, <span class="hljs-type">int</span>[][] B)</span> &#123;<br>    MatrixTools.printMatrix(A);<br>    System.out.println(<span class="hljs-string">&quot;   *&quot;</span>);<br>    MatrixTools.printMatrix(B);<br>    System.out.println(<span class="hljs-string">&quot;   =&quot;</span>);<br>    <span class="hljs-comment">// 当A的列数，等于矩阵B的行数，是A和B可以相乘</span><br>    <span class="hljs-keyword">if</span> (MatrixTools.canBeMultiplied(A, B)) &#123;<br>        <span class="hljs-comment">// System.out.println(&quot;可以相乘&quot;);</span><br>        <span class="hljs-type">int</span>[][] C = MatrixTools.matrixMultiplication(A, B);<br>        MatrixTools.printMatrixMoreBeautiful(C);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;不可相乘&quot;</span>);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断一个二维数组是否是矩阵。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> A 保存矩阵的二维数组。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 如果是矩阵的话，则返回true,否是返回false。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isMatrix</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] A)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; A.length; i++) &#123;<br>        <span class="hljs-comment">// 如果其他行的长度与第一行的长度不一样</span><br>        <span class="hljs-keyword">if</span> (A[i].length != A[<span class="hljs-number">0</span>].length) &#123;<br>            <span class="hljs-comment">// 说明不是矩阵</span><br>            <span class="hljs-comment">// System.out.println(&quot;不是矩阵&quot;);</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="矩阵打印相关"><a href="#矩阵打印相关" class="headerlink" title="矩阵打印相关"></a>矩阵打印相关</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 打印矩阵</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组?</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMatrix</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>        System.out.print(<span class="hljs-string">&quot;|&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; a[i].length; j++) &#123;<br>            <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-comment">// System.out.print(&quot;,&quot;);</span><br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            System.out.print(a[i][j]);<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;|&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 更美观的打印矩阵.</span><br><span class="hljs-comment"> * 如果矩阵中的最大值为3位数，则打印的每个矩阵元素都占三个位，不足的以0补齐。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMatrixMoreBeautiful</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> findMax(a);<br>    <span class="hljs-comment">// System.out.println(&quot;max=&quot; + max);</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">bits</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span> &#123;<br>        max = max / <span class="hljs-number">10</span>;<br>        bits++;<br>    &#125; <span class="hljs-keyword">while</span> (max &gt; <span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// System.out.println(&quot;bits=&quot;+bits);</span><br>    printMatrixFormatted(a, bits);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查找矩阵中的最大值（查找二维数组中的最大值）</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 矩阵的最大元素。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findMax</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Integer.MIN_VALUE;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; a[i].length; j++) &#123;<br>            <span class="hljs-keyword">if</span> (a[i][j] &gt; max) &#123;<br>                max = a[i][j];<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 打印格式化的矩阵，默认打印两位数，如果一个数小于10，则在前面补0。以占满两个位置。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存矩阵的二维数组?</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printMatrixFormatted</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a, <span class="hljs-type">int</span> numLen)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>        System.out.print(<span class="hljs-string">&quot;|&quot;</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; a[i].length; j++) &#123;<br>            <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-comment">// System.out.print(&quot;,&quot;);</span><br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            <span class="hljs-comment">// 格式化输出,%02d，其中</span><br>            <span class="hljs-comment">// d表示数据类型为整数,</span><br>            <span class="hljs-comment">// 2表示这个数占据两位,</span><br>            <span class="hljs-comment">// 0表示不足的在前面补上0</span><br>            System.out.printf(<span class="hljs-string">&quot;%0&quot;</span> + numLen + <span class="hljs-string">&quot;d&quot;</span>, a[i][j]);<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;|&quot;</span>);<br>    &#125;<br>    System.out.println();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试1"><a href="#测试1" class="headerlink" title="测试1"></a>测试1</h2><p>$$<br>C&#x3D;A B&#x3D;\left(\begin{array}{lll}<br>5 &amp; 2 &amp; 4 \\<br>3 &amp; 8 &amp; 2 \\<br>6 &amp; 0 &amp; 4 \\<br>0 &amp; 1 &amp; 6<br>\end{array}\right)\left(\begin{array}{ll}<br>2 &amp; 4 \\<br>1 &amp; 3 \\<br>3 &amp; 2<br>\end{array}\right)&#x3D;\left(\begin{array}{cc}<br>24 &amp; 34 \\<br>20 &amp; 40 \\<br>24 &amp; 32 \\<br>19 &amp; 15<br>\end{array}\right)<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[][] A = &#123; &#123; <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span> &#125;, &#123; <span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">2</span> &#125;, &#123; <span class="hljs-number">6</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span> &#125;, &#123; <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">6</span> &#125; &#125;;<br><span class="hljs-type">int</span>[][] B = &#123; &#123; <span class="hljs-number">2</span>, <span class="hljs-number">4</span> &#125;, &#123; <span class="hljs-number">1</span>, <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-number">3</span>, <span class="hljs-number">2</span> &#125; &#125;;<br>printmatrixMul(A, B);<br></code></pre></td></tr></table></figure>
+
+<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">|5 2 4|<br>|3 8 2|<br>|6 0 4|<br>|0 1 6|<br>   *<br>|2 4|<br>|1 3|<br>|3 2|<br>   =<br>|24 34|<br>|20 40|<br>|24 32|<br>|19 15|<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试2"><a href="#测试2" class="headerlink" title="测试2"></a>测试2</h2><p>$$<br>\left[\begin{array}{lll}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6<br>\end{array}\right] \times\left[\begin{array}{cc}<br>7 &amp; 8 \\<br>9 &amp; 10 \\<br>11 &amp; 12<br>\end{array}\right]&#x3D;\left[\begin{array}{cc}<br>58 &amp; 64 \\<br>139 &amp; 154<br>\end{array}\right]<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[][] A = &#123; &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span> &#125; &#125;;<br><span class="hljs-type">int</span>[][] B = &#123; &#123; <span class="hljs-number">7</span>, <span class="hljs-number">8</span> &#125;, &#123; <span class="hljs-number">9</span>, <span class="hljs-number">10</span> &#125;, &#123; <span class="hljs-number">11</span>, <span class="hljs-number">12</span> &#125; &#125;;<br>printmatrixMul(A, B);<br></code></pre></td></tr></table></figure>
+
+<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">|1 2 3|<br>|4 5 6|<br>   *<br>|7 8|<br>|9 10|<br>|11 12|<br>   =<br>|058 064|<br>|139 154|<br></code></pre></td></tr></table></figure>
+
+<h2 id="测试3"><a href="#测试3" class="headerlink" title="测试3"></a>测试3</h2><p>$$<br>\begin{aligned}<br>&amp;{\left[\begin{array}{ll}<br>1 &amp; 2 \\<br>3 &amp; 4<br>\end{array}\right] \times\left[\begin{array}{ll}<br>2 &amp; 0 \\<br>1 &amp; 2<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>4 &amp; 4 \\<br>10 &amp; 8<br>\end{array}\right]}<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>&amp;{\left[\begin{array}{ll}<br>2 &amp; 0 \\<br>1 &amp; 2<br>\end{array}\right] \times\left[\begin{array}{ll}<br>1 &amp; 2 \\<br>3 &amp; 4<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>2 &amp; 4 \\<br>7 &amp; 10<br>\end{array}\right]}<br>\end{aligned}<br>$$</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[][] A = &#123; &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span> &#125;, &#123; <span class="hljs-number">3</span>, <span class="hljs-number">4</span> &#125; &#125;;<br><span class="hljs-type">int</span>[][] B = &#123; &#123; <span class="hljs-number">2</span>, <span class="hljs-number">0</span> &#125;, &#123; <span class="hljs-number">1</span>, <span class="hljs-number">2</span> &#125; &#125;;<br>System.out.println(<span class="hljs-string">&quot;AB=&quot;</span>);<br>printmatrixMul(A, B);<br>System.out.println(<span class="hljs-string">&quot;BA=&quot;</span>);<br>printmatrixMul(B, A);<br></code></pre></td></tr></table></figure>
+
+<h3 id="运行结果-4"><a href="#运行结果-4" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">AB=<br>|1 2|<br>|3 4|<br>   *<br>|2 0|<br>|1 2|<br>   =<br>|04 04|<br>|10 08|<br>BA=<br>|2 0|<br>|1 2|<br>   *<br>|1 2|<br>|3 4|<br>   =<br>|02 04|<br>|07 10|<br></code></pre></td></tr></table></figure>
+
+<h1 id="11、打印杨辉三角前20行；"><a href="#11、打印杨辉三角前20行；" class="headerlink" title="11、打印杨辉三角前20行；"></a>11、打印杨辉三角前20行；</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br>    <span class="hljs-type">int</span>[][] yh = yangHui(length);<br>    printYangHui(yh);<br>    <span class="hljs-comment">// printHangHui1(length);</span><br>&#125;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[][] yangHui(<span class="hljs-type">int</span> length) &#123;<br>    <span class="hljs-comment">// 变长的二维数组</span><br>    <span class="hljs-type">int</span>[][] yh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[length][];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; yh.length; i++) &#123;<br>        <span class="hljs-comment">// 创建第2维的数组</span><br>        yh[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[i + <span class="hljs-number">1</span>];<br>    &#125;<br>    <span class="hljs-comment">//</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; yh[i].length; j++) &#123;<br>            <span class="hljs-comment">// 第1列和最后一列的值为1</span><br>            <span class="hljs-keyword">if</span> (j == <span class="hljs-number">0</span> || i == j) &#123;<br>                yh[i][j] = <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// 当前元素，等于正上方的元素 与 正上方的前一个元素的和</span><br>                yh[i][j] = yh[i - <span class="hljs-number">1</span>][j] + yh[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>];<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> yh;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 打印杨辉三角形</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> yh 保存杨辉三角形的变长二维数组.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printYangHui</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] yh)</span> &#123;<br>    <span class="hljs-comment">// 杨辉三角形最大值，最后一行的中间位置的值</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> yh[yh.length - <span class="hljs-number">1</span>][yh.length / <span class="hljs-number">2</span>];<br>    <span class="hljs-comment">// 格式化打印，每个数的长度都与最大的数的长度一样</span><br>    printYangHuiFormatted(yh, countBits(max));<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化打印杨辉三角形</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> a 保存杨辉三角形的二维数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> maxNumLength 杨辉三角形中最大的数字有多少个数字字符。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">printYangHuiFormatted</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] a, <span class="hljs-type">int</span> maxNumLength)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; a.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; a[i].length; j++) &#123;<br>            <span class="hljs-comment">// 打印分隔符</span><br>            <span class="hljs-keyword">if</span> (j &gt; <span class="hljs-number">0</span>) &#123;<br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            <span class="hljs-comment">// 打印空白符，使得小的的数的宽度和最大的数的宽度一样</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; maxNumLength - countBits(a[i][j]); k++) &#123;<br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            <span class="hljs-comment">// 打印元素</span><br>            System.out.print(a[i][j]);<br>        &#125;<br>        System.out.println();<br>    &#125;<br>    System.out.println();<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 计算一个整数有几位数。</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> num 整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> 该整数有多少个整数。</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countBits</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">bits</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span> &#123;<br>        num = num / <span class="hljs-number">10</span>;<br>        bits++;<br>    &#125; <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> bits;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1<br>1     1<br>1     2     1<br>1     3     3     1<br>1     4     6     4     1<br>1     5    10    10     5     1<br>1     6    15    20    15     6     1<br>1     7    21    35    35    21     7     1<br>1     8    28    56    70    56    28     8     1<br>1     9    36    84   126   126    84    36     9     1<br>1    10    45   120   210   252   210   120    45    10     1<br>1    11    55   165   330   462   462   330   165    55    11     1<br>1    12    66   220   495   792   924   792   495   220    66    12     1<br>1    13    78   286   715  1287  1716  1716  1287   715   286    78    13     1<br>1    14    91   364  1001  2002  3003  3432  3003  2002  1001   364    91    14     1<br>1    15   105   455  1365  3003  5005  6435  6435  5005  3003  1365   455   105    15     1<br>1    16   120   560  1820  4368  8008 11440 12870 11440  8008  4368  1820   560   120    16     1<br>1    17   136   680  2380  6188 12376 19448 24310 24310 19448 12376  6188  2380   680   136    17     1<br>1    18   153   816  3060  8568 18564 31824 43758 48620 43758 31824 18564  8568  3060   816   153    18     1<br>1    19   171   969  3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628  3876   969   171    19     1<br></code></pre></td></tr></table></figure>
+
+<h1 id="13、找出两个数组的交集"><a href="#13、找出两个数组的交集" class="headerlink" title="13、找出两个数组的交集"></a>13、找出两个数组的交集</h1><p>数组1的元素有： 21,3,33,89,16；</p>
+<p>数组2的元素有： 33,78,15,16,48,57</p>
+<p>则结果为：33,16</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HW_13_Intersection</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span>[] A = &#123; <span class="hljs-number">21</span>, <span class="hljs-number">3</span>, <span class="hljs-number">33</span>, <span class="hljs-number">89</span>, <span class="hljs-number">16</span> &#125;;<br>        <span class="hljs-type">int</span>[] B = &#123; <span class="hljs-number">33</span>, <span class="hljs-number">78</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>, <span class="hljs-number">48</span>, <span class="hljs-number">57</span> &#125;;<br>        <span class="hljs-type">int</span>[] C1 = intersection(A, B);<br>        ArrayTools.printArray(C1);<br>        ArrayTools.printArray(intersection2(A, B));<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 求数组的交集</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> A 数组A</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> B 数组B</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 数组A和数组B的交集</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] intersection(<span class="hljs-type">int</span>[] A, <span class="hljs-type">int</span>[] B) &#123;<br>        <span class="hljs-type">int</span>[] C;<br>        <span class="hljs-keyword">if</span> (A.length &lt; B.length) &#123;<br>            C = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[A.length];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            C = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[B.length];<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; B.length; j++) &#123;<br>                <span class="hljs-keyword">if</span> (A[i] == B[j]) &#123;<br>                    <span class="hljs-comment">// System.out.println(A[i]);</span><br>                    C[count++] = A[i];<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span>[] D = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[count];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; count; i++) &#123;<br>            D[i] = C[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> D;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 求两个数组的交集，求两个数组共有的元素.</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> A 数组A</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> B 数组B</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 数组A和数字B的交集</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] intersection2(<span class="hljs-type">int</span>[] A, <span class="hljs-type">int</span>[] B) &#123;<br>        ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; B.length; j++) &#123;<br>                <span class="hljs-keyword">if</span> (A[i] == B[j]) &#123;<br>                    list.add(A[i]);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> list.stream().mapToInt(Integer::valueOf).toArray();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;33,16&#125;<br>&#123;33,16&#125;<br></code></pre></td></tr></table></figure> 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/13e87ce3.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/845de5e4.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            手动安装IDM的Chrome插件IDM Integration Module，取消IDM的更新提示
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/b7cee2c9.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2021年07月11日习题</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

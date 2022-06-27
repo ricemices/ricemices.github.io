@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2.4 Java Servlet 会话管理 通过HttpSession对象 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/Java/Java EE/会话管理/2.4 Java Servlet 会话管理 通过HttpSession对象"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2.4 Java Servlet 会话管理 通过HttpSession对象
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/30442a1.html" class="article-date">
+  <time datetime="2019-03-22T08:42:09.000Z" itemprop="datePublished">2019-03-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/">Java</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-EE/">Java EE</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/Java/Java-EE/%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/">会话管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">21 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h2 id="2-4-Java-Servlet-会话管理-通过HttpSession对象"><a href="#2-4-Java-Servlet-会话管理-通过HttpSession对象" class="headerlink" title="2.4 Java Servlet 会话管理 通过HttpSession对象"></a>2.4 Java Servlet 会话管理 通过HttpSession对象</h2><p>在所有的会话跟踪技术中，<code>HttpSession</code> 对象是最强大和最通用的。一个用户可以有且最多有一个<code>HttpSession</code>，并且不会被其他用户访问到。</p>
+<h3 id="谁创建HttpSession对象"><a href="#谁创建HttpSession对象" class="headerlink" title="谁创建HttpSession对象"></a>谁创建HttpSession对象</h3><p><code>HttpSession</code>对象在用户第一次访问网站的时候自动被创建。</p>
+<h3 id="如何获取HttpSession对象"><a href="#如何获取HttpSession对象" class="headerlink" title="如何获取HttpSession对象"></a>如何获取HttpSession对象</h3><p>你可以通过调用<code>HttpServletRequest</code>的<code>getSession</code>方法获取该对象。<code>getSession</code>有两个重载方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">HttpSession <span class="hljs-title function_">getSession</span><span class="hljs-params">()</span><br>HttpSession <span class="hljs-title function_">getSession</span><span class="hljs-params">(<span class="hljs-type">boolean</span> create)</span><br></code></pre></td></tr></table></figure>
+<p>没有参数的<code>getSession</code>方法会返回当前的<code>HttpSession</code>，若当前没有，则创建一个并返回。<br><code>getSession(false)</code>返回当前<code>HttpSession</code>，如当前不存在，则返回<code>null</code>。<br><code>getSession(true)</code>返回当前<code>HttpSession</code>，若当前没有，则创建一个并返回,<code>getSession(true)</code>同<code>getSession()</code>的效果一致.</p>
+<h3 id="如何往HttpSession中存入数据"><a href="#如何往HttpSession中存入数据" class="headerlink" title="如何往HttpSession中存入数据"></a>如何往HttpSession中存入数据</h3><p>可以通过<code>HttpSession</code>的<code>setAttribute</code>方法将值放入<code>HttpSession</code>，该方法的方法签名如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">setAttribute</span><span class="hljs-params">(java.lang.String name, java.lang.Object value)</span><br></code></pre></td></tr></table></figure>
+<p>请注意，不同于<code>URL</code>重新、隐藏域或<code>cookie</code>，<strong>放入到<code>HttpSession</code> 的值，是存储在内存中的</strong>，因此，<strong>不要往<code>HttpSession</code>放入太多对象或放入大对象。</strong><br>尽管现代的<code>Servlet</code>容器在内存不够用的时候会将保存在<code>HttpSessions</code>的对象转储到二级存储上，但这样有性能问题，因此小心存储。</p>
+<h3 id="HttpSession中的数据要满足的条件"><a href="#HttpSession中的数据要满足的条件" class="headerlink" title="HttpSession中的数据要满足的条件"></a>HttpSession中的数据要满足的条件</h3><p>此外，放到<code>HttpSession</code>的值不限于<code>String</code>类型，可以是任意实现<code>java.io.Serializable</code>的<code>java</code>对象，因为在内存不够用的时候,<code>Servlet</code>容器会将这些对象放入文件或数据库中,当然你也可以将不支持序列化的对象放入<code>HttpSession</code>，只是这样，当<code>Servlet</code>容器进行序列化的时候会失败并报错。<br><strong>调用<code>setAttribute</code>方法时，若传入的<code>name</code>参数此前已经使用过，则会用新值覆盖旧值。</strong></p>
+<h3 id="从HttpSession对象中取出数据"><a href="#从HttpSession对象中取出数据" class="headerlink" title="从HttpSession对象中取出数据"></a>从HttpSession对象中取出数据</h3><p>通过调用<code>HttpSession</code>的<code>getAttribute</code>方法可以取回之前放入<code>HttpSession</code>中的对象，该方法的签名如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">java.lang.Object <span class="hljs-title function_">getAttribute</span><span class="hljs-params">(java.lang.String name)</span><br></code></pre></td></tr></table></figure>
+<h3 id="从HttpSession对象中批量取出数据"><a href="#从HttpSession对象中批量取出数据" class="headerlink" title="从HttpSession对象中批量取出数据"></a>从HttpSession对象中批量取出数据</h3><p><code>HttpSession</code>还有一个非常有用的方法，名为<code>getAttributeNames</code>，该方法会返回一个<code>Enumeration</code>对象来迭代访问保存在<code>HttpSession</code>中的所有值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">java.util.Enumeration&lt;java.lang.String&gt; getAttributeNames()<br></code></pre></td></tr></table></figure>
+
+<p>注意，所有保存在<code>HttpSession</code>的数据不会被发送到客户端，不同于其他会话管理技术，**<code>Servlet</code>容器为每个<code>HttpSession</code>生成唯一的标识，并将该标识发送给浏览器**，或创建一个名为<code>JSESSIONID</code>的<code>cookie</code>，或者在<code>URL</code>后附加一个名为<code>jsessionid</code> 的参数。在后续的请求中，浏览器会将标识提交给服务端，这样服务器就可以识别该请求是由哪个用户发起的。<code>Servlet</code>容器会自动选择一种方式传递会话标识，无须开发人员介入。<br><strong>提示</strong>：</p>
+<ul>
+<li>隐藏域技术会往浏览器发送带隐藏域的表单.</li>
+<li><code>Cookie</code>技术会往浏览器发送<code>Cookie</code>.</li>
+</ul>
+<h3 id="获取Http对象的标识"><a href="#获取Http对象的标识" class="headerlink" title="获取Http对象的标识"></a>获取Http对象的标识</h3><p>可以通过调用 <code>HttpSession</code>的<code>getId</code>方法来读取该标识：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">java.lang.String <span class="hljs-title function_">getId</span><span class="hljs-params">()</span><br></code></pre></td></tr></table></figure>
+<p>此外，<code>HttpSession</code>.还定义了一个名为<code>invalidate</code> 的方法。该方法强制会话过期，并清空其保存的对象。默认情况下，<code>HttpSession</code> 会在用户不活动一段时间后自动过期，该时间可以通过部署描述符的 <code>session-timeout</code>元素配置，若设置为<code>30</code>，则会话对象会在用户最后一次访问<code>30</code>分钟后过期，如果部署描述符没有配置，则该值取决于<code>Servlet</code>容器的设定。<br>大部分情况下，你应该主动销毁无用的<code>HttpSession</code>，以便释放相应的内存。</p>
+<h3 id="查看设置超时时间"><a href="#查看设置超时时间" class="headerlink" title="查看设置超时时间"></a>查看设置超时时间</h3><p>可以通过调用<code>HttpSession</code> 的<code>getMaxInactiveInterval</code>方法来查看会话多久会过期。该方法返回一个数字类型，单位为秒。调用<code>setMaxInactiveInterval</code> 方法来单独对某个<code>HttpSession</code> 设定其超时时间：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">setMaxInactiveInterval</span><span class="hljs-params">(<span class="hljs-type">int</span> seconds)</span><br></code></pre></td></tr></table></figure>
+<p>若设置为0，则该<code>HttpSession</code> 永不过期。通常这不是一个好的设计，因为该 <code>HttpSession</code> 所占用的堆内存将永不释放，直到应用重加载或<code>Servlet</code>容器关闭。</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>一个简单的购物<code>Demo</code>,具有显示商品列表,商品详情页面,购物车页面.并且在商品详情页面提供添加到购物车的功能.</p>
+<h3 id="Product"><a href="#Product" class="headerlink" title="Product"></a>Product</h3><p>商品类用来存储商品的信息,如下所示:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.httpsession;<br><span class="hljs-comment">//一个商品的信息.</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Product</span><br>&#123;<br>    <span class="hljs-comment">// 商品编号.</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> id;<br>    <span class="hljs-comment">// 商品名称.</span><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-comment">// 商品详细描述.</span><br>    <span class="hljs-keyword">private</span> String description;<br>    <span class="hljs-comment">// 商品价钱.</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> price;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Product</span><span class="hljs-params">(    <span class="hljs-type">int</span> id,String name,String description,<span class="hljs-type">float</span> price)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.description = description;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getId</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> id;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setId</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>    &#125;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDescription</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> description;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDescription</span><span class="hljs-params">(String description)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.description = description;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getPrice</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> price;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">float</span> price)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>购物车中光有商品而已是不行的,还要知道用户买了几个商品,<code>商品</code>和对应的<code>数量</code>构成了购物车中记录的数据结构。</p>
+<h3 id="ShoppingItem"><a href="#ShoppingItem" class="headerlink" title="ShoppingItem"></a>ShoppingItem</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.httpsession;<br><span class="hljs-comment">//一次购物元素,对应于购物车中的一个商品.</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShoppingItem</span><br>&#123;<br>    <span class="hljs-comment">// 商品</span><br>    <span class="hljs-keyword">private</span> Product product;<br>    <span class="hljs-comment">// 数量</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> quantity;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ShoppingItem</span><span class="hljs-params">(Product product,<span class="hljs-type">int</span> quantity)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.product = product;<br>        <span class="hljs-built_in">this</span>.quantity = quantity;<br>    &#125;<br>    <span class="hljs-keyword">public</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> product;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setProduct</span><span class="hljs-params">(Product product)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.product = product;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getQuantity</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> quantity;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setQuantity</span><span class="hljs-params">(<span class="hljs-type">int</span> quantity)</span><br>    &#123;<br>        <span class="hljs-built_in">this</span>.quantity = quantity;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>有了<code>商品</code>,有了<code>记录</code>,下面就来写功能代码了.</p>
+<h3 id="ShoppingCartServlet"><a href="#ShoppingCartServlet" class="headerlink" title="ShoppingCartServlet"></a>ShoppingCartServlet</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> session.management.httpsession;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> java.text.NumberFormat;<br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Locale;<br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpSession;<br><span class="hljs-meta">@WebServlet(</span><br><span class="hljs-meta">    name = &quot;ShoppingCartServlet&quot;,</span><br><span class="hljs-meta">    urlPatterns =</span><br><span class="hljs-meta">    &#123;&quot;/products&quot;, &quot;/viewProductDetails&quot;, &quot;/addToCart&quot;, &quot;/viewCart&quot;&#125;</span><br><span class="hljs-meta">)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShoppingCartServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServlet</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> -<span class="hljs-number">20L</span>;<br>    <span class="hljs-comment">//</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span>    <span class="hljs-variable">CART_ATTRIBUTE</span>    <span class="hljs-operator">=</span> <span class="hljs-string">&quot;cart&quot;</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span>    <span class="hljs-variable">tableStyle</span>        <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&lt;style&gt;table&#123;border-right:1px solid #F00;border-bottom:1px solid #F00&#125;\r\n&quot;</span><br>        + <span class="hljs-string">&quot;table td&#123;border-left:1px solid #F00;border-top:1px solid #F00&#125;&lt;/style&gt;&quot;</span>;<br>    <span class="hljs-comment">// 商品列表</span><br>    <span class="hljs-keyword">private</span> List&lt;Product&gt;    products        = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Product&gt;();<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">NumberFormat</span>    <span class="hljs-variable">currencyFormat</span>    <span class="hljs-operator">=</span> NumberFormat<br>        .getCurrencyInstance(Locale.CHINA);<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ServletException<br>    &#123;<br>        products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;苹果&quot;</span>, <span class="hljs-string">&quot;新鲜上市的苹果&quot;</span>, <span class="hljs-number">5.5F</span>));<br>        products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;香蕉&quot;</span>, <span class="hljs-string">&quot;新鲜上市的香蕉&quot;</span>, <span class="hljs-number">6.5F</span>));<br>        products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;菠萝&quot;</span>, <span class="hljs-string">&quot;新鲜上市的菠萝&quot;</span>, <span class="hljs-number">4.8F</span>));<br>        products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">4</span>, <span class="hljs-string">&quot;草莓&quot;</span>, <span class="hljs-string">&quot;新鲜上市的草莓&quot;</span>, <span class="hljs-number">12.5F</span>));<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span><br>        <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">uri</span> <span class="hljs-operator">=</span> request.getRequestURI();<br>        <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/products&quot;</span>)) &#123;<br>            sendProductList(response);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/viewProductDetails&quot;</span>)) &#123;<br>            sendProductDetails(request, response);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/viewCart&quot;</span>)) &#123;<br>            showCart(request, response);<br>        &#125;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doPost</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span><br>        <span class="hljs-keyword">throws</span> ServletException, IOException<br>    &#123;<br>        response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        <span class="hljs-comment">// add to cart</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">productId</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">quantity</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">// 从参数中取出id属性的值</span><br>            productId = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;id&quot;</span>));<br>            <span class="hljs-comment">// 取出数量属性的值</span><br>            quantity = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;quantity&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;&#125;<br>        <span class="hljs-comment">// 根据Id从商品列表中找出该商品</span><br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> getProduct(productId);<br>        <span class="hljs-keyword">if</span> (product != <span class="hljs-literal">null</span> &amp;&amp; quantity &gt;= <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">// 创建一个购物记录</span><br>            <span class="hljs-type">ShoppingItem</span> <span class="hljs-variable">shoppingItem</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ShoppingItem</span>(product, quantity);<br>            <span class="hljs-comment">// 取得session对象</span><br>            <span class="hljs-type">HttpSession</span> <span class="hljs-variable">session</span> <span class="hljs-operator">=</span> request.getSession();<br>            <span class="hljs-meta">@SuppressWarnings(</span><br><span class="hljs-meta">                &quot;unchecked&quot;</span><br><span class="hljs-meta">            )</span><br>            <span class="hljs-comment">// 从session对象中,取出(查找)名称为`CART_ATTRIBUTE`的`List&lt;ShoppingItem&gt;`对象</span><br>            List&lt;ShoppingItem&gt; cart = (List&lt;ShoppingItem&gt;) session<br>                .getAttribute(CART_ATTRIBUTE);<br>            <span class="hljs-comment">// 如果查找不到,这说明session对象中还没有这个对象.</span><br>            <span class="hljs-keyword">if</span> (cart == <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-comment">// 创建对象</span><br>                cart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;ShoppingItem&gt;();<br>                <span class="hljs-comment">// 添加到session对象中</span><br>                session.setAttribute(CART_ATTRIBUTE, cart);<br>            &#125;<br>            <span class="hljs-comment">// 添加一个商品到购物车中</span><br>            cart.add(shoppingItem);<br>        &#125;<br>        sendProductList(response);<br>    &#125;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendProductList</span><span class="hljs-params">(HttpServletResponse response)</span><br>        <span class="hljs-keyword">throws</span> IOException<br>    &#123;<br>        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>        writer.println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;商品列表&lt;/title&gt;&quot;</span> + tableStyle<br>            + <span class="hljs-string">&quot;&lt;/head&gt;&lt;body&gt;&lt;h2&gt;商品列表&lt;/h2&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;ul&gt;&quot;</span>);<br>        <span class="hljs-keyword">for</span> (Product product : products) &#123;<br>            writer.println(<span class="hljs-string">&quot;&lt;li&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;(&quot;</span><br>                + currencyFormat.format(product.getPrice()) + <span class="hljs-string">&quot;) (&quot;</span><br>                + <span class="hljs-string">&quot;&lt;a href=&#x27;viewProductDetails?id=&quot;</span> + product.getId()<br>                + <span class="hljs-string">&quot;&#x27;&gt;宝贝详情&lt;/a&gt;)&quot;</span>);<br>        &#125;<br>        writer.println(<span class="hljs-string">&quot;&lt;/ul&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;a href=&#x27;viewCart&#x27;&gt;查看购物车&lt;/a&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">// 根据商品ID,从商品列表中查找一个商品.</span><br>    <span class="hljs-keyword">private</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(<span class="hljs-type">int</span> productId)</span><br>    &#123;<br>        <span class="hljs-keyword">for</span> (Product product : products) &#123;<br>            <span class="hljs-keyword">if</span> (product.getId() == productId) &#123;<br>                <span class="hljs-keyword">return</span> product;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-comment">// 显示商品列表</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendProductDetails</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">        HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> IOException<br>    &#123;<br>        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">productId</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">// 读取商品编号</span><br>            productId = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;id&quot;</span>));<br>        &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;&#125;<br>        <span class="hljs-comment">// 根据编号查找商品对象</span><br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> getProduct(productId);<br>        <span class="hljs-keyword">if</span> (product != <span class="hljs-literal">null</span>) &#123;<br>            writer.println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;title&gt;商品详情&lt;/title&gt;&quot;</span> + tableStyle<br>                + <span class="hljs-string">&quot;&lt;/head&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;body&gt;&lt;h2&gt;商品详情&lt;/h2&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;form method=&#x27;post&#x27; action=&#x27;addToCart&#x27;&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;input type=&#x27;hidden&#x27; name=&#x27;id&#x27; &quot;</span> + <span class="hljs-string">&quot;value=&#x27;&quot;</span><br>                + productId + <span class="hljs-string">&quot;&#x27;/&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;table&gt;&quot;</span>);<br>            writer.println(<br>                <span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;商品名称:&lt;/td&gt;&lt;td&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;商品描述:&lt;/td&gt;&lt;td&gt;&quot;</span> + product.getDescription()<br>                + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>            writer.println(<br>                <span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;购买数量:&lt;/td&gt;&lt;td&gt;&lt;input name=&#x27;quantity&#x27;/&gt;斤&lt;/td&gt;&lt;/tr&gt;&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;2&#x27;&gt;&lt;input type=&#x27;submit&#x27; value=&#x27;加入购物车&#x27;/&gt;&quot;</span><br>                    + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;2&#x27;&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;a href=&#x27;products&#x27;&gt;返回商品列表&lt;/a&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            writer.println(<span class="hljs-string">&quot;&lt;h2&gt;找不到该商品&lt;/h2&gt;&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 显示购物车</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">showCart</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">        HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> IOException<br>    &#123;<br>        response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>        writer<br>            .println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;购物车&lt;/title&gt;&quot;</span> + tableStyle + <span class="hljs-string">&quot;&lt;/head&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;body&gt;&lt;a href=&#x27;products&#x27;&gt;&quot;</span> + <span class="hljs-string">&quot;返回商品列表&lt;/a&gt;&quot;</span>);<br>        <span class="hljs-type">HttpSession</span> <span class="hljs-variable">session</span> <span class="hljs-operator">=</span> request.getSession();<br>        <span class="hljs-meta">@SuppressWarnings(</span><br><span class="hljs-meta">            &quot;unchecked&quot;</span><br><span class="hljs-meta">        )</span><br>        List&lt;ShoppingItem&gt; cart = (List&lt;ShoppingItem&gt;) session<br>            .getAttribute(CART_ATTRIBUTE);<br>        <span class="hljs-keyword">if</span> (cart != <span class="hljs-literal">null</span>) &#123;<br>            writer.println(<span class="hljs-string">&quot;&lt;table&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td style=&#x27;width:150px&#x27;&gt;数量&quot;</span> + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;td style=&#x27;width:150px&#x27;&gt;商品名称&lt;/td&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;td style=&#x27;width:150px&#x27;&gt;单品价格&lt;/td&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;td&gt;合计&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>            <span class="hljs-comment">// 总价格</span><br>            <span class="hljs-type">double</span> <span class="hljs-variable">total</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0</span>;<br>            <span class="hljs-comment">// 遍历购物车ArrayList,取出一次购物项,</span><br>            <span class="hljs-keyword">for</span> (ShoppingItem shoppingItem : cart) &#123;<br>                <span class="hljs-comment">// 从购物项中,取出一个商品对象.</span><br>                <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> shoppingItem.getProduct();<br>                <span class="hljs-comment">// 从购物项中,取出该商品的数量</span><br>                <span class="hljs-type">int</span> <span class="hljs-variable">quantity</span> <span class="hljs-operator">=</span> shoppingItem.getQuantity();<br>                <span class="hljs-keyword">if</span> (quantity != <span class="hljs-number">0</span>) &#123;<br>                    <span class="hljs-type">float</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> product.getPrice();<br>                    writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>);<br>                    writer.println(<span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + quantity + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                    writer.println(<span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                    writer.println(<br>                        <span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + currencyFormat.format(price) + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                    <span class="hljs-type">double</span> <span class="hljs-variable">subtotal</span> <span class="hljs-operator">=</span> price * quantity;<br>                    writer.println(<br>                        <span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + currencyFormat.format(subtotal) + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                    total += subtotal;<br>                    writer.println(<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>);<br>                &#125;<br>            &#125;<br>            writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;4&#x27; &quot;</span> + <span class="hljs-string">&quot;style=&#x27;text-align:right&#x27;&gt;&quot;</span><br>                + <span class="hljs-string">&quot;总价格:&quot;</span> + currencyFormat.format(total) + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>            writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>);<br>        &#125;<br>        writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h3><h4 id="创建并初始化商品列表"><a href="#创建并初始化商品列表" class="headerlink" title="创建并初始化商品列表"></a>创建并初始化商品列表</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 商品列表</span><br><span class="hljs-keyword">private</span> List&lt;Product&gt;    products        = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Product&gt;();<br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ServletException<br>&#123;<br>    products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;苹果&quot;</span>, <span class="hljs-string">&quot;新鲜上市的苹果&quot;</span>, <span class="hljs-number">5.5F</span>));<br>    products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;香蕉&quot;</span>, <span class="hljs-string">&quot;新鲜上市的香蕉&quot;</span>, <span class="hljs-number">6.5F</span>));<br>    products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;菠萝&quot;</span>, <span class="hljs-string">&quot;新鲜上市的菠萝&quot;</span>, <span class="hljs-number">4.8F</span>));<br>    products.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>(<span class="hljs-number">4</span>, <span class="hljs-string">&quot;草莓&quot;</span>, <span class="hljs-string">&quot;新鲜上市的草莓&quot;</span>, <span class="hljs-number">12.5F</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="从商品列表中查找出一个商品"><a href="#从商品列表中查找出一个商品" class="headerlink" title="从商品列表中查找出一个商品"></a>从商品列表中查找出一个商品</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 根据商品ID,从商品列表中查找一个商品.</span><br><span class="hljs-keyword">private</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(<span class="hljs-type">int</span> productId)</span><br>&#123;<br>    <span class="hljs-keyword">for</span> (Product product : products) &#123;<br>        <span class="hljs-keyword">if</span> (product.getId() == productId) &#123;<br>            <span class="hljs-keyword">return</span> product;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="匹配URL"><a href="#匹配URL" class="headerlink" title="匹配URL"></a>匹配URL</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@WebServlet(</span><br><span class="hljs-meta">    name = &quot;ShoppingCartServlet&quot;,</span><br><span class="hljs-meta">    urlPatterns =</span><br><span class="hljs-meta">    &#123;&quot;/products&quot;, &quot;/viewProductDetails&quot;, &quot;/addToCart&quot;, &quot;/viewCart&quot;&#125;</span><br><span class="hljs-meta">)</span><br></code></pre></td></tr></table></figure>
+<h4 id="doGet方法"><a href="#doGet方法" class="headerlink" title="doGet方法"></a>doGet方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span><br>    <span class="hljs-keyword">throws</span> ServletException, IOException<br>&#123;<br>    response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>    <span class="hljs-type">String</span> <span class="hljs-variable">uri</span> <span class="hljs-operator">=</span> request.getRequestURI();<br>    <span class="hljs-comment">//显示产品列表</span><br>    <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/products&quot;</span>)) &#123;<br>        sendProductList(response);<br>    &#125;<br>    <span class="hljs-comment">//显示产品详情</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/viewProductDetails&quot;</span>)) &#123;<br>        sendProductDetails(request, response);<br>    &#125;<br>    <span class="hljs-comment">//显示购物车</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (uri.endsWith(<span class="hljs-string">&quot;/viewCart&quot;</span>)) &#123;<br>        showCart(request, response);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="显示产品列表"><a href="#显示产品列表" class="headerlink" title="显示产品列表"></a>显示产品列表</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendProductList</span><span class="hljs-params">(HttpServletResponse response)</span><br>    <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>    <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>    writer.println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;商品列表&lt;/title&gt;&quot;</span> + tableStyle<br>        + <span class="hljs-string">&quot;&lt;/head&gt;&lt;body&gt;&lt;h2&gt;商品列表&lt;/h2&gt;&quot;</span>);<br>    writer.println(<span class="hljs-string">&quot;&lt;ul&gt;&quot;</span>);<br>    <span class="hljs-keyword">for</span> (Product product : products) &#123;<br>        writer.println(<span class="hljs-string">&quot;&lt;li&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;(&quot;</span><br>            + currencyFormat.format(product.getPrice()) + <span class="hljs-string">&quot;) (&quot;</span><br>            + <span class="hljs-string">&quot;&lt;a href=&#x27;viewProductDetails?id=&quot;</span> + product.getId()<br>            + <span class="hljs-string">&quot;&#x27;&gt;宝贝详情&lt;/a&gt;)&quot;</span>);<br>    &#125;<br>    writer.println(<span class="hljs-string">&quot;&lt;/ul&gt;&quot;</span>);<br>    writer.println(<span class="hljs-string">&quot;&lt;a href=&#x27;viewCart&#x27;&gt;查看购物车&lt;/a&gt;&quot;</span>);<br>    writer.println(<span class="hljs-string">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="显示商品详情"><a href="#显示商品详情" class="headerlink" title="显示商品详情"></a>显示商品详情</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 显示商品详情</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendProductDetails</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">    HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>    <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">productId</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 读取商品编号</span><br>        productId = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;id&quot;</span>));<br>    &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;&#125;<br>    <span class="hljs-comment">// 根据编号查找商品对象</span><br>    <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> getProduct(productId);<br>    <span class="hljs-keyword">if</span> (product != <span class="hljs-literal">null</span>) &#123;<br>        writer.println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;title&gt;商品详情&lt;/title&gt;&quot;</span> + tableStyle<br>            + <span class="hljs-string">&quot;&lt;/head&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;body&gt;&lt;h2&gt;商品详情&lt;/h2&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;form method=&#x27;post&#x27; action=&#x27;addToCart&#x27;&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;input type=&#x27;hidden&#x27; name=&#x27;id&#x27; &quot;</span> + <span class="hljs-string">&quot;value=&#x27;&quot;</span><br>            + productId + <span class="hljs-string">&quot;&#x27;/&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;table&gt;&quot;</span>);<br>        writer.println(<br>            <span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;商品名称:&lt;/td&gt;&lt;td&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;商品描述:&lt;/td&gt;&lt;td&gt;&quot;</span> + product.getDescription()<br>            + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>        writer.println(<br>            <span class="hljs-string">&quot;&lt;tr&gt;&lt;td&gt;购买数量:&lt;/td&gt;&lt;td&gt;&lt;input name=&#x27;quantity&#x27;/&gt;斤&lt;/td&gt;&lt;/tr&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;2&#x27;&gt;&lt;input type=&#x27;submit&#x27; value=&#x27;加入购物车&#x27;/&gt;&quot;</span><br>                + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;2&#x27;&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;a href=&#x27;products&#x27;&gt;返回商品列表&lt;/a&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        writer.println(<span class="hljs-string">&quot;&lt;h2&gt;找不到该商品&lt;/h2&gt;&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>显示商品详情页,表单属性如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&#x27;post&#x27;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&#x27;addToCart&#x27;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>当用户点击<code>加入购物车</code>时,会使用POST方法把表单发送给<code>.\addToCart</code>这个URL.</p>
+<h4 id="doPost方法"><a href="#doPost方法" class="headerlink" title="doPost方法"></a>doPost方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doPost</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span><br>    <span class="hljs-keyword">throws</span> ServletException, IOException<br>&#123;<br>    response.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>    <span class="hljs-comment">// add to cart</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">productId</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">quantity</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 从参数中取出id属性的值</span><br>        productId = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;id&quot;</span>));<br>        <span class="hljs-comment">// 取出数量属性的值</span><br>        quantity = Integer.parseInt(request.getParameter(<span class="hljs-string">&quot;quantity&quot;</span>));<br>    &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;&#125;<br>    <span class="hljs-comment">// 根据Id从商品列表中找出该商品</span><br>    <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> getProduct(productId);<br>    <span class="hljs-keyword">if</span> (product != <span class="hljs-literal">null</span> &amp;&amp; quantity &gt;= <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// 创建一个购物记录</span><br>        <span class="hljs-type">ShoppingItem</span> <span class="hljs-variable">shoppingItem</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ShoppingItem</span>(product, quantity);<br>        <span class="hljs-comment">// 取得session对象</span><br>        <span class="hljs-type">HttpSession</span> <span class="hljs-variable">session</span> <span class="hljs-operator">=</span> request.getSession();<br>        <span class="hljs-meta">@SuppressWarnings(</span><br><span class="hljs-meta">            &quot;unchecked&quot;</span><br><span class="hljs-meta">        )</span><br>        <span class="hljs-comment">// 从session对象中,取出(查找)名称为`CART_ATTRIBUTE`的`List&lt;ShoppingItem&gt;`对象</span><br>        List&lt;ShoppingItem&gt; cart = (List&lt;ShoppingItem&gt;) session<br>            .getAttribute(CART_ATTRIBUTE);<br>        <span class="hljs-comment">// 如果查找不到,这说明session对象中还没有这个对象.</span><br>        <span class="hljs-keyword">if</span> (cart == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-comment">// 创建对象</span><br>            cart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;ShoppingItem&gt;();<br>            <span class="hljs-comment">// 添加到session对象中</span><br>            session.setAttribute(CART_ATTRIBUTE, cart);<br>        &#125;<br>        <span class="hljs-comment">// 添加一个商品到购物车中</span><br>        cart.add(shoppingItem);<br>    &#125;<br>    sendProductList(response);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="显示购物车"><a href="#显示购物车" class="headerlink" title="显示购物车"></a>显示购物车</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 显示购物车</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">showCart</span><span class="hljs-params">(HttpServletRequest request,</span><br><span class="hljs-params">    HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> IOException<br>&#123;<br>    response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);<br>    <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">writer</span> <span class="hljs-operator">=</span> response.getWriter();<br>    writer<br>        .println(<span class="hljs-string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;购物车&lt;/title&gt;&quot;</span> + tableStyle + <span class="hljs-string">&quot;&lt;/head&gt;&quot;</span>);<br>    writer.println(<span class="hljs-string">&quot;&lt;body&gt;&lt;a href=&#x27;products&#x27;&gt;&quot;</span> + <span class="hljs-string">&quot;返回商品列表&lt;/a&gt;&quot;</span>);<br>    <span class="hljs-type">HttpSession</span> <span class="hljs-variable">session</span> <span class="hljs-operator">=</span> request.getSession();<br>    <span class="hljs-meta">@SuppressWarnings(</span><br><span class="hljs-meta">        &quot;unchecked&quot;</span><br><span class="hljs-meta">    )</span><br>    List&lt;ShoppingItem&gt; cart = (List&lt;ShoppingItem&gt;) session<br>        .getAttribute(CART_ATTRIBUTE);<br>    <span class="hljs-keyword">if</span> (cart != <span class="hljs-literal">null</span>) &#123;<br>        writer.println(<span class="hljs-string">&quot;&lt;table&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td style=&#x27;width:150px&#x27;&gt;数量&quot;</span> + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td style=&#x27;width:150px&#x27;&gt;商品名称&lt;/td&gt;&quot;</span><br>            + <span class="hljs-string">&quot;&lt;td style=&#x27;width:150px&#x27;&gt;单品价格&lt;/td&gt;&quot;</span> + <span class="hljs-string">&quot;&lt;td&gt;合计&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>        <span class="hljs-comment">// 总价格</span><br>        <span class="hljs-type">double</span> <span class="hljs-variable">total</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0</span>;<br>        <span class="hljs-comment">// 遍历购物车ArrayList,取出一次购物项,</span><br>        <span class="hljs-keyword">for</span> (ShoppingItem shoppingItem : cart) &#123;<br>            <span class="hljs-comment">// 从购物项中,取出一个商品对象.</span><br>            <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> shoppingItem.getProduct();<br>            <span class="hljs-comment">// 从购物项中,取出该商品的数量</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">quantity</span> <span class="hljs-operator">=</span> shoppingItem.getQuantity();<br>            <span class="hljs-keyword">if</span> (quantity != <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-type">float</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> product.getPrice();<br>                writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>);<br>                writer.println(<span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + quantity + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                writer.println(<span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + product.getName() + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                writer.println(<br>                    <span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + currencyFormat.format(price) + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                <span class="hljs-type">double</span> <span class="hljs-variable">subtotal</span> <span class="hljs-operator">=</span> price * quantity;<br>                writer.println(<br>                    <span class="hljs-string">&quot;&lt;td&gt;&quot;</span> + currencyFormat.format(subtotal) + <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>);<br>                total += subtotal;<br>                writer.println(<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>);<br>            &#125;<br>        &#125;<br>        writer.println(<span class="hljs-string">&quot;&lt;tr&gt;&lt;td colspan=&#x27;4&#x27; &quot;</span> + <span class="hljs-string">&quot;style=&#x27;text-align:right&#x27;&gt;&quot;</span><br>            + <span class="hljs-string">&quot;总价格:&quot;</span> + currencyFormat.format(total) + <span class="hljs-string">&quot;&lt;/td&gt;&lt;/tr&gt;&quot;</span>);<br>        writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>);<br>    &#125;<br>    writer.println(<span class="hljs-string">&quot;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/30442a1.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/d187518b.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2.5小结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/42b9c4c7.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2.3 Java Servlet 会话管理 使用Cookies</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

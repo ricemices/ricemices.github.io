@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>gitbook安装和使用 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-蓝蓝/编程/NodeJS/gitbook安装和使用"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  gitbook安装和使用
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/a7b54d2e.html" class="article-date">
+  <time datetime="2020-10-11T00:16:58.000Z" itemprop="datePublished">2020-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a> / <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/NodeJS/">NodeJS</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="gitbook安装和使用"><a href="#gitbook安装和使用" class="headerlink" title="gitbook安装和使用"></a>gitbook安装和使用</h1><h2 id="安装低于v10-21-0版本的node-js"><a href="#安装低于v10-21-0版本的node-js" class="headerlink" title="安装低于v10.21.0版本的node.js"></a>安装低于v10.21.0版本的node.js</h2><p>我之前用的是12.x版本的LTS办的nodejs,但是在安装gitbook的时候,有如下报错:</p>
+<p>经过一段排查之后,我发现gitbook不支持高版本的node.js,</p>
+<h2 id="安装gitbook"><a href="#安装gitbook" class="headerlink" title="安装gitbook"></a>安装gitbook</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install gitbook-cli -g<br></code></pre></td></tr></table></figure>
+<p>运行效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;node -v<br>v10.21.0<br><br>E:\Blog\MyGitBook&gt;npm install gitbook-cli -g<br>E:\Program Files\nodejs\npm_global\gitbook -&gt; E:\Program Files\nodejs\npm_global\node_modules\gitbook-cli\bin\gitbook.js<br>+ gitbook-cli@2.3.2<br>updated 3 packages in 15.526s<br></code></pre></td></tr></table></figure>
+<p>此时并没有安装完毕,输入如下命令继续安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gitbook -V<br></code></pre></td></tr></table></figure>
+<p>运行效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;gitbook -V<br>CLI version: 2.3.2<br>Installing GitBook 3.2.3<br>gitbook@3.2.3 C:\Users\lan\AppData\Local\Temp\tmp-12016inN44NmImh8T\node_modules\gitbook<br>├── escape-html@1.0.3<br>├── escape-string-regexp@1.0.5<br>├── destroy@1.0.4<br>├── 省略。。。。。。。。。。。。。。。。。。。。<br>commander@2.9.0, cross-spawn-async@2.2.5, web-resource-inliner@2.0.0)<br>└── nunjucks@2.5.2 (asap@2.0.6, yargs@3.32.0, chokidar@1.7.0)<br>GitBook version: 3.2.3<br></code></pre></td></tr></table></figure>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gitbook init<br></code></pre></td></tr></table></figure>
+<p>运行效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;gitbook init<br>warn: no summary file in this book<br>info: create README.md<br>info: create SUMMARY.md<br>info: initialization is finished<br></code></pre></td></tr></table></figure>
+<p>这将会生成两个文件:README.md和SUMMARY.md：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;mytree f<br>E:\Blog\MyGitBook<br>├─README.md<br>└─SUMMARY.md<br></code></pre></td></tr></table></figure>
+<p>其中,README.md中存放的时候书的简介,SUMMARY.md文件中存放的是书的目录.</p>
+<h2 id="编写目录"><a href="#编写目录" class="headerlink" title="编写目录"></a>编写目录</h2><figure class="highlight md"><figcaption><span>README.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md">&amp;#35; Introduction<br><br>这是我的第一本GitBook<br></code></pre></td></tr></table></figure>
+<h2 id="编写目录-1"><a href="#编写目录-1" class="headerlink" title="编写目录"></a>编写目录</h2><figure class="highlight md"><figcaption><span>SUMMARY.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs md">&amp;#35; Summary<br><br><span class="hljs-bullet">-</span> [<span class="hljs-string">Introduction</span>](<span class="hljs-link">README.md</span>)<br><span class="hljs-bullet">-</span> [<span class="hljs-string">第1章 Hello</span>](<span class="hljs-link">Chapter1/README.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">1.1 xxxx</span>](<span class="hljs-link">Chapter1/xxxx.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">1.2 yyyy</span>](<span class="hljs-link">Chapter1/yyyy.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">1.3 zzzz</span>](<span class="hljs-link">Chapter1/zzzz.md</span>)<br><span class="hljs-bullet">-</span> [<span class="hljs-string">第2章 World</span>](<span class="hljs-link">Chapter2/README.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.1 xxxx</span>](<span class="hljs-link">Chapter2/xxxx.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.2 yyyy</span>](<span class="hljs-link">Chapter2/yyyy.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.3 zzzz</span>](<span class="hljs-link">Chapter2/zzzz.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.2 iiii</span>](<span class="hljs-link">Chapter2/iiii.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.3 jjjj</span>](<span class="hljs-link">Chapter2/jjjj.md</span>)<br><span class="hljs-bullet">  -</span> [<span class="hljs-string">2.3 kkkk</span>](<span class="hljs-link">Chapter2/kkkk.md</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="再次初始化"><a href="#再次初始化" class="headerlink" title="再次初始化"></a>再次初始化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gitbook init<br></code></pre></td></tr></table></figure>
+<p>运行效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;gitbook init<br>info: create Chapter2/README.md<br>info: create Chapter2/xxxx.md<br>info: create Chapter2/yyyy.md<br>info: create Chapter2/zzzz.md<br>info: create Chapter2/iiii.md<br>info: create Chapter2/jjjj.md<br>info: create Chapter2/kkkk.md<br>info: create SUMMARY.md<br>info: initialization is finished<br></code></pre></td></tr></table></figure>
+<p>此时的项目结构如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;mytree f<br>E:\Blog\MyGitBook<br>├─Chapter1\<br>│ ├─iiii.md<br>│ ├─jjjj.md<br>│ ├─kkkk.md<br>│ ├─README.md<br>│ ├─xxxx.md<br>│ ├─yyyy.md<br>│ └─zzzz.md<br>├─Chapter2\<br>│ ├─iiii.md<br>│ ├─jjjj.md<br>│ ├─kkkk.md<br>│ ├─README.md<br>│ ├─xxxx.md<br>│ ├─yyyy.md<br>│ └─zzzz.md<br>├─README.md<br>└─SUMMARY.md<br></code></pre></td></tr></table></figure>
+<p>继续在上面生成的新文件中编写一些内容</p>
+<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gitbook serve<br></code></pre></td></tr></table></figure>
+<p>运行效果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook&gt;gitbook serve<br>Live reload server started on port: 35729<br>Press CTRL+C to quit ...<br><br>info: 7 plugins are installed<br>info: loading plugin &quot;livereload&quot;... OK<br>info: loading plugin &quot;highlight&quot;... OK<br>info: loading plugin &quot;search&quot;... OK<br>info: loading plugin &quot;lunr&quot;... OK<br>info: loading plugin &quot;sharing&quot;... OK<br>info: loading plugin &quot;fontsettings&quot;... OK<br>info: loading plugin &quot;theme-default&quot;... OK<br>info: found 12 pages<br>info: found 14 asset files<br>info: &gt;&gt; generation finished with success in 1.7s !<br><br>Starting server ...<br>Serving book on http://localhost:4000<br></code></pre></td></tr></table></figure>
+<h2 id="打包文档"><a href="#打包文档" class="headerlink" title="打包文档"></a>打包文档</h2><h2 id="生成电子书"><a href="#生成电子书" class="headerlink" title="生成电子书"></a>生成电子书</h2><h2 id="配置文件book-json"><a href="#配置文件book-json" class="headerlink" title="配置文件book.json"></a>配置文件book.json</h2><h1 id="gitbook插件"><a href="#gitbook插件" class="headerlink" title="gitbook插件"></a>gitbook插件</h1><h2 id="插件官网"><a href="#插件官网" class="headerlink" title="插件官网"></a>插件官网</h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://plugins.gitbook.com/plugin/">https://plugins.gitbook.com/plugin/</a></p>
+<h2 id="安装和使用插件方法"><a href="#安装和使用插件方法" class="headerlink" title="安装和使用插件方法"></a>安装和使用插件方法</h2><p>在根目录下创建book.json配置文件,在配置文件中按照指定格式插入插件对应的代码。</p>
+<p>安装插件有两种方式 ：</p>
+<ul>
+<li>一种是在book.json写入相应插件和配置后，使用gitbook install命令,进行全局安装</li>
+<li>一种是使用npm install gitbook-plugin-插件名,单独安装。<h2 id="hide-element-隐藏元素"><a href="#hide-element-隐藏元素" class="headerlink" title="hide-element 隐藏元素"></a>hide-element 隐藏元素</h2>主要用来隐藏不想看到的元素。<br>如：默认的gitbook左侧提示：Published with GitBook</li>
+</ul>
+<p>使用方式： 在book.json中写入以下内容:</p>
+<figure class="highlight json"><figcaption><span>book.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>然后运行gitbook install命令进行安装,安装效果如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ gitbook install<br>info: installing 1 plugins using npm@3.9.2<br>info:<br>info: installing plugin <span class="hljs-string">&quot;hide-element&quot;</span><br>info: install plugin <span class="hljs-string">&quot;hide-element&quot;</span> (*) from NPM with version 0.0.4<br>E:\Blog\MyGitBook<br>`-- gitbook-plugin-hide-element@0.0.4<br><br>info: &gt;&gt; plugin <span class="hljs-string">&quot;hide-element&quot;</span> installed with success<br></code></pre></td></tr></table></figure>
+<h2 id="back-to-top-button-回到顶部"><a href="#back-to-top-button-回到顶部" class="headerlink" title="back-to-top-button 回到顶部"></a>back-to-top-button 回到顶部</h2><p>当文章篇幅较长时，页面底部会显示按钮，一键点击自动回到顶部。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="chapter-fold-导航目录折叠"><a href="#chapter-fold-导航目录折叠" class="headerlink" title="chapter-fold 导航目录折叠"></a>chapter-fold 导航目录折叠</h2><p>gitbook默认目录没有折叠效果。</p>
+<h2 id="code-复制代码"><a href="#code-复制代码" class="headerlink" title="code 复制代码"></a>code 复制代码</h2><p>在代码域的右上角添加一个复制按钮，点击一键复制代码。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="splitter-侧边栏宽度可调节"><a href="#splitter-侧边栏宽度可调节" class="headerlink" title="splitter 侧边栏宽度可调节"></a>splitter 侧边栏宽度可调节</h2><p>左侧目录和右侧文章可以拖动调节宽度。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="search-pro-高级搜索"><a href="#search-pro-高级搜索" class="headerlink" title="search-pro 高级搜索"></a>search-pro 高级搜索</h2><p>支持中英文，准确率更高一些。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="insert-logo-插入logo"><a href="#insert-logo-插入logo" class="headerlink" title="insert-logo 插入logo"></a>insert-logo 插入logo</h2><p>在左侧导航栏上方插入logo。url支持本地图片也支持网络图片链接</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="custom-favicon-修改标题栏图标"><a href="#custom-favicon-修改标题栏图标" class="headerlink" title="custom-favicon 修改标题栏图标"></a>custom-favicon 修改标题栏图标</h2><p>设置浏览器选项卡标题栏的小图标。<br>注意只支持ico后缀的图片，并且只支持本地图片，不支持网络图片链接。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;custom-favicon&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;favicon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;icon/favicon.ico&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="pageview-count-阅读量计数"><a href="#pageview-count-阅读量计数" class="headerlink" title="pageview-count 阅读量计数"></a>pageview-count 阅读量计数</h2><p>记录每个文章页面被访问的次数。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;custom-favicon&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;pageview-count&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;favicon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;icon/favicon.ico&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="tbfed-pagefooter-页面添加页脚"><a href="#tbfed-pagefooter-页面添加页脚" class="headerlink" title="tbfed-pagefooter 页面添加页脚"></a>tbfed-pagefooter 页面添加页脚</h2><p>在每个文章下面标注版权信息和文章时间。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;custom-favicon&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;pageview-count&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;tbfed-pagefooter&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;favicon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;icon/favicon.ico&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;tbfed-pagefooter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;copyright&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;Copyright &amp;copy dsx2016.com 2019&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;该文章修订时间：&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_format&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="popup-弹出大图"><a href="#popup-弹出大图" class="headerlink" title="popup 弹出大图"></a>popup 弹出大图</h2><p>点击可以在新窗口展示图片。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span> <br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;custom-favicon&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;pageview-count&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;tbfed-pagefooter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;popup&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;favicon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;icon/favicon.ico&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;tbfed-pagefooter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;copyright&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;Copyright &amp;copy dsx2016.com 2019&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;该文章修订时间：&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_format&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="sharing-plus-分享当前页面"><a href="#sharing-plus-分享当前页面" class="headerlink" title="sharing-plus 分享当前页面"></a>sharing-plus 分享当前页面</h2><p>gitbook默认只有Facebook、Google+、Twiter、Weibo、Instapaper</p>
+<p>插件可以有更多分享方式，也可以关闭指定分享方式。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;hide-element&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;back-to-top-button&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;code&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;splitter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-lunr&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-search&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;search-pro&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;insert-logo&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;custom-favicon&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;pageview-count&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;tbfed-pagefooter&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;popup&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-sharing&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;sharing-plus&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;hide-element&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;elements&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;.gitbook-link&quot;</span><span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;insert-logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;images/logo.png&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;background: none; max-height: 30px; min-height: 30px&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;favicon&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;icon/favicon.ico&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;tbfed-pagefooter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;copyright&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Copyright &amp;copy dsx2016.com 2019&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_label&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;该文章修订时间：&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;modify_format&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm:ss&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;sharing&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;douban&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;facebook&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;google&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;pocket&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;qq&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;qzone&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;twitter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;weibo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;all&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                <span class="hljs-string">&quot;douban&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;facebook&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;google&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;instapaper&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;linkedin&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;twitter&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;weibo&quot;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-string">&quot;messenger&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;qq&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;qzone&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;viber&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;whatsapp&quot;</span><br>            <span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="Prism-代码高亮"><a href="#Prism-代码高亮" class="headerlink" title="Prism 代码高亮"></a>Prism 代码高亮</h2><p>使用 Prism.js 为语法添加高亮显示，需要将 highlight 插件去掉。该插件自带的主题样式较少，可以再安装 prism-themes 插件，里面多提供了几种样式，具体的样式可以参考 这里，在设置样式时要注意设置 css 文件名，而不是样式名。<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://plugins.gitbook.com/plugin/prism">Prism 插件地址</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://plugins.gitbook.com/plugin/prism-themes">prism-themes 插件地址</a></p>
+<figure class="highlight json"><figcaption><span>book.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;-highlight&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;prism&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;prism-themes&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;prism&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;css&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                <span class="hljs-string">&quot;prismjs/themes/prism-solarizedlight.css&quot;</span><br>            <span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h3 id="如何切换样式"><a href="#如何切换样式" class="headerlink" title="如何切换样式"></a>如何切换样式</h3><h4 id="查看样式效果"><a href="#查看样式效果" class="headerlink" title="查看样式效果"></a>查看样式效果</h4><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/PrismJS/prism-themes#available-themes">https://github.com/PrismJS/prism-themes#available-themes</a></p>
+<h3 id="prism样式的本地css文件路径"><a href="#prism样式的本地css文件路径" class="headerlink" title="prism样式的本地css文件路径"></a>prism样式的本地css文件路径</h3><p><code>gitbook install</code>安装完毕后,样式已经保存在项目路径下的<code>node_modules\prism-themes\themes</code>路径下了:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">E:\Blog\MyGitBook\node_modules\prism-themes\themes&gt;mytree f<br>E:\Blog\MyGitBook\node_modules\prism-themes\themes<br>├─prism-a11y-dark.css<br>├─prism-atom-dark.css<br>├─prism-base16-ateliersulphurpool.light.css<br>├─prism-cb.css<br>├─prism-darcula.css<br>├─prism-dracula.css<br>├─prism-duotone-dark.css<br>├─prism-duotone-earth.css<br>├─prism-duotone-forest.css<br>├─prism-duotone-light.css<br>├─prism-duotone-sea.css<br>├─prism-duotone-space.css<br>├─prism-ghcolors.css<br>├─prism-hopscotch.css<br>├─prism-material-dark.css<br>├─prism-material-light.css<br>├─prism-material-oceanic.css<br>├─prism-nord.css<br>├─prism-pojoaque.css<br>├─prism-shades-of-purple.css<br>├─prism-synthwave84.css<br>├─prism-vs.css<br>├─prism-vsc-dark-plus.css<br>└─prism-xonokai.css<br></code></pre></td></tr></table></figure>
+<p>去掉前面的使用相对于node_modules目录的相对路径即可使用该css文件,例如如果你想使用VS样式(vscode)的css文件相对于node_modules的路径为:prism-themes\themes\prism-vs.css,则路径为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&quot;prism-themes/themes/prism-vs.css&quot;<br></code></pre></td></tr></table></figure>
+<p>即可定位到该CSS文件<br>也就是将上面的book.json改成:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;-highlight&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;prism&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;prism-themes&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;prism&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;css&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                <span class="hljs-string">&quot;prism-themes/themes/prism-vs.css&quot;</span><br>            <span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>即可使用该CSS。</p>
+<h2 id="添加github图标"><a href="#添加github图标" class="headerlink" title="添加github图标"></a>添加github图标</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;plugins&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;github&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;pluginsConfig&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;github&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://github.com/你的地址&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<h2 id="数学公式-KaTex"><a href="#数学公式-KaTex" class="headerlink" title="数学公式 KaTex"></a>数学公式 KaTex</h2><p>为了支持数学公式, 我们可以使用KaTex和MathJax插件, 官网上说Katex速度要快于MathJax</p>
+<p>MathJax使用LaTeX语法编写数学公式教程</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/Lowerce/article/details/107579261">https://blog.csdn.net/Lowerce/article/details/107579261</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/package/gitbook">https://www.npmjs.com/package/gitbook</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="http://gitbook.zhangjikai.com/plugins.html">GitBook 插件</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.im/post/6844903865146441741">推荐12个实用的gitbook插件</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/search?q=gitbook-plugin">https://www.npmjs.com/search?q=gitbook-plugin</a></p>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/a7b54d2e.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/c3c2965c.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            gitbook发布到github pages
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/102bf6f5.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">windows系统中 使用nvm切换多个nodejs版本</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="/js/twikoo1.4.18.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-one-orcin.vercel.app/"
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/talks">留言</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>
