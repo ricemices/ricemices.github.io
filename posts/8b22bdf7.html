@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="老鼠的博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>TVI3315A装机日记 |  老鼠</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?cf03b0b7ab05a629b4f14218921137a8";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+      
+      <!-- jquery，懒加载、统计、说说需要的jquery -->
+      <script src="/js/jquery3.5.1.min.js"></script>
+
+
+<!-- 百度自动推送 -->
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+// 浏览器搞笑标题
+var OriginTitle = document.title;
+var titleTime;
+document.addEventListener('visibilitychange', function () {
+	if (location.href != "https://aoneone.cn/"){//主页不变
+		if (document.hidden) {
+			//$('[rel="icon"]').attr('href', "/funny.ico");
+			document.title = '/(ㄒoㄒ)/团战了!别跑';
+			clearTimeout(titleTime);
+		}else {
+			//$('[rel="icon"]').attr('href', "/favicon.ico");
+			document.title = '(ฅ>ω<*ฅ) 噫真好~' + OriginTitle;
+			titleTime = setTimeout(function () {
+				document.title = OriginTitle;
+			}, 2000);
+		}
+	}
+});
+//搞笑标题
+</script>
+
+<!-- 代码高亮Highlight.js -->
+
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+
+        /*底部标签*/
+.github-badge {
+	display: inline-block;
+	border-radius: 4px;
+	text-shadow: none;
+	font-size: 12px;
+	color: #fff;
+	line-height: 15px;
+	background-color: #ABBAC3;
+  margin-bottom: 5px;
+}
+.github-badge .badge-subject {
+	display: inline-block;
+	background-color: #4D4D4D;
+	padding: 4px 4px 4px 6px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.github-badge .badge-value {
+	display: inline-block;
+	padding: 4px 6px 4px 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.github-badge .bg-brightgreen {
+	background-color: #4DC820 !important;
+}
+.github-badge .bg-cyan {
+	background-color: #008B8B !important;
+}
+.github-badge .bg-orange {
+	background-color: #FFA500 !important;
+}
+.github-badge .bg-yellow {
+	background-color: #D8B024 !important;
+}
+.github-badge .bg-blueviolet {
+	background-color: #8833D7 !important;
+}
+.github-badge .bg-pink {
+	background-color: #F26BAE !important;
+}
+.github-badge .bg-red {
+	background-color: #e05d44 !important;
+}
+.github-badge .bg-black {
+	background-color: #000000 !important;
+}
+.github-badge .bg-blue {
+	background-color: #007EC6 !important;
+}
+.github-badge .bg-lightgrey {
+	background-color: #9F9F9F !important;
+}
+.github-badge .bg-grey, .github-badge .bg-gray {
+	background-color: #555 !important;
+}
+.github-badge .bg-lightgrey, .github-badge .bg-lightgray {
+	background-color: #9f9f9f !important;
+}
+
+      </style>
+    <link rel="alternate" href="/atom.xml" title="老鼠" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文档</title>
+</head>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-搞机/tvi3315装机配置"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  TVI3315A装机日记
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/posts/8b22bdf7.html" class="article-date">
+  <time datetime="2023-07-21T04:32:52.322Z" itemprop="datePublished">2023-07-21</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+ 
+      
+      <h1 id="RK3399刷Armbian后设置"><a href="#RK3399刷Armbian后设置" class="headerlink" title="RK3399刷Armbian后设置"></a>RK3399刷Armbian后设置</h1><h2 id="一、初始化"><a href="#一、初始化" class="headerlink" title="一、初始化"></a>一、初始化</h2><h4 id="1-1-更换时区"><a href="#1-1-更换时区" class="headerlink" title="1.1 更换时区"></a>1.1 更换时区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Timezone -&gt; Asia -&gt; Chongqing/Shanghai -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-2-修改字符集"><a href="#1-2-修改字符集" class="headerlink" title="1.2 修改字符集"></a>1.2 修改字符集</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Locales -&gt; zh_CN UTF8 UTF8 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-3-更换软件源"><a href="#1-3-更换软件源" class="headerlink" title="1.3 更换软件源"></a>1.3 更换软件源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Mirrors -&gt; 上下键选择一个源 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-4-设置固定IP"><a href="#1-4-设置固定IP" class="headerlink" title="1.4 设置固定IP"></a>1.4 设置固定IP</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Network -&gt; IP -&gt; 选择网卡修改IP -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-5-连接WiFi"><a href="#1-5-连接WiFi" class="headerlink" title="1.5 连接WiFi"></a>1.5 连接WiFi</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Network -&gt; WiFi -&gt; 选择WiFi连接 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-5-安装第三方支持软件"><a href="#1-5-安装第三方支持软件" class="headerlink" title="1.5 安装第三方支持软件"></a>1.5 安装第三方支持软件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Software -&gt; Full -&gt; Ok<br><span class="hljs-comment"># 安装后tvi3315a开发板不能正常开机</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二、安装运行环境"><a href="#二、安装运行环境" class="headerlink" title="二、安装运行环境"></a>二、安装运行环境</h2><h4 id="2-1-Python2"><a href="#2-1-Python2" class="headerlink" title="2.1 Python2"></a>2.1 Python2</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install python2 python-dev gfortran libfreetype-dev <br>wget https://bootstrap.pypa.io/pip/2.7/get-pip.py<br>python2 get-pip.py<br>pip2 install numpy matplotlib<br></code></pre></td></tr></table></figure>
+<h4 id="2-2-修改python默认版本"><a href="#2-2-修改python默认版本" class="headerlink" title="2.2 修改python默认版本"></a>2.2 修改python默认版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l /usr/bin/python*  <span class="hljs-comment"># 列出所有Python</span><br>sudo <span class="hljs-built_in">rm</span> /usr/bin/python  <span class="hljs-comment"># 删除默认软链接</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/python3.8 /usr/bin/python  <span class="hljs-comment"># 创建软链接python</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/python3.8 /usr/bin/python3  <span class="hljs-comment"># 创建软链接python3</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/pip3 /usr/bin/pip<br></code></pre></td></tr></table></figure>
+<h4 id="2-3-pip安装与设置"><a href="#2-3-pip安装与设置" class="headerlink" title="2.3 pip安装与设置"></a>2.3 pip安装与设置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   <span class="hljs-comment"># 下载安装脚本</span><br>sudo python get-pip.py    <span class="hljs-comment"># 运行安装脚本</span><br><span class="hljs-comment"># 阿里源</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://mirrors.aliyun.com/pypi/simple/<br><span class="hljs-comment"># 豆瓣源</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.douban.com/simple<br><span class="hljs-comment"># 科技大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.mirrors.ustc.edu.cn/simple/<br><span class="hljs-comment"># 清华大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/<br><span class="hljs-comment"># 中国科学技术大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://pypi.mirrors.ustc.edu.cn/simple/<br><span class="hljs-comment">#华中科技大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://pypi.hustunique.com/<br></code></pre></td></tr></table></figure>
+<h4 id="2-4-配置sudo免密-根据实际需求设置"><a href="#2-4-配置sudo免密-根据实际需求设置" class="headerlink" title="2.4 配置sudo免密(根据实际需求设置)"></a>2.4 配置sudo免密(根据实际需求设置)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> u+w /etc/sudoers <span class="hljs-comment">#添加写权限</span><br><span class="hljs-built_in">chmod</span> u-w /etc/sudoers <span class="hljs-comment">#去除写权限</span><br>vim /etc/sudoers<br><br>添加：<br>username ALL=(ALL)NOPASSWD: ALL<br></code></pre></td></tr></table></figure>
+<h4 id="2-5-安装Python串口模块"><a href="#2-5-安装Python串口模块" class="headerlink" title="2.5 安装Python串口模块"></a>2.5 安装Python串口模块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 串口模块</span><br>python -m pip install pyserial --trusted-host pypi.mirrors.ustc.edu.cn<br><span class="hljs-comment"># 快速生成HTML模块</span><br>pip install remi --trusted-host pypi.mirrors.ustc.edu.cn<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="三、串口"><a href="#三、串口" class="headerlink" title="三、串口"></a>三、串口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> /dev/serial/by-id/*<br>-&gt; /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="四、搭建内网服务器"><a href="#四、搭建内网服务器" class="headerlink" title="四、搭建内网服务器"></a>四、搭建内网服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get update &amp;&amp; apt-get upgrade<br><br><span class="hljs-comment">######</span><br><span class="hljs-comment">#一键安装宝塔面板</span><br>sudo apt-get install python-setuptools<br>wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh ed8484bec<br><span class="hljs-comment">######</span><br><br>apt-get -y install nginx<br>apt install -y php php-fpm php-mysql php-gd php-curl php-mbstring<br>apt install -y mysql-server <span class="hljs-comment"># 安装mariadb</span><br><br>sudo apt-get install mysql-server          //服务端<br>sudo apt-get install mysql-client          //客户端<br>sudo apt-get install libmysqlclient-dev    //程序编译时链接的库<br>原文链接：https://blog.csdn.net/qq_43445867/article/details/126718980<br><br>update mysql.user <span class="hljs-built_in">set</span> authentication_string=password(<span class="hljs-string">&#x27;1230&#x27;</span>) <span class="hljs-built_in">where</span> user=<span class="hljs-string">&#x27;root&#x27;</span> and Host =<span class="hljs-string">&#x27;localhost&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
+<h4 id="4-1-配置nginx"><a href="#4-1-配置nginx" class="headerlink" title="4.1 配置nginx"></a>4.1 配置nginx</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/nginx/sites-enabled/default<br>:<span class="hljs-built_in">set</span> nu <span class="hljs-comment"># vim编辑器显示行号</span><br><span class="hljs-comment"># 按 i 进行编辑</span><br><span class="hljs-comment"># 找到第 44 行左右的 index index.html</span><br><span class="hljs-comment"># 添加 index.php（注意空格）</span><br><span class="hljs-comment"># 取消如下内容的注释#</span><br>	1. include snippets/fastcgi-php.conf;<br>	2. fastcgi_pass unix:/var/run/php/php-fpm.sock;<br><span class="hljs-comment"># 在文件的第 56-63 行附近</span><br><span class="hljs-comment"># 重启nginx服务</span><br>service nginx restart<br><br><span class="hljs-comment"># 配置</span><br>vim /etc/nginx/nginx.conf<br><span class="hljs-comment"># 默认index文件</span><br>/var/www/html/index.html<br><br><br><br></code></pre></td></tr></table></figure>
+<h4 id="4-2-配置mysql数据库"><a href="#4-2-配置mysql数据库" class="headerlink" title="4.2 配置mysql数据库"></a>4.2 配置mysql数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动服务</span><br>service mysql start<br><span class="hljs-comment"># 重启服务</span><br>service mysql restart<br><span class="hljs-comment"># 查看是否安装</span><br>dpkg -l | grep mysql<br><span class="hljs-comment"># 查看状态</span><br>sudo netstat -anp | grep mysql<br><span class="hljs-comment"># 登录命令</span><br>mysql -u root -p<br><span class="hljs-comment"># 使用mysqladmin修改密码</span><br>mysqladmin -u用户名 -p旧密码 password 新密码<br><br><br>mysql_secure_installation<br>mysql -u root -h 127.0.0.1 -P3306 -p<br><br><br></code></pre></td></tr></table></figure>
+<h4 id="4-3-mysql无法登录"><a href="#4-3-mysql无法登录" class="headerlink" title="4.3 mysql无法登录"></a>4.3 mysql无法登录</h4><h6 id="4-3-1-暂时先不搬砖了，原文链接"><a href="#4-3-1-暂时先不搬砖了，原文链接" class="headerlink" title="4.3.1 暂时先不搬砖了，原文链接"></a>4.3.1 暂时先不搬砖了，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/qq_43445867/article/details/126718980">原文链接</a></h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>添加：skip-grant-tables 跳过密码登录<br><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="五、Python-生成网页"><a href="#五、Python-生成网页" class="headerlink" title="五、Python 生成网页"></a>五、Python 生成网页</h2><h2 id="六、内网穿透"><a href="#六、内网穿透" class="headerlink" title="六、内网穿透"></a>六、内网穿透</h2><h4 id="6-1-使用cpolar"><a href="#6-1-使用cpolar" class="headerlink" title="6.1 使用cpolar"></a>6.1 使用cpolar</h4><h6 id="官网-cpolar-com"><a href="#官网-cpolar-com" class="headerlink" title="官网 cpolar.com"></a>官网 cpolar.com</h6><h6 id="上方网站也有完整的安装流程，多平台的"><a href="#上方网站也有完整的安装流程，多平台的" class="headerlink" title="上方网站也有完整的安装流程，多平台的"></a>上方网站也有完整的安装流程，多平台的</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载</span><br>1. wget https://static.cpolar.com/downloads/releases/3.3.12/cpolar-stable-linux-amd64.zip<br>2. curl https://static.cpolar.com/downloads/releases/3.3.12/cpolar-stable-linux-arm.zip -o cpolar.zip<br><span class="hljs-comment"># 解压</span><br>unzip cpolar.zip<br><span class="hljs-comment"># 验证（这块代码直接去官网复制即可）</span><br>./cpolar authtoken token<br><span class="hljs-comment"># 配置自启动</span><br>sudo vim /etc/rc.local<br><span class="hljs-comment"># 在exit 0前面，加入</span><br><span class="hljs-built_in">nohup</span> cpolar start-all -config=/root/.cpolar/cpolar.yml &amp;<br><span class="hljs-comment"># 保存退出</span><br><span class="hljs-comment"># 接着需要参考armbian开机自启动配置</span><br>https://www.jianshu.com/p/beb25e870148<br><br>sudo vim /lib/systemd/system/rc.local.service<br>上面这个也可能是空文件，不存在的文件，那就是下面这个<br>sudo vim /lib/systemd/system/rc-local.service<br>在最后添加下面三行内容<br>[Install]<br>WantedBy=multi-user.target<br>Alias=rc.local.service<br><br><span class="hljs-comment"># 重启后查看是否成功</span><br>sudo reboot<br>ps -aux | grep cpolar | grep -v grep<br><br><span class="hljs-comment"># 查看在线的隧道</span><br><span class="hljs-comment"># 访问cpolar后台的状态页面:</span><br>http://dashboard.cpolar.com/status<br></code></pre></td></tr></table></figure>
+<h6 id="x2F-cpolar-x2F-cpolar-yml"><a href="#x2F-cpolar-x2F-cpolar-yml" class="headerlink" title="&#x2F;.cpolar&#x2F;cpolar.yml"></a>&#x2F;.cpolar&#x2F;cpolar.yml</h6><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">authtoken:</span> <span class="hljs-string">token这上面不要修改</span><br><span class="hljs-attr">update:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">update_channel:</span> <span class="hljs-string">stable</span><br><span class="hljs-attr">inspect_db_size:</span> <span class="hljs-number">50000000</span><br><span class="hljs-attr">log_level:</span> <span class="hljs-string">warn</span><br><span class="hljs-attr">log_format:</span> <span class="hljs-string">json</span><br><span class="hljs-attr">log:</span> <span class="hljs-string">/var/www/html/cpolar.log</span><br><span class="hljs-attr">web_addr:</span> <span class="hljs-string">localhost:4040</span><br><span class="hljs-attr">tunnels:</span><br>  <span class="hljs-attr">ssh:</span><br>    <span class="hljs-attr">proto:</span> <span class="hljs-string">tcp</span><br>    <span class="hljs-attr">addr:</span> <span class="hljs-string">&quot;22&quot;</span><br>    <span class="hljs-attr">region:</span> <span class="hljs-string">cn</span><br>  <span class="hljs-attr">website:</span><br>    <span class="hljs-attr">proto:</span> <span class="hljs-string">http</span><br>    <span class="hljs-attr">addr:</span> <span class="hljs-string">&quot;80&quot;</span><br>    <span class="hljs-attr">region:</span> <span class="hljs-string">cn</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="七、接入阿里云物联网"><a href="#七、接入阿里云物联网" class="headerlink" title="七、接入阿里云物联网"></a>七、接入阿里云物联网</h2><h2 id="END、部分有用代码"><a href="#END、部分有用代码" class="headerlink" title="END、部分有用代码"></a>END、部分有用代码</h2><h6 id="4-1-Python-日期输出附带毫秒"><a href="#4-1-Python-日期输出附带毫秒" class="headerlink" title="4.1 Python 日期输出附带毫秒"></a>4.1 Python 日期输出附带毫秒</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_time_stamp</span>(<span class="hljs-params">ct</span>):<br>    local_time = time.localtime(ct)<br>    data_head = time.strftime(<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, local_time)<br>　　 data_secs = (ct - <span class="hljs-built_in">int</span>(ct)) * <span class="hljs-number">1000</span><br>    time_stamp = <span class="hljs-string">&quot;%s:%03d&quot;</span> % (data_head, data_secs)<br>    <span class="hljs-keyword">return</span> time_stamp<br>-----------------------------------<br>python 日期输出附带毫秒<br>https://blog<span class="hljs-number">.51</span>cto.com/u_15065849/<span class="hljs-number">3368409</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-2-Lua-转换天守BMS串口数据"><a href="#4-2-Lua-转换天守BMS串口数据" class="headerlink" title="4.2 Lua 转换天守BMS串口数据"></a>4.2 Lua 转换天守BMS串口数据</h6><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs lua">str = <span class="hljs-string">[[A5019508010ac50ae70ad33c1da5019508020ac10ae50ad33c18a5019508030acd0ae10ad33c21]]</span><br><br><span class="hljs-keyword">local</span> ret = &#123;&#125;;<br><span class="hljs-keyword">for</span> r, s, s1, n1, v1, n2, v2, n3, v3, jy, jy1 <span class="hljs-keyword">in</span> str:<span class="hljs-built_in">gmatch</span>(<span class="hljs-string">&quot;A501(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)&quot;</span>) <span class="hljs-keyword">do</span><br>  r = ( r == <span class="hljs-string">&quot;95&quot;</span> ) <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;单体电压：&quot;</span><br>  n1 = <span class="hljs-string">&quot;0x&quot;</span>..n1<br>  v1 = <span class="hljs-string">&quot;0x&quot;</span>..v1<br>  n2 = <span class="hljs-string">&quot;0x&quot;</span>..n2<br>  v2 = <span class="hljs-string">&quot;0x&quot;</span>..v2<br>  n3 = <span class="hljs-string">&quot;0x&quot;</span>..n3<br>  v3 = <span class="hljs-string">&quot;0x&quot;</span>..v3<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n1 + v1)/<span class="hljs-number">1000</span>)<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n2 + v2)/<span class="hljs-number">1000</span>)<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n3 + v3)/<span class="hljs-number">1000</span>)<br>	<span class="hljs-keyword">while</span> #ret &gt; <span class="hljs-built_in">tonumber</span>(<span class="hljs-string">&quot;0x&quot;</span>..s) <span class="hljs-keyword">do</span><br>		<span class="hljs-built_in">table</span>.<span class="hljs-built_in">remove</span>(ret)<br>	<span class="hljs-keyword">end</span><br>  <span class="hljs-comment">--print( r, ((0xff+1)*n1 + v1)/1000, ((0xff+1)*n2 + v2)/1000, ((0xff+1)*n3 + v3)/1000 )</span><br>  <span class="hljs-comment">--print( r, s, s1, n1, v1, n2, v2, n3, v3 , jy, jy1)</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">for</span> k,v <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(ret) <span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">print</span>(k, v)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs Python">regexp = (<span class="hljs-string">r&#x27;^(?P&lt;scheme&gt;[a-z][\w\.\-\+]+)?:(//)?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?:(?P&lt;username&gt;\w+):(?P&lt;password&gt;[\w\W]+)@|)&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;domain&gt;[\w-]+(?:\.[\w-]+)*)(?::(?P&lt;port&gt;\d+))?/?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;path&gt;\/[\w\.\/-]+)?(?P&lt;query&gt;\?[\w\.*!=&amp;@%;:/+-]+)?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;fragment&gt;#[\w-]+)?$&#x27;</span>)<br>match = re.search(regexp, url.strip(), re.U)<br><span class="hljs-keyword">if</span> match <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>  <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&#x27;Incorrent url: &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(url))<br>url_parts = match.groupdict()<br>url=<span class="hljs-string">&#x27;https://blog.csdn.net/weixin_40907382/article/明细/79654372&#x27;</span><br><span class="hljs-built_in">print</span>(url_parts)<br>&#123;<br><span class="hljs-string">&#x27;scheme&#x27;</span>: <span class="hljs-string">&#x27;https&#x27;</span>,<br><span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;domain&#x27;</span>: <span class="hljs-string">&#x27;blog.csdn.net&#x27;</span>,<br><span class="hljs-string">&#x27;port&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;path&#x27;</span>: <span class="hljs-string">&#x27;/weixin_40907382/article/明细/79654372&#x27;</span>,<br><span class="hljs-string">&#x27;query&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;fragment&#x27;</span>: <span class="hljs-literal">None</span><br>&#125;<br></code></pre></td></tr></table></figure>
+ 
+      
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！另有关笔记标签的仅为个人笔记，不能另作他用，转载需声明此点。
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" rel="external nofollow noreferrer" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" rel="external nofollow noreferrer" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;" rel="external nofollow noreferrer"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.aoneone.cn/posts/8b22bdf7.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RK3399/" rel="tag">RK3399</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TVI3315A/" rel="tag">TVI3315A</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/posts/65122fd3.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Crond定时任务
+          
+        </div>
+      </a>
+    
+    
+      <a href="/posts/60574a76.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">红米8刷入面具和root</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+<!--  -->
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+<!--  -->
+
+<link rel="stylesheet" href="/js/gitalk1.7.2.min.css">
+
+
+<script src="/js/gitalk1.7.2.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '279700fd65c1e3553047',
+    clientSecret: '59ed94082cf7d122ec5bd05b4dd9353b278a275e',
+    repo: 'ricemices.github.io',
+    owner: 'ricemices',
+    admin: ['ricemices'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2023
+        <i class="ri-heart-fill heart_icon"></i> ricemice
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    
+    <!-- 运行天数 -->
+    <ul>
+		<li><span id="runtime_span"></span></li>
+	</ul>
+	<script type="text/javascript">			
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2022 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+	show_runtime();
+</script>
+
+    
+    <script>
+function unmouse(){	
+	document.oncontextmenu = new Function("return false;");
+	document.onkeydown = document.onkeyup = document.onkeypress = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && (e.keyCode == 123 || (e.keyCode == 116 && e.type!='keypress'))) 
+		{
+			e.returnValue = false;
+			return (false);
+		}
+	}
+}
+unmouse()
+</script>
+    
+    
+    <!-- 底部标牌 -->
+    <!--
+	<ul>
+		<li>
+		<div class="github-badge"><a style="color: #fff" href="https://hexo.io" rel="external nofollow noreferrer" target="_blank" title="Hexo强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow noreferrer" target="_blank" title="主题Ayer"><span class="badge-subject">Theme</span><span class="badge-value bg-cyan">Ayer</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://www.aliyun.com" rel="external nofollow noreferrer" target="_blank" title="网站托管于Github"><span class="badge-subject">Hosted</span><span class="badge-value bg-red">Github</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="https://su.baidu.com" rel="external nofollow noreferrer" target="_blank" title="百度云加速整站"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Baidu</span></a></div>&nbsp;
+		<div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访客数"><span class="badge-subject">UV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_uv"></span></a></div>&nbsp;
+	    <div class="github-badge"><a style="color: #fff" href="" target="_blank" title="本站访问量"><span class="badge-subject">PV</span><span class="badge-value bg-pink" id="busuanzi_value_site_pv"></span></a></div>
+		</li>
+	</ul>
+<!-- -->
+
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="老鼠"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+      <ul class="nav nav-main">
+      
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/">主页</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/friends">友链</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/archives">文章</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/categories">分类</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/tags">标签</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/about">关于</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/photos">相册</a>
+    	  
+          </li>
+        
+          <li class="nav-item">
+          <a class="nav-item-link" href="/analytics">统计</a>
+    	  
+          </li>
+        
+
+<!-- 自定义样式 -->
+<style>
+.nav-main li ul{
+	display: block;
+}
+.nav-main li:hover ul{
+	display: block;
+}
+<!-- 子菜单样式 -->
+.sub-menu{
+    position: "";
+    background: #888;
+    width: 8rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    -webkit-animation: fadeInUp .3s .1s ease both;
+    list-style: none;
+}
+.nav-main li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+</style>
+<!-- 样式结束 -->
+        
+    </ul>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>如果我有帮到你,可以选择支持我~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '已复制';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = '复制失败';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = '复制';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+
+  <!-- 自定义背景 -->
+  <div id="background">
+    
+
+  
+
+    
+      <script>
+        canvas_num=33;
+      </script>
+      <script src="/js/canvas-nest.js"></script>
+    
+    
+    
+      <script src="/js/piao.js"></script>
+    
+    
+    
+  </div>
+</body>
+</html>

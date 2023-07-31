@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>TVI3315A装机日记</title>
+    <url>/posts/8b22bdf7.html</url>
+    <content><![CDATA[<h1 id="RK3399刷Armbian后设置"><a href="#RK3399刷Armbian后设置" class="headerlink" title="RK3399刷Armbian后设置"></a>RK3399刷Armbian后设置</h1><h2 id="一、初始化"><a href="#一、初始化" class="headerlink" title="一、初始化"></a>一、初始化</h2><h4 id="1-1-更换时区"><a href="#1-1-更换时区" class="headerlink" title="1.1 更换时区"></a>1.1 更换时区</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Timezone -&gt; Asia -&gt; Chongqing/Shanghai -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-2-修改字符集"><a href="#1-2-修改字符集" class="headerlink" title="1.2 修改字符集"></a>1.2 修改字符集</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Locales -&gt; zh_CN UTF8 UTF8 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-3-更换软件源"><a href="#1-3-更换软件源" class="headerlink" title="1.3 更换软件源"></a>1.3 更换软件源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Person -&gt; Mirrors -&gt; 上下键选择一个源 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-4-设置固定IP"><a href="#1-4-设置固定IP" class="headerlink" title="1.4 设置固定IP"></a>1.4 设置固定IP</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Network -&gt; IP -&gt; 选择网卡修改IP -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-5-连接WiFi"><a href="#1-5-连接WiFi" class="headerlink" title="1.5 连接WiFi"></a>1.5 连接WiFi</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Network -&gt; WiFi -&gt; 选择WiFi连接 -&gt; Ok<br></code></pre></td></tr></table></figure>
+<h4 id="1-5-安装第三方支持软件"><a href="#1-5-安装第三方支持软件" class="headerlink" title="1.5 安装第三方支持软件"></a>1.5 安装第三方支持软件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">armbian-config -&gt; Software -&gt; Full -&gt; Ok<br><span class="hljs-comment"># 安装后tvi3315a开发板不能正常开机</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二、安装运行环境"><a href="#二、安装运行环境" class="headerlink" title="二、安装运行环境"></a>二、安装运行环境</h2><h4 id="2-1-Python2"><a href="#2-1-Python2" class="headerlink" title="2.1 Python2"></a>2.1 Python2</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt install python2 python-dev gfortran libfreetype-dev <br>wget https://bootstrap.pypa.io/pip/2.7/get-pip.py<br>python2 get-pip.py<br>pip2 install numpy matplotlib<br></code></pre></td></tr></table></figure>
+<h4 id="2-2-修改python默认版本"><a href="#2-2-修改python默认版本" class="headerlink" title="2.2 修改python默认版本"></a>2.2 修改python默认版本</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l /usr/bin/python*  <span class="hljs-comment"># 列出所有Python</span><br>sudo <span class="hljs-built_in">rm</span> /usr/bin/python  <span class="hljs-comment"># 删除默认软链接</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/python3.8 /usr/bin/python  <span class="hljs-comment"># 创建软链接python</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/python3.8 /usr/bin/python3  <span class="hljs-comment"># 创建软链接python3</span><br>sudo <span class="hljs-built_in">ln</span> -s /usr/bin/pip3 /usr/bin/pip<br></code></pre></td></tr></table></figure>
+<h4 id="2-3-pip安装与设置"><a href="#2-3-pip安装与设置" class="headerlink" title="2.3 pip安装与设置"></a>2.3 pip安装与设置</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py   <span class="hljs-comment"># 下载安装脚本</span><br>sudo python get-pip.py    <span class="hljs-comment"># 运行安装脚本</span><br><span class="hljs-comment"># 阿里源</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://mirrors.aliyun.com/pypi/simple/<br><span class="hljs-comment"># 豆瓣源</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.douban.com/simple<br><span class="hljs-comment"># 科技大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.mirrors.ustc.edu.cn/simple/<br><span class="hljs-comment"># 清华大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/<br><span class="hljs-comment"># 中国科学技术大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://pypi.mirrors.ustc.edu.cn/simple/<br><span class="hljs-comment">#华中科技大学</span><br>pip config <span class="hljs-built_in">set</span> global.index-url http://pypi.hustunique.com/<br></code></pre></td></tr></table></figure>
+<h4 id="2-4-配置sudo免密-根据实际需求设置"><a href="#2-4-配置sudo免密-根据实际需求设置" class="headerlink" title="2.4 配置sudo免密(根据实际需求设置)"></a>2.4 配置sudo免密(根据实际需求设置)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> u+w /etc/sudoers <span class="hljs-comment">#添加写权限</span><br><span class="hljs-built_in">chmod</span> u-w /etc/sudoers <span class="hljs-comment">#去除写权限</span><br>vim /etc/sudoers<br><br>添加：<br>username ALL=(ALL)NOPASSWD: ALL<br></code></pre></td></tr></table></figure>
+<h4 id="2-5-安装Python串口模块"><a href="#2-5-安装Python串口模块" class="headerlink" title="2.5 安装Python串口模块"></a>2.5 安装Python串口模块</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 串口模块</span><br>python -m pip install pyserial --trusted-host pypi.mirrors.ustc.edu.cn<br><span class="hljs-comment"># 快速生成HTML模块</span><br>pip install remi --trusted-host pypi.mirrors.ustc.edu.cn<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="三、串口"><a href="#三、串口" class="headerlink" title="三、串口"></a>三、串口</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> /dev/serial/by-id/*<br>-&gt; /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="四、搭建内网服务器"><a href="#四、搭建内网服务器" class="headerlink" title="四、搭建内网服务器"></a>四、搭建内网服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">apt-get update &amp;&amp; apt-get upgrade<br><br><span class="hljs-comment">######</span><br><span class="hljs-comment">#一键安装宝塔面板</span><br>sudo apt-get install python-setuptools<br>wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh ed8484bec<br><span class="hljs-comment">######</span><br><br>apt-get -y install nginx<br>apt install -y php php-fpm php-mysql php-gd php-curl php-mbstring<br>apt install -y mysql-server <span class="hljs-comment"># 安装mariadb</span><br><br>sudo apt-get install mysql-server          //服务端<br>sudo apt-get install mysql-client          //客户端<br>sudo apt-get install libmysqlclient-dev    //程序编译时链接的库<br>原文链接：https://blog.csdn.net/qq_43445867/article/details/126718980<br><br>update mysql.user <span class="hljs-built_in">set</span> authentication_string=password(<span class="hljs-string">&#x27;1230&#x27;</span>) <span class="hljs-built_in">where</span> user=<span class="hljs-string">&#x27;root&#x27;</span> and Host =<span class="hljs-string">&#x27;localhost&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
+<h4 id="4-1-配置nginx"><a href="#4-1-配置nginx" class="headerlink" title="4.1 配置nginx"></a>4.1 配置nginx</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vim /etc/nginx/sites-enabled/default<br>:<span class="hljs-built_in">set</span> nu <span class="hljs-comment"># vim编辑器显示行号</span><br><span class="hljs-comment"># 按 i 进行编辑</span><br><span class="hljs-comment"># 找到第 44 行左右的 index index.html</span><br><span class="hljs-comment"># 添加 index.php（注意空格）</span><br><span class="hljs-comment"># 取消如下内容的注释#</span><br>	1. include snippets/fastcgi-php.conf;<br>	2. fastcgi_pass unix:/var/run/php/php-fpm.sock;<br><span class="hljs-comment"># 在文件的第 56-63 行附近</span><br><span class="hljs-comment"># 重启nginx服务</span><br>service nginx restart<br><br><span class="hljs-comment"># 配置</span><br>vim /etc/nginx/nginx.conf<br><span class="hljs-comment"># 默认index文件</span><br>/var/www/html/index.html<br><br><br><br></code></pre></td></tr></table></figure>
+<h4 id="4-2-配置mysql数据库"><a href="#4-2-配置mysql数据库" class="headerlink" title="4.2 配置mysql数据库"></a>4.2 配置mysql数据库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动服务</span><br>service mysql start<br><span class="hljs-comment"># 重启服务</span><br>service mysql restart<br><span class="hljs-comment"># 查看是否安装</span><br>dpkg -l | grep mysql<br><span class="hljs-comment"># 查看状态</span><br>sudo netstat -anp | grep mysql<br><span class="hljs-comment"># 登录命令</span><br>mysql -u root -p<br><span class="hljs-comment"># 使用mysqladmin修改密码</span><br>mysqladmin -u用户名 -p旧密码 password 新密码<br><br><br>mysql_secure_installation<br>mysql -u root -h 127.0.0.1 -P3306 -p<br><br><br></code></pre></td></tr></table></figure>
+<h4 id="4-3-mysql无法登录"><a href="#4-3-mysql无法登录" class="headerlink" title="4.3 mysql无法登录"></a>4.3 mysql无法登录</h4><h6 id="4-3-1-暂时先不搬砖了，原文链接"><a href="#4-3-1-暂时先不搬砖了，原文链接" class="headerlink" title="4.3.1 暂时先不搬砖了，原文链接"></a>4.3.1 暂时先不搬砖了，<a href="https://blog.csdn.net/qq_43445867/article/details/126718980">原文链接</a></h6><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf<br>添加：skip-grant-tables 跳过密码登录<br><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="五、Python-生成网页"><a href="#五、Python-生成网页" class="headerlink" title="五、Python 生成网页"></a>五、Python 生成网页</h2><h2 id="六、内网穿透"><a href="#六、内网穿透" class="headerlink" title="六、内网穿透"></a>六、内网穿透</h2><h4 id="6-1-使用cpolar"><a href="#6-1-使用cpolar" class="headerlink" title="6.1 使用cpolar"></a>6.1 使用cpolar</h4><h6 id="官网-cpolar-com"><a href="#官网-cpolar-com" class="headerlink" title="官网 cpolar.com"></a>官网 cpolar.com</h6><h6 id="上方网站也有完整的安装流程，多平台的"><a href="#上方网站也有完整的安装流程，多平台的" class="headerlink" title="上方网站也有完整的安装流程，多平台的"></a>上方网站也有完整的安装流程，多平台的</h6><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载</span><br>1. wget https://static.cpolar.com/downloads/releases/3.3.12/cpolar-stable-linux-amd64.zip<br>2. curl https://static.cpolar.com/downloads/releases/3.3.12/cpolar-stable-linux-arm.zip -o cpolar.zip<br><span class="hljs-comment"># 解压</span><br>unzip cpolar.zip<br><span class="hljs-comment"># 验证（这块代码直接去官网复制即可）</span><br>./cpolar authtoken token<br><span class="hljs-comment"># 配置自启动</span><br>sudo vim /etc/rc.local<br><span class="hljs-comment"># 在exit 0前面，加入</span><br><span class="hljs-built_in">nohup</span> cpolar start-all -config=/root/.cpolar/cpolar.yml &amp;<br><span class="hljs-comment"># 保存退出</span><br><span class="hljs-comment"># 接着需要参考armbian开机自启动配置</span><br>https://www.jianshu.com/p/beb25e870148<br><br>sudo vim /lib/systemd/system/rc.local.service<br>上面这个也可能是空文件，不存在的文件，那就是下面这个<br>sudo vim /lib/systemd/system/rc-local.service<br>在最后添加下面三行内容<br>[Install]<br>WantedBy=multi-user.target<br>Alias=rc.local.service<br><br><span class="hljs-comment"># 重启后查看是否成功</span><br>sudo reboot<br>ps -aux | grep cpolar | grep -v grep<br><br><span class="hljs-comment"># 查看在线的隧道</span><br><span class="hljs-comment"># 访问cpolar后台的状态页面:</span><br>http://dashboard.cpolar.com/status<br></code></pre></td></tr></table></figure>
+<h6 id="x2F-cpolar-x2F-cpolar-yml"><a href="#x2F-cpolar-x2F-cpolar-yml" class="headerlink" title="&#x2F;.cpolar&#x2F;cpolar.yml"></a>&#x2F;.cpolar&#x2F;cpolar.yml</h6><figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">authtoken:</span> <span class="hljs-string">token这上面不要修改</span><br><span class="hljs-attr">update:</span> <span class="hljs-literal">false</span><br><span class="hljs-attr">update_channel:</span> <span class="hljs-string">stable</span><br><span class="hljs-attr">inspect_db_size:</span> <span class="hljs-number">50000000</span><br><span class="hljs-attr">log_level:</span> <span class="hljs-string">warn</span><br><span class="hljs-attr">log_format:</span> <span class="hljs-string">json</span><br><span class="hljs-attr">log:</span> <span class="hljs-string">/var/www/html/cpolar.log</span><br><span class="hljs-attr">web_addr:</span> <span class="hljs-string">localhost:4040</span><br><span class="hljs-attr">tunnels:</span><br>  <span class="hljs-attr">ssh:</span><br>    <span class="hljs-attr">proto:</span> <span class="hljs-string">tcp</span><br>    <span class="hljs-attr">addr:</span> <span class="hljs-string">&quot;22&quot;</span><br>    <span class="hljs-attr">region:</span> <span class="hljs-string">cn</span><br>  <span class="hljs-attr">website:</span><br>    <span class="hljs-attr">proto:</span> <span class="hljs-string">http</span><br>    <span class="hljs-attr">addr:</span> <span class="hljs-string">&quot;80&quot;</span><br>    <span class="hljs-attr">region:</span> <span class="hljs-string">cn</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="七、接入阿里云物联网"><a href="#七、接入阿里云物联网" class="headerlink" title="七、接入阿里云物联网"></a>七、接入阿里云物联网</h2><h2 id="END、部分有用代码"><a href="#END、部分有用代码" class="headerlink" title="END、部分有用代码"></a>END、部分有用代码</h2><h6 id="4-1-Python-日期输出附带毫秒"><a href="#4-1-Python-日期输出附带毫秒" class="headerlink" title="4.1 Python 日期输出附带毫秒"></a>4.1 Python 日期输出附带毫秒</h6><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_time_stamp</span>(<span class="hljs-params">ct</span>):<br>    local_time = time.localtime(ct)<br>    data_head = time.strftime(<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, local_time)<br>　　 data_secs = (ct - <span class="hljs-built_in">int</span>(ct)) * <span class="hljs-number">1000</span><br>    time_stamp = <span class="hljs-string">&quot;%s:%03d&quot;</span> % (data_head, data_secs)<br>    <span class="hljs-keyword">return</span> time_stamp<br>-----------------------------------<br>python 日期输出附带毫秒<br>https://blog<span class="hljs-number">.51</span>cto.com/u_15065849/<span class="hljs-number">3368409</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="4-2-Lua-转换天守BMS串口数据"><a href="#4-2-Lua-转换天守BMS串口数据" class="headerlink" title="4.2 Lua 转换天守BMS串口数据"></a>4.2 Lua 转换天守BMS串口数据</h6><figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">str = <span class="hljs-string">[[A5019508010ac50ae70ad33c1da5019508020ac10ae50ad33c18a5019508030acd0ae10ad33c21]]</span><br><br><span class="hljs-keyword">local</span> ret = &#123;&#125;;<br><span class="hljs-keyword">for</span> r, s, s1, n1, v1, n2, v2, n3, v3, jy, jy1 <span class="hljs-keyword">in</span> str:<span class="hljs-built_in">gmatch</span>(<span class="hljs-string">&quot;A501(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)&quot;</span>) <span class="hljs-keyword">do</span><br>  r = ( r == <span class="hljs-string">&quot;95&quot;</span> ) <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;单体电压：&quot;</span><br>  n1 = <span class="hljs-string">&quot;0x&quot;</span>..n1<br>  v1 = <span class="hljs-string">&quot;0x&quot;</span>..v1<br>  n2 = <span class="hljs-string">&quot;0x&quot;</span>..n2<br>  v2 = <span class="hljs-string">&quot;0x&quot;</span>..v2<br>  n3 = <span class="hljs-string">&quot;0x&quot;</span>..n3<br>  v3 = <span class="hljs-string">&quot;0x&quot;</span>..v3<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n1 + v1)/<span class="hljs-number">1000</span>)<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n2 + v2)/<span class="hljs-number">1000</span>)<br>  <span class="hljs-built_in">table</span>.<span class="hljs-built_in">insert</span>(ret, ((<span class="hljs-number">0xff</span>+<span class="hljs-number">1</span>)*n3 + v3)/<span class="hljs-number">1000</span>)<br>	<span class="hljs-keyword">while</span> #ret &gt; <span class="hljs-built_in">tonumber</span>(<span class="hljs-string">&quot;0x&quot;</span>..s) <span class="hljs-keyword">do</span><br>		<span class="hljs-built_in">table</span>.<span class="hljs-built_in">remove</span>(ret)<br>	<span class="hljs-keyword">end</span><br>  <span class="hljs-comment">--print( r, ((0xff+1)*n1 + v1)/1000, ((0xff+1)*n2 + v2)/1000, ((0xff+1)*n3 + v3)/1000 )</span><br>  <span class="hljs-comment">--print( r, s, s1, n1, v1, n2, v2, n3, v3 , jy, jy1)</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">for</span> k,v <span class="hljs-keyword">in</span> <span class="hljs-built_in">pairs</span>(ret) <span class="hljs-keyword">do</span><br>	<span class="hljs-built_in">print</span>(k, v)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python">regexp = (<span class="hljs-string">r&#x27;^(?P&lt;scheme&gt;[a-z][\w\.\-\+]+)?:(//)?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?:(?P&lt;username&gt;\w+):(?P&lt;password&gt;[\w\W]+)@|)&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;domain&gt;[\w-]+(?:\.[\w-]+)*)(?::(?P&lt;port&gt;\d+))?/?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;path&gt;\/[\w\.\/-]+)?(?P&lt;query&gt;\?[\w\.*!=&amp;@%;:/+-]+)?&#x27;</span><br>     <span class="hljs-string">r&#x27;(?P&lt;fragment&gt;#[\w-]+)?$&#x27;</span>)<br>match = re.search(regexp, url.strip(), re.U)<br><span class="hljs-keyword">if</span> match <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>  <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&#x27;Incorrent url: &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(url))<br>url_parts = match.groupdict()<br>url=<span class="hljs-string">&#x27;https://blog.csdn.net/weixin_40907382/article/明细/79654372&#x27;</span><br><span class="hljs-built_in">print</span>(url_parts)<br>&#123;<br><span class="hljs-string">&#x27;scheme&#x27;</span>: <span class="hljs-string">&#x27;https&#x27;</span>,<br><span class="hljs-string">&#x27;username&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;password&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;domain&#x27;</span>: <span class="hljs-string">&#x27;blog.csdn.net&#x27;</span>,<br><span class="hljs-string">&#x27;port&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;path&#x27;</span>: <span class="hljs-string">&#x27;/weixin_40907382/article/明细/79654372&#x27;</span>,<br><span class="hljs-string">&#x27;query&#x27;</span>: <span class="hljs-literal">None</span>,<br><span class="hljs-string">&#x27;fragment&#x27;</span>: <span class="hljs-literal">None</span><br>&#125;<br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>笔记</tag>
+        <tag>RK3399</tag>
+        <tag>TVI3315A</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Termux命令笔记</title>
+    <url>/posts/f253afe0.html</url>
+    <content><![CDATA[<h1 id="Termux命令"><a href="#Termux命令" class="headerlink" title="Termux命令"></a>Termux命令</h1><h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><h4 id="开机时运行的命令-这个需要安装Termux-Boot-是个安卓app"><a href="#开机时运行的命令-这个需要安装Termux-Boot-是个安卓app" class="headerlink" title="开机时运行的命令(这个需要安装Termux:Boot, 是个安卓app)"></a>开机时运行的命令(这个需要安装Termux:Boot, 是个安卓app)</h4><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/data/data/com.termux/files/usr/bin/sh</span><br><span class="hljs-comment">#锁定后台不被清理(首次会有电源管理弹窗提醒)</span><br>termux-wake-lock<br><span class="hljs-comment">#打开ssh服务</span><br>sshd<br></code></pre></td></tr></table></figure>
+
+<h2 id="curl命令详解查看原文"><a href="#curl命令详解查看原文" class="headerlink" title="curl命令详解查看原文"></a>curl命令详解<a href="https://www.cnblogs.com/duhuo/p/5695256.html">查看原文</a></h2><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl [option] [url]<br></code></pre></td></tr></table></figure>
+<h4 id="常见参数"><a href="#常见参数" class="headerlink" title="常见参数"></a>常见参数</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-A/--user-agent &lt;string&gt;          设置用户代理发送给服务器<br>-b/--cookie &lt;name=string/file&gt;    cookie字符串或文件读取位置<br>-c/--cookie-jar &lt;file&gt;             操作结束后把cookie写入到这个文件中<br>-C/--continue-at &lt;offset&gt;         断点续转<br>-D/--dump-header &lt;file&gt;           把header信息写入到该文件中<br>-e/--referer                      来源网址<br>-f/--fail                          连接失败时不显示http错误<br>-o/--output                       把输出写到该文件中<br>-O/--remote-name                  把输出写到该文件中，保留远程文件的文件名<br>-r/--range &lt;range&gt;                 检索来自HTTP/1.1或FTP服务器字节范围<br>-s/--silent                       静音模式。不输出任何东西<br>-T/--upload-file &lt;file&gt;           上传文件<br>-u/--user &lt;user[:password]&gt;       设置服务器的用户和密码<br>-w/--write-out [format]           什么输出完成后<br>-x/--proxy &lt;host[:port]&gt;          在给定的端口上使用HTTP代理<br><span class="hljs-meta prompt_">-#</span><span class="language-bash">/--progress-bar                 进度条显示当前的传送状态</span><br></code></pre></td></tr></table></figure>
+<h4 id="最直接的用法"><a href="#最直接的用法" class="headerlink" title="最直接的用法"></a>最直接的用法</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<h4 id="保存网页"><a href="#保存网页" class="headerlink" title="保存网页"></a>保存网页</h4><h6 id="使用输出重定向功能保存"><a href="#使用输出重定向功能保存" class="headerlink" title="使用输出重定向功能保存"></a>使用输出重定向功能保存</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl http://www.baidu.com &gt; /sdcard/baidu.html<br></code></pre></td></tr></table></figure>
+<h6 id="使用curl的内置option-o-小写-保存"><a href="#使用curl的内置option-o-小写-保存" class="headerlink" title="使用curl的内置option:-o(小写)保存"></a>使用curl的内置option:-o(小写)保存</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -o baidu.html http://www.baidu.com<br><span class="hljs-meta prompt_"># </span><span class="language-bash">执行后输出如下</span><br><span class="hljs-meta prompt_">% </span><span class="language-bash">Total  % Received  % Xferd  Average  Speed     Time       Time       Time  Current  Dload  Upload  Total  Spent    Left  Speed</span><br>  100        1024       0      1024       0    --:--:--   --:--:--   --:--:--   0     1024k          2048k<br></code></pre></td></tr></table></figure>
+<h6 id="使用curl的内置option-O-大写-保存网页中的文件-要注意这里后面的url要具体到某个文件，不然抓不下来"><a href="#使用curl的内置option-O-大写-保存网页中的文件-要注意这里后面的url要具体到某个文件，不然抓不下来" class="headerlink" title="使用curl的内置option:-O(大写)保存网页中的文件(要注意这里后面的url要具体到某个文件，不然抓不下来)"></a>使用curl的内置option:-O(大写)保存网页中的文件(要注意这里后面的url要具体到某个文件，不然抓不下来)</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -O http://www.baidu.com/hello.sh<br></code></pre></td></tr></table></figure>
+<p>测试网页返回值</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -o /dev/null -s -w %&#123;http_code&#125; www.baidu.com<br></code></pre></td></tr></table></figure>
+<h4 id="指定proxy服务器以及其端口"><a href="#指定proxy服务器以及其端口" class="headerlink" title="指定proxy服务器以及其端口"></a>指定proxy服务器以及其端口</h4><p>很多时候上网需要用到代理服务器(比如是使用代理服务器上网或者因为使用curl别人网站而被别人屏蔽IP地址的时候)，幸运的是curl通过使用内置option：-x来支持设置代理</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -x 192.168.100.100:1080 http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>有些网站是使用cookie来记录session信息。对于chrome这样的浏览器，可以轻易处理cookie信息，但在curl中只要增加相关参数也是可以很容易的处理cookie</p>
+<h6 id="保存http的response里面的cookie信息。内置option-c（小写）"><a href="#保存http的response里面的cookie信息。内置option-c（小写）" class="headerlink" title="保存http的response里面的cookie信息。内置option:-c（小写）"></a>保存http的response里面的cookie信息。内置option:-c（小写）</h6><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -c cookiec.txt  http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<p>执行后cookie信息就被存到了cookiec.txt里面了</p>
+<h6 id="保存http的response里面的header信息。内置option-D"><a href="#保存http的response里面的header信息。内置option-D" class="headerlink" title="保存http的response里面的header信息。内置option: -D"></a>保存http的response里面的header信息。内置option: -D</h6><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -D cookied.txt http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<p>执行后cookie信息就被存到了cookied.txt里面了</p>
+<p>注意：-c(小写)产生的cookie和-D里面的cookie是不一样的。</p>
+<h6 id="使用cookie"><a href="#使用cookie" class="headerlink" title="使用cookie"></a>使用cookie</h6><p>很多网站都是通过监视你的cookie信息来判断你是否按规矩访问他们的网站的，因此我们需要使用保存的cookie信息。内置option: -b</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -b cookiec.txt http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<h4 id="模仿浏览器"><a href="#模仿浏览器" class="headerlink" title="模仿浏览器"></a>模仿浏览器</h4><p>有些网站需要使用特定的浏览器去访问他们，有些还需要使用某些特定的版本。curl内置option:-A可以让我们指定浏览器去访问网站</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -A <span class="hljs-string">&quot;Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)&quot;</span> http://www.baidu.com<br></code></pre></td></tr></table></figure>
+<p>这样服务器端就会认为是使用IE8.0去访问的</p>
+<h4 id="伪造referer（盗链）"><a href="#伪造referer（盗链）" class="headerlink" title="伪造referer（盗链）"></a>伪造referer（盗链）</h4><p>很多服务器会检查http访问的referer从而来控制访问。比如：你是先访问首页，然后再访问首页中的邮箱页面，这里访问邮箱的referer地址就是访问首页成功后的页面地址，如果服务器发现对邮箱页面访问的referer地址不是首页的地址，就断定那是个盗连了<br>curl中内置option：-e可以让我们设定referer</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -e <span class="hljs-string">&quot;www.baidu.com&quot;</span> http://mail.baidu.com<br><span class="hljs-comment"># 这样就会让服务器其以为你是从 www.baidu.com 点击某个链接过来的</span><br></code></pre></td></tr></table></figure>
+<h4 id="循环下载"><a href="#循环下载" class="headerlink" title="循环下载"></a>循环下载</h4><p>有时候下载图片可以能是前面的部分名称是一样的，就最后的尾椎名不一样</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -O http://www.baidu.com/dodo[1-5].JPG<br></code></pre></td></tr></table></figure>
+<p>这样就会把dodo1，dodo2，dodo3，dodo4，dodo5全部保存下来</p>
+<h4 id="下载重命名"><a href="#下载重命名" class="headerlink" title="下载重命名"></a>下载重命名</h4><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -O http://www.baidu.com/&#123;hello,bb&#125;/dodo[1-5].JPG<br></code></pre></td></tr></table></figure>
+<p>由于下载的hello与bb中的文件名都是dodo1，dodo2，dodo3，dodo4，dodo5。因此第二次下载的会把第一次下载的覆盖，这样就需要对文件进行重命名。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">curl -o <span class="hljs-comment">#1_#2.JPG http://www.baidu.com/&#123;hello,bb&#125;/dodo[1-5].JPG</span><br></code></pre></td></tr></table></figure>
+<p>这样在hello&#x2F;dodo1.JPG的文件下载下来就会变成hello_dodo1.JPG,其他文件依此类推，从而有效的避免了文件被覆盖</p>
+<h4 id="分块下载"><a href="#分块下载" class="headerlink" title="分块下载"></a>分块下载</h4><h6 id="有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r"><a href="#有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r" class="headerlink" title="有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r"></a>有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -r 0-100 -o dodo1_part1.JPG http://www.baidu.com/dodo1.JPG<br>curl -r 100-200 -o dodo1_part2.JPG http://www.baidu.com/dodo1.JPG<br>curl -r 200- -o dodo1_part3.JPG http://www.baidu.com/dodo1.JPG<br>cat dodo1_part* &gt; dodo1.JPG<br></code></pre></td></tr></table></figure>
+<p>这样就可以查看dodo1.JPG的内容了</p>
+<h4 id="通过ftp下载文件"><a href="#通过ftp下载文件" class="headerlink" title="通过ftp下载文件"></a>通过ftp下载文件</h4><h6 id="curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法"><a href="#curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法" class="headerlink" title="curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法"></a>curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -O -u 用户名:密码 ftp://www.baidu.com/dodo1.JPG<br>curl -O ftp://用户名:密码@www.baidu.com/dodo1.JPG<br></code></pre></td></tr></table></figure>
+<h6 id="显示下载进度条"><a href="#显示下载进度条" class="headerlink" title="显示下载进度条"></a>显示下载进度条</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -# -O http://www.baidu.com/dodo1.JPG<br></code></pre></td></tr></table></figure>
+<h6 id="不会显示下载进度信息"><a href="#不会显示下载进度信息" class="headerlink" title="不会显示下载进度信息"></a>不会显示下载进度信息</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -s -O http://www.baidu.com/dodo1.JPG<br></code></pre></td></tr></table></figure>
+<h6 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h6><p>在windows中，我们可以使用迅雷这样的软件进行断点续传。curl可以通过内置option:-C同样可以达到相同的效果<br>如果在下载dodo1.JPG的过程中突然掉线了，可以使用以下的方式续传</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -C -O http://www.baidu.com/dodo1.JPG<br></code></pre></td></tr></table></figure>
+<h6 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h6><p>curl不仅仅可以下载文件，还可以上传文件。通过内置option:-T来实现</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -T dodo1.JPG -u 用户名:密码 ftp://www.baidu.com/img/<br></code></pre></td></tr></table></figure>
+<p>这样就向ftp服务器上传了文件dodo1.JPG</p>
+<h6 id="显示抓取错误"><a href="#显示抓取错误" class="headerlink" title="显示抓取错误"></a>显示抓取错误</h6><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">curl -f http://www.baidu.com/error<br></code></pre></td></tr></table></figure>
+<h4 id="扩展阅读原文"><a href="#扩展阅读原文" class="headerlink" title="扩展阅读原文"></a>扩展<a href="http://www.linuxdiyf.com/linux/2800.html">阅读原文</a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-a/--append                        上传文件时，附加到目标文件<br>--anyauth                            可以使用“任何”身份验证方法<br>--basic                                使用HTTP基本验证<br>-B/--use-ascii                      使用ASCII文本传输<br>-d/--data &lt;data&gt;                  HTTP POST方式传送数据<br>--data-ascii &lt;data&gt;            以ascii的方式post数据<br>--data-binary &lt;data&gt;          以二进制的方式post数据<br>--negotiate                          使用HTTP身份验证<br>--digest                        使用数字身份验证<br>--disable-eprt                  禁止使用EPRT或LPRT<br>--disable-epsv                  禁止使用EPSV<br>--egd-file &lt;file&gt;              为随机数据(SSL)设置EGD socket路径<br>--tcp-nodelay                  使用TCP_NODELAY选项<br>-E/--cert &lt;cert[:passwd]&gt;      客户端证书文件和密码 (SSL)<br>--cert-type &lt;type&gt;              证书文件类型 (DER/PEM/ENG) (SSL)<br>--key &lt;key&gt;                    私钥文件名 (SSL)<br>--key-type &lt;type&gt;              私钥文件类型 (DER/PEM/ENG) (SSL)<br>--pass  &lt;pass&gt;                  私钥密码 (SSL)<br>--engine &lt;eng&gt;                  加密引擎使用 (SSL). &quot;--engine list&quot; for list<br>--cacert &lt;file&gt;                CA证书 (SSL)<br>--capath &lt;directory&gt;            CA目   (made using c_rehash) to verify peer against (SSL)<br>--ciphers &lt;list&gt;                SSL密码<br>--compressed                    要求返回是压缩的形势 (using deflate or gzip)<br>--connect-timeout &lt;seconds&gt;    设置最大请求时间<br>--create-dirs                  建立本地目录的目录层次结构<br>--crlf                          上传是把LF转变成CRLF<br>--ftp-create-dirs              如果远程目录不存在，创建远程目录<br>--ftp-method [multicwd/nocwd/singlecwd]    控制CWD的使用<br>--ftp-pasv                      使用 PASV/EPSV 代替端口<br>--ftp-skip-pasv-ip              使用PASV的时候,忽略该IP地址<br>--ftp-ssl                      尝试用 SSL/TLS 来进行ftp数据传输<br>--ftp-ssl-reqd                  要求用 SSL/TLS 来进行ftp数据传输<br>-F/--form &lt;name=content&gt;        模拟http表单提交数据<br>-form-string &lt;name=string&gt;      模拟http表单提交数据<br>-g/--globoff                    禁用网址序列和范围使用&#123;&#125;和[]<br>-G/--get                        以get的方式来发送数据<br>-h/--help                      帮助<br>-H/--header &lt;line&gt;              自定义头信息传递给服务器<br>--ignore-content-length        忽略的HTTP头信息的长度<br>-i/--include                    输出时包括protocol头信息<br>-I/--head                      只显示文档信息<br>-j/--junk-session-cookies      读取文件时忽略session cookie<br>--interface &lt;interface&gt;        使用指定网络接口/地址<br>--krb4 &lt;level&gt;                  使用指定安全级别的krb4<br>-k/--insecure                  允许不使用证书到SSL站点<br>-K/--config                    指定的配置文件读取<br>-l/--list-only                  列出ftp目录下的文件名称<br>--limit-rate &lt;rate&gt;            设置传输速度<br>--local-port&lt;NUM&gt;              强制使用本地端口号<br>-m/--max-time &lt;seconds&gt;        设置最大传输时间<br>--max-redirs &lt;num&gt;              设置最大读取的目录数<br>--max-filesize &lt;bytes&gt;          设置最大下载的文件总量<br>-M/--manual                    显示全手动<br>-n/--netrc                      从netrc文件中读取用户名和密码<br>--netrc-optional                使用 .netrc 或者 URL来覆盖-n<br>--ntlm                          使用 HTTP NTLM 身份验证<br>-N/--no-buffer                  禁用缓冲输出<br>-p/--proxytunnel                使用HTTP代理<br>--proxy-anyauth                选择任一代理身份验证方法<br>--proxy-basic                  在代理上使用基本身份验证<br>--proxy-digest                  在代理上使用数字身份验证<br>--proxy-ntlm                    在代理上使用ntlm身份验证<br>-P/--ftp-port &lt;address&gt;        使用端口地址，而不是使用PASV<br>-Q/--quote &lt;cmd&gt;                文件传输前，发送命令到服务器<br>--range-file                    读取（SSL）的随机文件<br>-R/--remote-time                在本地生成文件时，保留远程文件时间<br>--retry &lt;num&gt;                  传输出现问题时，重试的次数<br>--retry-delay &lt;seconds&gt;        传输出现问题时，设置重试间隔时间<br>--retry-max-time &lt;seconds&gt;      传输出现问题时，设置最大重试时间<br>-S/--show-error                显示错误<br>--socks4 &lt;host[:port]&gt;          用socks4代理给定主机和端口<br>--socks5 &lt;host[:port]&gt;          用socks5代理给定主机和端口<br>-t/--telnet-option &lt;OPT=val&gt;    Telnet选项设置<br>--trace &lt;file&gt;                  对指定文件进行debug<br>--trace-ascii &lt;file&gt;            Like --跟踪但没有hex输出<br>--trace-time                    跟踪/详细输出时，添加时间戳<br>--url &lt;URL&gt;                    Spet URL to work with<br>-U/--proxy-user &lt;user[:password]&gt;  设置代理用户名和密码<br>-V/--version                    显示版本信息<br>-X/--request &lt;command&gt;          指定什么命令<br>-y/--speed-time                放弃限速所要的时间。默认为30<br>-Y/--speed-limit                停止传输速度的限制，速度时间&#x27;秒<br>-z/--time-cond                  传送时间设置<br>-0/--http1.0                    使用HTTP 1.0<br>-1/--tlsv1                      使用TLSv1（SSL）<br>-2/--sslv2                      使用SSLv2的（SSL）<br>-3/--sslv3                      使用的SSLv3（SSL）<br>--3p-quote                      like -Q for the source URL for 3rd party transfer<br>--3p-url                        使用url，进行第三方传送<br>--3p-user                      使用用户名和密码，进行第三方传送<br>-4/--ipv4                      使用IP4<br>-6/--ipv6                      使用IP6<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="获取当前目录"><a href="#获取当前目录" class="headerlink" title="获取当前目录"></a>获取当前目录</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">echo</span> `<span class="hljs-built_in">dirname</span> <span class="hljs-variable">$0</span>`<br></code></pre></td></tr></table></figure>
+<h2 id="shell历史记录命令-安卓模拟终端部分参数不可用"><a href="#shell历史记录命令-安卓模拟终端部分参数不可用" class="headerlink" title="shell历史记录命令(安卓模拟终端部分参数不可用)"></a>shell历史记录命令(安卓模拟终端部分参数不可用)</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">语法：<br><span class="hljs-built_in">history</span> [option] [parameter]<br>[option]：<br>  -N: 显示历史记录中最近的N个记录；<br>  -c：清空当前历史命令；<br>  -a：将历史命令缓冲区中命令写入历史命令文件中；<br>  -r：将历史命令文件中的命令读入当前历史命令缓冲区；<br>  -w：将当前历史命令缓冲区命令写入历史命令文件中;<br>  -d&lt;offset&gt;：删除历史记录中第offset个命令<br>  -n&lt;filename&gt;：读取指定文件<br><br>  ！[number]        // 执行第n条命令<br>  !!               // 执行上一条命令<br>[parameter]:<br>  n：打印最近的n条历史命令。<br></code></pre></td></tr></table></figure>
+<h2 id="shell删除指定目录下特定文件"><a href="#shell删除指定目录下特定文件" class="headerlink" title="shell删除指定目录下特定文件"></a>shell删除指定目录下特定文件</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">DIR=/folder<br>EXT=*.txt    <span class="hljs-comment"># 可以是别的文件类型</span><br> <br><span class="hljs-keyword">if</span> [ <span class="hljs-built_in">test</span> -d <span class="hljs-variable">$DIR</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">cd</span> <span class="hljs-variable">$DIR</span><br>    <span class="hljs-built_in">rm</span> -f <span class="hljs-variable">$EXT</span><br>    <span class="hljs-built_in">echo</span> 删除 <span class="hljs-variable">$DIR</span>/<span class="hljs-variable">$EXT</span> 成功<br><span class="hljs-keyword">else</span>  <br>    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$DIR</span> 路径不存在或不是目录<br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Shell开启定时任务"><a href="#Shell开启定时任务" class="headerlink" title="Shell开启定时任务"></a>Shell开启定时任务</h2><h3 id="1-首先需要关闭省点策略-无限制"><a href="#1-首先需要关闭省点策略-无限制" class="headerlink" title="1. 首先需要关闭省点策略(无限制)"></a>1. 首先需要关闭省点策略(无限制)</h3><h3 id="2-运行以下命令防止设备休眠进程停止"><a href="#2-运行以下命令防止设备休眠进程停止" class="headerlink" title="2. 运行以下命令防止设备休眠进程停止"></a>2. 运行以下命令防止设备休眠进程停止</h3><h3 id="3-其他注意事项"><a href="#3-其他注意事项" class="headerlink" title="3. 其他注意事项"></a>3. 其他注意事项</h3><pre><code>- 新创建的定时任务，不会马上执行，至少要过2分钟才执行。
+- 如果重启cron则马上执行。当crontab突然失效时，可以尝试/etc/init.d/crond restart解决问题。或者查看日志看某个job有没有执行/报错tail -f /var/log/cron。
+- 千万别乱运行crontab -r。它从Crontab目录（/var/spool/cron）中删除用户的Crontab文件。删除了该用户的所有crontab都没了。
+- 在crontab中%是有特殊含义的，表示换行的意思。如果要用的话必须进行转义\%，如经常用的date ‘+%Y%m%d’在crontab里是不会执行的，应该换成date ‘+\%Y\%m\%d
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Termux">termux-wake-lock<br></code></pre></td></tr></table></figure>
+<h3 id="3-开启crontab-命令如下"><a href="#3-开启crontab-命令如下" class="headerlink" title="3. 开启crontab, 命令如下"></a>3. 开启crontab, 命令如下</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Termux">crond<br></code></pre></td></tr></table></figure>
+<h3 id="4-添加-编辑-定时任务-命令如下"><a href="#4-添加-编辑-定时任务-命令如下" class="headerlink" title="4. 添加(编辑)定时任务, 命令如下"></a>4. 添加(编辑)定时任务, 命令如下</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Termux">crontab -e<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Log">选项<br>-e 编辑用户的crontab<br>-l 列表用户的crontab<br>-r 删除用户的crontab<br>-i 提示符在删除之前<br>-t &lt;file&gt; 测试crontab文件语法<br>-v 打印版本和ext<br>-x &lt;mask&gt;启用调试<br>默认操作是替换的, 这些内容可以通过命令 &#x27;crontab&#x27;获得<br></code></pre></td></tr></table></figure>
+<h3 id="这里提供部分栗子更多的解释"><a href="#这里提供部分栗子更多的解释" class="headerlink" title="这里提供部分栗子更多的解释"></a>这里提供部分栗子<a href="/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1">更多的解释</a></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs Script">30 9 * * * ls . &gt; /sdcard/filelists.txt<br>//分 时 天 月 星期 命令内容<br></code></pre></td></tr></table></figure>
+<h3 id="定时说明"><a href="#定时说明" class="headerlink" title="定时说明"></a>定时说明<br /></h3><div align="center">
+<img src="https://cdn.jsdelivr.net/gh/aoneone/images@master/Termux定时任务说明附件.png" width="300", height="150" />
+</div>
+
+
+
+<h2 id="安装nodejs长期支持版"><a href="#安装nodejs长期支持版" class="headerlink" title="安装nodejs长期支持版"></a>安装nodejs长期支持版</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">pkg install nodejs-lts<br></code></pre></td></tr></table></figure>
+<p>##卸载nodejs长期支持版</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">pkg unstall nodejs-lts<br></code></pre></td></tr></table></figure>
+<p>##npm 使用淘宝镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">npm config <span class="hljs-built_in">set</span> registry http://registry.npm.taobao.org<br></code></pre></td></tr></table></figure>
+<p>##安装hexo</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">npm install hexo-cli -g<br></code></pre></td></tr></table></figure>
+<p>##创建博客站点</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">hexo init blog<br></code></pre></td></tr></table></figure>
+<p>##进去博客目录</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> blog<br></code></pre></td></tr></table></figure>
+<p>##更换国内源(清华源)</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">sed -i <span class="hljs-string">&#x27;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24 stable main@&#x27;</span> <span class="hljs-variable">$PREFIX</span>/etc/apt/sources.list<br>sed -i <span class="hljs-string">&#x27;s@^\(deb.*games stable\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/game-packages-24 games stable@&#x27;</span> <span class="hljs-variable">$PREFIX</span>/etc/apt/sources.list.d/game.list<br>sed -i <span class="hljs-string">&#x27;s@^\(deb.*science stable\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/science-packages-24 science stable@&#x27;</span> <span class="hljs-variable">$PREFIX</span>/etc/apt/sources.list.d/science.list<br></code></pre></td></tr></table></figure>
+
+<h2 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">hexo new <span class="hljs-string">&quot;postName&quot;</span> <span class="hljs-comment">#新建文章</span><br>hexo new page <span class="hljs-string">&quot;pageName&quot;</span> <span class="hljs-comment">#新建页面</span><br>hexo generate <span class="hljs-comment">#生成静态页面至public目录</span><br>hexo server <span class="hljs-comment">#开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span><br>hexo -p 80 <span class="hljs-comment">#指定80端口</span><br>hexo deploy <span class="hljs-comment">#部署到GitHub</span><br>hexo <span class="hljs-built_in">help</span>  <span class="hljs-comment"># 查看帮助</span><br>hexo version 或 hexo v  <span class="hljs-comment">#查看Hexo的版本</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">##缩写：</span><br>hexo n → hexo new<br>hexo g → hexo generate<br>hexo s → hexo server<br>hexo d → hexo deploy<br>hexo cl → hexo clean<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">##组合命令：</span><br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s <span class="hljs-comment">#本地一条龙服务</span><br>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d <span class="hljs-comment">#云端一条龙</span><br>hexo s -g <span class="hljs-comment">#生成并本地预览</span><br>hexo d -g <span class="hljs-comment">#生成并上传</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Termux</tag>
+        <tag>Hexo</tag>
+        <tag>Shell</tag>
+        <tag>笔记</tag>
+        <tag>Ayer</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客模板</title>
+    <url>/posts/998e8582.html</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">  <br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>模板</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python安装openpyxl</title>
+    <url>/posts/4de68729.html</url>
+    <content><![CDATA[<h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">https://pypi.org/project/openpyxl/#files<br></code></pre></td></tr></table></figure>
+<h3 id="将下载的openxyxl配置到path环境变量中"><a href="#将下载的openxyxl配置到path环境变量中" class="headerlink" title="将下载的openxyxl配置到path环境变量中"></a>将下载的openxyxl配置到path环境变量中</h3><p>Win10设置: 我的电脑&#x3D;&gt;鼠标右键&#x3D;&gt;属性&#x3D;&gt;高级设置&#x3D;&gt;环境变量&#x3D;&gt;找到PATH变量，添加解压后的路径即可</p>
+<h3 id="命令行安装"><a href="#命令行安装" class="headerlink" title="命令行安装"></a>命令行安装</h3><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">pip install openpyxl<br></code></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h5 id="新建test-py，内容如下"><a href="#新建test-py，内容如下" class="headerlink" title="新建test.py，内容如下"></a>新建test.py，内容如下</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> load_workbook<br></code></pre></td></tr></table></figure>
+<h5 id="运行无错误输出即安装成功"><a href="#运行无错误输出即安装成功" class="headerlink" title="运行无错误输出即安装成功"></a>运行无错误输出即安装成功</h5><h3 id="其它相关参考教程"><a href="#其它相关参考教程" class="headerlink" title="其它相关参考教程"></a>其它相关参考教程</h3><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html">链接来源于网络，仅供参考<br><br>https://blog.csdn.net/weixin_39626181/article/details/110578822<br><br>https://www.cnblogs.com/kayb/p/7749503.html<br><br>https://www.cnblogs.com/zhangshuli-1989/p/hq_15_11_26_2_13.html<br><br>https://www.cnblogs.com/zhangshuli-1989/p/hq_201511_27_2121.html<br><br>https://m.jb51.net/article/208597.htm<br><br>https://m.jb51.net/article/230924.htm 这是python爬虫相关<br></code></pre></td></tr></table></figure>
+
+<h3 id="模块使用"><a href="#模块使用" class="headerlink" title="模块使用"></a>模块使用</h3><h5 id="新建数据文件"><a href="#新建数据文件" class="headerlink" title="新建数据文件"></a>新建数据文件</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding:utf-8 -*-</span><br><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> Workbook<br><span class="hljs-comment"># 创建一个工作薄</span><br>wb = Workbook()<br><span class="hljs-comment"># 创建一个工作表(注意是一个属性)</span><br>sheet = wb.active<br><span class="hljs-comment"># excel创建的工作表名默认为sheet1,一下代码实现了给新创建的工作表创建一个新的名字</span><br>sheet.title = <span class="hljs-string">&#x27;create_sheet&#x27;</span><br><span class="hljs-comment"># 向工作表中输入内容</span><br>sheet[<span class="hljs-string">&#x27;C3&#x27;</span>] = <span class="hljs-string">&#x27;hello word&#x27;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    sheet[<span class="hljs-string">&#x27;A%d&#x27;</span> % (i+<span class="hljs-number">1</span>)] = i+<span class="hljs-number">1</span><br><span class="hljs-comment"># 向excel表中输入表达试</span><br>sheet[<span class="hljs-string">&#x27;C2&#x27;</span>] = <span class="hljs-string">&#x27;=SUM(A:A)&#x27;</span><br><span class="hljs-comment"># 保存一个文档</span><br>wb.save(<span class="hljs-string">&#x27;create_excel.xlsx&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h5 id="读取数据文件"><a href="#读取数据文件" class="headerlink" title="读取数据文件"></a>读取数据文件</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding:utf-8 -*-</span><br><span class="hljs-comment"># 导入</span><br><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> workbook<br><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> load_workbook<br><span class="hljs-comment"># 打开一个供作薄</span><br>wb = load_workbook(<span class="hljs-string">&#x27;file_name.xlsx&#x27;</span>)<br><span class="hljs-comment"># 获取一张表</span><br>sheet = wb.get_sheet_by_name(<span class="hljs-string">&quot;Sheet1&quot;</span>)<br><span class="hljs-comment"># 获取A1格的值</span><br><span class="hljs-built_in">print</span> sheet[<span class="hljs-string">&#x27;A1&#x27;</span>].value<br><span class="hljs-comment"># 获取表的最大工作行数</span><br><span class="hljs-built_in">print</span> sheet.max_row<br><span class="hljs-comment"># 获取表的最大工作列数</span><br><span class="hljs-built_in">print</span> sheet.max_column<br><span class="hljs-comment"># 打印C列的所有内容(以下格式代表不换行)</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> sheet[<span class="hljs-string">&quot;C&quot;</span>]:<br>    <span class="hljs-built_in">print</span> i.value, <span class="hljs-string">&#x27;   &#x27;</span>,<br><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;&#x27;</span><br><span class="hljs-comment"># 打印1行的所有内容</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> sheet[<span class="hljs-string">&quot;1&quot;</span>]:<br>    <span class="hljs-built_in">print</span> i.value, <span class="hljs-string">&#x27;   &#x27;</span>,<br><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>注意：当读到的内容为None时说明该表格中的内容为空</p>
+<h5 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">sheet = wb[wb.get_sheet_names()[<span class="hljs-number">0</span>]]   <span class="hljs-comment"># 获取第一个工作区</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>python</tag>
+        <tag>模块</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10锁定飞行模式</title>
+    <url>/posts/dab80cd7.html</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>系统</tag>
+        <tag>飞行模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu桌面状态了消失</title>
+    <url>/posts/d0d97a59.html</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乌班图设置花生壳自启动</title>
+    <url>/posts/7b879c93.html</url>
+    <content><![CDATA[<p>我用修改&#x2F;etc&#x2F;rc.local 的方法不成功，不知道为什么，网上说有的系统启动时不读这个文件，然后用别的办法成功了。方法如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">vim /etc/init.d/phlinux<br></code></pre></td></tr></table></figure>
+<h5 id="写入："><a href="#写入：" class="headerlink" title="写入："></a>写入：</h5><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/sh</span><br>$/usr/local/phlinux/phlinux -d<br></code></pre></td></tr></table></figure>
+<h5 id="保存退出"><a href="#保存退出" class="headerlink" title="保存退出"></a>保存退出</h5><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">chmod</span> +x /etc/init.d/phlinux<br><span class="hljs-built_in">ln</span> -s /etc/init.d/phlinux /etc/rc2.d/S100phlinux (S后的数字有你决定)<br></code></pre></td></tr></table></figure>
+<p>重启后看看启动了没有</p>
+<p>一、下载<br><a href="http://www.oray.com/peanuthull/download_linux.php">http://www.oray.com/peanuthull/download_linux.php</a></p>
+<p>二、安装<br>（1）解压<br>    下载完后是：phddns-2.0.5.19225.tar.gz<br>    tar -zxvf phddns-2.0.5.19225.tar.gz<br>（2）安装编译环境<br>    sudo apt-get install gcc g++ autoconf automake<br>    sudo apt-get install build-essential</p>
+<p>三、编译<br>进入解压的目录运行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> phddns-2.0.5.19225<br>sudo  ./configure<br>sudo  make<br></code></pre></td></tr></table></figure>
+
+<p>四、进行配置<br>   把编译生成 的：phddns  (在src目录下）复制到&#x2F;usr&#x2F;bin<br>   sudo cp phddns  &#x2F;usr&#x2F;bin&#x2F;<br>   运行：&#x2F;usr&#x2F;bin&#x2F;phddns<br>接下来配置花生壳</p>
+<p>Enter server address(press ENTER use phlinux3.oray.net):&lt;—直接回车</p>
+<p>对应的Oray帐号密码</p>
+<p>Enter your Oray account:hlblog &lt;—输入帐号 回车 必需事先在ORAY网站中注册护照和密码，然后就那个写在这里<br>Password:&lt;—输入密码 回车<br>Network interface(s):<br>[eth0] &#x3D; [IP:192.168.1.103]<br>[lo] &#x3D; [IP:127.0.0.1]<br>Choose one(default eth0):&lt;—选择网卡 回车<br>Log to use(default &#x2F;var&#x2F;log&#x2F;phddns.log):&lt;—日志文件存放地点 回车<br>&#x2F;var&#x2F;log&#x2F;phddns.log<br>Save to configuration file (&#x2F;etc&#x2F;phlinux.conf)?(yes&#x2F;no&#x2F;other):yes:&lt;—配置文件存放地点 回车</p>
+<p>这样花生壳就配置好了。</p>
+<pre><code>这是会在/etc/生成: phlinux.conf配置文件
+</code></pre>
+<p>   配置开机启动:<br>   sudo vim &#x2F;etc&#x2F;rc.local<br>   添加一句：<br>   &#x2F;usr&#x2F;bin&#x2F;phddns -c &#x2F;etc&#x2F;phlinux.conf -d<br>    #-d 表示后台进程<br>    #-c 运行配置文件</p>
+<p>如果需要改用户名和密码，就到&#x2F;etc&#x2F;phlinux.conf下去改。<br>————————————————<br>版权声明：本文为CSDN博主「MyJavaBlog」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/myjavablog/article/details/88340774">https://blog.csdn.net/myjavablog/article/details/88340774</a></p>
+]]></content>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu调整默认引导</title>
+    <url>/posts/4995bd8.html</url>
+    <content><![CDATA[<h2 id="Ubuntu设置默认启动项-原文链接"><a href="#Ubuntu设置默认启动项-原文链接" class="headerlink" title="Ubuntu设置默认启动项 原文链接"></a>Ubuntu设置默认启动项 <a href="https://jingyan.baidu.com/article/f71d60379e16021ab641d1ab.html">原文链接</a></h2><h5 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h5><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">sudo vim /etc/default/grub<br></code></pre></td></tr></table></figure>
+<h5 id="更新配置-不更新配置上面的编辑将不会生效"><a href="#更新配置-不更新配置上面的编辑将不会生效" class="headerlink" title="更新配置(不更新配置上面的编辑将不会生效)"></a>更新配置(不更新配置上面的编辑将不会生效)</h5><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">sudo update-grub<br></code></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Crond定时任务</title>
+    <url>/posts/65122fd3.html</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>定时任务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>红米8刷入面具和root</title>
+    <url>/posts/60574a76.html</url>
+    <content><![CDATA[<h2 id="红米8"><a href="#红米8" class="headerlink" title="红米8"></a>红米8</h2><h4 id="使用工具-资源已转移至云盘"><a href="#使用工具-资源已转移至云盘" class="headerlink" title="使用工具(资源已转移至云盘)"></a>使用工具(资源已转移至云盘)</h4><ol>
+<li>TWRP镜像下载地址<a href="https://dl.twrp.me/olive/">TWRP</a>(与本站无关，自行选择所需镜像进行下载)</li>
+<li>面具21.4<a href="https://ricemice.lanzouj.com/itobk070bcmd">点此下载</a>(推荐)</li>
+<li>adb工具或一件TWRP工具包(链接后期再补)</li>
+</ol>
+<p>adb工具可参考这篇：<a href="https://miui.blog/redmi-8/unofficial-twrp-redmi-8-olive/">红米8刷入TWRP</a></p>
+<h2 id="工具下载完成后开始正式刷入流程"><a href="#工具下载完成后开始正式刷入流程" class="headerlink" title="工具下载完成后开始正式刷入流程"></a>工具下载完成后开始正式刷入流程</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">解压一键刷入TWRP工具压缩包(一般都是zip、rar、7z之类的)<br>把下载的TWRP镜像复制到刚刚解压的文件夹下(如果你找到的一键刷入twrp本来的twrp镜像后可以正常使用就看下一步)<br>手机进入bootloader/fastboot模式<br>    开机状态下：长按 &#x27;电源&#x27; 键 -&gt;重新启动 -&gt;按住 &#x27;音量-&#x27; 键<br>    关机状态下：按住 &#x27;电源&#x27; 键 和 &#x27;音量-&#x27; 键<br>    其它状态：超长按电源键可强制重启设备(一般是5-10秒)，这时候可以按着 &#x27;音量-&#x27; 键进行强制重启可以进入fastboot模式<br>双击打开 &#x27;一键刷入TWRP&#x27; ，根据提示完成操作即可<br>一般完成会自动进入recovery模式，如果没有，可以按住 &#x27;音量+&#x27; 跟 &#x27;电源&#x27; 键进入<br>点击安装（Install），如果显示乱码则需要格式化&#x27;Data&#x27;分区，在这之前可以重启系统备份重要文件<br>格式化&#x27;Data&#x27;分区后重启系统进行初始化Data分区<br>再次进入recovery模式时，安装选项下应该显示正常的文件列表了<br>复制面具卡刷包到设备根目录（能找到就行）<br>点击安装，选择面具卡刷包，滑动确定开始刷机<br>重启系统<br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <tags>
+        <tag>搞机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>十二经原穴歌</title>
+    <url>/posts/18f613e6.html</url>
+    <content><![CDATA[<h2 id="任脉歌诀"><a href="#任脉歌诀" class="headerlink" title="任脉歌诀"></a>任脉歌诀</h2><figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">穴有十二原<br>都在四肢中<br>胆原丘墟穴<br>肝原号太冲<br>小肠原腕骨<br>脾经太白容<br>心原神门过<br>胃经冲阳通<br>膀胱原京骨<br>肺经太渊逢<br>大肠原合谷<br>肾原太溪从<br>三焦阳池伴<br>心包大陵同<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>经脉</tag>
+        <tag>穴位</tag>
+        <tag>学医笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>任脉歌诀</title>
+    <url>/posts/fd187826.html</url>
+    <content><![CDATA[<h2 id="任脉歌诀"><a href="#任脉歌诀" class="headerlink" title="任脉歌诀"></a>任脉歌诀</h2><figure class="highlight txt"><table><tr><td class="code"><pre><code class="hljs txt">会阴曲骨中极刚<br>关元石门气海藏<br>阴交神阙脐水分<br>下脘建里中脘帮<br>上脘巨阙鸠尾香<br>中庭膻（shān）中三玉堂<br>紫宫华盖迎璇玑<br>天突廉泉接承浆（jiāng）<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>经脉</tag>
+        <tag>穴位</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>github.io无法访问</title>
+    <url>/posts/363e8810.html</url>
+    <content><![CDATA[<h1 id="原文照搬-仅作记录-来源-蓝蓝的博客"><a href="#原文照搬-仅作记录-来源-蓝蓝的博客" class="headerlink" title="原文照搬,仅作记录(来源: 蓝蓝的博客)"></a>原文照搬,仅作记录(来源: 蓝蓝的博客)</h1><h1 id="解析地址"><a href="#解析地址" class="headerlink" title="解析地址"></a>解析地址</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">140.82.112.4 github.com<br>199.232.69.194 github.global.ssl.fastly.net<br>185.199.108.153 assets-cdn.github.com<br>185.199.108.133 user-images.githubusercontent.com<br></code></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Debug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>marlin固件配置记录</title>
+    <url>/posts/998e8582.html</url>
+    <content><![CDATA[<h2 id="Marlin-2-0-9配置修改记录"><a href="#Marlin-2-0-9配置修改记录" class="headerlink" title="Marlin 2.0.9配置修改记录"></a>Marlin 2.0.9配置修改记录</h2><h4 id="Configuration-h"><a href="#Configuration-h" class="headerlink" title="Configuration.h"></a>Configuration.h</h4><figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 无脉冲输入时，关闭电机使能</span><br><span class="hljs-comment">// ⚠警告⚠，关闭电机可能会失去打印精度</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> DISABLE_X false</span><br><span class="hljs-comment">// 电机方向反转</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INVERT_X_DIR false</span><br><span class="hljs-comment">// 直接驱动挤出机设置为true，齿轮挤出机设置为false</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INVERT_E0_DIR false</span><br><br><br><br><br><br>##后续修改陆续添加，以做记录<br></code></pre></td></tr></table></figure>
+<h4 id="Configuration-adv-h"><a href="#Configuration-adv-h" class="headerlink" title="Configuration_adv.h"></a>Configuration_adv.h</h4><figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 配置ESP32控制板WiFi</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Ethernet. Use M552 to enable and set the IP address.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> HAS_ETHERNET</span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> MAC_ADDRESS &#123; 0xDE, 0xAD, 0xBE, 0xEF, 0xF0, 0x0D &#125;  <span class="hljs-comment">// A MAC address unique to your network</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * WiFi Support (Espressif ESP32 WiFi)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//#define WIFISUPPORT         // Marlin embedded WiFi managenent</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ESP3D_WIFISUPPORT   <span class="hljs-comment">// ESP3D Library WiFi management (https://github.com/luc-github/ESP3DLib)</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> EITHER(WIFISUPPORT, ESP3D_WIFISUPPORT)</span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> WEBSUPPORT          <span class="hljs-comment">// Start a webserver (which may include auto-discovery)</span></span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> OTASUPPORT          <span class="hljs-comment">// Support over-the-air firmware updates</span></span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> WIFI_CUSTOM_COMMAND <span class="hljs-comment">// Accept feature config commands (e.g., WiFi ESP3D) from the host</span></span><br>  <br>  <span class="hljs-comment">//配置WiFi</span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> WIFI_SSID <span class="hljs-string">&quot;mice&quot;</span></span><br>  <span class="hljs-meta">#<span class="hljs-keyword">define</span> WIFI_PWD <span class="hljs-string">&quot;i2112888100&quot;</span></span><br>  <br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * To set a default WiFi SSID / Password, create a file called Configuration_Secure.h with</span><br><span class="hljs-comment">   * the following defines, customized for your network. This specific file is excluded via</span><br><span class="hljs-comment">   * .gitignore to prevent it from accidentally leaking to the public.</span><br><span class="hljs-comment">   *</span><br><span class="hljs-comment">   *   #define WIFI_SSID &quot;WiFi SSID&quot;</span><br><span class="hljs-comment">   *   #define WIFI_PWD  &quot;WiFi Password&quot;</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-comment">//#include &quot;Configuration_Secure.h&quot; // External file with WiFi SSID / Password</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><br><br><br>##后续修改陆续添加，以做记录<br></code></pre></td></tr></table></figure>
+
+<h6 id="本文主要用作记录固件DIY过程，防迷糊专用，如本文对你有所帮助，请及时保存为离线网页，修改或大改时可能会重写本文内容，本文作者保留最终解释权"><a href="#本文主要用作记录固件DIY过程，防迷糊专用，如本文对你有所帮助，请及时保存为离线网页，修改或大改时可能会重写本文内容，本文作者保留最终解释权" class="headerlink" title="本文主要用作记录固件DIY过程，防迷糊专用，如本文对你有所帮助，请及时保存为离线网页，修改或大改时可能会重写本文内容，本文作者保留最终解释权"></a>本文主要用作记录固件DIY过程，防迷糊专用，如本文对你有所帮助，请及时保存为离线网页，修改或大改时可能会重写本文内容，本文作者保留最终解释权</h6>]]></content>
+      <tags>
+        <tag>3D打印</tag>
+        <tag>固件</tag>
+        <tag>marlin2.0.9</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UbuntuRST</title>
+    <url>/posts/2b751f2.html</url>
+    <content><![CDATA[<h2 id="安装前"><a href="#安装前" class="headerlink" title="安装前"></a>安装前</h2>]]></content>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>系统</tag>
+        <tag>RST</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何安装宝塔面板</title>
+    <url>/posts/baebcfa7.html</url>
+    <content><![CDATA[<h2 id="Linux安装宝塔面板7-9-0脚本"><a href="#Linux安装宝塔面板7-9-0脚本" class="headerlink" title="Linux安装宝塔面板7.9.0脚本"></a>Linux安装宝塔面板7.9.0脚本</h2><ol>
+<li>CentOS<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh<br></code></pre></td></tr></table></figure></li>
+<li>Ubuntu</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>宝塔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo彩带飘动背景</title>
+    <url>/posts/3bae5547.html</url>
+    <content><![CDATA[<h4 id="背景彩带飘动"><a href="#背景彩带飘动" class="headerlink" title="背景彩带飘动"></a>背景彩带飘动</h4><p>效果如本站飘动的彩带<a href="/js/piao.js">代码点这</a><br>来源:<a href="https://blog.csdn.net/xxzh_pengpeng/article/details/105191109">北冥道人的CSDN</a></p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel之VB宏</title>
+    <url>/posts/6bdbac3e.html</url>
+    <content><![CDATA[<h3 id="VB基础"><a href="#VB基础" class="headerlink" title="VB基础"></a>VB基础</h3><h5 id="定义变量VB变量"><a href="#定义变量VB变量" class="headerlink" title="定义变量VB变量"></a>定义变量<a href="https://www.runoob.com/vbscript/vbscript-variables.html">VB变量</a></h5><figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">Dim</span> name<br><span class="hljs-keyword">Dim</span> i<br><span class="hljs-keyword">Dim</span> b(<span class="hljs-number">2</span>) //数组变量<br><span class="hljs-keyword">Dim</span> t(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>) //二维数组变量<br></code></pre></td></tr></table></figure>
+<p>VBScript 变量名称的规则：</p>
+<ol>
+<li>必须以字母开头</li>
+<li>不能包含点号（.）</li>
+<li>不能超过 255 个字符</li>
+</ol>
+<p>在 VBScript 中，所有的变量都与类型 variant 相关，可存储不同类型的数据。</p>
+<h5 id="VB程序更详细点此"><a href="#VB程序更详细点此" class="headerlink" title="VB程序更详细点此"></a>VB程序<a href="https://www.runoob.com/vbscript/vbscript-procedures.html">更详细点此</a></h5><ol>
+<li>VBScript 子程序<br>1.1 是一系列的语句，被封装在 Sub 和 End Sub 语句内<br>1.2 可执行某些操作，但不会返回值<br>1.3 可带有参数</li>
+</ol>
+  <figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">Sub</span> mysub(arg1,arg2)<br>  //子程序代码<br>  //如果不用参数,参数可省略<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>VBScript 函数程序<br>2.1 是一系列的语句，被封装在 Function 和 End Function 语句内<br>2.2 可执行某些操作，并会返回值<br>2.3 可带有通过程序调用来向其传递的参数。<br>2.4 如果没有参数，必须带有空的圆括号 ()<br>2.5 通过向函数程序名赋值的方式，可使其返回值</li>
+</ol>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">Function</span> myfunction(arg1,arg2)<br>  //子程序代码<br>  myfunction=value //返回值<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Function</span><br></code></pre></td></tr></table></figure>
+<h5 id="程序调用"><a href="#程序调用" class="headerlink" title="程序调用"></a>程序调用</h5><ul>
+<li>当您调用程序时，您可以使用 Call 语句，如下所示：<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">Call</span> MyProc(argument)<br></code></pre></td></tr></table></figure></li>
+<li>或者，您可以省略 Call 语句，如下所示：<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript">MyProc argument<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="条件语句阅读原文"><a href="#条件语句阅读原文" class="headerlink" title="条件语句阅读原文"></a>条件语句<a href="https://www.runoob.com/vbscript/vbscript-conditionals.html">阅读原文</a></h5><ol>
+<li>If 语句 - 假如您希望在条件为 true 时执行一系列的代码，可以使用这个语句</li>
+<li>If…Then…Else 语句 - 假如您希望执行两套代码其中之一，可以使用这个语句</li>
+<li>If…Then…ElseIf 语句 - 假如您希望选择多套代码之一来执行，可以使用这个语句</li>
+<li>Select Case 语句 - 假如您希望选择多套代码之一来执行，可以使用这个语句</li>
+</ol>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">If</span> i=<span class="hljs-number">10</span> <span class="hljs-keyword">Then</span> i = i + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript"><span class="hljs-keyword">If</span> i=<span class="hljs-number">10</span> <span class="hljs-keyword">Then</span><br>  //语句<span class="hljs-number">1</span><br>  i = i+<span class="hljs-number">1</span> //语句<span class="hljs-number">2</span><br><span class="hljs-keyword">End</span> <span class="hljs-keyword">If</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript">i=<span class="hljs-built_in">hour</span>(time)<br><span class="hljs-keyword">If</span> i &lt; <span class="hljs-number">10</span> <span class="hljs-keyword">Then</span><br>  document.write(<span class="hljs-string">&quot;Good morning!&quot;</span>) //条件成立时执行<br><span class="hljs-keyword">Else</span><br>  document.write(<span class="hljs-string">&quot;Have a nice day!&quot;</span>) //条件不成立时执行<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">If</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript">i=<span class="hljs-built_in">hour</span>(time)<br>//多个条件轮流判断<br><span class="hljs-keyword">If</span> i = <span class="hljs-number">10</span> <span class="hljs-keyword">Then</span><br>  document.write(<span class="hljs-string">&quot;Just started...!&quot;</span>)<br><span class="hljs-keyword">ElseIf</span> i = <span class="hljs-number">11</span> <span class="hljs-keyword">Then</span><br>  document.write(<span class="hljs-string">&quot;Hungry!&quot;</span>)<br><span class="hljs-keyword">ElseIf</span> i = <span class="hljs-number">12</span> <span class="hljs-keyword">Then</span><br>  document.write(<span class="hljs-string">&quot;Ah, lunch-time!&quot;</span>)<br><span class="hljs-keyword">ElseIf</span> i = <span class="hljs-number">16</span> <span class="hljs-keyword">Then</span><br>  document.write(<span class="hljs-string">&quot;Time to go home!&quot;</span>)<br><span class="hljs-keyword">Else</span><br>  document.write(<span class="hljs-string">&quot;Unknown&quot;</span>)<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">If</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><code class="hljs VBScript">d=<span class="hljs-built_in">weekday</span>(date)<br><span class="hljs-keyword">Select</span> <span class="hljs-keyword">Case</span> d<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">1</span><br>    document.write(<span class="hljs-string">&quot;Sleepy Sunday&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">2</span><br>    document.write(<span class="hljs-string">&quot;Monday again!&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">3</span><br>    document.write(<span class="hljs-string">&quot;Just Tuesday!&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">4</span><br>    document.write(<span class="hljs-string">&quot;Wednesday!&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">5</span><br>    document.write(<span class="hljs-string">&quot;Thursday...&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-number">6</span><br>    document.write(<span class="hljs-string">&quot;Finally Friday!&quot;</span>)<br>  <span class="hljs-keyword">Case</span> <span class="hljs-keyword">else</span><br>    document.write(<span class="hljs-string">&quot;Super Saturday!!!!&quot;</span>)<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Select</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>VBScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的工具箱</title>
+    <url>/posts/4e7ed366.html</url>
+    <content><![CDATA[<h1 id="工具集合-资源已转移至云盘"><a href="#工具集合-资源已转移至云盘" class="headerlink" title="工具集合(资源已转移至云盘)"></a>工具集合(资源已转移至云盘)</h1><ol>
+<li><p>Termux备份恢复 <a href="https://ricemice.lanzouj.com/iorxr02kpkjc">点此下载</a>(推荐)</p>
+</li>
+<li><p>Termux更换源(国内-清华)<a href="https://ricemice.lanzouj.com/iUeqR02kpkwf">点此下载</a></p>
+</li>
+<li><p>Lua实现unicode与utf8互转<a href="https://ricemice.lanzouj.com/iXKRt02kpcwh">点此下载</a></p>
+</li>
+<li><p>实用IP获取api<a href="https://ricemice.lanzouj.com/igzZI02kpkqj">点此下载</a></p>
+</li>
+<li><p>Git一键push<a href="https://ricemice.lanzouj.com/iWldr02kpktc">点此下载</a></p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+</search>
